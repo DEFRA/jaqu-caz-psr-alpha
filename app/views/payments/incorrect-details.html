@@ -1,0 +1,42 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/confirm-vehicle-details",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <h1 class="govuk-heading-l">
+        Incorrect vehicle details
+      </h1>
+      
+      <p>If you think any of the vehicle details are incorrect, please write to:
+      <br>
+      <br>
+      Driver and Vehicle Licensing Agency (DVLA)
+      <br>
+      Swansea
+      <br>
+      SA99 1BA
+      <br>
+      <br>
+      You'll need to include your vehicle registration certificate.
+      </p>
+
+      <p>If you would like to check the compliance of another vehicle, <a href="/vehicle-checker/enter-vehicle-details">search again</a>.</p>
+
+    </div>
+</div>
+
+{% endblock %}

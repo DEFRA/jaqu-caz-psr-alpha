@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/local-authority",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Pay a Leeds Clean Air Zone charge</h1>
+        <p>The base tariff per day for your vehicle is:</p>
+        <h2 class="govuk-heading-m">£12.50</h2>
+        <div class="govuk-inset-text">
+            Leeds licensed taxis and private hire vehicles can pay £50 for a week. Find out more <a href="https://www.leeds.gov.uk/business/environmental-health-for-business/air-quality/daily-charges-clean-air-charging-zone" target=_blank>here</a>.
+        </div>
+        <form method="post" class="form" action="/payments/pay-money">
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+        </form>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <h3 class="govuk-heading-s">
+            Total charge
+        </h3>
+        <h2 class="govuk-heading-m" id="charge" name="charge">£12.50</h2>
+    </div>
+</div>
+
+<script>
+    function changeCharge() {
+
+        var charge = document.getElementById("charge").innerHTML;
+
+        if (document.getElementById("discountSelection-2").checked == true) {
+            charge = "£6.25"
+        } else if (document.getElementById("discountSelection-1").checked == true) {
+            charge = "£8.75"
+        } else {
+            charge = "£12.50"
+        }
+
+        document.getElementById("charge").innerHTML = charge;
+
+    }
+</script>
+
+{% endblock %}

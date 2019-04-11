@@ -1,0 +1,57 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" class="form" action="/payments/task">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="cazHint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What would you like to do?
+              </h1>
+            </legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="one-off-payment" name="task" type="radio" value="one-off-payment" required>
+                <label class="govuk-label govuk-radios__label" for="one-off-payment">
+                  Make a one-off payment
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="sign-in" name="task" type="radio" value="sign-in" required>
+                <label class="govuk-label govuk-radios__label" for="sign-in">
+                  Sign in to my account
+                </label>
+              </div>
+            </div>
+          </fieldset>
+          <br>
+          <br>
+          <p><a href="">Create an account</a> if you do not have one.</p>
+        </div>
+        
+        <button type="submit" class="govuk-button">
+            Continue
+        </button>
+      </form>
+
+    </div>
+</div>
+
+{% endblock %}

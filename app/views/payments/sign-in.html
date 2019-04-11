@@ -1,0 +1,45 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/select-task",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone Charge
+{% endblock %}
+
+{% block content %}   
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Sign in to your account</h1>
+      <form action="/payments/account-home">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="email">
+                <b>Email address</b>
+            </label>
+            <input class="govuk-input" id="email" name="email" type="email" style="width: 60%;" required aria-describedby="email-hint" autocomplete="email">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="password">
+                <b>Password</b>
+            </label>
+            <input class="govuk-input" id="password" name="password" type="password" style="width: 60%;" required aria-describedby="email-hint">
+        </div>
+
+        <br>
+        
+        <button type="submit" class="govuk-button">
+            Continue
+        </button>
+      </form>
+
+    </div>
+</div>
+
+{% endblock %}

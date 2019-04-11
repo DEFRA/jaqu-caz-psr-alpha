@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/local-authority",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Pay a Birmingham Clean Air Zone charge</h1>
+        <p>The base tariff per day for your vehicle is:</p>
+        <h2 class="govuk-heading-m">£8.00</h2>
+        <form method="post" class="form" action="/payments/pay-money">
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+        </form>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <h3 class="govuk-heading-s">
+            Total charge
+        </h3>
+        <h2 class="govuk-heading-m" id="charge" name="charge">£8.00</h2>
+    </div>
+</div>
+
+<script>
+    function changeCharge() {
+
+        var charge = document.getElementById("charge").innerHTML;
+
+        if (document.getElementById("discountSelection-2").checked == true) {
+            charge = "£4.00"
+        } else if (document.getElementById("discountSelection-1").checked == true) {
+            charge = "£5.60"
+        } else {
+            charge = "£8.00"
+        }
+
+        document.getElementById("charge").innerHTML = charge;
+
+    }
+</script>
+
+{% endblock %}

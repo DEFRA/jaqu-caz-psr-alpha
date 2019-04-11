@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+                You have paid {{amountDue}} for the {{localAuthority}} CAZ
+            </h1>
+            <p style="color: white; font-size: 30px;">
+                Payment reference
+                <br>
+                <b>XYZ123ABC</b>
+            </p>
+        </div>
+        <p>Receipts have been sent to you via e-mail and SMS.</p>
+        <h2 class="govuk-heading-m">Other tasks</h2>
+        <ul class="govuk-list govuk-list--bullet">
+            <li><a href="local-authority.html">Pay for another CAZ</a></li>
+            <li><a href="enter-vehicle-details.html">Pay for another vehicle</a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

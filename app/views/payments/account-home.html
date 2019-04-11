@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/sign-in",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">
+            Account
+        </h2>
+        <p>
+            <b><a href="/payments/account-home">Home</a></b>
+            <br>
+            <a href="/payments/account-details">Account details</a>
+            <br>
+            <a href="/payments/account-payments">Payment history</a>
+            <br>
+            <a href="/payments/account-payment-options">Payment options</a>
+            <br>
+            <a href="/payments/account-vehicles">Vehicles</a>
+            <br>
+            <a href="/payments/select-task">Sign out</a>
+        </p>
+        <p>
+            <b>Name</b>
+            <br>
+            Erica Delcastillo
+        </p>
+        <p>
+            <b>Account ID</b>
+            <br>
+            123456789
+        </p>
+        <p>
+            <b>Account type</b>
+            <br>
+            Personal
+        </p>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Home</h1>
+      <h1 class="govuk-heading-m">
+          Pay for today
+      </h1>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="vrm">
+          Select vehicle
+        </label>
+        <select class="govuk-select" id="vrm" name="vrm" onchange="changeCharges()">
+          <option value="AE02 RYA">AE02 RYA</option>
+          <option value="WA14 RD">WA14 RD</option>
+        </select>
+      </div>
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row"></td>
+            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th class="govuk-table__cell" scope="row">Clean Air Zone</th>
+            <th class="govuk-table__cell" scope="row">Charge</th>
+            <th class="govuk-table__cell" scope="row"></th>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Bath</td>
+            <td class="govuk-table__cell" id="bath-charge">£4.50</td>
+            <td class="govuk-table__cell"><form method="post" action="/payments/bath"><button class="govuk-button" style="margin: 0px;">Pay</button></form></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Birmingham</td>
+            <td class="govuk-table__cell" id="birmingham-charge">£4.50</td>
+            <td class="govuk-table__cell"><form method="post" action="/payments/birmingham"><button class="govuk-button" style="margin: 0px;">Pay</button></form></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Leeds</td>
+            <td class="govuk-table__cell" id="leeds-charge">£12.50</td>
+            <td class="govuk-table__cell"><button disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" style="margin: 0px;">Pay</button></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Sheffield</td>
+            <td class="govuk-table__cell" id="sheffield-charge">£10.00</td>
+            <td class="govuk-table__cell"><form method="post" action="/payments/sheffield"><button class="govuk-button" style="margin: 0px;">Pay</button></form></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<script>
+  function changeCharges() {
+
+    if (document.getElementById("vrm").value == "AE02 RYA") {
+
+        document.getElementById("bath-charge").innerHTML = "£4.50";
+        document.getElementById("birmingham-charge").innerHTML = "£4.50";
+        document.getElementById("leeds-charge").innerHTML = "£12.50";
+        document.getElementById("sheffield-charge").innerHTML = "£10.00";
+
+    } else if (document.getElementById("vrm").innerHTML == "WA14 RD") {
+
+        document.getElementById("bath-charge").innerHTML = "£100.00";
+        document.getElementById("birmingham-charge").innerHTML = "£50.00";
+        document.getElementById("leeds-charge").innerHTML = "£50.00";
+        document.getElementById("sheffield-charge").innerHTML = "£50.00";
+    }
+
+  }
+</script>
+
+{% endblock %}

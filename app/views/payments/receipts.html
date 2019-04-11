@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/debit-credit-card",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post" class="form" action="/payments/confirm-payment">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                    <h1 class="govuk-heading-l">
+                        How would you like to receive receipts?
+                    </h1>
+                </legend>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="email">
+                        <b>Email address (optional)</b>
+                    </label>
+                    <span id="email-hint" class="govuk-hint">
+                        We’ll only use this to send you a receipt
+                    </span>
+                    <input class="govuk-input" id="email" name="email" type="email" style="width: 60%;" aria-describedby="email-hint" autocomplete="email">
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="email">
+                        <b>Mobile number (optional)</b>
+                    </label>
+                    <span id="email-hint" class="govuk-hint">
+                        We’ll only use this to send you a receipt
+                    </span>
+                    <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint">
+                </div>    
+            </fieldset>
+            <button type="submit" class="govuk-button">
+                Confirm and pay
+            </button>
+        </form>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <h3 class="govuk-heading-s">
+            Total charge
+        </h3>
+        <h2 class="govuk-heading-m" id="charge" name="charge">{{amountDue}}</h2>
+    </div>
+</div>
+
+{% endblock %}

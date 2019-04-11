@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/sign-in",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">
+            Account
+        </h2>
+        <p>
+          <a href="/payments/account-home">Home</a>
+          <br>
+          <a href="/payments/account-details">Account details</a>
+          <br>
+          <a href="/payments/account-payments">Payment history</a>
+          <br>
+          <b><a href="/payments/account-payment-options">Payment options</a></b>
+          <br>
+          <a href="/payments/account-vehicles">Vehicles</a>
+          <br>
+          <a href="/payments/select-task">Sign out</a>
+        </p>
+        <p>
+            <b>Name</b>
+            <br>
+            Erica Delcastillo
+        </p>
+        <p>
+            <b>Account ID</b>
+            <br>
+            123456789
+        </p>
+        <p>
+            <b>Account type</b>
+            <br>
+            Personal
+        </p>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Payment options</h1>
+        <p>You have no payment methods linked to this account.</p>
+        <button class="govuk-button">Set up direct debit</button>
+    </div>
+</div>
+
+{% endblock %}

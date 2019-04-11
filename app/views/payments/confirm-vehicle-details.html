@@ -1,0 +1,85 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/enter-vehicle-details",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <h1 class="govuk-heading-l">
+        Are these the vehicle's details?
+      </h1>
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row"></td>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Registration</td>
+            <th class="govuk-table__cell">{{ data['vrn'] }}</td>
+          </tr>
+          <tr class="govuk-table__row">
+              <td class="govuk-table__cell" scope="row">Type</td>
+              <th class="govuk-table__cell">Car</td>
+            </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Make</td>
+            <th class="govuk-table__cell">Peugeot</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Colour</td>
+            <th class="govuk-table__cell">Grey</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Fuel type</td>
+            <th class="govuk-table__cell">Diesel</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Taxi/private hire vehicle?</td>
+            <th class="govuk-table__cell">Yes</th>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <form method="post" class="form" action="/payments/confirm-vehicle">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="confirm-vehicle-hint">
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="confirm-vehicle-1" name="confirm-vehicle" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="confirm-vehicle-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="confirm-vehicle-2" name="confirm-vehicle" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="confirm-vehicle-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button type="submit" class="govuk-button">
+            Confirm
+        </button>
+      </form>  
+
+    </div>
+</div>
+
+{% endblock %}

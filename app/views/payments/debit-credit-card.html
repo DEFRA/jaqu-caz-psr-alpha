@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/pay-money",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post" class="form" action="/payments/receipts">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                    <h1 class="govuk-heading-l">
+                        Enter card details
+                    </h1>
+                </legend>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="card-number">
+                        <b>Card number</b>
+                    </label>
+                    <input class="govuk-input id="card-number" name="card-number" type="text" required style="width: 60%;" aria-describedby="card-number-hint">
+                    <br>
+                    <br>
+                    <span id="card-number-hint" class="govuk-hint">
+                        <img src="../../../public/images/card-types.png" alt="accepted-cards-visa-maestro-mastercard-amex" style="height: 40px;" />
+                        <br>
+                        Accepted credit and debit card types
+                    </span>
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="width-2">
+                        <b>Expiry date</b>
+                    </label>
+                    <span id="expirty-date-hint" class="govuk-hint">
+                        For example, 01/20
+                    </span>
+                    <input class="govuk-input govuk-input--width-2" id="width-2" name="width-2" type="text" required>
+                    /
+                    <input class="govuk-input govuk-input--width-2" id="width-2" name="width-2" type="text" required>
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="card-name">
+                        <b>Name on card</b>
+                    </label>
+                    <input class="govuk-input" id="card-number" name="card-name" type="text" style="width: 60%;" aria-describedby="card-name-hint" required>
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="card-code">
+                        <b>Card security code</b>
+                    </label>
+                    <span id="card-code-hint" class="govuk-hint">
+                        The last 3 digits on the back of the card
+                    </span>
+                    <input class="govuk-input govuk-input--width-3" id="card-code" name="card-code" type="text"
+                        aria-describedby="card-code-hint" required>
+                </div>  
+            </fieldset>
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+        </form>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <h3 class="govuk-heading-s">
+            Total charge
+        </h3>
+        <h2 class="govuk-heading-m" id="charge" name="charge">{{amountDue}}</h2>
+    </div>
+</div>
+
+{% endblock %}

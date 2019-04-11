@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/sign-in",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">
+            Account
+        </h2>
+        <p>
+            <b><a href="/payments/account-home">Home</a></b>
+            <br>
+            <a href="/payments/account-details">Account details</a>
+            <br>
+            <a href="/payments/account-payments">Payments</a>
+            <br>
+            <a href="/payments/account-vehicles">Vehicles</a>
+        </p>
+        <p>
+            <b>Name</b>
+            <br>
+            Erica Delcastillo
+        </p>
+        <p>
+            <b>Account ID</b>
+            <br>
+            123456789
+        </p>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Home</h1>
+        <h1 class="govuk-heading-m">
+            Pay for today
+        </h1>
+        <button class="govuk-button">Pay now</button>
+        <br>
+        <br>
+        <h1 class="govuk-heading-m">
+            Payment history
+        </h1>
+        <p>The following Clean Air Zone payments have been made in past 7 days:</p>
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" scope="row"></td>
+                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell"></td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th class="govuk-table__cell" scope="row">CAZ</th>
+                <th class="govuk-table__cell" scope="row">VRM</th>
+                <th class="govuk-table__cell" scope="row">Date</th>
+                <th class="govuk-table__cell" scope="row">Charge</th>
+                <th class="govuk-table__cell" scope="row">Payment reference</th>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" scope="row">Birmingham</td>
+                <td class="govuk-table__cell">AE02 RYA</td>
+                <td class="govuk-table__cell">21/02/2019</td>
+                <td class="govuk-table__cell">£4.50</td>
+                <td class="govuk-table__cell">ABCD1234</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" scope="row">Leeds</td>
+                <td class="govuk-table__cell">AE02 RYA</td>
+                <td class="govuk-table__cell">21/02/2019</td>
+                <td class="govuk-table__cell">£12.50</td>
+                <td class="govuk-table__cell">EFGH5678</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell" scope="row">Sheffield</td>
+                <td class="govuk-table__cell">WA14 RD</td>
+                <td class="govuk-table__cell">21/02/2019</td>
+                <td class="govuk-table__cell">£10.00</td>
+                <td class="govuk-table__cell">IJKL9123</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+
+{% endblock %}
