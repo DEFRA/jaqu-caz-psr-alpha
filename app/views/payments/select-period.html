@@ -26,40 +26,24 @@ text: "Back"
                 Select the period you want to pay for
               </h1>
             </legend>
-            <p>The Birmingham Clean Air Zone is in operation 24 hours a day, 7 days a week throughout the year.</p>
-            <p>You can pay to enter the Birmingham Clean Air Zone today, or up until midnight of the next charging day.</p>
-            <span id="passport-issued-hint" class="govuk-hint">
-              For example, 12 11 2007
-            </span>
-            <div class="govuk-date-input" id="passport-issued">
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                    Day
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="number" pattern="[0-9]*">
-                </div>
+            <div class="govuk-inset-text">
+              Taxis and private hire vehicles licensed by Leeds City Council can pay a reduced charge of £50 a week.
+            </div>  
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live-1" name="where-do-you-live" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live-1">
+                  Daily charge
+                </label>
               </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                    Month
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="number" pattern="[0-9]*">
-                </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                  Weekly charge
+                </label>
               </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-                    Year
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="number" pattern="[0-9]*">
-                </div>
-              </div>
-            </div>
           </fieldset>
         </div>
-        
         <button type="submit" class="govuk-button">
             Continue
         </button>

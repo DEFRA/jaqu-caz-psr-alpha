@@ -23,7 +23,15 @@ router.get('/payments/caz', function (req, res) {
 router.post('/payments/paymentPages', function (req, res) {
   var confirm = req.body['caz'];
 
-  res.redirect('/payments/' + confirm)
+  if (confirm == "leeds") {
+
+    res.redirect('/payments/select-period')
+
+  } else {
+
+    res.redirect('/payments/' + confirm)
+
+  }
 
 });
 
