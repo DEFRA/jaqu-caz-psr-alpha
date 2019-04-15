@@ -137,7 +137,15 @@ router.get('/payments/pay-money', function (req, res) {
 
 router.post('/payments/confirm-payment', function (req, res) {
 
-  var localAuthority = req.session.data['caz'].charAt(0).toUpperCase() + req.session.data['caz'].slice(1);
+  if (req.session.data['caz'] == "leeds-weekly") {
+
+    var localAuthority = "Leeds"
+
+  } else {
+
+    var localAuthority = req.session.data['caz'].charAt(0).toUpperCase() + req.session.data['caz'].slice(1);
+
+  }
 
   res.render('payments/confirm-payment', {amountDue: req.session.amountDue, localAuthority: localAuthority});
 
