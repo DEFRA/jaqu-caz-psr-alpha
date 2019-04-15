@@ -29,7 +29,7 @@ router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
 
   } else if (period == "weekly-charge") {
 
-    res.redirect('/payments/leeds-weekly')
+    res.redirect('/payments/leeds-weekly-charge')
 
   }
 
