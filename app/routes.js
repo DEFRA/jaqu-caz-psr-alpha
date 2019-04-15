@@ -106,7 +106,12 @@ router.post('/payments/pay-money', function (req, res) {
       res.render('payments/pay-money', {amountDue: req.session.amountDue, caz: caz});
     }
 
-  }
+  } else if (req.session.data['caz'] == "leeds-weekly") {
+
+    req.session.amountDue = '£50.00';
+    res.render('payments/pay-money', {amountDue: req.session.amountDue, caz: caz});
+
+  } 
 
 });
 
