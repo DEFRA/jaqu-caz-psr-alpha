@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/select-period",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Pay a Leeds Clean Air Zone charge</h1>
+        <p>The weekly charge for your vehicle is:</p>
+        <h2 class="govuk-heading-m">£50.00</h2>
+        <p>You must pay the weekly Clean Air charge by midnight the day after you drive through a Clean Air Zone.</p>
+        <p>You only need to pay once, no matter how many times you drive in and out of that Clean Air Zone over a 7-day period.</p>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                If you don't pay by midnight on the day after you drove in the zone, you'll get a fine. This is also known as a penalty charge notice (PCN).
+            </strong>
+        </div>
+        <form method="post" class="form" action="/payments/pay-money">
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+        </form>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <h3 class="govuk-heading-s">
+            Total charge
+        </h3>
+        <h2 class="govuk-heading-m" id="charge" name="charge">£50.00</h2>
+    </div>
+</div>
+
+{% endblock %}
