@@ -20,6 +20,21 @@ router.get('/payments/caz', function (req, res) {
 
 });
 
+router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
+  var period = req.body['period'];
+
+  if (period == "daily-charge") {
+
+    res.redirect('/payments/leeds')
+
+  } else if (period == "weekly-charge") {
+
+    res.redirect('/payments/leeds-weekly')
+
+  }
+
+});
+
 router.post('/payments/paymentPages', function (req, res) {
   var confirm = req.body['caz'];
 

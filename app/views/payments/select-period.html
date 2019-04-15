@@ -17,7 +17,7 @@ text: "Back"
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form method="post" class="form" action="/payments/paymentPages">
+      <form method="post" class="form" action="/payments/paymentPagesSelectPeriod">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="cazHint">
@@ -31,14 +31,14 @@ text: "Back"
             </div>  
             <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-1" name="where-do-you-live" type="radio" value="england">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-1">
+                <input class="govuk-radios__input" id="period-1" name="period" type="radio" value="daily-charge">
+                <label class="govuk-label govuk-radios__label" for="period-1">
                   Daily charge
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                <input class="govuk-radios__input" id="period-2" name="period" type="radio" value="weekly-charge">
+                <label class="govuk-label govuk-radios__label" for="period-2">
                   Weekly charge
                 </label>
               </div>
