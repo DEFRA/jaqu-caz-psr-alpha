@@ -41,28 +41,14 @@ text: "Back"
             Payment summary
         </h2>
         <h3 class="govuk-heading-s">
+            Registration number
+        </h3>
+        <p id="vrm" name="vrm">{{ data['vrn'] }}</p>
+        <h3 class="govuk-heading-s">
             Total charge
         </h3>
         <h2 class="govuk-heading-m" id="charge" name="charge">£8.00</h2>
     </div>
 </div>
-
-<script>
-    function changeCharge() {
-
-        var charge = document.getElementById("charge").innerHTML;
-
-        if (document.getElementById("discountSelection-2").checked == true) {
-            charge = "£4.00"
-        } else if (document.getElementById("discountSelection-1").checked == true) {
-            charge = "£5.60"
-        } else {
-            charge = "£8.00"
-        }
-
-        document.getElementById("charge").innerHTML = charge;
-
-    }
-</script>
 
 {% endblock %}
