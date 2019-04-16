@@ -793,6 +793,27 @@ router.post('/payments/confirm-payment', function (req, res) {
 
   var caz = req.session.data['caz'];
 
+  var email = req.session.data['email'];
+  var mobile = req.session.data['mobile-number'];
+
+  if (email != '' && mobile != '') {
+
+    var receiptMethod = "You will get a receipt by email and text message."
+
+  } else if (email == '' && mobile != '') {
+
+    var receiptMethod = "You will get a receipt by text message."
+
+  } else if (email != '' && mobile == '') {
+
+    var receiptMethod = "You will get a receipt by email."
+
+  } else if (email == '' && mobile == '') {
+
+    var receiptMethod = ""
+
+  }
+
   var weekdays = [
     "Monday",
     "Tuesday",
@@ -844,7 +865,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     }
 
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: todayString, localAuthority: localAuthority});
+    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: todayString, localAuthority: localAuthority, receiptMethod: receiptMethod});
 
   } else if (date == "yesterday") {
 
@@ -860,7 +881,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     }
 
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: yesterdayString, localAuthority: localAuthority});
+    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: yesterdayString, localAuthority: localAuthority, receiptMethod: receiptMethod});
 
   }
 
@@ -888,6 +909,27 @@ router.get('/payments/confirm-payment', function (req, res) {
   var localAuthority = req.session.data['caz'].charAt(0).toUpperCase() + req.session.data['caz'].slice(1);
 
   var date = req.session.data['date'];
+
+  var email = req.session.data['email'];
+  var mobile = req.session.data['mobile-number'];
+
+  if (email != '' && mobile != '') {
+
+    var receiptMethod = "You will get a receipt by email and text message."
+
+  } else if (email == '' && mobile != '') {
+
+    var receiptMethod = "You will get a receipt by text message."
+
+  } else if (email != '' && mobile == '') {
+
+    var receiptMethod = "You will get a receipt by email."
+
+  } else if (email == '' && mobile == '') {
+
+    var receiptMethod = ""
+
+  }
 
   var weekdays = [
     "Monday",
@@ -930,7 +972,7 @@ router.get('/payments/confirm-payment', function (req, res) {
 
     }
 
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: todayString, localAuthority: localAuthority});
+    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: todayString, localAuthority: localAuthority, receiptMethod: receiptMethod});
 
   } else if (date == "yesterday") {
 
@@ -946,7 +988,7 @@ router.get('/payments/confirm-payment', function (req, res) {
 
     }
 
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: yesterdayString, localAuthority: localAuthority});
+    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: yesterdayString, localAuthority: localAuthority, receiptMethod: receiptMethod});
 
   }
 
