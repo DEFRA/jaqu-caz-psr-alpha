@@ -16,6 +16,12 @@ router.post('/payments/confirm-vehicle', function (req, res) {
 router.get('/payments/caz', function (req, res) {
   var caz = req.session.data['caz'];
 
+  if (caz == "leeds-weekly") {
+
+    res.redirect('/payments/leeds-weekly-charge');
+
+  }
+
   res.redirect('/payments/' + caz)
 
 });
@@ -144,13 +150,64 @@ router.post('/payments/select-date', function (req, res) {
     req.session.amountDue = '£9.00';
     res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
 
-  } else if (req.session.data['caz'] == "leeds-weekly") {
-
-    req.session.amountDue = '£50.00';
-
-    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayStringWeekly, yesterday: yesterdayStringWeekly});
-
   } 
+
+});
+
+router.post('/payments/select-date-weekly', function (req, res) {
+
+  var caz = req.session.data['caz'];
+
+  var weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+
+  var monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  var today = new Date();
+  
+  var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 7);
+
+  var validFromToday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  var todayStringWeekly = todayString + ' (valid until midnight on ' + validFromToday + ')'
+
+  var today = new Date();
+
+  today.setDate(today.getDate() - 1);
+
+  var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 7);
+
+  var validFromYesterday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  var yesterdayStringWeekly = yesterdayString + ' (valid until midnight on ' + validFromYesterday + ')'
+
+  req.session.amountDue = '£50.00';
+
+  res.render('payments/select-date-weekly', {amountDue: req.session.amountDue, caz: caz, today: todayStringWeekly, yesterday: yesterdayStringWeekly});
 
 });
 

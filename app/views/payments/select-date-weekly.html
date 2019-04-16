@@ -14,7 +14,7 @@ text: "Back"
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">When did you drive?</h1>
+        <h1 class="govuk-heading-l">When do you want the 7-day period to start?</h1>
         <form method="post" class="form" action="/payments/selected-date">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
@@ -34,10 +34,10 @@ text: "Back"
                     </div>
                 </fieldset>
             </div>
-            <p>A daily charge runs from midnight to midnight.</p>
             <button type="submit" class="govuk-button">
                 Continue
             </button>
+            <p><a href="/payments/select-period">Pay a daily charge instead</a></p>
         </form>
     </div>
     <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
