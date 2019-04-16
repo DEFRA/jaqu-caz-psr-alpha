@@ -84,6 +84,76 @@ router.post('/payments/pay-money', function (req, res) {
 
 });
 
+router.get('/payments/select-date', function (req, res) {
+
+  var caz = req.session.data['caz'];
+
+  var weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+
+  var monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  var today = new Date();
+  
+  var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 7);
+
+  var validFromToday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  var todayStringWeekly = todayString + ' (valid until midnight on ' + validFromToday + ')'
+
+  var today = new Date();
+
+  today.setDate(today.getDate() - 1);
+
+  var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 7);
+
+  var validFromYesterday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  var yesterdayStringWeekly = yesterdayString + ' (valid until midnight on ' + validFromYesterday + ')'
+  
+  if (req.session.data['caz'] == "birmingham") {
+
+    req.session.amountDue = '£8.00';
+    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+
+  } else if (req.session.data['caz'] == "leeds") {
+
+    req.session.amountDue = '£12.50';
+    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+
+  } else if (req.session.data['caz'] == "bath") {
+
+    req.session.amountDue = '£9.00';
+    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+
+  } 
+
+});
+
 router.post('/payments/select-date', function (req, res) {
 
   var caz = req.session.data['caz'];
