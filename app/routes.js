@@ -111,9 +111,23 @@ router.post('/payments/select-date', function (req, res) {
   
   var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
 
+  today.setDate(today.getDate() + 7);
+
+  var validFromToday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  var todayStringWeekly = todayString + ' (valid until midnight on ' + validFromToday + ')'
+
+  var today = new Date();
+
   today.setDate(today.getDate() - 1);
 
   var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 7);
+
+  var validFromYesterday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  var yesterdayStringWeekly = yesterdayString + ' (valid until midnight on ' + validFromYesterday + ')'
   
   if (req.session.data['caz'] == "birmingham") {
 
@@ -133,7 +147,8 @@ router.post('/payments/select-date', function (req, res) {
   } else if (req.session.data['caz'] == "leeds-weekly") {
 
     req.session.amountDue = '£50.00';
-    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+
+    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayStringWeekly, yesterday: yesterdayStringWeekly});
 
   } 
 
