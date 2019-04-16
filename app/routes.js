@@ -423,7 +423,7 @@ router.post('/payments/task', function (req, res) {
 
   } else if (task == 'sign-in') {
 
-    res.redirect('/payments/sign-in');
+    res.redirect('/payments/select-task');
 
   }
 });
