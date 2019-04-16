@@ -20,10 +20,25 @@ text: "Back"
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
                 <span class="govuk-warning-text__assistive">Warning</span>
-                Due to temporary road closures on the A36, charging has been suspended for 15 April 2019.
+                Due to temporary road closures on the A36, charging has been suspended for 15 April 2019. You do not need to pay for today. You will still need to pay for driving in the Clean Air Zone on 14 April 2019.
             </strong>
         </div>
-        <p>You do not need to pay today.</p>
+        <p>The daily charge for your vehicle is:</p>
+        <h2 class="govuk-heading-m">£9.00</h2>
+        <p>You must pay the Clean Air charge by midnight the day after you drive through a Clean Air Zone.</p>
+        <p>You only need to pay once, no matter how many times you drive in and out of that Clean Air Zone on the same day.</p>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                If you don't pay by midnight on the day after you drove in the zone, you'll get a fine. This is also known as a penalty charge notice (PCN).
+            </strong>
+        </div>
+        <form method="post" class="form" action="/payments/select-date-suspended">
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+        </form>
         <p><a href="/payments/local-authority">Pay for another Clean Air Zone</a></p>
     </div>
 
@@ -36,14 +51,6 @@ text: "Back"
             Registration number
         </h3>
         <p id="vrm" name="vrm">{{ data['vrn'] }}</p>
-        <h3 class="govuk-heading-s">
-            Date
-        </h3>
-        <p id="date" name="date">Tuesday, 15 April 2019</p>
-        <h3 class="govuk-heading-s">
-            Total charge
-        </h3>
-        <h2 class="govuk-heading-m" id="charge" name="charge">£0.00</h2>
     </div>
 </div>
 

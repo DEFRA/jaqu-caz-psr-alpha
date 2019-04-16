@@ -281,6 +281,252 @@ router.post('/payments/select-date-weekly', function (req, res) {
 
 });
 
+router.get('/payments/select-date-suspended', function (req, res) {
+
+  var caz = req.session.data['caz'];
+
+  var weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+
+  var monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  var today = new Date();
+
+  today.setDate(today.getDate() - 1);
+
+  var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  req.session.amountDue = '£9.00';
+
+  res.render('payments/select-date-suspended', {amountDue: req.session.amountDue, caz: caz, yesterday: yesterdayString});
+
+});
+
+router.post('/payments/select-date-suspended', function (req, res) {
+
+  var caz = req.session.data['caz'];
+
+  var weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+
+  var monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  var today = new Date();
+
+  today.setDate(today.getDate() - 1);
+
+  var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  req.session.amountDue = '£9.00';
+
+  res.render('payments/select-date-suspended', {amountDue: req.session.amountDue, caz: caz, yesterday: yesterdayString});
+
+});
+
+router.get('/payments/selectDate', function (req, res) {
+
+  var caz = req.session.data['caz'];
+
+  if (caz == "bath") {
+
+    var weekdays = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ];
+  
+    var monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+  
+    var today = new Date();
+  
+    today.setDate(today.getDate() - 1);
+  
+    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    req.session.amountDue = '£9.00';
+  
+    res.render('payments/select-date-suspended', {amountDue: req.session.amountDue, caz: caz, yesterday: yesterdayString});
+
+  } else if (caz == "leeds-weekly") {
+
+    var weekdays = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ];
+  
+    var monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+  
+    var today = new Date();
+    
+    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 7);
+  
+    var validFromToday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    var todayStringWeekly = todayString + ' (valid until midnight on ' + validFromToday + ')'
+  
+    var today = new Date();
+  
+    today.setDate(today.getDate() - 1);
+  
+    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 7);
+  
+    var validFromYesterday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    var yesterdayStringWeekly = yesterdayString + ' (valid until midnight on ' + validFromYesterday + ')'
+  
+    req.session.amountDue = '£50.00';
+  
+    res.render('payments/select-date-weekly', {amountDue: req.session.amountDue, caz: caz, today: todayStringWeekly, yesterday: yesterdayStringWeekly});
+
+  } else {
+    
+    var weekdays = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ];
+  
+    var monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+  
+    var today = new Date();
+    
+    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 7);
+  
+    var validFromToday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    var todayStringWeekly = todayString + ' (valid until midnight on ' + validFromToday + ')'
+  
+    var today = new Date();
+  
+    today.setDate(today.getDate() - 1);
+  
+    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 7);
+  
+    var validFromYesterday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    var yesterdayStringWeekly = yesterdayString + ' (valid until midnight on ' + validFromYesterday + ')'
+    
+    if (req.session.data['caz'] == "birmingham") {
+  
+      req.session.amountDue = '£8.00';
+      res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+  
+    } else if (req.session.data['caz'] == "leeds") {
+  
+      req.session.amountDue = '£12.50';
+      res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+  
+    } else if (req.session.data['caz'] == "bath") {
+  
+      req.session.amountDue = '£9.00';
+      res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+  
+    } 
+
+  }
+
+});
+
 router.post('/payments/selectedPaymentMethod', function (req, res) {
   var method = req.body['payment-method'];
   var caz = req.session.data['caz'];
