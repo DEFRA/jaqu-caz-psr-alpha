@@ -10,8 +10,18 @@
     <div class="govuk-grid-column-two-thirds">
         <div class="govuk-panel govuk-panel--confirmation">
             <h1 class="govuk-panel__title">
-                You have paid {{amountDue}} for the {{localAuthority}} CAZ for {{date}}
+                You have paid {{amountDue}} for the {{localAuthority}} CAZ
             </h1>
+            <p style="color: white; font-size: 30px;">
+                Date
+                <br>
+                <b>{{date}}</b>
+            </p>
+            <p style="color: white; font-size: 30px;">
+                Registration number
+                <br>
+                <b>{{data['vrn']}}</b>
+            </p>
             <p style="color: white; font-size: 30px;">
                 Payment reference
                 <br>

@@ -261,8 +261,6 @@ router.post('/payments/select-date-weekly', function (req, res) {
 
   var validFromToday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
 
-  var todayStringWeekly = todayString + ' (valid until midnight on ' + validFromToday + ')'
-
   var today = new Date();
 
   today.setDate(today.getDate() - 1);
@@ -273,11 +271,9 @@ router.post('/payments/select-date-weekly', function (req, res) {
 
   var validFromYesterday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
 
-  var yesterdayStringWeekly = yesterdayString + ' (valid until midnight on ' + validFromYesterday + ')'
-
   req.session.amountDue = '£50.00';
 
-  res.render('payments/select-date-weekly', {amountDue: req.session.amountDue, caz: caz, today: todayStringWeekly, yesterday: yesterdayStringWeekly});
+  res.render('payments/select-date-weekly', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString, todayStringWeekly: validFromToday, yesterdayStringWeekly: validFromYesterday});
 
 });
 

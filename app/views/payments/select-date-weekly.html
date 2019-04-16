@@ -24,12 +24,18 @@ text: "Back"
                             <label class="govuk-label govuk-radios__label" for="date-1">
                                 {{yesterday}}
                             </label>
+                            <span id="yesterday-hint" class="govuk-hint" style="margin-left: 15px;">
+                                Your weekly charge is valid until midnight on {{yesterdayStringWeekly}}
+                            </span>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="date-2" required name="date" type="radio" value="today" required>
                             <label class="govuk-label govuk-radios__label" for="date-2">
                                 {{today}}
                             </label>
+                            <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
+                                Your weekly charge is valid until midnight on {{todayStringWeekly}}
+                            </span>
                         </div>
                     </div>
                 </fieldset>
