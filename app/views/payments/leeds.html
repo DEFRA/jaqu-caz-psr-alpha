@@ -2,7 +2,7 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-href: "/payments/local-authority",
+href: "/payments/select-period",
 text: "Back"
 }) }}
 {% endblock %}
@@ -18,8 +18,14 @@ text: "Back"
         <h1 class="govuk-heading-l">Pay a Leeds Clean Air Zone charge</h1>
         <p>The daily charge for your vehicle is:</p>
         <h2 class="govuk-heading-m">£12.50</h2>
-        <div class="govuk-inset-text">
-            Taxis and private hire vehicles licensed by Leeds City Council can pay a reduced charge of £50 for a week. Find out more <a href="https://www.leeds.gov.uk/business/environmental-health-for-business/air-quality/daily-charges-clean-air-charging-zone" target=_blank>here</a>.
+        <p>You must pay the Clean Air charge by midnight the day after you drive through a Clean Air Zone.</p>
+        <p>You only need to pay once, no matter how many times you drive in and out of that Clean Air Zone on the same day.</p>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                If you don't pay by midnight on the day after you drove in the zone, you'll get a fine. This is also known as a penalty charge notice (PCN).
+            </strong>
         </div>
         <form method="post" class="form" action="/payments/pay-money">
             <button type="submit" class="govuk-button">

@@ -2,7 +2,7 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-href: "/payments/local-authority",
+href: "/payments/select-period",
 text: "Back"
 }) }}
 {% endblock %}
@@ -15,11 +15,11 @@ text: "Back"
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Pay a Birmingham Clean Air Zone charge</h1>
-        <p>The daily charge for your vehicle is:</p>
-        <h2 class="govuk-heading-m">£8.00</h2>
-        <p>You must pay the Clean Air charge by midnight the day after you drive through a Clean Air Zone.</p>
-        <p>You only need to pay once, no matter how many times you drive in and out of that Clean Air Zone on the same day.</p>
+        <h1 class="govuk-heading-l">Pay a Leeds Clean Air Zone charge</h1>
+        <p>The weekly charge for your vehicle is:</p>
+        <h2 class="govuk-heading-m">£50.00</h2>
+        <p>You must pay the weekly Clean Air charge by midnight the day after you drive through a Clean Air Zone.</p>
+        <p>You only need to pay once per period of 7 consecutive days, no matter how many times you drive in and out of that Clean Air Zone over that period.</p>
         <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
@@ -31,6 +31,7 @@ text: "Back"
             <button type="submit" class="govuk-button">
                 Continue
             </button>
+            <input type="hidden" value="leeds-weekly" name="caz">
         </form>
 
     </div>
@@ -43,26 +44,8 @@ text: "Back"
         <h3 class="govuk-heading-s">
             Total charge
         </h3>
-        <h2 class="govuk-heading-m" id="charge" name="charge">£8.00</h2>
+        <h2 class="govuk-heading-m" id="charge" name="charge">£50.00</h2>
     </div>
 </div>
-
-<script>
-    function changeCharge() {
-
-        var charge = document.getElementById("charge").innerHTML;
-
-        if (document.getElementById("discountSelection-2").checked == true) {
-            charge = "£4.00"
-        } else if (document.getElementById("discountSelection-1").checked == true) {
-            charge = "£5.60"
-        } else {
-            charge = "£8.00"
-        }
-
-        document.getElementById("charge").innerHTML = charge;
-
-    }
-</script>
 
 {% endblock %}

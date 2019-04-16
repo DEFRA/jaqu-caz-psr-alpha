@@ -1,0 +1,56 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/local-authority",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" class="form" action="/payments/paymentPagesSelectPeriod">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="cazHint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Select the period you want to pay for
+              </h1>
+            </legend>
+            <div class="govuk-inset-text">
+              Taxis and private hire vehicles licensed by Leeds City Council can pay a reduced charge of £50 a week.
+            </div> 
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="period-1" name="period" type="radio" value="daily-charge">
+                <label class="govuk-label govuk-radios__label" for="period-1">
+                  Daily charge
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="period-2" name="period" type="radio" value="weekly-charge">
+                <label class="govuk-label govuk-radios__label" for="period-2">
+                  Weekly charge
+                </label>
+              </div>
+            </div>  
+          </fieldset> 
+        </div>
+        <button type="submit" class="govuk-button">
+            Continue
+        </button>
+      </form>
+
+    </div>
+</div>
+
+{% endblock %}
