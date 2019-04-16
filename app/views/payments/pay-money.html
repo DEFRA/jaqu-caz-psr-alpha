@@ -2,7 +2,7 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-href: "/payments/caz",
+href: "/payments/select-date",
 text: "Back"
 }) }}
 {% endblock %}
@@ -55,6 +55,10 @@ text: "Back"
         <h2 class="govuk-heading-m">
             Payment summary
         </h2>
+        <h3 class="govuk-heading-s">
+            Date
+        </h3>
+        <p id="charge" name="charge">{{date}}</p>
         <h3 class="govuk-heading-s">
             Total charge
         </h3>
