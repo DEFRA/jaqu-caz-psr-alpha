@@ -14,7 +14,7 @@ text: "Back"
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form method="post" class="form" action="/payments/receipts">
+        <form method="post" class="form" action="/payments/confirm-payment">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
                     <h1 class="govuk-heading-l">
@@ -93,6 +93,13 @@ text: "Back"
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="postcode"><b>Postcode</b></label>
                     <input class="govuk-input govuk-input--width-5" id="postcode" name="postcode" type="text" style="width: 60%;" aria-describedby="postcode-hint">
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="email"><b>Email</b></label>
+                    <span id="email-hint" class="govuk-hint">
+                        We'll send your payment confirmation here
+                    </span>
+                    <input class="govuk-input id="town" name="email" type="text" style="width: 60%;" aria-describedby="email-hint">
                 </div>
             </fieldset>
             <button type="submit" class="govuk-button">
