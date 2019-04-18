@@ -902,6 +902,144 @@ router.post('/payments/task', function (req, res) {
   }
 });
 
+router.post('/payments/confirm-payment-details', function (req, res) {
+
+  var date = req.session.data['date'];
+
+  var caz = req.session.data['caz'];
+
+  var weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+
+  var monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  var today = new Date();
+
+  if (date == "today") {
+
+    var today = new Date();
+
+    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+    if (caz == "leeds-weekly") {
+
+      today.setDate(today.getDate() + 7);
+
+      todayString = todayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+    }
+
+    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: todayString});
+
+  } else if (date == "yesterday") {
+
+    today.setDate(today.getDate() - 1);
+
+    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+    if (caz == "leeds-weekly") {
+
+      today.setDate(today.getDate() + 7);
+
+      yesterdayString = yesterdayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+    }
+
+    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: yesterdayString});
+  
+  }  
+
+});
+
+router.get('/payments/confirm-payment-details', function (req, res) {
+
+  var date = req.session.data['date'];
+
+  var caz = req.session.data['caz'];
+
+  var weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+
+  var monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  var today = new Date();
+
+  if (date == "today") {
+
+    var today = new Date();
+
+    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+    if (caz == "leeds-weekly") {
+
+      today.setDate(today.getDate() + 7);
+
+      todayString = todayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+    }
+
+    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: todayString});
+
+  } else if (date == "yesterday") {
+
+    today.setDate(today.getDate() - 1);
+
+    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+    if (caz == "leeds-weekly") {
+
+      today.setDate(today.getDate() + 7);
+
+      yesterdayString = yesterdayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+    }
+
+    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: yesterdayString});
+  
+  }  
+
+});
+
 router.get('/payments/confirm-payment', function (req, res) {
 
   var caz = req.session.data['caz'];

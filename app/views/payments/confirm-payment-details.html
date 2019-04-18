@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/selectPaymentMethod",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Confirm your payment
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Confirm your payment</h1>
+        <form method="post" class="form" action="/payments/confirm-payment">
+            <table class="govuk-table">
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Card number:</td>
+                        <th class="govuk-table__header" scope="row">*************1234</th>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Expiry date:</td>
+                        <th class="govuk-table__header" scope="row">01/20</th>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Name on card:</td>
+                        <th class="govuk-table__header" scope="row">Erica Delcastillo</th>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Billing address:</td>
+                        <th class="govuk-table__header" scope="row">Old Market Place, Altrincham, WA14 2DD, United Kingdom</th>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Confirmation email:</td>
+                        <th class="govuk-table__header" scope="row">test@gmail.com</th>
+                    </tr>                    
+                </tbody>
+              </table>
+            <button type="submit" class="govuk-button">
+                Confirm payment
+            </button>
+        </form>
+
+        <p><a href="">Cancel payment</a></p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <h3 class="govuk-heading-s">
+            Registration number
+        </h3>
+        <p id="vrm" name="vrm">{{ data['vrn'] }}</p>
+        <h3 class="govuk-heading-s">
+            Date
+        </h3>
+        <p id="charge" name="charge">{{date}}</p>
+        <h3 class="govuk-heading-s">
+            Total charge
+        </h3>
+        <h2 class="govuk-heading-m" id="charge" name="charge">{{amountDue}}</h2>
+    </div>
+</div>
+
+{% endblock %}
