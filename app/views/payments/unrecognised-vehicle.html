@@ -1,0 +1,89 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/enter-vehicle-details",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <h1 class="govuk-heading-l">
+        Vehicle details not found
+      </h1>
+
+      <p>We can't find any details for the vehicle with registration <span style="text-transform: uppercase">{{ data['vrn'] }}</span>.</p>
+      
+      <p>This may be because your vehicle is not registered with the UK's Driver and Vehicle Licensing Agency (DVLA).</p>
+
+      <h2 class="govuk-heading-m">
+        If you believe your vehicle should be registered in the UK
+      </h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Check you entered the correct details for the vehicle and <a href="/payments/enter-vehicle-details">try again</a></li>
+        <li>Contact the DVLA to check what vehicle licensing details it holds for your vehicle</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        By phone
+      </h3>
+
+      <p>
+        <b>DVLA vehicle registration enquiries</b>
+        <br>
+        Telephone: 0300 790 6802
+        <br>
+        Monday to Friday, 8am to 7pm
+        <br>
+        Saturday, 8am to 2pm
+      </p>
+
+      <p><a href="https://www.gov.uk/call-charges" target=_blank>Find out about call charges</a></p>
+
+      <h3 class="govuk-heading-s">
+        By email
+      </h3>
+
+      <p>Use the <a href="">email service</a> to contact DVLA about vehicle registration.</p>
+
+      <h2 class="govuk-heading-m">
+        If your vehicle is registered overseas
+      </h2>
+
+      <p>Confirm this is the correct vehicle information.</p>
+
+      <form method="post" class="form" action="/payments/local-authority">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="correct-details" required>
+                <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+                  Yes, these vehicle details are correct
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div> 
+
+        <button type="submit" class="govuk-button">
+          Continue
+        </button>
+      </form>   
+
+      <p><a href="/payments/enter-vehicle-details">Check another vehicle</a></p>
+
+    </div>
+</div>
+
+{% endblock %}
