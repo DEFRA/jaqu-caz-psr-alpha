@@ -123,7 +123,12 @@ text: "Back"
         <h3 class="govuk-heading-s">
             Clean Air Zone
         </h3>
-        <p style="text-transform: capitalize">{{ data['caz'] }}</p>
+        {% if data['caz'] == 'leeds-weekly'%}
+        {% set caz = 'leeds' %}
+        {% else %}
+        {% set caz = data['caz'] %}
+        {% endif %}
+        <p style="text-transform: capitalize">{{caz}}</p>
         <h3 class="govuk-heading-s">
             Date
         </h3>
