@@ -89,14 +89,13 @@ router.get('/payments/select-date', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -160,14 +159,13 @@ router.post('/payments/select-date', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -231,14 +229,13 @@ router.post('/payments/select-date-weekly', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -285,14 +282,13 @@ router.get('/payments/select-date-suspended', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -327,14 +323,13 @@ router.post('/payments/select-date-suspended', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -371,14 +366,13 @@ router.get('/payments/selectDate', function (req, res) {
   if (caz == "bath") {
 
     var weekdays = [
-      "",
+      "Sunday",
       "Monday",
       "Tuesday",
       "Wednesday",
       "Thursday",
       "Friday",
-      "Saturday",
-      "Sunday"
+      "Saturday"
     ];
   
     var monthNames = [
@@ -409,14 +403,13 @@ router.get('/payments/selectDate', function (req, res) {
   } else if (caz == "leeds-weekly") {
 
     var weekdays = [
-      "",
+      "Sunday",
       "Monday",
       "Tuesday",
       "Wednesday",
       "Thursday",
       "Friday",
-      "Saturday",
-      "Sunday"
+      "Saturday"
     ];
   
     var monthNames = [
@@ -463,14 +456,13 @@ router.get('/payments/selectDate', function (req, res) {
   } else {
     
     var weekdays = [
-      "",
+      "Sunday",
       "Monday",
       "Tuesday",
       "Wednesday",
       "Thursday",
       "Friday",
-      "Saturday",
-      "Sunday"
+      "Saturday"
     ];
   
     var monthNames = [
@@ -538,14 +530,13 @@ router.post('/payments/selectedPaymentMethod', function (req, res) {
   var date = req.session.data['date'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -607,14 +598,13 @@ router.get('/payments/selectedPaymentMethod', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -665,14 +655,13 @@ router.post('/payments/selected-date', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -730,14 +719,13 @@ router.get('/payments/selected-date', function (req, res) {
   var date = req.body['date'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -827,14 +815,13 @@ router.post('/payments/confirm-payment', function (req, res) {
   }
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -922,14 +909,13 @@ router.post('/payments/confirm-payment-details', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -992,14 +978,13 @@ router.get('/payments/confirm-payment-details', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
   var monthNames = [
     "January",
@@ -1084,14 +1069,13 @@ router.get('/payments/confirm-payment', function (req, res) {
   }
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -1154,14 +1138,13 @@ router.get('/payments/receipts', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
@@ -1224,14 +1207,13 @@ router.post('/payments/receipts', function (req, res) {
   var caz = req.session.data['caz'];
 
   var weekdays = [
-    "",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday"
+    "Saturday"
   ];
 
   var monthNames = [
