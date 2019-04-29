@@ -1,6 +1,31 @@
 const express = require('express')
 const router = express.Router()
 
+var weekdays = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+var monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
 // Add your routes here - above the module.exports line
 
 router.post('/payments/confirm-vehicle', function (req, res) {
@@ -88,31 +113,6 @@ router.get('/payments/select-date', function (req, res) {
 
   var caz = req.session.data['caz'];
 
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
   var today = new Date();
   
   var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
@@ -157,31 +157,6 @@ router.get('/payments/select-date', function (req, res) {
 router.post('/payments/select-date', function (req, res) {
 
   var caz = req.session.data['caz'];
-
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
 
   var today = new Date();
   
@@ -228,31 +203,6 @@ router.post('/payments/select-date-weekly', function (req, res) {
 
   var caz = req.session.data['caz'];
 
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
   var today = new Date();
   
   var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
@@ -281,31 +231,6 @@ router.get('/payments/select-date-suspended', function (req, res) {
 
   var caz = req.session.data['caz'];
 
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
   var today = new Date();
 
   today.setDate(today.getDate() - 1);
@@ -321,31 +246,6 @@ router.get('/payments/select-date-suspended', function (req, res) {
 router.post('/payments/select-date-suspended', function (req, res) {
 
   var caz = req.session.data['caz'];
-
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
 
   var today = new Date();
 
@@ -364,31 +264,6 @@ router.get('/payments/selectDate', function (req, res) {
   var caz = req.session.data['caz'];
 
   if (caz == "bath") {
-
-    var weekdays = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-  
-    var monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
   
     var today = new Date();
   
@@ -401,31 +276,6 @@ router.get('/payments/selectDate', function (req, res) {
     res.render('payments/select-date-suspended', {amountDue: req.session.amountDue, caz: caz, yesterday: yesterdayString});
 
   } else if (caz == "leeds-weekly") {
-
-    var weekdays = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-  
-    var monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
   
     var today = new Date();
     
@@ -454,31 +304,6 @@ router.get('/payments/selectDate', function (req, res) {
     res.render('payments/select-date-weekly', {amountDue: req.session.amountDue, caz: caz, today: todayStringWeekly, yesterday: yesterdayStringWeekly});
 
   } else {
-    
-    var weekdays = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-  
-    var monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
   
     var today = new Date();
     
@@ -529,31 +354,6 @@ router.post('/payments/selectedPaymentMethod', function (req, res) {
 
   var date = req.session.data['date'];
 
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
   var today = new Date();
 
   if (date == "today") {
@@ -597,31 +397,6 @@ router.get('/payments/selectedPaymentMethod', function (req, res) {
 
   var caz = req.session.data['caz'];
 
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
   var today = new Date();
   
   var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
@@ -653,31 +428,6 @@ router.get('/payments/selectedPaymentMethod', function (req, res) {
 router.post('/payments/selected-date', function (req, res) {
   var date = req.body['date'];
   var caz = req.session.data['caz'];
-
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
 
   var today = new Date();
 
@@ -717,31 +467,6 @@ router.post('/payments/selected-date', function (req, res) {
 
 router.get('/payments/selected-date', function (req, res) {
   var date = req.body['date'];
-
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
 
   var today = new Date();
 
@@ -814,31 +539,6 @@ router.post('/payments/confirm-payment', function (req, res) {
 
   }
 
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
   var today = new Date();
 
   if (req.session.data['caz'] == "leeds-weekly") {
@@ -908,31 +608,6 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   var caz = req.session.data['caz'];
 
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
   var today = new Date();
 
   if (date == "today") {
@@ -976,30 +651,6 @@ router.get('/payments/confirm-payment-details', function (req, res) {
   var date = req.session.data['date'];
 
   var caz = req.session.data['caz'];
-
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
 
   var today = new Date();
 
@@ -1068,31 +719,6 @@ router.get('/payments/confirm-payment', function (req, res) {
 
   }
 
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
   var today = new Date();
 
   if (date == "today") {
@@ -1137,31 +763,6 @@ router.get('/payments/receipts', function (req, res) {
 
   var caz = req.session.data['caz'];
 
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
   var today = new Date();
 
   if (date == "today") {
@@ -1205,31 +806,6 @@ router.post('/payments/receipts', function (req, res) {
   var date = req.session.data['date'];
 
   var caz = req.session.data['caz'];
-
-  var weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  var monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
 
   var today = new Date();
 
