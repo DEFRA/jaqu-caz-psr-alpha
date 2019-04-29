@@ -24,19 +24,19 @@ text: "Back"
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Expiry date:</td>
-                        <th class="govuk-table__header" scope="row">01/20</th>
+                        <th class="govuk-table__header" scope="row">{{ data['expiry-month'] }}/{{ data['expiry-year'] }}</th>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Name on card:</td>
-                        <th class="govuk-table__header" scope="row">Erica Delcastillo</th>
+                        <th class="govuk-table__header" scope="row">{{ data['card-name'] }}</th>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Billing address:</td>
-                        <th class="govuk-table__header" scope="row">Old Market Place, Altrincham, WA14 2DD, United Kingdom</th>
+                        <th class="govuk-table__header" scope="row">{{ data['building-number'] }}, {% if data['street'] %} {{ data['street'] }}, {% endif %}{{ data['town'] }}, {{ data['postcode'] }}, {{ data['country'] }}</th>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Confirmation email:</td>
-                        <th class="govuk-table__header" scope="row">test@gmail.com</th>
+                        <th class="govuk-table__header" scope="row">{{ data['email'] }}</th>
                     </tr>                    
                 </tbody>
               </table>
