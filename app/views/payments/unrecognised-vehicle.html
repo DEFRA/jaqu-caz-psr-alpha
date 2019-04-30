@@ -60,7 +60,8 @@ text: "Back"
         If your vehicle is registered overseas
       </h2>
 
-      <p>Confirm this is the correct vehicle information.</p>
+      <p>Confirm this registration number is correct:</p>
+      <p><b>{{ data['vrn'] }}</b></p>
 
       <form method="post" class="form" action="/payments/local-authority">
         <div class="govuk-form-group">
