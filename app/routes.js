@@ -431,7 +431,7 @@ router.post('/payments/selected-date', function (req, res) {
 
     }
 
-    res.render('payments/pay-money', {amountDue: req.session.amountDue, date: todayString});
+    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: todayString});
 
   } else if (date == "yesterday") {
 
@@ -447,16 +447,9 @@ router.post('/payments/selected-date', function (req, res) {
 
     }
 
-    res.render('payments/pay-money', {amountDue: req.session.amountDue, date: yesterdayString});
+    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: yesterdayString});
 
   }
-
-});
-
-// Set parameters on Payment method selection page
-router.get('/payments/pay-money', function (req, res) {
-
-  res.render('payments/pay-money', {amountDue: req.session.amountDue});
 
 });
 
@@ -481,7 +474,7 @@ router.get('/payments/selected-date', function (req, res) {
 
     }
 
-    res.render('payments/pay-money', {amountDue: req.session.amountDue, date: todayString});
+    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: todayString});
 
   } else if (date == "yesterday") {
 
@@ -497,7 +490,7 @@ router.get('/payments/selected-date', function (req, res) {
 
     }
 
-    res.render('payments/pay-money', {amountDue: req.session.amountDue, date: yesterdayString});
+    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: yesterdayString});
 
   }
 
