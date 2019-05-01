@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "/payments/selectDate",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Confirm your payment
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Confirm your payment</h1>
+        <form method="post" class="form" action="/payments/debit-credit-card">
+            <table class="govuk-table">
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"></td>
+                        <th class="govuk-table__header" scope="row"></th>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Registration number</td>
+                        <th class="govuk-table__header" scope="row">{{ data['vrn'] }}</th>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Clean Air Zone</td>
+                        {% if caz != "leeds-weekly" %}
+                        <th class="govuk-table__header" scope="row" style="text-transform: capitalize;">{{ caz }}</th>
+                        {% endif %}
+                        {% if caz == "leeds-weekly" %}
+                        <th class="govuk-table__header" scope="row" style="text-transform: capitalize;">Leeds</th>
+                        {% endif %}
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Payment for</td>
+                        <th class="govuk-table__header" scope="row">{{ date }}</th>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Total charge</td>
+                        <th class="govuk-table__header" scope="row">{{ amountDue }}</th>
+                    </tr>          
+                </tbody>
+              </table>
+            <button type="submit" class="govuk-button">
+                Confirm
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

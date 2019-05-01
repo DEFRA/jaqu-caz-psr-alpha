@@ -326,7 +326,7 @@ router.post('/payments/selected-date', function (req, res) {
 
     }
 
-    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: todayString});
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: todayString, caz: caz});
 
   } else if (date == "yesterday") {
 
@@ -342,7 +342,7 @@ router.post('/payments/selected-date', function (req, res) {
 
     }
 
-    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: yesterdayString});
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: yesterdayString, caz: caz});
 
   }
 
@@ -351,7 +351,8 @@ router.post('/payments/selected-date', function (req, res) {
 // Router to correct payment method page
 router.get('/payments/selected-date', function (req, res) {
 
-  var date = req.body['date'];
+  var date = req.session.data['date'];
+  var caz = req.session.data['caz'];
 
   var today = new Date();
 
@@ -369,7 +370,7 @@ router.get('/payments/selected-date', function (req, res) {
 
     }
 
-    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: todayString});
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: todayString, caz: caz});
 
   } else if (date == "yesterday") {
 
@@ -385,15 +386,13 @@ router.get('/payments/selected-date', function (req, res) {
 
     }
 
-    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: yesterdayString});
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: yesterdayString, caz: caz});
 
   }
 
 });
 
-router.get('/payments/selectedPaymentMethod', function (req, res) {
-
-  var method = req.session.data['payment-method'];
+router.get('/payments/debit-credit-card', function (req, res) {
 
   var caz = req.session.data['caz'];
 
@@ -421,13 +420,12 @@ router.get('/payments/selectedPaymentMethod', function (req, res) {
 
   }
 
-  res.render('payments/' + method, {amountDue: req.session.amountDue, today: todayString, yesterday: yesterdayString});
+  res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, today: todayString, yesterday: yesterdayString});
 
 });
 
-router.post('/payments/selectedPaymentMethod', function (req, res) {
+router.post('/payments/debit-credit-card', function (req, res) {
 
-  var method = req.body['payment-method'];
   var caz = req.session.data['caz'];
 
   var date = req.session.data['date'];
@@ -448,7 +446,7 @@ router.post('/payments/selectedPaymentMethod', function (req, res) {
 
     }
 
-    res.render('payments/' + method, {amountDue: req.session.amountDue, date: todayString});
+    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: todayString});
 
   } else if (date == "yesterday") {
 
@@ -464,7 +462,7 @@ router.post('/payments/selectedPaymentMethod', function (req, res) {
 
     }
 
-    res.render('payments/' + method, {amountDue: req.session.amountDue, date: yesterdayString});
+    res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: yesterdayString});
 
   }
 
