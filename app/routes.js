@@ -30,22 +30,6 @@ var monthNames = [
 
 // Add your routes here - above the module.exports line
 
-// // Select task page
-// router.post('/payments/task', function (req, res) {
-
-//   var task = req.body['task'];
-
-//   if (task == 'one-off-payment') {
-
-//     res.redirect('/payments/enter-vehicle-details');
-
-//   } else if (task == 'sign-in') {
-
-//     res.redirect('/payments/select-task');
-
-//   }
-// });
-
 // Confirm vehicle details page
 router.post('/payments/confirm-vehicle', function (req, res) {
   
@@ -149,12 +133,7 @@ router.get('/payments/select-date', function (req, res) {
     req.session.amountDue = '£12.50';
     res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
 
-  } else if (req.session.data['caz'] == "bath") {
-
-    req.session.amountDue = '£9.00';
-    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
-
-  } 
+  }
 
 });
 
@@ -194,12 +173,7 @@ router.post('/payments/select-date', function (req, res) {
     req.session.amountDue = '£12.50';
     res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
 
-  } else if (req.session.data['caz'] == "bath") {
-
-    req.session.amountDue = '£9.00';
-    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
-
-  } 
+  }
 
 });
 
@@ -260,86 +234,12 @@ router.post('/payments/select-date-weekly', function (req, res) {
 
 });
 
-// Select date for a CAZ with a suspension
-router.get('/payments/select-date-suspended', function (req, res) {
-
-  var caz = req.session.data['caz'];
-
-  var today = new Date();
-
-  today.setDate(today.getDate() - 1);
-
-  var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-  req.session.amountDue = '£9.00';
-
-  res.render('payments/select-date-suspended', {amountDue: req.session.amountDue, caz: caz, yesterday: yesterdayString});
-
-});
-
-router.post('/payments/select-date-suspended', function (req, res) {
-
-  var caz = req.session.data['caz'];
-
-  var today = new Date();
-
-  today.setDate(today.getDate() - 1);
-
-  var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-  req.session.amountDue = '£9.00';
-
-  res.render('payments/select-date-suspended', {amountDue: req.session.amountDue, caz: caz, yesterday: yesterdayString});
-
-});
-
-// Set parameters on Payment method selection page
-router.post('/payments/pay-money', function (req, res) {
-
-  var caz = req.session.data['caz'];
-  
-  if (req.session.data['caz'] == "birmingham") {
-      
-    req.session.amountDue = '£8.00';
-    res.render('payments/pay-money', {amountDue: req.session.amountDue, caz: caz});
-
-  } else if (req.session.data['caz'] == "leeds") {
-
-    req.session.amountDue = '£12.50';
-    res.render('payments/pay-money', {amountDue: req.session.amountDue, caz: caz});
-
-  } else if (req.session.data['caz'] == "bath") {
-
-    req.session.amountDue = '£9.00';
-    res.render('payments/pay-money', {amountDue: req.session.amountDue, caz: caz});
-
-  } else if (req.session.data['caz'] == "leeds-weekly") {
-
-    req.session.amountDue = '£50.00';
-    res.render('payments/pay-money', {amountDue: req.session.amountDue, caz: caz});
-
-  } 
-
-});
-
 // Router to retrieve correct date selection page
 router.get('/payments/selectDate', function (req, res) {
 
   var caz = req.session.data['caz'];
 
-  if (caz == "bath") {
-  
-    var today = new Date();
-  
-    today.setDate(today.getDate() - 1);
-  
-    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-  
-    req.session.amountDue = '£9.00';
-  
-    res.render('payments/select-date-suspended', {amountDue: req.session.amountDue, caz: caz, yesterday: yesterdayString});
-
-  } else if (caz == "leeds-weekly") {
+  if (caz == "leeds-weekly") {
   
     var today = new Date();
     
@@ -401,12 +301,7 @@ router.get('/payments/selectDate', function (req, res) {
       req.session.amountDue = '£12.50';
       res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
   
-    } else if (req.session.data['caz'] == "bath") {
-  
-      req.session.amountDue = '£9.00';
-      res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
-  
-    } 
+    }
 
   }
 
