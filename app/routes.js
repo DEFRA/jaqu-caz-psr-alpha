@@ -638,7 +638,7 @@ router.get('/payments/confirm-payment', function (req, res) {
 
     }
 
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: todayString, localAuthority: localAuthority, receiptMethod: receiptMethod});
+    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: todayString, localAuthority: localAuthority});
 
   } else if (date == "yesterday") {
 
@@ -654,7 +654,7 @@ router.get('/payments/confirm-payment', function (req, res) {
 
     }
 
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: yesterdayString, localAuthority: localAuthority, receiptMethod: receiptMethod});
+    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: yesterdayString, localAuthority: localAuthority});
 
   }
 

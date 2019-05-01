@@ -18,7 +18,15 @@
                 <b>XYZ123ABC</b>
             </p>
         </div>
+        {% if (data['email'] != "") and (data['mobile-number'] != "") %}
+        <p>A receipt will be sent to {{ data['email'] }} and {{ data['mobile-number'] }}.</p>
+        {% endif %}
+        {% if (data['email'] != "") and (data['mobile-number'] == "") %}
         <p>A receipt will be sent to {{ data['email'] }}.</p>
+        {% endif %}
+        {% if (data['email'] == "") and (data['mobile-number'] != "") %}
+        <p>A receipt will be sent to {{ data['mobile-number'] }}.</p>
+        {% endif %}
         <p>You can use the payment reference above as proof of payment.</p>
         <h2 class="govuk-heading-m">Other tasks</h2>
         <ul class="govuk-list govuk-list--bullet">
