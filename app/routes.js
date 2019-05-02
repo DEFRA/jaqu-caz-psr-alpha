@@ -823,10 +823,7 @@ router.post('/payments/debit-credit-card', function (req, res) {
 router.post('/payments/confirm-payment', function (req, res) {
 
   var date = req.session.data['date'];
-
   var caz = req.session.data['caz'];
-
-  var today = new Date();
 
   if (req.session.data['caz'] == "leeds-weekly") {
 
@@ -840,36 +837,112 @@ router.post('/payments/confirm-payment', function (req, res) {
 
   if (date == "today") {
 
-    var today = new Date();
-
-    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
 
-      today.setDate(today.getDate() + 7);
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: dateRangeToday, localAuthority: localAuthority});
 
-      todayString = todayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+    } else {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: todayString, localAuthority: localAuthority});
 
     }
-
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: todayString, localAuthority: localAuthority});
 
   } else if (date == "yesterday") {
 
-    today.setDate(today.getDate() - 1);
-
-    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
 
-      today.setDate(today.getDate() + 7);
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: dateRangeYesterday, localAuthority: localAuthority});
 
-      yesterdayString = yesterdayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+    } else {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: yesterdayString, localAuthority: localAuthority});
 
     }
 
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: yesterdayString, localAuthority: localAuthority});
+  } else if (date == "1-day-after") {
 
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: dateRangeOneDayAfter, localAuthority: localAuthority});
+
+    } else {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: oneDayAfterString, localAuthority: localAuthority});
+
+    }
+
+  } else if (date == "2-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: dateRangeTwoDaysAfter, localAuthority: localAuthority});
+
+    } else {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: twoDaysAfterString, localAuthority: localAuthority});
+
+    }
+
+  } else if (date == "3-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: dateRangeThreeDaysAfter, localAuthority: localAuthority});
+
+    } else {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: threeDaysAfterString, localAuthority: localAuthority});
+
+    }
+
+  } else if (date == "4-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: dateRangeFourDaysAfter, localAuthority: localAuthority});
+
+    } else {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: fourDaysAfterString, localAuthority: localAuthority});
+
+    }
+
+  } else if (date == "5-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: dateRangeFiveDaysAfter, localAuthority: localAuthority});
+
+    } else {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: fiveDaysAfterString, localAuthority: localAuthority});
+
+    }
+
+  } else if (date == "6-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: dateRangeSixDaysAfter, localAuthority: localAuthority});
+
+    } else {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: sixDaysAfterString, localAuthority: localAuthority});
+
+    }
+
+  } else if (date == "7-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: dateRangeSevenDaysAfter, localAuthority: localAuthority});
+
+    } else {
+
+      res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: sevenDaysAfterString, localAuthority: localAuthority});
+
+    }
+  
   }
 
 });
@@ -877,86 +950,232 @@ router.post('/payments/confirm-payment', function (req, res) {
 router.post('/payments/confirm-payment-details', function (req, res) {
 
   var date = req.session.data['date'];
-
   var caz = req.session.data['caz'];
-
-  var today = new Date();
 
   if (date == "today") {
 
-    var today = new Date();
-
-    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
 
-      today.setDate(today.getDate() + 7);
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeToday, caz: caz});
 
-      todayString = todayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: todayString, caz: caz});
 
     }
-
-    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: todayString});
 
   } else if (date == "yesterday") {
 
-    today.setDate(today.getDate() - 1);
-
-    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
 
-      today.setDate(today.getDate() + 7);
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeYesterday, caz: caz});
 
-      yesterdayString = yesterdayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: yesterdayString, caz: caz});
 
     }
 
-    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: yesterdayString});
+  } else if (date == "1-day-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeOneDayAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: oneDayAfterString, caz: caz});
+
+    }
+
+  } else if (date == "2-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeTwoDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: twoDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "3-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeThreeDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: threeDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "4-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeFourDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: fourDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "5-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeFiveDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: fiveDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "6-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeSixDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: sixDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "7-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeSevenDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: sevenDaysAfterString, caz: caz});
+
+    }
   
-  }  
+  }
 
 });
 
 router.get('/payments/confirm-payment-details', function (req, res) {
 
   var date = req.session.data['date'];
-
   var caz = req.session.data['caz'];
-
-  var today = new Date();
 
   if (date == "today") {
 
-    var today = new Date();
-
-    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
 
-      today.setDate(today.getDate() + 7);
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeToday, caz: caz});
 
-      todayString = todayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: todayString, caz: caz});
 
     }
-
-    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: todayString});
 
   } else if (date == "yesterday") {
 
-    today.setDate(today.getDate() - 1);
-
-    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
 
-      today.setDate(today.getDate() + 7);
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeYesterday, caz: caz});
 
-      yesterdayString = yesterdayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: yesterdayString, caz: caz});
 
     }
 
-    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: yesterdayString});
+  } else if (date == "1-day-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeOneDayAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: oneDayAfterString, caz: caz});
+
+    }
+
+  } else if (date == "2-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeTwoDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: twoDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "3-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeThreeDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: threeDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "4-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeFourDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: fourDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "5-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeFiveDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: fiveDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "6-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeSixDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: sixDaysAfterString, caz: caz});
+
+    }
+
+  } else if (date == "7-days-after") {
+
+    if (caz == "leeds-weekly") {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: dateRangeSevenDaysAfter, caz: caz});
+
+    } else {
+
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: sevenDaysAfterString, caz: caz});
+
+    }
   
   }  
 
@@ -965,46 +1184,16 @@ router.get('/payments/confirm-payment-details', function (req, res) {
 router.get('/payments/confirm-payment', function (req, res) {
 
   var caz = req.session.data['caz'];
-
   var localAuthority = req.session.data['caz'].charAt(0).toUpperCase() + req.session.data['caz'].slice(1);
 
-  var date = req.session.data['date'];
+  if (caz == "leeds-weekly") {
 
-  var today = new Date();
-
-  if (date == "today") {
-
-    var today = new Date();
-
-    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-    if (caz == "leeds-weekly") {
-
-      today.setDate(today.getDate() + 7);
-
-      todayString = todayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-    }
-
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: todayString, localAuthority: localAuthority});
-
-  } else if (date == "yesterday") {
-
-    today.setDate(today.getDate() - 1);
-
-    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-    if (caz == "leeds-weekly") {
-
-      today.setDate(today.getDate() + 7);
-
-      yesterdayString = yesterdayString + " to " + weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-    }
-
-    res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: yesterdayString, localAuthority: localAuthority});
+    localAuthority = "Leeds"
 
   }
+  
+
+  res.render('payments/confirm-payment', {amountDue: req.session.amountDue, localAuthority: localAuthority});
 
 });
 
