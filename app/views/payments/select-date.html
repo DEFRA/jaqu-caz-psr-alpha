@@ -14,7 +14,15 @@ text: "Back"
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">When did you drive?</h1>
+        <h1 class="govuk-heading-l">What day are you paying for?</h1>
+        <p>You can pay up to 7 days in advance.</p>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive.
+            </strong>
+        </div>
         <form method="post" class="form" action="/payments/selected-date">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
@@ -29,6 +37,48 @@ text: "Back"
                             <input class="govuk-radios__input" id="date-2" required name="date" type="radio" value="today" required>
                             <label class="govuk-label govuk-radios__label" for="date-2">
                                 {{today}}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="date-3" required name="date" type="radio" value="1-day-after" required>
+                            <label class="govuk-label govuk-radios__label" for="date-3">
+                                {{oneDayAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="date-4" required name="date" type="radio" value="2-days-after" required>
+                            <label class="govuk-label govuk-radios__label" for="date-4">
+                                {{twoDaysAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="date-5" required name="date" type="radio" value="3-days-after" required>
+                            <label class="govuk-label govuk-radios__label" for="date-5">
+                                {{threeDaysAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="date-6" required name="date" type="radio" value="4-days-after" required>
+                            <label class="govuk-label govuk-radios__label" for="date-6">
+                                {{fourDaysAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="date-7" required name="date" type="radio" value="5-days-after" required>
+                            <label class="govuk-label govuk-radios__label" for="date-7">
+                                {{fiveDaysAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="date-8" required name="date" type="radio" value="6-days-after" required>
+                            <label class="govuk-label govuk-radios__label" for="date-8">
+                                {{sixDaysAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="date-9" required name="date" type="radio" value="7-days-after" required>
+                            <label class="govuk-label govuk-radios__label" for="date-9">
+                                {{sevenDaysAfter}}
                             </label>
                         </div>
                     </div>
