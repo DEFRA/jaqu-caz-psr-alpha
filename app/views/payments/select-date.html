@@ -14,7 +14,7 @@ text: "Back"
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">What day are you paying for?</h1>
+        <h1 class="govuk-heading-l">What days are you paying for?</h1>
         <p>You can pay up to 7 days in advance.</p>
         <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -26,58 +26,58 @@ text: "Back"
         <form method="post" class="form" action="/payments/selected-date">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
-                    <div class="govuk-radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-1" required name="date" type="radio" value="yesterday" required>
-                            <label class="govuk-label govuk-radios__label" for="date-1">
+                    <div class="govuk-checkboxes">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-1" name="date" type="checkbox" value="yesterday">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-1">
                                 {{yesterday}}
                             </label>
                         </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-2" required name="date" type="radio" value="today" required>
-                            <label class="govuk-label govuk-radios__label" for="date-2">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-2" name="date" type="checkbox" value="today">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-2">
                                 {{today}}
                             </label>
                         </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-3" required name="date" type="radio" value="1-day-after" required>
-                            <label class="govuk-label govuk-radios__label" for="date-3">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-3" name="date" type="checkbox" value="1-day-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-3">
                                 {{oneDayAfter}}
                             </label>
                         </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-4" required name="date" type="radio" value="2-days-after" required>
-                            <label class="govuk-label govuk-radios__label" for="date-4">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-4" name="date" type="checkbox" value="2-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-4">
                                 {{twoDaysAfter}}
                             </label>
                         </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-5" required name="date" type="radio" value="3-days-after" required>
-                            <label class="govuk-label govuk-radios__label" for="date-5">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-5" name="date" type="checkbox" value="3-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-5">
                                 {{threeDaysAfter}}
                             </label>
                         </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-6" required name="date" type="radio" value="4-days-after" required>
-                            <label class="govuk-label govuk-radios__label" for="date-6">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-6" name="date" type="checkbox" value="4-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-6">
                                 {{fourDaysAfter}}
                             </label>
                         </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-7" required name="date" type="radio" value="5-days-after" required>
-                            <label class="govuk-label govuk-radios__label" for="date-7">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-7" name="date" type="checkbox" value="5-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-7">
                                 {{fiveDaysAfter}}
                             </label>
                         </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-8" required name="date" type="radio" value="6-days-after" required>
-                            <label class="govuk-label govuk-radios__label" for="date-8">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-8" name="date" type="checkbox" value="6-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-8">
                                 {{sixDaysAfter}}
                             </label>
                         </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-9" required name="date" type="radio" value="7-days-after" required>
-                            <label class="govuk-label govuk-radios__label" for="date-9">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-9" name="date" type="checkbox" value="7-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-9">
                                 {{sevenDaysAfter}}
                             </label>
                         </div>
@@ -103,11 +103,6 @@ text: "Back"
             Clean Air Zone
         </h3>
         <p style="text-transform: capitalize">{{caz}}</p>
-        
-        <h3 class="govuk-heading-s">
-            Total charge
-        </h3>
-        <h2 class="govuk-heading-m" id="charge" name="charge">{{amountDue}}</h2>
     </div>
 </div>
 
