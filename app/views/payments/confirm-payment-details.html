@@ -2,7 +2,7 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-href: "/payments/selectedPaymentMethod",
+href: "/payments/debit-credit-card",
 text: "Back"
 }) }}
 {% endblock %}
@@ -34,10 +34,18 @@ text: "Back"
                         <td class="govuk-table__cell">Billing address:</td>
                         <th class="govuk-table__header" scope="row">{{ data['building-number'] }}, {% if data['street'] %} {{ data['street'] }}, {% endif %}{{ data['town'] }}, {{ data['postcode'] }}, {{ data['country'] }}</th>
                     </tr>
+                    {% if data['email'] != "" %}
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Confirmation email:</td>
                         <th class="govuk-table__header" scope="row">{{ data['email'] }}</th>
-                    </tr>                    
+                    </tr>
+                    {% endif %}
+                    {% if data['mobile-number'] != "" %}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Confirmation text message:</td>
+                        <th class="govuk-table__header" scope="row">{{ data['mobile-number'] }}</th>
+                    </tr>
+                    {% endif %}                
                 </tbody>
               </table>
             <button type="submit" class="govuk-button">
