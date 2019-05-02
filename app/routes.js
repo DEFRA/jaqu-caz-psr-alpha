@@ -102,36 +102,76 @@ router.get('/payments/select-date', function (req, res) {
   var caz = req.session.data['caz'];
 
   var today = new Date();
-  
-  var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-  today.setDate(today.getDate() + 7);
-
-  var validFromToday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-  var todayStringWeekly = todayString + ' (valid until midnight on ' + validFromToday + ')'
-
-  var today = new Date();
 
   today.setDate(today.getDate() - 1);
 
   var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
 
-  today.setDate(today.getDate() + 7);
+  today.setDate(today.getDate() + 1);
+  
+  var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
 
-  var validFromYesterday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  today.setDate(today.getDate() + 1);
 
-  var yesterdayStringWeekly = yesterdayString + ' (valid until midnight on ' + validFromYesterday + ')'
+  var oneDayAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var twoDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var threeDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var fourDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var fiveDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var sixDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var sevenDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
   
   if (req.session.data['caz'] == "birmingham") {
 
     req.session.amountDue = '£8.00';
-    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+    res.render('payments/select-date', {
+      amountDue: req.session.amountDue,
+      caz: caz,
+      today: todayString,
+      yesterday: yesterdayString,
+      oneDayAfter: oneDayAfterString,
+      twoDaysAfter: twoDaysAfterString,
+      threeDaysAfter: threeDaysAfterString,
+      fourDaysAfter: fourDaysAfterString,
+      fiveDaysAfter: fiveDaysAfterString,
+      sixDaysAfter: sixDaysAfterString,
+      sevenDaysAfter: sevenDaysAfterString
+    });
 
   } else if (req.session.data['caz'] == "leeds") {
 
     req.session.amountDue = '£12.50';
-    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+    res.render('payments/select-date', {
+      amountDue: req.session.amountDue,
+      caz: caz,
+      today: todayString,
+      yesterday: yesterdayString,
+      oneDayAfter: oneDayAfterString,
+      twoDaysAfter: twoDaysAfterString,
+      threeDaysAfter: threeDaysAfterString,
+      fourDaysAfter: fourDaysAfterString,
+      fiveDaysAfter: fiveDaysAfterString,
+      sixDaysAfter: sixDaysAfterString,
+      sevenDaysAfter: sevenDaysAfterString
+    });
 
   }
 
@@ -142,36 +182,76 @@ router.post('/payments/select-date', function (req, res) {
   var caz = req.session.data['caz'];
 
   var today = new Date();
-  
-  var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-  today.setDate(today.getDate() + 7);
-
-  var validFromToday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
-  var todayStringWeekly = todayString + ' (valid until midnight on ' + validFromToday + ')'
-
-  var today = new Date();
 
   today.setDate(today.getDate() - 1);
 
   var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
 
-  today.setDate(today.getDate() + 7);
+  today.setDate(today.getDate() + 1);
+  
+  var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
 
-  var validFromYesterday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  today.setDate(today.getDate() + 1);
 
-  var yesterdayStringWeekly = yesterdayString + ' (valid until midnight on ' + validFromYesterday + ')'
+  var oneDayAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var twoDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var threeDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var fourDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var fiveDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var sixDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var sevenDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
   
   if (req.session.data['caz'] == "birmingham") {
 
     req.session.amountDue = '£8.00';
-    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+    res.render('payments/select-date', {
+      amountDue: req.session.amountDue,
+      caz: caz,
+      today: todayString,
+      yesterday: yesterdayString,
+      oneDayAfter: oneDayAfterString,
+      twoDaysAfter: twoDaysAfterString,
+      threeDaysAfter: threeDaysAfterString,
+      fourDaysAfter: fourDaysAfterString,
+      fiveDaysAfter: fiveDaysAfterString,
+      sixDaysAfter: sixDaysAfterString,
+      sevenDaysAfter: sevenDaysAfterString
+    });
 
   } else if (req.session.data['caz'] == "leeds") {
 
     req.session.amountDue = '£12.50';
-    res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+    res.render('payments/select-date', {
+      amountDue: req.session.amountDue,
+      caz: caz,
+      today: todayString,
+      yesterday: yesterdayString,
+      oneDayAfter: oneDayAfterString,
+      twoDaysAfter: twoDaysAfterString,
+      threeDaysAfter: threeDaysAfterString,
+      fourDaysAfter: fourDaysAfterString,
+      fiveDaysAfter: fiveDaysAfterString,
+      sixDaysAfter: sixDaysAfterString,
+      sevenDaysAfter: sevenDaysAfterString
+    });
 
   }
 
@@ -270,36 +350,76 @@ router.get('/payments/selectDate', function (req, res) {
   } else {
   
     var today = new Date();
-    
-    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-  
-    today.setDate(today.getDate() + 7);
-  
-    var validFromToday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-  
-    var todayStringWeekly = todayString + ' (valid until midnight on ' + validFromToday + ')'
-  
-    var today = new Date();
-  
+
     today.setDate(today.getDate() - 1);
   
     var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
   
-    today.setDate(today.getDate() + 7);
+    today.setDate(today.getDate() + 1);
+    
+    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
   
-    var validFromYesterday = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+    today.setDate(today.getDate() + 1);
   
-    var yesterdayStringWeekly = yesterdayString + ' (valid until midnight on ' + validFromYesterday + ')'
+    var oneDayAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 1);
+  
+    var twoDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 1);
+  
+    var threeDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 1);
+  
+    var fourDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 1);
+  
+    var fiveDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 1);
+  
+    var sixDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+  
+    today.setDate(today.getDate() + 1);
+  
+    var sevenDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
     
     if (req.session.data['caz'] == "birmingham") {
   
       req.session.amountDue = '£8.00';
-      res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+      res.render('payments/select-date', {
+        amountDue: req.session.amountDue,
+        caz: caz,
+        today: todayString,
+        yesterday: yesterdayString,
+        oneDayAfter: oneDayAfterString,
+        twoDaysAfter: twoDaysAfterString,
+        threeDaysAfter: threeDaysAfterString,
+        fourDaysAfter: fourDaysAfterString,
+        fiveDaysAfter: fiveDaysAfterString,
+        sixDaysAfter: sixDaysAfterString,
+        sevenDaysAfter: sevenDaysAfterString
+      });
   
     } else if (req.session.data['caz'] == "leeds") {
   
       req.session.amountDue = '£12.50';
-      res.render('payments/select-date', {amountDue: req.session.amountDue, caz: caz, today: todayString, yesterday: yesterdayString});
+      res.render('payments/select-date', {
+        amountDue: req.session.amountDue,
+        caz: caz,
+        today: todayString,
+        yesterday: yesterdayString,
+        oneDayAfter: oneDayAfterString,
+        twoDaysAfter: twoDaysAfterString,
+        threeDaysAfter: threeDaysAfterString,
+        fourDaysAfter: fourDaysAfterString,
+        fiveDaysAfter: fiveDaysAfterString,
+        sixDaysAfter: sixDaysAfterString,
+        sevenDaysAfter: sevenDaysAfterString
+      });
   
     }
 
@@ -314,11 +434,47 @@ router.post('/payments/selected-date', function (req, res) {
 
   var today = new Date();
 
+  today.setDate(today.getDate() - 1);
+
+  var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+  
+  var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var oneDayAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var twoDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var threeDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var fourDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var fiveDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var sixDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var sevenDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
   if (date == "today") {
 
-    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
+
+      var today = new Date();
 
       today.setDate(today.getDate() + 7);
 
@@ -330,11 +486,11 @@ router.post('/payments/selected-date', function (req, res) {
 
   } else if (date == "yesterday") {
 
-    today.setDate(today.getDate() - 1);
-
-    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
+
+      var today = new Date();
+
+      today.setDate(today.getDate() - 1);
 
       today.setDate(today.getDate() + 7);
 
@@ -343,6 +499,34 @@ router.post('/payments/selected-date', function (req, res) {
     }
 
     res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: yesterdayString, caz: caz});
+
+  } else if (date == "1-day-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: oneDayAfterString, caz: caz});
+
+  } else if (date == "2-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: twoDaysAfterString, caz: caz});
+
+  } else if (date == "3-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: threeDaysAfterString, caz: caz});
+
+  } else if (date == "4-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: fourDaysAfterString, caz: caz});
+
+  } else if (date == "5-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: fiveDaysAfterString, caz: caz});
+
+  } else if (date == "6-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: sixDaysAfterString, caz: caz});
+
+  } else if (date == "7-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: sevenDaysAfterString, caz: caz});
 
   }
 
@@ -356,13 +540,47 @@ router.get('/payments/selected-date', function (req, res) {
 
   var today = new Date();
 
+  today.setDate(today.getDate() - 1);
+
+  var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+  
+  var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var oneDayAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var twoDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var threeDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var fourDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var fiveDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var sixDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  today.setDate(today.getDate() + 1);
+
+  var sevenDaysAfterString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
   if (date == "today") {
 
-    var today = new Date();
-
-    var todayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
+
+      var today = new Date();
 
       today.setDate(today.getDate() + 7);
 
@@ -374,11 +592,11 @@ router.get('/payments/selected-date', function (req, res) {
 
   } else if (date == "yesterday") {
 
-    today.setDate(today.getDate() - 1);
-
-    var yesterdayString = weekdays[today.getDay()] + ", " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-
     if (caz == "leeds-weekly") {
+
+      var today = new Date();
+
+      today.setDate(today.getDate() - 1);
 
       today.setDate(today.getDate() + 7);
 
@@ -387,6 +605,34 @@ router.get('/payments/selected-date', function (req, res) {
     }
 
     res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: yesterdayString, caz: caz});
+
+  } else if (date == "1-day-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: oneDayAfterString, caz: caz});
+
+  } else if (date == "2-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: twoDaysAfterString, caz: caz});
+
+  } else if (date == "3-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: threeDaysAfterString, caz: caz});
+
+  } else if (date == "4-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: fourDaysAfterString, caz: caz});
+
+  } else if (date == "5-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: fiveDaysAfterString, caz: caz});
+
+  } else if (date == "6-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: sixDaysAfterString, caz: caz});
+
+  } else if (date == "7-days-after") {
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: sevenDaysAfterString, caz: caz});
 
   }
 
