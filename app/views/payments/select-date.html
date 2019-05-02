@@ -16,6 +16,13 @@ text: "Back"
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">What day are you paying for?</h1>
         <p>You can pay up to 7 days in advance.</p>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive.
+            </strong>
+        </div>
         <form method="post" class="form" action="/payments/selected-date">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
