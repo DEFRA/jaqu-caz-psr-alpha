@@ -20,7 +20,7 @@ text: "Back"
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
                 <span class="govuk-warning-text__assistive">Warning</span>
-                You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive.
+                You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
             </strong>
         </div>
         <form method="post" class="form" action="/payments/selected-date">
@@ -102,6 +102,9 @@ text: "Back"
         <h3 class="govuk-heading-s">
             Clean Air Zone
         </h3>
+        {% if caz == 'leeds-weekly'%}
+        {% set caz = 'leeds' %}
+        {% endif %}
         <p style="text-transform: capitalize">{{caz}}</p>
     </div>
 </div>
