@@ -15,6 +15,14 @@ text: "Back"
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">When do you want the 7-day period to start?</h1>
+        <p>You can pay a 7 day charge until midnight the day after the first day you drive in the Clean Air Zone.</p>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive. This will be sent to the address the DVLA holds for the vehicle owner.
+            </strong>
+        </div>
         <form method="post" class="form" action="/payments/selected-date">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
@@ -106,7 +114,7 @@ text: "Back"
             <button type="submit" class="govuk-button">
                 Continue
             </button>
-            <p><a href="/payments/select-period">Pay a daily charge instead</a></p>
+            <p><a href="/payments/select-period">Pay for 1 day instead</a></p>
         </form>
     </div>
     <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
@@ -125,11 +133,6 @@ text: "Back"
         {% set caz = 'leeds' %}
         {% endif %}
         <p style="text-transform: capitalize">{{caz}}</p>
-        
-        <h3 class="govuk-heading-s">
-            Total charge
-        </h3>
-        <h2 class="govuk-heading-m" id="charge" name="charge">{{amountDue}}</h2>
     </div>
 </div>
 
