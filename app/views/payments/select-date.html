@@ -102,6 +102,9 @@ text: "Back"
         <h3 class="govuk-heading-s">
             Clean Air Zone
         </h3>
+        {% if caz == 'leeds-weekly'%}
+        {% set caz = 'leeds' %}
+        {% endif %}
         <p style="text-transform: capitalize">{{caz}}</p>
     </div>
 </div>
