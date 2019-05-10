@@ -1061,8 +1061,6 @@ router.post('/payments/debit-credit-card', function (req, res) {
 
 router.post('/payments/confirm-payment', function (req, res) {
 
-  res.render('payments/confirm-payment', {amountDue: req.session.amountDue});
-
   notify.sendEmail(
     // GOV.UK Notify template ID
     '9b0ce7a5-8830-4d69-ae2f-7762c5ad76e7',
