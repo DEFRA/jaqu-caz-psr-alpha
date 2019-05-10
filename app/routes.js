@@ -100,6 +100,21 @@ var dateRangeSevenDaysAfter = sevenDaysAfterString + " to " + weekdays[today.get
 
 // Add your routes here - above the module.exports line
 
+// Enter vehicle details
+router.post('/confirm-vehicle-details', function (req, res) {
+
+  if (req.session.data['vrn'] == "XYZ456" || req.session.data['vrn'] == "XYZ 456" || req.session.data['vrn'] == "xyz456" || req.session.data['vrn'] == "xyz 456") {
+
+      res.redirect('/payments/unrecognised-vehicle')
+
+  } else {
+
+      res.redirect('/payments/confirm-vehicle-details')
+
+  }
+
+});
+
 // Confirm vehicle details page
 router.post('/payments/confirm-vehicle', function (req, res) {
   
@@ -136,8 +151,9 @@ router.get('/payments/caz', function (req, res) {
 router.post('/payments/paymentPages', function (req, res) {
 
   var confirm = req.body['caz'];
+  var vrm = req.session.data['vrn'];
 
-  if (confirm == "leeds") {
+  if (confirm == "leeds" && (vrm == "ABC 123" || vrm == "abc 123" || vrm == "abc123" || vrm == "ABC123")) {
 
     res.redirect('/payments/select-period')
 
