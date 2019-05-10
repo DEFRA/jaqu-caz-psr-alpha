@@ -103,7 +103,11 @@ var dateRangeSevenDaysAfter = sevenDaysAfterString + " to " + weekdays[today.get
 // Enter vehicle details
 router.post('/confirm-vehicle-details', function (req, res) {
 
-  if (req.session.data['vrn'] == "XYZ456" || req.session.data['vrn'] == "XYZ 456" || req.session.data['vrn'] == "xyz456" || req.session.data['vrn'] == "xyz 456") {
+  var vrn = req.session.data['vrn'];
+  // Remove spacing and make letters uppercase
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
+
+  if (formattedVrn == "XYZ456") {
 
       res.redirect('/payments/unrecognised-vehicle')
 
@@ -151,9 +155,11 @@ router.get('/payments/caz', function (req, res) {
 router.post('/payments/paymentPages', function (req, res) {
 
   var confirm = req.body['caz'];
-  var vrm = req.session.data['vrn'];
+  var vrn = req.session.data['vrn'];
+  // Remove spacing and make letters uppercase
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
-  if (confirm == "leeds" && (vrm == "ABC 123" || vrm == "abc 123" || vrm == "abc123" || vrm == "ABC123")) {
+  if (confirm == "leeds" && formattedVrn == "ABC123") {
 
     res.redirect('/payments/select-period')
 
