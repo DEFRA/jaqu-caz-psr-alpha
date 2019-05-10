@@ -21,10 +21,16 @@ text: "Back"
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell"></td>
                         <th class="govuk-table__header" scope="row"></th>
+                        <td class="govuk-table__cell"></td>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Registration number</td>
                         <th class="govuk-table__header" scope="row">{{ data['vrn'] }}</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/payments/enter-vehicle-details">
+                                Change<span class="govuk-visually-hidden"> registration number</span>
+                            </a>
+                        </td>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Clean Air Zone</td>
@@ -34,14 +40,25 @@ text: "Back"
                         {% if caz == "leeds-weekly" %}
                         <th class="govuk-table__header" scope="row" style="text-transform: capitalize;">Leeds</th>
                         {% endif %}
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/payments/local-authority">
+                                Change<span class="govuk-visually-hidden"> Clean Air Zone</span>
+                            </a>
+                        </td>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Payment for</td>
                         <th class="govuk-table__header" scope="row">{{ date }}</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/payments/selectDate">
+                                Change<span class="govuk-visually-hidden"> payment for</span>
+                            </a>
+                        </td>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Total charge</td>
                         <th class="govuk-table__header" scope="row">{{ amountDue }}</th>
+                        <td class="govuk-table__cell"></td>
                     </tr>          
                 </tbody>
               </table>
