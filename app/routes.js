@@ -1077,11 +1077,28 @@ router.post('/payments/debit-credit-card', function (req, res) {
 
 router.post('/payments/confirm-payment', function (req, res) {
 
-  notify.sendEmail(
-    // GOV.UK Notify template ID
-    '9b0ce7a5-8830-4d69-ae2f-7762c5ad76e7',
-    req.session.data['email']
-  );
+  var email = req.session.data['email'];
+  var mobile = req.session.data['mobile-number'];
+
+  if (email != "") {
+
+    notify.sendEmail(
+      // GOV.UK Notify template ID
+      '9b0ce7a5-8830-4d69-ae2f-7762c5ad76e7',
+      email
+    );
+
+  }
+
+  if (mobile != "") {
+
+    notify.sendSms(
+      // GOV.UK Notify template ID
+      '9b5b3bcd-9cbd-42c5-86c3-dde84270deb7',
+      mobile
+    )
+
+  }
 
   res.render('payments/confirm-payment', {amountDue: req.session.amountDue});
 
