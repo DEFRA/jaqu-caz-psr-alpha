@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
+var NotifyClient = require('notifications-node-client').NotifyClient,
+    notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+
 // Global variables for date strings
 
 var weekdays = [
@@ -1200,6 +1203,12 @@ router.post('/payments/confirm-payment', function (req, res) {
   }
 
   var selectedDates = dates.join(', ');
+
+  notify.sendEmail(
+    // GOV.UK Notify template ID
+    '9b0ce7a5-8830-4d69-ae2f-7762c5ad76e7',
+    req.session.data['email']
+  );
 
   res.render('payments/confirm-payment', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, localAuthority: localAuthority});
 
