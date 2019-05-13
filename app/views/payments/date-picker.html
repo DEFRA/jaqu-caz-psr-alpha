@@ -26,10 +26,22 @@ text: "Back"
           </strong>
       </div>
       <div class="govuk-form-group">
+        <label class="govuk-label" for="start-date">
+            <b>Start date</b>
+        </label>
         <span id="vrn-hint" class="govuk-hint">
-          Click the box to select a date
+          For example, 25/05/2019
         </span>
-        <input class="govuk-input govuk-input--width-10" id="date-picker" name="date-picker" type="text" required>
+        <input class="govuk-input govuk-input--width-10" id="start-date" name="start-date" type="text" required>
+        <br>
+        <br>
+        <label class="govuk-label" for="end-date">
+            <b>End date</b>
+        </label>
+        <span id="vrn-hint" class="govuk-hint">
+          For example, 27/05/2019
+        </span>
+        <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
       </div>
       <p>A daily charge runs from midnight to midnight.</p>
             <button type="submit" class="govuk-button">
@@ -45,7 +57,8 @@ text: "Back"
   var yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
 
-  const picker = datepicker(document.querySelector('#date-picker'), {
+  const start = datepicker(document.querySelector('#start-date'), {
+    id: 1,
     formatter: (input, date, instance) => {
       const value = date.toLocaleDateString()
       input.value = value
@@ -53,7 +66,25 @@ text: "Back"
     position: 'bl',
     startDay: 1,
     maxDate: today,
-    minDate: yesterday
+    minDate: yesterday,
+    onSelect: (instance, date) => {
+      instance.setMin(date)
+    }
+  });
+
+  const end = datepicker(document.querySelector('#end-date'), {
+    id: 1,
+    formatter: (input, date, instance) => {
+      const value = date.toLocaleDateString()
+      input.value = value
+    },
+    position: 'bl',
+    startDay: 1,
+    maxDate: today,
+    minDate: yesterday,
+    onSelect: (instance, date) => {
+      instance.setMax(date)
+    }
   });
 </script>
 
