@@ -16,19 +16,44 @@ text: "Back"
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">Date picker</h1>
+      <h1 class="govuk-heading-l">What day are you paying for?</h1>
+      <p>You can pay up to 7 days in advance.</p>
+      <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
+          </strong>
+      </div>
       <div class="govuk-form-group">
         <span id="vrn-hint" class="govuk-hint">
-          For example, 20 April 1995
+          Click the box to select a date
         </span>
         <input class="govuk-input govuk-input--width-10" id="date-picker" name="date-picker" type="text" required>
       </div>
+      <p>A daily charge runs from midnight to midnight.</p>
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
     </div>
 </div>
 
 <script>
+
+  var today = new Date();
+  today.setDate(today.getDate() + 7);
+  var yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+
   const picker = datepicker(document.querySelector('#date-picker'), {
-    position: 'bl'
+    formatter: (input, date, instance) => {
+      const value = date.toLocaleDateString()
+      input.value = value
+    },
+    position: 'bl',
+    startDay: 1,
+    maxDate: today,
+    minDate: yesterday
   });
 </script>
 
