@@ -66,10 +66,7 @@ text: "Back"
     position: 'bl',
     startDay: 1,
     maxDate: today,
-    minDate: yesterday,
-    onSelect: (instance, date) => {
-      instance.setMin(date)
-    }
+    minDate: yesterday
   });
 
   const end = datepicker(document.querySelector('#end-date'), {
@@ -81,10 +78,7 @@ text: "Back"
     position: 'bl',
     startDay: 1,
     maxDate: today,
-    minDate: yesterday,
-    onSelect: (instance, date) => {
-      instance.setMax(date)
-    }
+    minDate: yesterday
   });
 </script>
 
