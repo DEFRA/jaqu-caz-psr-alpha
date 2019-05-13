@@ -1,0 +1,33 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Date picker</h1>
+      <div class="govuk-form-group">
+        <span id="vrn-hint" class="govuk-hint">
+          For example, 20 April 1995
+        </span>
+        <input class="govuk-input govuk-input--width-10" id="date-picker" name="date-picker" type="text" required>
+      </div>
+    </div>
+</div>
+
+<script>
+  TinyDatePicker(document.querySelector('input'));
+</script>
+
+{% endblock %}

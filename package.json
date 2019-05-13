@@ -35,6 +35,7 @@
     "gulp-nodemon": "^2.1.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.0",
+    "js-datepicker": "^4.0.10",
     "keypather": "^3.0.0",
     "marked": "^0.4.0",
     "notifications-node-client": "^4.1.0",
@@ -43,6 +44,7 @@
     "prompt": "^1.0.0",
     "require-dir": "^1.0.0",
     "sync-request": "^6.0.0",
+    "tiny-date-picker": "^3.2.8",
     "universal-analytics": "^0.4.16",
     "uuid": "^3.2.1"
   },
