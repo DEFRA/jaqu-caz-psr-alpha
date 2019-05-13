@@ -27,7 +27,9 @@ text: "Back"
 </div>
 
 <script>
-  TinyDatePicker(document.querySelector('input'));
+  const picker = datepicker(document.querySelector('#date-picker'), {
+    position: 'bl'
+  });
 </script>
 
 {% endblock %}

@@ -44,7 +44,6 @@
     "prompt": "^1.0.0",
     "require-dir": "^1.0.0",
     "sync-request": "^6.0.0",
-    "tiny-date-picker": "^3.2.8",
     "universal-analytics": "^0.4.16",
     "uuid": "^3.2.1"
   },
