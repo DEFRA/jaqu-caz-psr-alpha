@@ -35,30 +35,39 @@ var today = new Date();
 
 today.setDate(today.getDate() - 1);
 var yesterdayString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var yesterdayMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var todayString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var todayMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var oneDayAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var oneDayAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var twoDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var twoDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var threeDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var threeDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var fourDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var fourDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var fiveDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var fiveDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var sixDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var sixDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var sevenDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var sevenDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() - 7);
 
@@ -1098,7 +1107,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else {
 
-      dates.push(yesterdayString);
+      dates.push(yesterdayMessage);
 
     }
 
@@ -1112,7 +1121,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else {
 
-      dates.push(todayString);
+      dates.push(todayMessage);
 
     }
 
@@ -1126,7 +1135,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else {
 
-      dates.push(oneDayAfterString);
+      dates.push(oneDayAfterMessage);
 
     }
 
@@ -1140,7 +1149,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else {
 
-      dates.push(twoDaysAfterString);
+      dates.push(twoDaysAfterMessage);
 
     }
 
@@ -1154,7 +1163,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else {
 
-      dates.push(threeDaysAfterString);
+      dates.push(threeDaysAfterMessage);
 
     }
 
@@ -1168,7 +1177,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else {
 
-      dates.push(fourDaysAfterString);
+      dates.push(fourDaysAfterMessage);
 
     }
 
@@ -1182,7 +1191,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else {
 
-      dates.push(fiveDaysAfterString);
+      dates.push(fiveDaysAfterMessage);
 
     }
 
@@ -1196,7 +1205,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else {
 
-      dates.push(sixDaysAfterString);
+      dates.push(sixDaysAfterMessage);
 
     }
 
@@ -1210,7 +1219,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else {
 
-      dates.push(sevenDaysAfterString);
+      dates.push(sevenDaysAfterMessage);
 
     }
 
@@ -1240,7 +1249,7 @@ router.post('/payments/confirm-payment', function (req, res) {
           'caz': localAuthority,
           'vrn': req.session.data['vrn'],
           'dates': selectedDates,
-          'paymentDate': todayString
+          'paymentDate': todayMessage
         }
       }
     )
@@ -1259,7 +1268,7 @@ router.post('/payments/confirm-payment', function (req, res) {
           'caz': localAuthority,
           'vrn': req.session.data['vrn'],
           'dates': selectedDates,
-          'paymentDate': todayString
+          'paymentDate': todayMessage
         }
       }
     )
