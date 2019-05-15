@@ -114,7 +114,15 @@ router.post('/confirm-vehicle-details', function (req, res) {
   } else if (formattedVrn == "") {
 
     res.render('payments/enter-vehicle-details', {
-      error: true
+      error: true,
+      errorMessage: "Enter a registration number (also known as license plate number)"
+    })
+  
+  } else if (formattedVrn.length < 3) {
+
+    res.render('payments/enter-vehicle-details', {
+      error: true,
+      errorMessage: "Enter a valid registration number (also known as license plate number)"
     })
 
   } else {
