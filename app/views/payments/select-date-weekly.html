@@ -14,6 +14,22 @@ text: "Back"
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+            {% if error %}
+
+            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+                <h2 class="govuk-error-summary__title" id="error-summary-title">
+                  There is a problem
+                </h2>
+                <div class="govuk-error-summary__body">
+                  <ul class="govuk-list govuk-error-summary__list">
+                    <li>
+                      <a href="#date-error">{{errorMessage}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+      
+            {% endif %}
         <h1 class="govuk-heading-l">When do you want the 7-day period to start?</h1>
         <p>You have the pay your weekly charge by midnight the day after you begin driving in the zone.</p>
         <div class="govuk-warning-text">
@@ -25,10 +41,21 @@ text: "Back"
         </div>
         <form method="post" class="form" action="/payments/selected-date">
             <div class="govuk-form-group">
+                    {% if error %}
+                    <div class="govuk-form-group govuk-form-group--error">
+                    {% endif %}
+                    {% if not error %} 
+                    <div class="govuk-form-group">
+                    {% endif %}
+                    {% if error %}
+                      <span id="date-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
+                      </span>
+                      {% endif %}
                 <fieldset class="govuk-fieldset">
                     <div class="govuk-radios">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-1" required name="date" type="radio" value="yesterday" required>
+                            <input class="govuk-radios__input" id="date-1" name="date" type="radio" value="yesterday">
                             <label class="govuk-label govuk-radios__label" for="date-1">
                                 {{yesterday}}
                             </label>
@@ -37,7 +64,7 @@ text: "Back"
                             </span>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-2" required name="date" type="radio" value="today" required>
+                            <input class="govuk-radios__input" id="date-2" name="date" type="radio" value="today">
                             <label class="govuk-label govuk-radios__label" for="date-2">
                                 {{today}}
                             </label>
@@ -46,7 +73,7 @@ text: "Back"
                             </span>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-3" required name="date" type="radio" value="1-day-after" required>
+                            <input class="govuk-radios__input" id="date-3" name="date" type="radio" value="1-day-after">
                             <label class="govuk-label govuk-radios__label" for="date-3">
                                 {{oneDayAfter}}
                             </label>
@@ -55,7 +82,7 @@ text: "Back"
                             </span>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-4" required name="date" type="radio" value="2-days-after" required>
+                            <input class="govuk-radios__input" id="date-4" name="date" type="radio" value="2-days-after">
                             <label class="govuk-label govuk-radios__label" for="date-4">
                                 {{twoDaysAfter}}
                             </label>
@@ -64,7 +91,7 @@ text: "Back"
                             </span>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-5" required name="date" type="radio" value="3-days-after" required>
+                            <input class="govuk-radios__input" id="date-5" name="date" type="radio" value="3-days-after">
                             <label class="govuk-label govuk-radios__label" for="date-5">
                                 {{threeDaysAfter}}
                             </label>
@@ -73,7 +100,7 @@ text: "Back"
                             </span>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-6" required name="date" type="radio" value="4-days-after" required>
+                            <input class="govuk-radios__input" id="date-6" name="date" type="radio" value="4-days-after">
                             <label class="govuk-label govuk-radios__label" for="date-6">
                                 {{fourDaysAfter}}
                             </label>
@@ -82,7 +109,7 @@ text: "Back"
                             </span>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-7" required name="date" type="radio" value="5-days-after" required>
+                            <input class="govuk-radios__input" id="date-7" name="date" type="radio" value="5-days-after">
                             <label class="govuk-label govuk-radios__label" for="date-7">
                                 {{fiveDaysAfter}}
                             </label>
@@ -91,7 +118,7 @@ text: "Back"
                             </span>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-8" required name="date" type="radio" value="6-days-after" required>
+                            <input class="govuk-radios__input" id="date-8" name="date" type="radio" value="6-days-after">
                             <label class="govuk-label govuk-radios__label" for="date-8">
                                 {{sixDaysAfter}}
                             </label>
@@ -100,7 +127,7 @@ text: "Back"
                             </span>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="date-9" required name="date" type="radio" value="7-days-after" required>
+                            <input class="govuk-radios__input" id="date-9" name="date" type="radio" value="7-days-after">
                             <label class="govuk-label govuk-radios__label" for="date-9">
                                 {{sevenDaysAfter}}
                             </label>
@@ -111,6 +138,8 @@ text: "Back"
                     </div>
                 </fieldset>
             </div>
+            <br>
+            <br>
             <button type="submit" class="govuk-button">
                 Continue
             </button>

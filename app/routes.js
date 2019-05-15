@@ -228,7 +228,7 @@ router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
 
     res.render('payments/select-period', {
       error: true,
-      errorMessage: "State if you are paying for 1 day or 1 week"
+      errorMessage: "State if you are paying for 1 day or 7 days"
     })
   
   } else if (period == "daily-charge") {
@@ -437,228 +437,297 @@ router.post('/payments/selected-date', function (req, res) {
   var charges = [];
   var dates = [];
 
-  if (date == "_unchecked") {
+  if (caz == "leeds-weekly") {
 
-    res.render('payments/select-date', {
-      error: true,
-      errorMessage: "Select at least one day",
-      amountDue: req.session.amountDue,
-      caz: caz,
-      today: todayString,
-      yesterday: yesterdayString,
-      oneDayAfter: oneDayAfterString,
-      twoDaysAfter: twoDaysAfterString,
-      threeDaysAfter: threeDaysAfterString,
-      fourDaysAfter: fourDaysAfterString,
-      fiveDaysAfter: fiveDaysAfterString,
-      sixDaysAfter: sixDaysAfterString,
-      sevenDaysAfter: sevenDaysAfterString
-    })
+    if (date == undefined) {
 
-  } else {
+      res.render('payments/select-date-weekly', {
+        error: true,
+        errorMessage: "Select when you want the 7 day period to start",
+        amountDue: req.session.amountDue,
+        caz: caz,
+        today: todayString,
+        yesterday: yesterdayString,
+        oneDayAfter: oneDayAfterString,
+        twoDaysAfter: twoDaysAfterString,
+        threeDaysAfter: threeDaysAfterString,
+        fourDaysAfter: fourDaysAfterString,
+        fiveDaysAfter: fiveDaysAfterString,
+        sixDaysAfter: sixDaysAfterString,
+        sevenDaysAfter: sevenDaysAfterString,
+        yesterdayStringWeekly: validFromYesterday,
+        todayStringWeekly: validFromToday,
+        oneDayAfterStringWeekly: validFromOneDayAfter,
+        twoDaysAfterStringWeekly: validFromTwoDaysAfter,
+        threeDaysAfterStringWeekly: validFromThreeDaysAfter,
+        fourDaysAfterStringWeekly: validFromFourDaysAfter,
+        fiveDaysAfterStringWeekly: validFromFiveDaysAfter,
+        sixDaysAfterStringWeekly: validFromSixDaysAfter,
+        sevenDaysAfterStringWeekly: validFromSevenDaysAfter
+      })
 
-    if (date.includes("yesterday")) {
+    } else {
 
-      if (caz == "leeds-weekly") {
+      if (date.includes("yesterday")) {
   
         charges.push(50.00);
         dates.push(dateRangeYesterday);
-  
-      } else if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(yesterdayString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(yesterdayString);
-  
+    
       }
-      
-    }
-  
-    if (date.includes("today")) {
-  
-      if (caz == "leeds-weekly") {
-  
+    
+      if (date.includes("today")) {
+    
         charges.push(50.00);
         dates.push(dateRangeToday);
-  
-      } else if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(todayString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(todayString);
-  
+        
       }
-      
-    }
-  
-    if (date.includes("1-day-after")) {
-  
-      if (caz == "leeds-weekly") {
-  
+    
+      if (date.includes("1-day-after")) {
+    
         charges.push(50.00);
         dates.push(dateRangeOneDayAfter);
-  
-      } else if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(oneDayAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(oneDayAfterString);
-  
+        
       }
-      
-    }
-  
-    if (date.includes("2-days-after")) {
-  
-      if (caz == "leeds-weekly") {
-  
+    
+      if (date.includes("2-days-after")) {
+    
         charges.push(50.00);
         dates.push(dateRangeTwoDaysAfter);
-  
-      } else if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(twoDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(twoDaysAfterString);
-  
+        
       }
-      
-    }
-  
-    if (date.includes("3-days-after")) {
-  
-      if (caz == "leeds-weekly") {
-  
+    
+      if (date.includes("3-days-after")) {
+    
         charges.push(50.00);
         dates.push(dateRangeThreeDaysAfter);
-  
-      } else if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(threeDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(threeDaysAfterString);
-  
+        
       }
-      
-    }
-  
-    if (date.includes("4-days-after")) {
-  
-      if (caz == "leeds-weekly") {
-  
+    
+      if (date.includes("4-days-after")) {
+    
         charges.push(50.00);
         dates.push(dateRangeFourDaysAfter);
-  
-      } else if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(fourDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(fourDaysAfterString);
-  
+        
       }
-      
-    }
-  
-    if (date.includes("5-days-after")) {
-  
-      if (caz == "leeds-weekly") {
-  
+    
+      if (date.includes("5-days-after")) {
+    
         charges.push(50.00);
         dates.push(dateRangeFiveDaysAfter);
-  
-      } else if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(fiveDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(fiveDaysAfterString);
-  
+        
       }
-      
-    }
-  
-    if (date.includes("6-days-after")) {
-  
-      if (caz == "leeds-weekly") {
-  
+    
+      if (date.includes("6-days-after")) {
+    
         charges.push(50.00);
         dates.push(dateRangeSixDaysAfter);
-  
-      } else if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(sixDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(sixDaysAfterString);
-  
+        
       }
-      
-    }
-  
-    if (date.includes("7-days-after")) {
-  
-      if (caz == "leeds-weekly") {
-  
+    
+      if (date.includes("7-days-after")) {
+        
         charges.push(50.00);
         dates.push(dateRangeSevenDaysAfter);
-  
-      } else if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(sevenDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(sevenDaysAfterString);
-  
+        
       }
-      
+    
+      var sum = 0;
+    
+      if (charges.length) {
+    
+        sum = charges.reduce(function(a, b) { return a + b});
+    
+      }
+    
+      req.session.amountDue = '£' + sum.toFixed(2);
+    
+      var selectedDates = dates.join(', ');
+    
+      res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+
     }
+
+  } else {
+
+    if (date == "_unchecked") {
+
+      res.render('payments/select-date', {
+        error: true,
+        errorMessage: "Select at least one day",
+        amountDue: req.session.amountDue,
+        caz: caz,
+        today: todayString,
+        yesterday: yesterdayString,
+        oneDayAfter: oneDayAfterString,
+        twoDaysAfter: twoDaysAfterString,
+        threeDaysAfter: threeDaysAfterString,
+        fourDaysAfter: fourDaysAfterString,
+        fiveDaysAfter: fiveDaysAfterString,
+        sixDaysAfter: sixDaysAfterString,
+        sevenDaysAfter: sevenDaysAfterString
+      })
   
-    var sum = 0;
+    } else {
   
-    if (charges.length) {
+      if (date.includes("yesterday")) {
   
-      sum = charges.reduce(function(a, b) { return a + b});
-  
+        if (caz == "leeds") {
+    
+          charges.push(12.50);
+          dates.push(yesterdayString);
+    
+        } else if (caz == "birmingham") {
+    
+          charges.push(8.00);
+          dates.push(yesterdayString);
+    
+        }
+        
+      }
+    
+      if (date.includes("today")) {
+    
+        if (caz == "leeds") {
+    
+          charges.push(12.50);
+          dates.push(todayString);
+    
+        } else if (caz == "birmingham") {
+    
+          charges.push(8.00);
+          dates.push(todayString);
+    
+        }
+        
+      }
+    
+      if (date.includes("1-day-after")) {
+    
+        if (caz == "leeds") {
+    
+          charges.push(12.50);
+          dates.push(oneDayAfterString);
+    
+        } else if (caz == "birmingham") {
+    
+          charges.push(8.00);
+          dates.push(oneDayAfterString);
+    
+        }
+        
+      }
+    
+      if (date.includes("2-days-after")) {
+    
+        if (caz == "leeds") {
+    
+          charges.push(12.50);
+          dates.push(twoDaysAfterString);
+    
+        } else if (caz == "birmingham") {
+    
+          charges.push(8.00);
+          dates.push(twoDaysAfterString);
+    
+        }
+        
+      }
+    
+      if (date.includes("3-days-after")) {
+    
+        if (caz == "leeds") {
+    
+          charges.push(12.50);
+          dates.push(threeDaysAfterString);
+    
+        } else if (caz == "birmingham") {
+    
+          charges.push(8.00);
+          dates.push(threeDaysAfterString);
+    
+        }
+        
+      }
+    
+      if (date.includes("4-days-after")) {
+    
+        if (caz == "leeds") {
+    
+          charges.push(12.50);
+          dates.push(fourDaysAfterString);
+    
+        } else if (caz == "birmingham") {
+    
+          charges.push(8.00);
+          dates.push(fourDaysAfterString);
+    
+        }
+        
+      }
+    
+      if (date.includes("5-days-after")) {
+    
+        if (caz == "leeds") {
+    
+          charges.push(12.50);
+          dates.push(fiveDaysAfterString);
+    
+        } else if (caz == "birmingham") {
+    
+          charges.push(8.00);
+          dates.push(fiveDaysAfterString);
+    
+        }
+        
+      }
+    
+      if (date.includes("6-days-after")) {
+    
+        if (caz == "leeds") {
+    
+          charges.push(12.50);
+          dates.push(sixDaysAfterString);
+    
+        } else if (caz == "birmingham") {
+    
+          charges.push(8.00);
+          dates.push(sixDaysAfterString);
+    
+        }
+        
+      }
+    
+      if (date.includes("7-days-after")) {
+    
+        if (caz == "leeds") {
+    
+          charges.push(12.50);
+          dates.push(sevenDaysAfterString);
+    
+        } else if (caz == "birmingham") {
+    
+          charges.push(8.00);
+          dates.push(sevenDaysAfterString);
+    
+        }
+        
+      }
+    
+      var sum = 0;
+    
+      if (charges.length) {
+    
+        sum = charges.reduce(function(a, b) { return a + b});
+    
+      }
+    
+      req.session.amountDue = '£' + sum.toFixed(2);
+    
+      var selectedDates = dates.join(', ');
+    
+      res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+    
     }
-  
-    req.session.amountDue = '£' + sum.toFixed(2);
-  
-    var selectedDates = dates.join(', ');
-  
-    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
 
   }
 
