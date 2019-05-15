@@ -158,7 +158,7 @@ router.post('/payments/confirm-vehicle', function (req, res) {
 });
 
 // Local Authority selection page (from unrecognised vehicles page)
-router.post('/payments/local-authority', function (req, res) {
+router.post('/payments/localAuthority', function (req, res) {
   
   var overseas = req.session.data['overseas'];
 
