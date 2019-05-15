@@ -1085,14 +1085,165 @@ router.post('/payments/confirm-payment', function (req, res) {
 
   var email = req.session.data['email'];
   var mobile = req.session.data['mobile-number'];
+  var caz = req.session.data['caz'];
+  var date = req.session.data['date'];
+
+  var dates = [];
+
+  if (date.includes("yesterday")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeYesterday)
+
+    } else {
+
+      dates.push(yesterdayString);
+
+    }
+
+  }
+
+  if (date.includes("today")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeToday)
+
+    } else {
+
+      dates.push(todayString);
+
+    }
+
+  }
+
+  if (date.includes("1-day-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeOneDayAfter)
+
+    } else {
+
+      dates.push(oneDayAfterString);
+
+    }
+
+  }
+
+  if (date.includes("2-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeTwoDaysAfter)
+
+    } else {
+
+      dates.push(twoDaysAfterString);
+
+    }
+
+  }
+
+  if (date.includes("3-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeThreeDaysAfter)
+
+    } else {
+
+      dates.push(threeDaysAfterString);
+
+    }
+
+  }
+
+  if (date.includes("4-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeFourDaysAfter)
+
+    } else {
+
+      dates.push(fourDaysAfterString);
+
+    }
+
+  }
+
+  if (date.includes("5-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeFiveDaysAfter)
+
+    } else {
+
+      dates.push(fiveDaysAfterString);
+
+    }
+
+  }
+
+  if (date.includes("6-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeSixDaysAfter)
+
+    } else {
+
+      dates.push(sixDaysAfterString);
+
+    }
+
+  }
+
+  if (date.includes("7-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeSevenDaysAfter)
+
+    } else {
+
+      dates.push(sevenDaysAfterString);
+
+    }
+
+  }
+
+  var selectedDates = dates.join(', ');
+
+  if (caz == 'leeds-weekly') {
+
+    var localAuthority = "Leeds"
+
+  } else {
+
+    var localAuthority = caz.charAt(0).toUpperCase() + caz.slice(1);
+
+  }
 
   if (email != "") {
 
     notify.sendEmail(
       // GOV.UK Notify template ID
       '9b0ce7a5-8830-4d69-ae2f-7762c5ad76e7',
-      email
-    );
+      email,
+      {
+        personalisation: {
+          'charge': req.session.amountDue,
+          'caz': localAuthority,
+          'vrn': req.session.data['vrn'],
+          'dates': selectedDates,
+          'paymentDate': todayString
+        }
+      }
+    )
 
   }
 
@@ -1101,7 +1252,16 @@ router.post('/payments/confirm-payment', function (req, res) {
     notify.sendSms(
       // GOV.UK Notify template ID
       '9b5b3bcd-9cbd-42c5-86c3-dde84270deb7',
-      mobile
+      mobile,
+      {
+        personalisation: {
+          'charge': req.session.amountDue,
+          'caz': localAuthority,
+          'vrn': req.session.data['vrn'],
+          'dates': selectedDates,
+          'paymentDate': todayString
+        }
+      }
     )
 
   }
