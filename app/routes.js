@@ -224,7 +224,14 @@ router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
 
   var period = req.body['period'];
 
-  if (period == "daily-charge") {
+  if (period == undefined) {
+
+    res.render('payments/select-period', {
+      error: true,
+      errorMessage: "State if you are paying for 1 day or 1 week"
+    })
+  
+  } else if (period == "daily-charge") {
 
     res.redirect('/payments/leeds')
 
