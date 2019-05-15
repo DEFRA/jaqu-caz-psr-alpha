@@ -200,7 +200,14 @@ router.post('/payments/paymentPages', function (req, res) {
   // Remove spacing and make letters uppercase
   var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
-  if (confirm == "leeds" && formattedVrn == "ABC123") {
+  if (confirm == undefined) {
+
+    res.render('payments/local-authority', {
+      error: true,
+      errorMessage: "State which Clean Air Zone you are paying for"
+    })
+
+  } else if (confirm == "leeds" && formattedVrn == "ABC123") {
 
     res.redirect('/payments/select-period')
 
