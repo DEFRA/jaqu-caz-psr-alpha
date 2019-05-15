@@ -157,6 +157,26 @@ router.post('/payments/confirm-vehicle', function (req, res) {
 
 });
 
+// Local Authority selection page (from unrecognised vehicles page)
+router.post('/payments/local-authority', function (req, res) {
+  
+  var overseas = req.session.data['overseas'];
+
+  if (overseas == "correct-details") {
+
+      res.redirect('/payments/local-authority')
+
+  } else {
+
+    res.render('payments/unrecognised-vehicle', {
+      error: true,
+      errorMessage: "Confirm that the registration number is correct"
+    })
+
+  }
+
+});
+
 // Local Authority selection page
 router.get('/payments/caz', function (req, res) {
 
