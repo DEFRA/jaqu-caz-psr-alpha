@@ -146,6 +146,13 @@ router.post('/payments/confirm-vehicle', function (req, res) {
 
       res.redirect('/payments/incorrect-details')
 
+  } else {
+
+    res.render('payments/confirm-vehicle-details', {
+      error: true,
+      errorMessage: "Answer yes or no"
+    })
+
   }
 
 });
