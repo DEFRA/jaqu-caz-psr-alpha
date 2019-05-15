@@ -109,7 +109,13 @@ router.post('/confirm-vehicle-details', function (req, res) {
 
   if (formattedVrn == "XYZ456") {
 
-      res.redirect('/payments/unrecognised-vehicle')
+    res.redirect('/payments/unrecognised-vehicle')
+
+  } else if (formattedVrn == "") {
+
+    res.render('payments/enter-vehicle-details', {
+      error: true
+    })
 
   } else {
 
