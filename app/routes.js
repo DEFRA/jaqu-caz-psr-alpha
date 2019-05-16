@@ -1651,6 +1651,61 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   }
 
+  //Security code validation
+  var securityCode = req.session.data['card-code'];
+
+  if (securityCode != "") {
+
+    if (securityCode.length != 3) {
+
+      var securityCodeError = true;
+      var securityCodeErrorMessage = "Enter a valid security code";
+      error = true;
+
+    } else {
+
+      var securityCodeError = false;
+
+    }
+
+  } else {
+
+    var securityCodeError = true;
+    var securityCodeErrorMessage = "Enter a 3-digit security code. You can find this on the security strip at the back of your card";
+    error = true;
+
+  }
+
+  //Country validation
+  var country = req.session.data['country'];
+
+  if (country == "") {
+
+    var countryError = true;
+    var countryErrorMessage = "Enter your country or territory";
+    error = true;
+
+  } else {
+
+    var countryError = false;
+
+  }
+
+  //Building number/name validation
+  var buildingNumber = req.session.data['building-number'];
+
+  if (buildingNumber == "") {
+
+    var buildingNumberError = true;
+    var buildingNumberErrorMessage = "Enter a building number and name or street";
+    error = true;
+
+  } else {
+
+    var buildingNumberError = false;
+
+  }
+
   if (error == true) {
 
     res.render('payments/debit-credit-card', {
@@ -1665,7 +1720,13 @@ router.post('/payments/confirm-payment-details', function (req, res) {
       yearError: yearError,
       yearErrorMessage: yearErrorMessage,
       cardNameError: cardNameError,
-      cardNameErrorMessage: cardNameErrorMessage
+      cardNameErrorMessage: cardNameErrorMessage,
+      securityCodeError: securityCodeError,
+      securityCodeErrorMessage: securityCodeErrorMessage,
+      countryError: countryError,
+      countryErrorMessage: countryErrorMessage,
+      buildingNumberError: buildingNumberError,
+      buildingNumberErrorMessage: buildingNumberErrorMessage
     });
 
   } else {

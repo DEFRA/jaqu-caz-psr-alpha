@@ -41,6 +41,21 @@ text: "Back"
                     <a href="#card-name-error">{{cardNameErrorMessage}}</a>
                 </li>
                 {% endif %}
+                {% if securityCodeError %}
+                <li>
+                    <a href="#card-code-error">{{securityCodeErrorMessage}}</a>
+                </li>
+                {% endif %}
+                {% if countryError %}
+                <li>
+                    <a href="#country-error">{{countryErrorMessage}}</a>
+                </li>
+                {% endif %}
+                {% if buildingNumberError %}
+                <li>
+                    <a href="#building-number-error">{{buildingNumberErrorMessage}}</a>
+                </li>
+                {% endif %}
                 </ul>
             </div>
         </div>
@@ -118,14 +133,24 @@ text: "Back"
                     {% endif %}
                     <input class="govuk-input" id="card-number" name="card-name" type="text" style="width: 60%;" aria-describedby="card-name-hint" value="{{data['card-name']}}">
                 </div>
+                {% if securityCodeError %}
+                <div class="govuk-form-group govuk-form-group--error">
+                {% endif %}
+                {% if not securityCodeError %} 
                 <div class="govuk-form-group">
+                {% endif %}
                     <label class="govuk-label" for="card-code">
                         <b>Card security code</b>
                     </label>
                     <span id="card-code-hint" class="govuk-hint">
                         The last 3 digits on the back of the card
                     </span>
-                    <input class="govuk-input govuk-input--width-3" id="card-code" name="card-code" type="text" aria-describedby="card-code-hint">
+                    {% if securityCodeError %}
+                    <span id="card-code-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{securityCodeErrorMessage}}
+                    </span>
+                    {% endif %}
+                    <input class="govuk-input govuk-input--width-3" id="card-code" name="card-code" type="text" aria-describedby="card-code-hint" value="{{data['card-code']}}">
                     <img src="../../../public/images/security-code.png" alt="security-code" style="margin-bottom: -15px; height: 40px;" /> 
 
                 </div>
@@ -135,20 +160,40 @@ text: "Back"
                 <span id="billing-address-hint" class="govuk-hint">
                     This is the address associated with the card
                 </span>
+                {% if countryError %}
+                <div class="govuk-form-group govuk-form-group--error">
+                {% endif %}
+                {% if not countryError %} 
                 <div class="govuk-form-group">
+                {% endif %}
                     <label class="govuk-label govuk-date-input__label" for="country"><b>Country or territory</b></label>
-                    <input class="govuk-input id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint">
+                    {% if countryError %}
+                    <span id="country-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{countryErrorMessage}}
+                    </span>
+                    {% endif %}
+                    <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint">
                 </div>
+                {% if buildingNumberError %}
+                <div class="govuk-form-group govuk-form-group--error">
+                {% endif %}
+                {% if not buildingNumberError %} 
                 <div class="govuk-form-group">
+                {% endif %}    
                     <label class="govuk-label govuk-date-input__label" for="building-number"><b>Building number or name and street</b></label>
-                    <input class="govuk-input id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint">
-                    <br>
-                    <br>
-                    <input class="govuk-input id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint">
+                    {% if buildingNumberError %}
+                    <span id="building-number-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{buildingNumberErrorMessage}}
+                    </span>
+                    {% endif %}
+                    <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint">
                 </div>
+                    <input class="govuk-input" id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint">
+                <br>
+                <br>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="town"><b>Town or city</b></label>
-                    <input class="govuk-input id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint">
+                    <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="postcode"><b>Postcode</b></label>
@@ -159,14 +204,14 @@ text: "Back"
                     <span id="email-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
-                    <input class="govuk-input id="town" name="email" type="text" style="width: 60%;" aria-describedby="email-hint">
+                    <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="mobile-number"><b>Mobile number (optional)</b></label>
                     <span id="mobile-number-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
-                    <input class="govuk-input id="town" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint">
+                    <input class="govuk-input" id="mobile-number" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint">
                 </div>
             </fieldset>
             <button type="submit" class="govuk-button">
