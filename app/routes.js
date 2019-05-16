@@ -35,30 +35,39 @@ var today = new Date();
 
 today.setDate(today.getDate() - 1);
 var yesterdayString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var yesterdayMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var todayString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var todayMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var oneDayAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var oneDayAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var twoDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var twoDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var threeDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var threeDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var fourDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var fourDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var fiveDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var fiveDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var sixDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var sixDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var sevenDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var sevenDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() - 7);
 
@@ -1085,14 +1094,165 @@ router.post('/payments/confirm-payment', function (req, res) {
 
   var email = req.session.data['email'];
   var mobile = req.session.data['mobile-number'];
+  var caz = req.session.data['caz'];
+  var date = req.session.data['date'];
+
+  var dates = [];
+
+  if (date.includes("yesterday")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeYesterday)
+
+    } else {
+
+      dates.push(yesterdayMessage);
+
+    }
+
+  }
+
+  if (date.includes("today")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeToday)
+
+    } else {
+
+      dates.push(todayMessage);
+
+    }
+
+  }
+
+  if (date.includes("1-day-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeOneDayAfter)
+
+    } else {
+
+      dates.push(oneDayAfterMessage);
+
+    }
+
+  }
+
+  if (date.includes("2-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeTwoDaysAfter)
+
+    } else {
+
+      dates.push(twoDaysAfterMessage);
+
+    }
+
+  }
+
+  if (date.includes("3-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeThreeDaysAfter)
+
+    } else {
+
+      dates.push(threeDaysAfterMessage);
+
+    }
+
+  }
+
+  if (date.includes("4-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeFourDaysAfter)
+
+    } else {
+
+      dates.push(fourDaysAfterMessage);
+
+    }
+
+  }
+
+  if (date.includes("5-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeFiveDaysAfter)
+
+    } else {
+
+      dates.push(fiveDaysAfterMessage);
+
+    }
+
+  }
+
+  if (date.includes("6-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeSixDaysAfter)
+
+    } else {
+
+      dates.push(sixDaysAfterMessage);
+
+    }
+
+  }
+
+  if (date.includes("7-days-after")) {
+
+    if (caz == "leeds-weekly") {
+
+      dates.push(dateRangeSevenDaysAfter)
+
+    } else {
+
+      dates.push(sevenDaysAfterMessage);
+
+    }
+
+  }
+
+  var selectedDates = dates.slice(0, -1).join(', ') + ', and ' + dates.slice(-1);
+
+  if (caz == 'leeds-weekly') {
+
+    var localAuthority = "Leeds"
+
+  } else {
+
+    var localAuthority = caz.charAt(0).toUpperCase() + caz.slice(1);
+
+  }
 
   if (email != "") {
 
     notify.sendEmail(
       // GOV.UK Notify template ID
       '9b0ce7a5-8830-4d69-ae2f-7762c5ad76e7',
-      email
-    );
+      email,
+      {
+        personalisation: {
+          'charge': req.session.amountDue,
+          'caz': localAuthority,
+          'vrn': req.session.data['vrn'],
+          'dates': selectedDates,
+          'paymentDate': todayMessage
+        }
+      }
+    )
 
   }
 
@@ -1101,7 +1261,16 @@ router.post('/payments/confirm-payment', function (req, res) {
     notify.sendSms(
       // GOV.UK Notify template ID
       '9b5b3bcd-9cbd-42c5-86c3-dde84270deb7',
-      mobile
+      mobile,
+      {
+        personalisation: {
+          'charge': req.session.amountDue,
+          'caz': localAuthority,
+          'vrn': req.session.data['vrn'],
+          'dates': selectedDates,
+          'paymentDate': todayMessage
+        }
+      }
     )
 
   }
@@ -1245,7 +1414,12 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   var selectedDates = dates.join(', ');
 
-  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+  // var cardNumber = req.session.data['card-number'];
+  // var asterisk = '*';
+  // var cardNumberString = asterisk.repeat(cardNumber.length - 4) + cardNumber.substr(cardNumber.length - 4);
+  var cardNumberString = asterisk.repeat(12) + '1234';
+
+  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, cardNumber: cardNumberString});
 
 });
 
