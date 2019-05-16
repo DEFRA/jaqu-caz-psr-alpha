@@ -14,26 +14,47 @@ text: "Back"
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+        {% if error %}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                {% if cardNumberErrorMessage %}
+                <li>
+                    <a href="#card-error">{{cardNumberErrorMessage}}</a>
+                </li>
+                {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        <h1 class="govuk-heading-l">Enter card details</h1>
         <form method="post" class="form" action="/payments/confirm-payment-details">
             <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-                    <h1 class="govuk-heading-l">
-                        Enter card details
-                    </h1>
-                </legend>
+                {% if cardNumberError %}
+                <div class="govuk-form-group govuk-form-group--error">
+                {% endif %}
+                {% if not cardNumberError %} 
                 <div class="govuk-form-group">
+                {% endif %}
                     <label class="govuk-label" for="card-number">
                         <b>Card number</b>
                     </label>
-                    <input class="govuk-input id="card-number" name="card-number" type="text"style="width: 60%;" aria-describedby="card-number-hint" required>
-                    <br>
-                    <br>
-                    <span id="card-number-hint" class="govuk-hint">
-                        <img src="../../../public/images/card-types.png" alt="accepted-cards-visa-maestro-mastercard-amex" style="height: 40px;" />
-                        <br>
-                        Accepted credit and debit card types
+                    {% if cardNumberError %}
+                    <span id="card-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{cardNumberErrorMessage}}
                     </span>
+                    {% endif %}
+                    <input class="govuk-input" id="card-number" name="card-number" type="text"style="width: 60%;" aria-describedby="card-number-hint">
                 </div>
+                <span id="card-number-hint" class="govuk-hint">
+                    <img src="../../../public/images/card-types.png" alt="accepted-cards-visa-maestro-mastercard-amex" style="height: 40px;" />
+                    <br>
+                    Accepted credit and debit card types
+                </span>
+                <br>
                 <div class="govuk-form-group govuk-clearfix expiry-date" data-validation="expiryMonth">
                     <label class="govuk-label govuk-label--s" id="expiry-date-lbl" for="expiry-month">
                       <span class="expiry-date-label" data-label-replace="expiryMonth" data-original-label="Expiry date">
@@ -44,18 +65,18 @@ text: "Back"
                       For example, 10/20</span>
                     <div class="govuk-date-input__item govuk-date-input__item--month govuk-date-input__item--with-separator">
                         <label class="govuk-label govuk-date-input__label" for="expiry-month">Month</label>
-                        <input id="expiry-month" type="number" name="expiry-month" value="" class="govuk-input govuk-date-input__input govuk-input--width-2" min="1" max="12" minlength="1" maxlength="2" autocomplete="cc-exp-month" required>
+                        <input id="expiry-month" type="number" name="expiry-month" value="" class="govuk-input govuk-date-input__input govuk-input--width-2" min="1" max="12" minlength="1" maxlength="2" autocomplete="cc-exp-month">
                     </div>
                     <div class="govuk-date-input__item govuk-date-input__item--year">
                         <label for="expiry-year" class="govuk-label govuk-date-input__label">Year</label>
-                        <input id="expiry-year" type="number" name="expiry-year" value="" minlength="2" maxlength="4" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-year" data-last-of-form-group="" data-required="" required>
+                        <input id="expiry-year" type="number" name="expiry-year" value="" minlength="2" maxlength="4" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-year" data-last-of-form-group="" data-required="">
                       </div>
                   </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label" for="card-name">
                         <b>Name on card</b>
                     </label>
-                    <input class="govuk-input" id="card-number" name="card-name" type="text" style="width: 60%;" aria-describedby="card-name-hint" required>
+                    <input class="govuk-input" id="card-number" name="card-name" type="text" style="width: 60%;" aria-describedby="card-name-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label" for="card-code">
@@ -64,7 +85,7 @@ text: "Back"
                     <span id="card-code-hint" class="govuk-hint">
                         The last 3 digits on the back of the card
                     </span>
-                    <input class="govuk-input govuk-input--width-3" id="card-code" name="card-code" type="text" aria-describedby="card-code-hint" required>
+                    <input class="govuk-input govuk-input--width-3" id="card-code" name="card-code" type="text" aria-describedby="card-code-hint">
                     <img src="../../../public/images/security-code.png" alt="security-code" style="margin-bottom: -15px; height: 40px;" /> 
 
                 </div>
@@ -76,22 +97,22 @@ text: "Back"
                 </span>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="country"><b>Country or territory</b></label>
-                    <input class="govuk-input id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" required>
+                    <input class="govuk-input id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="building-number"><b>Building number or name and street</b></label>
-                    <input class="govuk-input id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" required>
+                    <input class="govuk-input id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint">
                     <br>
                     <br>
                     <input class="govuk-input id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="town"><b>Town or city</b></label>
-                    <input class="govuk-input id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" required>
+                    <input class="govuk-input id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="postcode"><b>Postcode</b></label>
-                    <input class="govuk-input govuk-input--width-5" id="postcode" name="postcode" type="text" style="width: 60%;" aria-describedby="postcode-hint" required>
+                    <input class="govuk-input govuk-input--width-5" id="postcode" name="postcode" type="text" style="width: 60%;" aria-describedby="postcode-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="email"><b>Email (optional)</b></label>

@@ -1388,6 +1388,8 @@ router.post('/payments/confirm-payment', function (req, res) {
 
 router.post('/payments/confirm-payment-details', function (req, res) {
 
+  var error = false;
+
   var date = req.session.data['date'];
   var caz = req.session.data['caz'];
 
@@ -1521,7 +1523,58 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   var selectedDates = dates.join(', ');
 
-  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+  var cardNumber = req.session.data['card-number'];
+  var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+  var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
+  var amexpRegEx = /^(?:3[47][0-9]{13})$/;
+  var discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+  var cardNumberIsValid = false;
+
+  if (visaRegEx.test(cardNumber)) {
+    cardNumberIsValid = true;
+  } else if(mastercardRegEx.test(cardNumber)) {
+    cardNumberIsValid = true;
+  } else if(amexpRegEx.test(cardNumber)) {
+    cardNumberIsValid = true;
+  } else if(discovRegEx.test(cardNumber)) {
+    cardNumberIsValid = true;
+  }
+
+  if (cardNumber == "") {
+
+    error = true;
+  
+      res.render('payments/debit-credit-card', {
+        amountDue: req.session.amountDue,
+        caz: caz,
+        date: selectedDates,
+        error: error,
+        cardNumberError: true,
+        cardNumberErrorMessage: "Enter a card number"
+      });
+
+  } else {
+
+    if (!cardNumberIsValid) {
+
+      error = true;
+  
+      res.render('payments/debit-credit-card', {
+        amountDue: req.session.amountDue,
+        caz: caz,
+        date: selectedDates,
+        error: error,
+        cardNumberError: true,
+        cardNumberErrorMessage: "Enter a valid card number"
+      });
+  
+    } else {
+  
+      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+  
+    }
+
+  }
 
 });
 
