@@ -1659,7 +1659,7 @@ router.post('/payments/confirm-payment-details', function (req, res) {
     if (securityCode.length != 3) {
 
       var securityCodeError = true;
-      var securityCodeErrorMessage = "Enter a valid security code";
+      var securityCodeErrorMessage = "Enter a 3-digit security code. You can find this on the security strip at the back of your card";
       error = true;
 
     } else {
