@@ -1580,6 +1580,31 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   }
 
+  //Month validation
+  var month = req.session.data['expiry-month'];
+
+  if (month != "") {
+
+    if (month < 1 | month > 12) {
+
+      var monthError = true;
+      var monthErrorMessage = "Enter a valid month";
+      error = true;
+
+    } else {
+
+      var monthError = false;
+
+    }
+
+  } else {
+
+    var monthError = true;
+    var monthErrorMessage = "Enter the month of expiry";
+    error = true;
+
+  }
+
   if (error == true) {
 
     res.render('payments/debit-credit-card', {
@@ -1589,6 +1614,8 @@ router.post('/payments/confirm-payment-details', function (req, res) {
       error: error,
       cardNumberError: cardNumberError,
       cardNumberErrorMessage: cardNumberErrorMessage,
+      monthError: monthError,
+      monthErrorMessage: monthErrorMessage,
       cardNameError: cardNameError,
       cardNameErrorMessage: cardNameErrorMessage
     });
