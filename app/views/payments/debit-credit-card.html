@@ -25,7 +25,7 @@ text: "Back"
                     <label class="govuk-label" for="card-number">
                         <b>Card number</b>
                     </label>
-                    <input class="govuk-input id="card-number" name="card-number" type="text"style="width: 60%;" aria-describedby="card-number-hint" required>
+                    <input class="govuk-input" id="card-number" name="card-number" type="text"style="width: 60%;" aria-describedby="card-number-hint" required>
                     <br>
                     <br>
                     <span id="card-number-hint" class="govuk-hint">
@@ -46,6 +46,7 @@ text: "Back"
                         <label class="govuk-label govuk-date-input__label" for="expiry-month">Month</label>
                         <input id="expiry-month" type="number" name="expiry-month" value="" class="govuk-input govuk-date-input__input govuk-input--width-2" min="1" max="12" minlength="1" maxlength="2" autocomplete="cc-exp-month" required>
                     </div>
+                    <span style="font-size: 30px; font-weight: bold; margin-right: 10px; margin-left: -10px;">/</span>
                     <div class="govuk-date-input__item govuk-date-input__item--year">
                         <label for="expiry-year" class="govuk-label govuk-date-input__label">Year</label>
                         <input id="expiry-year" type="number" name="expiry-year" value="" minlength="2" maxlength="4" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-year" data-last-of-form-group="" data-required="" required>
@@ -76,18 +77,18 @@ text: "Back"
                 </span>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="country"><b>Country or territory</b></label>
-                    <input class="govuk-input id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" required>
+                    <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" required>
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="building-number"><b>Building number or name and street</b></label>
-                    <input class="govuk-input id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" required>
+                    <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" required>
                     <br>
                     <br>
                     <input class="govuk-input id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="town"><b>Town or city</b></label>
-                    <input class="govuk-input id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" required>
+                    <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" required>
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="postcode"><b>Postcode</b></label>
@@ -98,14 +99,14 @@ text: "Back"
                     <span id="email-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
-                    <input class="govuk-input id="town" name="email" type="text" style="width: 60%;" aria-describedby="email-hint">
+                    <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="mobile-number"><b>Mobile number (optional)</b></label>
                     <span id="mobile-number-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
-                    <input class="govuk-input id="town" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint">
+                    <input class="govuk-input" id="mobile-number" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint">
                 </div>
             </fieldset>
             <button type="submit" class="govuk-button">
