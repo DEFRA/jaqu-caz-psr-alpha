@@ -91,7 +91,7 @@ text: "Back"
                         <span class="govuk-visually-hidden">Error:</span> {{cardNameErrorMessage}}
                     </span>
                     {% endif %}
-                    <input class="govuk-input" id="card-number" name="card-name" type="text" style="width: 60%;" aria-describedby="card-name-hint">
+                    <input class="govuk-input" id="card-number" name="card-name" type="text" style="width: 60%;" aria-describedby="card-name-hint" value="{{data['card-name']}}">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label" for="card-code">
