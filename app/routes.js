@@ -1706,6 +1706,36 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   }
 
+  //Town validation
+  var town = req.session.data['town'];
+
+  if (town == "") {
+
+    var townError = true;
+    var townErrorMessage = "Enter a town or city";
+    error = true;
+
+  } else {
+
+    var townError = false;
+
+  }
+
+  //Postcode validation
+  var postcode = req.session.data['postcode'];
+
+  if (postcode == "") {
+
+    var postcodeError = true;
+    var postcodeErrorMessage = "Enter a postcode";
+    error = true;
+
+  } else {
+
+    var postcodeError = false;
+
+  }
+
   if (error == true) {
 
     res.render('payments/debit-credit-card', {
@@ -1726,7 +1756,11 @@ router.post('/payments/confirm-payment-details', function (req, res) {
       countryError: countryError,
       countryErrorMessage: countryErrorMessage,
       buildingNumberError: buildingNumberError,
-      buildingNumberErrorMessage: buildingNumberErrorMessage
+      buildingNumberErrorMessage: buildingNumberErrorMessage,
+      townError: townError,
+      townErrorMessage: townErrorMessage,
+      postcodeError: postcodeError,
+      postcodeErrorMessage: postcodeErrorMessage
     });
 
   } else {

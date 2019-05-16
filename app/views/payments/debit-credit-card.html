@@ -56,6 +56,16 @@ text: "Back"
                     <a href="#building-number-error">{{buildingNumberErrorMessage}}</a>
                 </li>
                 {% endif %}
+                {% if townError %}
+                <li>
+                    <a href="#town-error">{{townErrorMessage}}</a>
+                </li>
+                {% endif %}
+                {% if postcodeError %}
+                <li>
+                    <a href="#postcode-error">{{postcodeErrorMessage}}</a>
+                </li>
+                {% endif %}
                 </ul>
             </div>
         </div>
@@ -172,7 +182,7 @@ text: "Back"
                         <span class="govuk-visually-hidden">Error:</span> {{countryErrorMessage}}
                     </span>
                     {% endif %}
-                    <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint">
+                    <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" value="{{data['country']}}">
                 </div>
                 {% if buildingNumberError %}
                 <div class="govuk-form-group govuk-form-group--error">
@@ -186,32 +196,52 @@ text: "Back"
                         <span class="govuk-visually-hidden">Error:</span> {{buildingNumberErrorMessage}}
                     </span>
                     {% endif %}
-                    <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint">
+                    <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" value="{{data['building-number']}}">
                 </div>
-                    <input class="govuk-input" id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint">
+                    <input class="govuk-input" id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint" value="{{data['street']}}">
                 <br>
                 <br>
+                {% if townError %}
+                <div class="govuk-form-group govuk-form-group--error">
+                {% endif %}
+                {% if not townError %} 
                 <div class="govuk-form-group">
+                {% endif %}
                     <label class="govuk-label govuk-date-input__label" for="town"><b>Town or city</b></label>
-                    <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint">
+                    {% if townError %}
+                    <span id="town-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{townErrorMessage}}
+                    </span>
+                    {% endif %}
+                    <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" value="{{data['town']}}">
                 </div>
+                {% if postcodeError %}
+                <div class="govuk-form-group govuk-form-group--error">
+                {% endif %}
+                {% if not postcodeError %} 
                 <div class="govuk-form-group">
+                {% endif %}
                     <label class="govuk-label govuk-date-input__label" for="postcode"><b>Postcode</b></label>
-                    <input class="govuk-input govuk-input--width-5" id="postcode" name="postcode" type="text" style="width: 60%;" aria-describedby="postcode-hint">
+                    {% if postcodeError %}
+                    <span id="postcode-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{postcodeErrorMessage}}
+                    </span>
+                    {% endif %}
+                    <input class="govuk-input govuk-input--width-5" id="postcode" name="postcode" type="text" style="width: 60%;" aria-describedby="postcode-hint" value="{{data['postcode']}}">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="email"><b>Email (optional)</b></label>
                     <span id="email-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
-                    <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint">
+                    <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint" value="{{data['email']}}">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="mobile-number"><b>Mobile number (optional)</b></label>
                     <span id="mobile-number-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
-                    <input class="govuk-input" id="mobile-number" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint">
+                    <input class="govuk-input" id="mobile-number" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint" value="{{data['mobile-number']}}">
                 </div>
             </fieldset>
             <button type="submit" class="govuk-button">
