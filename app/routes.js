@@ -1630,6 +1630,27 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   }
 
+  //Date validation
+  var todaysDate = new Date();
+  
+  if (monthError == false && yearError == false) {
+
+    //Assume that all entered years occur in the 21st century
+    var expiryDate = new Date(('20' + year), month);
+
+    if (expiryDate < todaysDate) {
+
+      var monthError = true;
+      var monthErrorMessage = "Enter a date in the future";
+
+    } else {
+
+      var monthError = false;
+
+    }
+
+  }
+
   if (error == true) {
 
     res.render('payments/debit-credit-card', {
