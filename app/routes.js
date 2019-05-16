@@ -1371,7 +1371,7 @@ router.post('/payments/confirm-payment', function (req, res) {
 
   }
 
-  var selectedDates = dates.join(', ');
+  var selectedDates = dates.slice(0, -1).join(', ') + ', and ' + dates.slice(-1);
 
   if (caz == 'leeds-weekly') {
 
