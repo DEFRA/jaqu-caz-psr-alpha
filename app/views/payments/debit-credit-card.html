@@ -21,9 +21,14 @@ text: "Back"
             </h2>
             <div class="govuk-error-summary__body">
                 <ul class="govuk-list govuk-error-summary__list">
-                {% if cardNumberErrorMessage %}
+                {% if cardNumberError %}
                 <li>
                     <a href="#card-error">{{cardNumberErrorMessage}}</a>
+                </li>
+                {% endif %}
+                {% if cardNameError %}
+                <li>
+                    <a href="#card-name-error">{{cardNameErrorMessage}}</a>
                 </li>
                 {% endif %}
                 </ul>
@@ -72,10 +77,20 @@ text: "Back"
                         <input id="expiry-year" type="number" name="expiry-year" value="" minlength="2" maxlength="4" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-year" data-last-of-form-group="" data-required="">
                       </div>
                   </div>
+                {% if cardNameError %}
+                <div class="govuk-form-group govuk-form-group--error">
+                {% endif %}
+                {% if not cardNameError %} 
                 <div class="govuk-form-group">
+                {% endif %}
                     <label class="govuk-label" for="card-name">
                         <b>Name on card</b>
                     </label>
+                    {% if cardNameError %}
+                    <span id="card-name-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{cardNameErrorMessage}}
+                    </span>
+                    {% endif %}
                     <input class="govuk-input" id="card-number" name="card-name" type="text" style="width: 60%;" aria-describedby="card-name-hint">
                 </div>
                 <div class="govuk-form-group">

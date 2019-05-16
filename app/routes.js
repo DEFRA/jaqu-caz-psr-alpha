@@ -1523,56 +1523,79 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   var selectedDates = dates.join(', ');
 
+  // Card number validation
   var cardNumber = req.session.data['card-number'];
   var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
   var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
   var amexpRegEx = /^(?:3[47][0-9]{13})$/;
   var discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
-  var cardNumberIsValid = false;
+  var error = false;
 
-  if (visaRegEx.test(cardNumber)) {
-    cardNumberIsValid = true;
-  } else if(mastercardRegEx.test(cardNumber)) {
-    cardNumberIsValid = true;
-  } else if(amexpRegEx.test(cardNumber)) {
-    cardNumberIsValid = true;
-  } else if(discovRegEx.test(cardNumber)) {
-    cardNumberIsValid = true;
-  }
+  if (cardNumber != "") {
 
-  if (cardNumber == "") {
+    if (visaRegEx.test(cardNumber)) {
 
-    error = true;
-  
-      res.render('payments/debit-credit-card', {
-        amountDue: req.session.amountDue,
-        caz: caz,
-        date: selectedDates,
-        error: error,
-        cardNumberError: true,
-        cardNumberErrorMessage: "Enter a card number"
-      });
+      var cardNumberError = false;
+
+    } else if(mastercardRegEx.test(cardNumber)) {
+
+      var cardNumberError = false;
+
+    } else if(amexpRegEx.test(cardNumber)) {
+
+      var cardNumberError = false;
+
+    } else if(discovRegEx.test(cardNumber)) {
+
+      var cardNumberError = false;
+
+    } else {
+
+      var cardNumberError = true;
+      var cardNumberErrorMessage = "Enter a valid card number";
+      error = true;
+
+    }
 
   } else {
 
-    if (!cardNumberIsValid) {
+    var cardNumberError = true;
+    var cardNumberErrorMessage = "Enter a card number";
+    error = true
 
-      error = true;
-  
-      res.render('payments/debit-credit-card', {
-        amountDue: req.session.amountDue,
-        caz: caz,
-        date: selectedDates,
-        error: error,
-        cardNumberError: true,
-        cardNumberErrorMessage: "Enter a valid card number"
-      });
-  
-    } else {
-  
-      res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
-  
-    }
+  }
+
+  //Card name validation
+  var cardName = req.session.data['card-name'];
+
+  if (cardName == "") {
+
+    var cardNameError = true;
+    var cardNameErrorMessage = "Enter the name of the cardholder";
+    error = true;
+
+  } else {
+
+    var cardNameError = false;
+
+  }
+
+  if (error == true) {
+
+    res.render('payments/debit-credit-card', {
+      amountDue: req.session.amountDue,
+      caz: caz,
+      date: selectedDates,
+      error: error,
+      cardNumberError: cardNumberError,
+      cardNumberErrorMessage: cardNumberErrorMessage,
+      cardNameError: cardNameError,
+      cardNameErrorMessage: cardNameErrorMessage
+    });
+
+  } else {
+
+    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
 
   }
 
