@@ -1523,39 +1523,12 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   var selectedDates = dates.join(', ');
 
-  // Card number validation
-  var cardNumber = req.session.data['card-number'];
-  var visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-  var mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
-  var amexpRegEx = /^(?:3[47][0-9]{13})$/;
-  var discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
   var error = false;
 
+  // Card number validation
   if (cardNumber != "") {
 
-    if (visaRegEx.test(cardNumber)) {
-
-      var cardNumberError = false;
-
-    } else if(mastercardRegEx.test(cardNumber)) {
-
-      var cardNumberError = false;
-
-    } else if(amexpRegEx.test(cardNumber)) {
-
-      var cardNumberError = false;
-
-    } else if(discovRegEx.test(cardNumber)) {
-
-      var cardNumberError = false;
-
-    } else {
-
-      var cardNumberError = true;
-      var cardNumberErrorMessage = "Enter a valid card number";
-      error = true;
-
-    }
+    var cardNumberError = false;
 
   } else {
 
@@ -1583,97 +1556,45 @@ router.post('/payments/confirm-payment-details', function (req, res) {
   //Month validation
   var month = req.session.data['expiry-month'];
 
-  if (month != "") {
+  if (month == "") {
 
-    if (month < 1 | month > 12) {
-
-      var monthError = true;
-      var monthErrorMessage = "Enter a valid month";
-      error = true;
-
-    } else {
-
-      var monthError = false;
-
-    }
+    var monthError = true;
+    var monthErrorMessage = "Enter a valid month";
+    error = true;
 
   } else {
 
-    var monthError = true;
-    var monthErrorMessage = "Enter the month of expiry";
-    error = true;
+    var monthError = false;
 
   }
 
   //Year validation
   var year = req.session.data['expiry-year'];
 
-  if (year != "") {
+  if (year == "") {
 
-    if (year.length != 2) {
-
-      var yearError = true;
-      var yearErrorMessage = "Enter a valid date using only 2 characters";
-      error = true;
-
-    } else {
-
-      var yearError = false;
-
-    }
+    var yearError = true;
+    var yearErrorMessage = "Enter a valid date using only 2 characters";
+    error = true;
 
   } else {
 
-    var yearError = true;
-    var yearErrorMessage = "Enter the year of expiry";
-    error = true;
-
-  }
-
-  //Date validation
-  var todaysDate = new Date();
-  
-  if (monthError == false && yearError == false) {
-
-    //Assume that all entered years occur in the 21st century
-    var expiryDate = new Date(('20' + year), month);
-
-    if (expiryDate < todaysDate) {
-
-      var monthError = true;
-      var monthErrorMessage = "Enter a date in the future";
-
-    } else {
-
-      var monthError = false;
-
-    }
+    var yearError = false;
 
   }
 
   //Security code validation
   var securityCode = req.session.data['card-code'];
 
-  if (securityCode != "") {
-
-    if (securityCode.length != 3) {
-
-      var securityCodeError = true;
-      var securityCodeErrorMessage = "Enter a 3-digit security code. You can find this on the security strip at the back of your card";
-      error = true;
-
-    } else {
-
-      var securityCodeError = false;
-
-    }
-
-  } else {
+  if (securityCode == "") {
 
     var securityCodeError = true;
     var securityCodeErrorMessage = "Enter a 3-digit security code. You can find this on the security strip at the back of your card";
     error = true;
 
+  } else {
+
+    var securityCodeError = false;
   }
 
   //Country validation
