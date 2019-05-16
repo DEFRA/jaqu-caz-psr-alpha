@@ -1414,7 +1414,11 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   var selectedDates = dates.join(', ');
 
-  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+  var cardNumber = req.session.data['card-number'];
+  var asterisk = '*';
+  var cardNumberString = asterisk.repeat(cardNumber.length - 4) + cardNumber.substr(cardNumber.length - 4);
+
+  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, cardNumber: cardNumberString});
 
 });
 
