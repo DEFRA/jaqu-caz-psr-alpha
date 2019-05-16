@@ -1605,6 +1605,31 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   }
 
+  //Year validation
+  var year = req.session.data['expiry-year'];
+
+  if (year != "") {
+
+    if (year.length != 2) {
+
+      var yearError = true;
+      var yearErrorMessage = "Enter a valid date using only 2 characters";
+      error = true;
+
+    } else {
+
+      var yearError = false;
+
+    }
+
+  } else {
+
+    var yearError = true;
+    var yearErrorMessage = "Enter the year of expiry";
+    error = true;
+
+  }
+
   if (error == true) {
 
     res.render('payments/debit-credit-card', {
@@ -1616,6 +1641,8 @@ router.post('/payments/confirm-payment-details', function (req, res) {
       cardNumberErrorMessage: cardNumberErrorMessage,
       monthError: monthError,
       monthErrorMessage: monthErrorMessage,
+      yearError: yearError,
+      yearErrorMessage: yearErrorMessage,
       cardNameError: cardNameError,
       cardNameErrorMessage: cardNameErrorMessage
     });

@@ -31,6 +31,11 @@ text: "Back"
                     <a href="#month-error">{{monthErrorMessage}}</a>
                 </li>
                 {% endif %}
+                {% if yearError %}
+                <li>
+                    <a href="#year-error">{{yearErrorMessage}}</a>
+                </li>
+                {% endif %}
                 {% if cardNameError %}
                 <li>
                     <a href="#card-name-error">{{cardNameErrorMessage}}</a>
@@ -65,10 +70,10 @@ text: "Back"
                     Accepted credit and debit card types
                 </span>
                 <br>
-                {% if monthError %}
+                {% if monthError or yearError %}
                 <div class="govuk-form-group govuk-clearfix expiry-date govuk-form-group--error" data-validation="expiryMonth">
                 {% endif %}
-                {% if not monthError %} 
+                {% if not monthError and not yearError %} 
                 <div class="govuk-form-group govuk-clearfix expiry-date" data-validation="expiryMonth">
                 {% endif %}
                     <label class="govuk-label govuk-label--s" id="expiry-date-lbl" for="expiry-month">
@@ -80,7 +85,7 @@ text: "Back"
                       For example, 10/20</span>
                     <div class="govuk-date-input__item govuk-date-input__item--month govuk-date-input__item--with-separator">
                         <label class="govuk-label govuk-date-input__label" for="expiry-month">Month</label>
-                        {% if cardNumberError %}
+                        {% if monthError %}
                         <span id="month-error" class="govuk-error-message">
                             <span class="govuk-visually-hidden">Error:</span> {{monthErrorMessage}}
                         </span>
@@ -89,7 +94,12 @@ text: "Back"
                     </div>
                     <div class="govuk-date-input__item govuk-date-input__item--year">
                         <label for="expiry-year" class="govuk-label govuk-date-input__label">Year</label>
-                        <input id="expiry-year" type="number" name="expiry-year" value="" minlength="2" maxlength="4" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-year" data-last-of-form-group="" data-required="">
+                        {% if yearError %}
+                        <span id="year-error" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span> {{yearErrorMessage}}
+                        </span>
+                        {% endif %}
+                        <input id="expiry-year" type="number" name="expiry-year" value="{{data['expiry-year']}}" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-year" data-last-of-form-group="" data-required="">
                       </div>
                   </div>
                 {% if cardNameError %}
