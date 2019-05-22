@@ -82,9 +82,19 @@ text: "Back"
                     <label class="govuk-label" for="card-number">
                         <b>Card number</b>
                     </label>
+<<<<<<< HEAD
                     {% if cardNumberError %}
                     <span id="card-error" class="govuk-error-message">
                         <span class="govuk-visually-hidden">Error:</span> {{cardNumberErrorMessage}}
+=======
+                    <input class="govuk-input" id="card-number" name="card-number" type="text"style="width: 60%;" aria-describedby="card-number-hint" required>
+                    <br>
+                    <br>
+                    <span id="card-number-hint" class="govuk-hint">
+                        <img src="../../../public/images/card-types.png" alt="accepted-cards-visa-maestro-mastercard-amex" style="height: 40px;" />
+                        <br>
+                        Accepted credit and debit card types
+>>>>>>> sprint-5-dev
                     </span>
                     {% endif %}
                     <input class="govuk-input" id="card-number" name="card-number" type="text"style="width: 60%;" aria-describedby="card-number-hint" value="{{data['card-number']}}">
@@ -117,6 +127,7 @@ text: "Back"
                         {% endif %}
                         <input id="expiry-month" type="number" name="expiry-month" value="{{data['expiry-month']}}" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-month">
                     </div>
+                    <span style="font-size: 30px; font-weight: bold; margin-right: 10px; margin-left: -10px;">/</span>
                     <div class="govuk-date-input__item govuk-date-input__item--year">
                         <label for="expiry-year" class="govuk-label govuk-date-input__label">Year</label>
                         {% if yearError %}
@@ -177,12 +188,16 @@ text: "Back"
                 <div class="govuk-form-group">
                 {% endif %}
                     <label class="govuk-label govuk-date-input__label" for="country"><b>Country or territory</b></label>
+<<<<<<< HEAD
                     {% if countryError %}
                     <span id="country-error" class="govuk-error-message">
                         <span class="govuk-visually-hidden">Error:</span> {{countryErrorMessage}}
                     </span>
                     {% endif %}
                     <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" value="{{data['country']}}">
+=======
+                    <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" required>
+>>>>>>> sprint-5-dev
                 </div>
                 {% if buildingNumberError %}
                 <div class="govuk-form-group govuk-form-group--error">
@@ -191,12 +206,19 @@ text: "Back"
                 <div class="govuk-form-group">
                 {% endif %}    
                     <label class="govuk-label govuk-date-input__label" for="building-number"><b>Building number or name and street</b></label>
+<<<<<<< HEAD
                     {% if buildingNumberError %}
                     <span id="building-number-error" class="govuk-error-message">
                         <span class="govuk-visually-hidden">Error:</span> {{buildingNumberErrorMessage}}
                     </span>
                     {% endif %}
                     <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" value="{{data['building-number']}}">
+=======
+                    <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" required>
+                    <br>
+                    <br>
+                    <input class="govuk-input id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint">
+>>>>>>> sprint-5-dev
                 </div>
                     <input class="govuk-input" id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint" value="{{data['street']}}">
                 <br>
@@ -208,12 +230,16 @@ text: "Back"
                 <div class="govuk-form-group">
                 {% endif %}
                     <label class="govuk-label govuk-date-input__label" for="town"><b>Town or city</b></label>
+<<<<<<< HEAD
                     {% if townError %}
                     <span id="town-error" class="govuk-error-message">
                         <span class="govuk-visually-hidden">Error:</span> {{townErrorMessage}}
                     </span>
                     {% endif %}
                     <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" value="{{data['town']}}">
+=======
+                    <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" required>
+>>>>>>> sprint-5-dev
                 </div>
                 {% if postcodeError %}
                 <div class="govuk-form-group govuk-form-group--error">
@@ -234,14 +260,22 @@ text: "Back"
                     <span id="email-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
+<<<<<<< HEAD
                     <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint" value="{{data['email']}}">
+=======
+                    <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint">
+>>>>>>> sprint-5-dev
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="mobile-number"><b>Mobile number (optional)</b></label>
                     <span id="mobile-number-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
+<<<<<<< HEAD
                     <input class="govuk-input" id="mobile-number" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint" value="{{data['mobile-number']}}">
+=======
+                    <input class="govuk-input" id="mobile-number" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint">
+>>>>>>> sprint-5-dev
                 </div>
             </fieldset>
             <button type="submit" class="govuk-button">
