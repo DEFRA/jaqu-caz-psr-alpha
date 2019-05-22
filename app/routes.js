@@ -387,6 +387,9 @@ router.post('/payments/selected-date', function (req, res) {
 
   var date = req.body['date'];
   var caz = req.session.data['caz'];
+  var vrn = req.session.data['vrn'];
+  // Remove spacing and make letters uppercase
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
   var charges = [];
   var dates = [];
@@ -592,7 +595,7 @@ router.post('/payments/selected-date', function (req, res) {
 
   var selectedDates = dates.join(', ');
 
-  res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+  res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
 
 });
 
@@ -601,6 +604,9 @@ router.get('/payments/selected-date', function (req, res) {
 
   var date = req.session.data['date'];
   var caz = req.session.data['caz'];
+  var vrn = req.session.data['vrn'];
+  // Remove spacing and make letters uppercase
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
   var charges = [];
   var dates = [];
@@ -806,7 +812,7 @@ router.get('/payments/selected-date', function (req, res) {
 
   var selectedDates = dates.join(', ');
 
-  res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+  res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
 
 });
 
@@ -1096,6 +1102,7 @@ router.post('/payments/confirm-payment', function (req, res) {
   var mobile = req.session.data['mobile-number'];
   var caz = req.session.data['caz'];
   var date = req.session.data['date'];
+  var vrn = req.session.data['vrn'];
 
   var dates = [];
 
@@ -1237,6 +1244,9 @@ router.post('/payments/confirm-payment', function (req, res) {
 
   }
 
+  // Remove spacing and make letters uppercase
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
+
   if (email != "") {
 
     notify.sendEmail(
@@ -1247,7 +1257,7 @@ router.post('/payments/confirm-payment', function (req, res) {
         personalisation: {
           'charge': req.session.amountDue,
           'caz': localAuthority,
-          'vrn': req.session.data['vrn'],
+          'vrn': formattedVrn,
           'dates': selectedDates,
           'paymentDate': todayMessage
         }
@@ -1266,7 +1276,7 @@ router.post('/payments/confirm-payment', function (req, res) {
         personalisation: {
           'charge': req.session.amountDue,
           'caz': localAuthority,
-          'vrn': req.session.data['vrn'],
+          'vrn': formattedVrn,
           'dates': selectedDates,
           'paymentDate': todayMessage
         }
@@ -1283,6 +1293,9 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   var date = req.session.data['date'];
   var caz = req.session.data['caz'];
+  var vrn = req.session.data['vrn'];
+  // Remove spacing and make letters uppercase
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
   var dates = [];
 
@@ -1419,7 +1432,7 @@ router.post('/payments/confirm-payment-details', function (req, res) {
   // var cardNumberString = asterisk.repeat(cardNumber.length - 4) + cardNumber.substr(cardNumber.length - 4);
   var cardNumberString = asterisk.repeat(12) + '1234';
 
-  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, cardNumber: cardNumberString});
+  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, cardNumber: cardNumberString, vrn: formattedVrn});
 
 });
 
@@ -1427,6 +1440,9 @@ router.get('/payments/confirm-payment-details', function (req, res) {
 
   var date = req.session.data['date'];
   var caz = req.session.data['caz'];
+  var vrn = req.session.data['vrn'];
+  // Remove spacing and make letters uppercase
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
   var dates = [];
 
@@ -1558,7 +1574,7 @@ router.get('/payments/confirm-payment-details', function (req, res) {
 
   var selectedDates = dates.join(', ');
 
-  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
 
 });
 
