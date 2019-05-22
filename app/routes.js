@@ -1415,7 +1415,7 @@ router.post('/payments/confirm-payment-details', function (req, res) {
   var selectedDates = dates.join(', ');
 
   // var cardNumber = req.session.data['card-number'];
-  // var asterisk = '*';
+  var asterisk = '*';
   // var cardNumberString = asterisk.repeat(cardNumber.length - 4) + cardNumber.substr(cardNumber.length - 4);
   var cardNumberString = asterisk.repeat(12) + '1234';
 
