@@ -1519,6 +1519,8 @@ router.post('/payments/confirm-payment-details', function (req, res) {
   var error = false;
 
   // Card number validation
+  var cardNumber = req.session.data['card-number'];
+  
   if (cardNumber != "") {
 
     var cardNumberError = false;
