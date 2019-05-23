@@ -26,22 +26,13 @@ text: "Back"
           </strong>
       </div>
       <div class="govuk-form-group">
-        <label class="govuk-label" for="start-date">
+        <label class="govuk-label" for="datepicker">
             <b>Start date</b>
         </label>
         <span id="vrn-hint" class="govuk-hint">
           For example, 25/05/2019
         </span>
-        <input class="govuk-input govuk-input--width-10" id="start-date" name="start-date" type="text" required>
-        <br>
-        <br>
-        <label class="govuk-label" for="end-date">
-            <b>End date</b>
-        </label>
-        <span id="vrn-hint" class="govuk-hint">
-          For example, 27/05/2019
-        </span>
-        <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
+        <input class="govuk-input govuk-input--width-10" id="datepicker" name="datepicker" type="text">
       </div>
       <p>A daily charge runs from midnight to midnight.</p>
             <button type="submit" class="govuk-button">
@@ -50,36 +41,17 @@ text: "Back"
     </div>
 </div>
 
+<script src="/public/javascripts/"></script>
+<script src="/public/javascripts/lightpick.js"></script>
+
 <script>
-
-  var today = new Date();
-  today.setDate(today.getDate() + 7);
-  var yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-
-  const start = datepicker(document.querySelector('#start-date'), {
-    id: 1,
-    formatter: (input, date, instance) => {
-      const value = date.toLocaleDateString()
-      input.value = value
-    },
-    position: 'bl',
-    startDay: 1,
-    maxDate: today,
-    minDate: yesterday
-  });
-
-  const end = datepicker(document.querySelector('#end-date'), {
-    id: 1,
-    formatter: (input, date, instance) => {
-      const value = date.toLocaleDateString()
-      input.value = value
-    },
-    position: 'bl',
-    startDay: 1,
-    maxDate: today,
-    minDate: yesterday
-  });
+var picker = new Lightpick({
+    field: document.getElementById('datepicker'),
+    singleDate: false,
+    onSelect: function(date){
+        document.getElementById('datepicker').innerHTML = date.format('Do MMMM YYYY');
+    }
+});
 </script>
 
 {% endblock %}
