@@ -33,6 +33,7 @@ text: "Back"
           For example, 25/05/2019
         </span>
         <input class="govuk-input govuk-input--width-10" id="datepicker" name="datepicker" type="text">
+        <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
       </div>
       <p>A daily charge runs from midnight to midnight.</p>
             <button type="submit" class="govuk-button">
@@ -41,15 +42,16 @@ text: "Back"
     </div>
 </div>
 
-<script src="/public/javascripts/"></script>
+<script src="/public/javascripts/moment.min.js"></script>
 <script src="/public/javascripts/lightpick.js"></script>
 
 <script>
 var picker = new Lightpick({
     field: document.getElementById('datepicker'),
     singleDate: false,
-    onSelect: function(date){
-        document.getElementById('datepicker').innerHTML = date.format('Do MMMM YYYY');
+    onSelect: function(start, end){
+        document.getElementById('datepicker').innerHTML = start.format('Do MMMM YYYY');
+        document.getElementById('end-date').innerHTML = end.format('Do MMMM YYYY');
     }
 });
 </script>
