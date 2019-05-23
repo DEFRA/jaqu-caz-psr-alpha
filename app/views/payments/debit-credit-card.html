@@ -14,93 +14,27 @@ text: "Back"
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        {% if error %}
-        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
-            <h2 class="govuk-error-summary__title" id="error-summary-title">
-                There is a problem
-            </h2>
-            <div class="govuk-error-summary__body">
-                <ul class="govuk-list govuk-error-summary__list">
-                {% if cardNumberError %}
-                <li>
-                    <a href="#card-error">{{cardNumberErrorMessage}}</a>
-                </li>
-                {% endif %}
-                {% if monthError %}
-                <li>
-                    <a href="#month-error">{{monthErrorMessage}}</a>
-                </li>
-                {% endif %}
-                {% if yearError %}
-                <li>
-                    <a href="#year-error">{{yearErrorMessage}}</a>
-                </li>
-                {% endif %}
-                {% if cardNameError %}
-                <li>
-                    <a href="#card-name-error">{{cardNameErrorMessage}}</a>
-                </li>
-                {% endif %}
-                {% if securityCodeError %}
-                <li>
-                    <a href="#card-code-error">{{securityCodeErrorMessage}}</a>
-                </li>
-                {% endif %}
-                {% if countryError %}
-                <li>
-                    <a href="#country-error">{{countryErrorMessage}}</a>
-                </li>
-                {% endif %}
-                {% if buildingNumberError %}
-                <li>
-                    <a href="#building-number-error">{{buildingNumberErrorMessage}}</a>
-                </li>
-                {% endif %}
-                {% if townError %}
-                <li>
-                    <a href="#town-error">{{townErrorMessage}}</a>
-                </li>
-                {% endif %}
-                {% if postcodeError %}
-                <li>
-                    <a href="#postcode-error">{{postcodeErrorMessage}}</a>
-                </li>
-                {% endif %}
-                </ul>
-            </div>
-        </div>
-        {% endif %}
-        <h1 class="govuk-heading-l">Enter card details</h1>
         <form method="post" class="form" action="/payments/confirm-payment-details">
             <fieldset class="govuk-fieldset">
-                {% if cardNumberError %}
-                <div class="govuk-form-group govuk-form-group--error">
-                {% endif %}
-                {% if not cardNumberError %} 
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                    <h1 class="govuk-heading-l">
+                        Enter card details
+                    </h1>
+                </legend>
                 <div class="govuk-form-group">
-                {% endif %}
                     <label class="govuk-label" for="card-number">
                         <b>Card number</b>
                     </label>
-                    {% if cardNumberError %}
-                    <span id="card-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{cardNumberErrorMessage}}
-                    </span>
-                    {% endif %}
-                    <input class="govuk-input" id="card-number" name="card-number" type="text"style="width: 60%;" aria-describedby="card-number-hint" value="{{data['card-number']}}">
-                </div>
-                <span id="card-number-hint" class="govuk-hint">
-                    <img src="../../../public/images/card-types.png" alt="accepted-cards-visa-maestro-mastercard-amex" style="height: 40px;" />
+                    <input class="govuk-input" id="card-number" name="card-number" type="text"style="width: 60%;" aria-describedby="card-number-hint" required>
                     <br>
-                    Accepted credit and debit card types
-                </span>
-                <br>
-                {% if monthError or yearError %}
-                <div class="govuk-form-group govuk-clearfix expiry-date govuk-form-group--error" data-validation="expiryMonth">
-                {% endif %}
-                {% if not monthError and not yearError %} 
+                    <br>
+                    <span id="card-number-hint" class="govuk-hint">
+                        <img src="../../../public/images/card-types.png" alt="accepted-cards-visa-maestro-mastercard-amex" style="height: 40px;" />
+                        <br>
+                        Accepted credit and debit card types
+                    </span>
+                </div>
                 <div class="govuk-form-group govuk-clearfix expiry-date" data-validation="expiryMonth">
-                {% endif %}
                     <label class="govuk-label govuk-label--s" id="expiry-date-lbl" for="expiry-month">
                       <span class="expiry-date-label" data-label-replace="expiryMonth" data-original-label="Expiry date">
                         Expiry date
@@ -110,59 +44,30 @@ text: "Back"
                       For example, 10/20</span>
                     <div class="govuk-date-input__item govuk-date-input__item--month govuk-date-input__item--with-separator">
                         <label class="govuk-label govuk-date-input__label" for="expiry-month">Month</label>
-                        {% if monthError %}
-                        <span id="month-error" class="govuk-error-message">
-                            <span class="govuk-visually-hidden">Error:</span> {{monthErrorMessage}}
-                        </span>
-                        {% endif %}
-                        <input id="expiry-month" type="number" name="expiry-month" value="{{data['expiry-month']}}" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-month">
+                        <input id="expiry-month" type="number" name="expiry-month" value="" class="govuk-input govuk-date-input__input govuk-input--width-2" min="1" max="12" minlength="1" maxlength="2" autocomplete="cc-exp-month" required>
                     </div>
                     <span style="font-size: 30px; font-weight: bold; margin-right: 10px; margin-left: -10px;">/</span>
                     <div class="govuk-date-input__item govuk-date-input__item--year">
                         <label for="expiry-year" class="govuk-label govuk-date-input__label">Year</label>
-                        {% if yearError %}
-                        <span id="year-error" class="govuk-error-message">
-                            <span class="govuk-visually-hidden">Error:</span> {{yearErrorMessage}}
-                        </span>
-                        {% endif %}
-                        <input id="expiry-year" type="number" name="expiry-year" value="{{data['expiry-year']}}" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-year" data-last-of-form-group="" data-required="">
+                        <input id="expiry-year" type="number" name="expiry-year" value="" minlength="2" maxlength="4" class="govuk-input govuk-date-input__input govuk-input--width-2" autocomplete="cc-exp-year" data-last-of-form-group="" data-required="" required>
                       </div>
                   </div>
-                {% if cardNameError %}
-                <div class="govuk-form-group govuk-form-group--error">
-                {% endif %}
-                {% if not cardNameError %} 
                 <div class="govuk-form-group">
-                {% endif %}
                     <label class="govuk-label" for="card-name">
                         <b>Name on card</b>
                     </label>
-                    {% if cardNameError %}
-                    <span id="card-name-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{cardNameErrorMessage}}
-                    </span>
-                    {% endif %}
-                    <input class="govuk-input" id="card-number" name="card-name" type="text" style="width: 60%;" aria-describedby="card-name-hint" value="{{data['card-name']}}">
+                    <input class="govuk-input" id="card-name" name="card-name" type="text" style="width: 60%;" aria-describedby="card-name-hint" required>
                 </div>
-                {% if securityCodeError %}
-                <div class="govuk-form-group govuk-form-group--error">
-                {% endif %}
-                {% if not securityCodeError %} 
                 <div class="govuk-form-group">
-                {% endif %}
                     <label class="govuk-label" for="card-code">
                         <b>Card security code</b>
                     </label>
                     <span id="card-code-hint" class="govuk-hint">
                         The last 3 digits on the back of the card
                     </span>
-                    {% if securityCodeError %}
-                    <span id="card-code-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{securityCodeErrorMessage}}
-                    </span>
-                    {% endif %}
-                    <input class="govuk-input govuk-input--width-3" id="card-code" name="card-code" type="text" aria-describedby="card-code-hint" value="{{data['card-code']}}">
+                    <input class="govuk-input govuk-input--width-3" id="card-code" name="card-code" type="text" aria-describedby="card-code-hint" required>
                     <img src="../../../public/images/security-code.png" alt="security-code" style="margin-bottom: -15px; height: 40px;" /> 
+
                 </div>
                 <div class="govuk-heading-m">
                     Billing address
@@ -170,78 +75,38 @@ text: "Back"
                 <span id="billing-address-hint" class="govuk-hint">
                     This is the address associated with the card
                 </span>
-                {% if countryError %}
-                <div class="govuk-form-group govuk-form-group--error">
-                {% endif %}
-                {% if not countryError %} 
                 <div class="govuk-form-group">
-                {% endif %}
                     <label class="govuk-label govuk-date-input__label" for="country"><b>Country or territory</b></label>
-                    {% if countryError %}
-                    <span id="country-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{countryErrorMessage}}
-                    </span>
-                    {% endif %}
-                    <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" value="{{data['country']}}">
+                    <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" required>
                 </div>
-                {% if buildingNumberError %}
-                <div class="govuk-form-group govuk-form-group--error">
-                {% endif %}
-                {% if not buildingNumberError %} 
                 <div class="govuk-form-group">
-                {% endif %}    
                     <label class="govuk-label govuk-date-input__label" for="building-number"><b>Building number or name and street</b></label>
-                    {% if buildingNumberError %}
-                    <span id="building-number-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{buildingNumberErrorMessage}}
-                    </span>
-                    {% endif %}
-                    <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" value="{{data['building-number']}}">
+                    <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" required>
+                    <br>
+                    <br>
+                    <input class="govuk-input" id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint">
                 </div>
-                    <input class="govuk-input" id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint" value="{{data['street']}}">
-                <br>
-                <br>
-                {% if townError %}
-                <div class="govuk-form-group govuk-form-group--error">
-                {% endif %}
-                {% if not townError %} 
                 <div class="govuk-form-group">
-                {% endif %}
                     <label class="govuk-label govuk-date-input__label" for="town"><b>Town or city</b></label>
-                    {% if townError %}
-                    <span id="town-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{townErrorMessage}}
-                    </span>
-                    {% endif %}
-                    <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" value="{{data['town']}}">
+                    <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" required>
                 </div>
-                {% if postcodeError %}
-                <div class="govuk-form-group govuk-form-group--error">
-                {% endif %}
-                {% if not postcodeError %} 
                 <div class="govuk-form-group">
-                {% endif %}
                     <label class="govuk-label govuk-date-input__label" for="postcode"><b>Postcode</b></label>
-                    {% if postcodeError %}
-                    <span id="postcode-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{postcodeErrorMessage}}
-                    </span>
-                    {% endif %}
-                    <input class="govuk-input govuk-input--width-5" id="postcode" name="postcode" type="text" style="width: 60%;" aria-describedby="postcode-hint" value="{{data['postcode']}}">
+                    <input class="govuk-input" govuk-input--width-5" id="postcode" name="postcode" type="text" style="width: 60%;" aria-describedby="postcode-hint" required>
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="email"><b>Email (optional)</b></label>
                     <span id="email-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
-                    <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint" value="{{data['email']}}">
+                    <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="mobile-number"><b>Mobile number (optional)</b></label>
                     <span id="mobile-number-hint" class="govuk-hint">
                         We'll only use this to send your receipt
                     </span>
-                    <input class="govuk-input" id="mobile-number" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint" value="{{data['mobile-number']}}">
+                    <input class="govuk-input" id="mobile-number" name="mobile-number" type="text" style="width: 60%;" aria-describedby="mobile-number-hint">
                 </div>
             </fieldset>
             <button type="submit" class="govuk-button">
