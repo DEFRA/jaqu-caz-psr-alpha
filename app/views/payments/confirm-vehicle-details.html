@@ -48,7 +48,7 @@ text: "Back"
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell" scope="row">Taxi/private hire vehicle?</td>
-            <th class="govuk-table__cell">Yes</th>
+            <th class="govuk-table__cell">{% if data['vrn']=='ABC123' %}Yes{% else %}No{% endif %}</th>
           </tr>
         </tbody>
       </table>

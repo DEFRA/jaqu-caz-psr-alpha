@@ -15,14 +15,17 @@ text: "Back"
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">What days are you paying for?</h1>
-        <p>You can pay up to 7 days in advance.</p>
-        <div class="govuk-warning-text">
-            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
-                <span class="govuk-warning-text__assistive">Warning</span>
-                You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
-            </strong>
-        </div>
+        <p>A daily charge runs from midnight to midnight.</p>
+        <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Why can't I see my date?
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+                You can only pay 7 days in advance. <br><br>You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
+            </div>
+          </details>
         <form method="post" class="form" action="/payments/selected-date">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
@@ -36,7 +39,7 @@ text: "Back"
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="date-2" name="date" type="checkbox" value="today">
                             <label class="govuk-label govuk-checkboxes__label" for="date-2">
-                                {{today}}
+                                <b>{{today}}</b> (Today)
                             </label>
                         </div>
                         <div class="govuk-checkboxes__item">
@@ -84,7 +87,6 @@ text: "Back"
                     </div>
                 </fieldset>
             </div>
-            <p>A daily charge runs from midnight to midnight.</p>
             <button type="submit" class="govuk-button">
                 Continue
             </button>
