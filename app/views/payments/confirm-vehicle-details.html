@@ -14,72 +14,96 @@ text: "Back"
 
 {% block content %}   
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-    
-      <h1 class="govuk-heading-l">
-        Are these details correct?
-      </h1>
-      <table class="govuk-table">
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="row"></td>
-            <td class="govuk-table__cell"></td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="row">Registration</td>
-            <th class="govuk-table__cell" style="text-transform: uppercase">{{ data['vrn'] }}</td>
-          </tr>
-          <tr class="govuk-table__row">
-              <td class="govuk-table__cell" scope="row">Type</td>
-              <th class="govuk-table__cell">Car</td>
-            </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="row">Make</td>
-            <th class="govuk-table__cell">Peugeot</td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="row">Colour</td>
-            <th class="govuk-table__cell">Grey</th>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="row">Fuel type</td>
-            <th class="govuk-table__cell">Diesel</th>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="row">Taxi/private hire vehicle?</td>
-            <th class="govuk-table__cell">{% if data['vrn']=='ABC123' %}Yes{% else %}No{% endif %}</th>
-          </tr>
-        </tbody>
-      </table>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-
-      <form method="post" class="form" action="/payments/confirm-vehicle">
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="confirm-vehicle-hint">
-            <div class="govuk-radios govuk-radios--inline">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="confirm-vehicle-1" name="confirm-vehicle" type="radio" value="yes" required>
-                <label class="govuk-label govuk-radios__label" for="confirm-vehicle-1">
-                  Yes
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="confirm-vehicle-2" name="confirm-vehicle" type="radio" value="no" required>
-                <label class="govuk-label govuk-radios__label" for="confirm-vehicle-2">
-                  No
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <button type="submit" class="govuk-button">
-            Confirm
-        </button>
-      </form>  
-
+    {% if error %}
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#confirm-error">{{errorMessage}}</a>
+          </li>
+        </ul>
+      </div>
     </div>
+    {% endif %}
+  
+    <h1 class="govuk-heading-l">
+      Are these details correct?
+    </h1>
+    <table class="govuk-table">
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" scope="row"></td>
+          <td class="govuk-table__cell"></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" scope="row">Registration</td>
+          <th class="govuk-table__cell" style="text-transform: uppercase">{{ data['vrn'] }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="row">Type</td>
+            <th class="govuk-table__cell">Car</td>
+          </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" scope="row">Make</td>
+          <th class="govuk-table__cell">Peugeot</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" scope="row">Colour</td>
+          <th class="govuk-table__cell">Grey</th>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" scope="row">Fuel type</td>
+          <th class="govuk-table__cell">Diesel</th>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" scope="row">Taxi/private hire vehicle?</td>
+          <th class="govuk-table__cell">{% if data['vrn']=='ABC123' %}Yes{% else %}No{% endif %}</th>
+        </tr>
+      </tbody>
+    </table>
+
+    <form method="post" class="form" action="/payments/confirm-vehicle">
+      {% if error %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% endif %}
+      {% if not error %} 
+      <div class="govuk-form-group">
+      {% endif %}
+        {% if error %}
+        <span id="confirm-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
+        </span>
+        {% endif %}
+        <fieldset class="govuk-fieldset" aria-describedby="confirm-vehicle-hint">
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="confirm-vehicle-1" name="confirm-vehicle" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="confirm-vehicle-1">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="confirm-vehicle-2" name="confirm-vehicle" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="confirm-vehicle-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button">
+          Confirm
+      </button>
+    </form>  
+
+  </div>
 </div>
 
 {% endblock %}
