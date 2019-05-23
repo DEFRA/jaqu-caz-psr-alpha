@@ -26,13 +26,13 @@ text: "Back"
           </strong>
       </div>
       <div class="govuk-form-group">
-        <label class="govuk-label" for="datepicker">
+        <label class="govuk-label" for="start-date">
             <b>Start date</b>
         </label>
         <span id="vrn-hint" class="govuk-hint">
           For example, 25/05/2019
         </span>
-        <input class="govuk-input govuk-input--width-10" id="datepicker" name="datepicker" type="text">
+        <input class="govuk-input govuk-input--width-10" id="start-date" name="start-date" type="text">
         <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
       </div>
       <p>A daily charge runs from midnight to midnight.</p>
@@ -47,10 +47,11 @@ text: "Back"
 
 <script>
 var picker = new Lightpick({
-    field: document.getElementById('datepicker'),
+    field: document.getElementById('start-date'),
+    secondField: document.getElementById('end-date'),
     singleDate: false,
     onSelect: function(start, end){
-        document.getElementById('datepicker').innerHTML = start.format('Do MMMM YYYY');
+        document.getElementById('start-date').innerHTML = start.format('Do MMMM YYYY');
         document.getElementById('end-date').innerHTML = end.format('Do MMMM YYYY');
     }
 });
