@@ -17,13 +17,38 @@ text: "Back"
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% if error %}
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#vrn-error">{{errorMessage}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+
       <h1 class="govuk-heading-l">Enter the registration number of the vehicle</h1>
       <form method="POST" class="form" action="/confirm-vehicle-details">
+        {% if error %}
+        <div class="govuk-form-group govuk-form-group--error">
+        {% endif %}
+        {% if not error %} 
         <div class="govuk-form-group">
+        {% endif %}
           <span id="vrn-hint" class="govuk-hint">
             For example, CU57ABC
           </span>
-          <input class="govuk-input govuk-input--width-10" id="vrn" name="vrn" type="text" value="{{ data['vrn'] }}" required>
+          {% if error %}
+          <span id="vrn-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
+          </span>
+          {% endif %}
+          <input class="govuk-input govuk-input--width-10" id="vrn" name="vrn" type="text" value="{{ data['vrn'] }}">
         </div>
 
         <br>

@@ -1427,10 +1427,86 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   var selectedDates = dates.join(', ');
 
+<<<<<<< HEAD
   // var cardNumber = req.session.data['card-number'];
   var asterisk = '*';
   // var cardNumberString = asterisk.repeat(cardNumber.length - 4) + cardNumber.substr(cardNumber.length - 4);
   var cardNumberString = asterisk.repeat(12) + '1234';
+=======
+  var error = false;
+
+  // Card number validation
+  if (cardNumber != "") {
+
+    var cardNumberError = false;
+
+  } else {
+
+    var cardNumberError = true;
+    var cardNumberErrorMessage = "Enter a card number";
+    error = true
+
+  }
+
+  //Card name validation
+  var cardName = req.session.data['card-name'];
+
+  if (cardName == "") {
+
+    var cardNameError = true;
+    var cardNameErrorMessage = "Enter the name of the cardholder";
+    error = true;
+
+  } else {
+
+    var cardNameError = false;
+
+  }
+
+  //Month validation
+  var month = req.session.data['expiry-month'];
+
+  if (month == "") {
+
+    var monthError = true;
+    var monthErrorMessage = "Enter a valid month";
+    error = true;
+
+  } else {
+
+    var monthError = false;
+
+  }
+
+  //Year validation
+  var year = req.session.data['expiry-year'];
+
+  if (year == "") {
+
+    var yearError = true;
+    var yearErrorMessage = "Enter a valid date using only 2 characters";
+    error = true;
+
+  } else {
+
+    var yearError = false;
+
+  }
+
+  //Security code validation
+  var securityCode = req.session.data['card-code'];
+
+  if (securityCode == "") {
+
+    var securityCodeError = true;
+    var securityCodeErrorMessage = "Enter a 3-digit security code. You can find this on the security strip at the back of your card";
+    error = true;
+
+  } else {
+
+    var securityCodeError = false;
+  }
+>>>>>>> parent of bba867e9... Remove validation
 
   res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, cardNumber: cardNumberString, vrn: formattedVrn});
 
