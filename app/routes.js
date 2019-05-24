@@ -551,24 +551,24 @@ router.post('/payments/selected-date', function (req, res) {
 
     var numberOfDays = endDateObject.diff(startDateObject, "days") + 1;
 
-    // Returns an array of dates between the two dates (from https://gist.github.com/miguelmota/7905510)
-    var getDates = function(startDateObject, endDateObject) {
-      var dates = [],
-          currentDate = startDateObject,
-          addDays = function(days) {
-            var date = new Date(this.valueOf());
-            date.setDate(date.getDate() + days);
-            return date;
-          };
-      while (currentDate <= endDateObject) {
-        dates.push(currentDate);
-        currentDate = addDays.call(currentDate, 1);
-      }
-      return dates;
-    };
+    // // Returns an array of dates between the two dates (from https://gist.github.com/miguelmota/7905510)
+    // var getDates = function(startDateObject, endDateObject) {
+    //   var dates = [],
+    //       currentDate = startDateObject,
+    //       addDays = function(days) {
+    //         var date = new Date(this.valueOf());
+    //         date.setDate(date.getDate() + days);
+    //         return date;
+    //       };
+    //   while (currentDate <= endDateObject) {
+    //     dates.push(currentDate);
+    //     currentDate = addDays.call(currentDate, 1);
+    //   }
+    //   return dates;
+    // };
 
-    // Usage
-    var dates = getDates(startDateObject, endDateObject);                                                                                                           
+    // // Usage
+    // var dates = getDates(startDateObject, endDateObject);                                                                                                           
   
     if (numberOfDays > 0) {
   
@@ -584,13 +584,23 @@ router.post('/payments/selected-date', function (req, res) {
 
       req.session.amountDue = '£' + sum.toFixed(2);
 
-      var formattedDates = [];
+      // var formattedDates = [];
 
-      dates.forEach(function(date) {
-        formattedDates.push(moment(date).format('dddd MMMM DD YYYY'));
-      });
+      // dates.forEach(function(date) {
+      //   formattedDates.push(moment(date).format('dddd MMMM DD YYYY'));
+      // });
   
-      var selectedDates = formattedDates.join(', ');
+      // var selectedDates = formattedDates.join(', ');
+
+      if (numberOfDays == 1) {
+
+        var selectedDates = moment(startDateObject).format('dddd MMMM DD YYYY');
+
+      } else {
+
+        var selectedDates = moment(startDateObject).format('dddd MMMM DD YYYY') + ' to ' + moment(endDateObject).format('dddd MMMM DD YYYY');
+
+      }
     
       res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
   

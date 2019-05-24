@@ -109,6 +109,7 @@ var picker = new Lightpick({
     field: document.getElementById('start-date'),
     secondField: document.getElementById('end-date'),
     singleDate: false,
+    maxDays: 28,
     minDate: moment(new Date()).subtract(1, 'days'),
     onSelect: function(start, end){
         document.getElementById('start-date').innerHTML = start;
@@ -120,6 +121,7 @@ var picker2 = new Lightpick({
     field: document.getElementById('start-date-2'),
     secondField: document.getElementById('end-date-2'),
     singleDate: false,
+    maxDays: 28,
     minDate: moment(new Date()).subtract(1, 'days'),
     onSelect: function(start, end){
         document.getElementById('start-date-2').innerHTML = start;
