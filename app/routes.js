@@ -458,6 +458,8 @@ router.post('/payments/selected-date', function (req, res) {
   var date = req.body['start-date'];
   var startDate = req.body['start-date'];
   var endDate = req.body['end-date'];
+  var startDate2 = req.body['start-date-2'];
+  var endDate2 = req.body['end-date-2'];
   var caz = req.session.data['caz'];
   var vrn = req.session.data['vrn'];
   // Remove spacing and make letters uppercase
@@ -551,6 +553,18 @@ router.post('/payments/selected-date', function (req, res) {
 
     var numberOfDays = endDateObject.diff(startDateObject, "days") + 1;
 
+    if (startDate2 != "") {
+
+      var startDateArray2 = startDate2.split('/');
+      var startDateObject2 = moment(startDateArray2[2] + "-" + startDateArray2[1] + "-" + startDateArray2[0]);
+
+      var endDateArray2 = endDate2.split('/');
+      var endDateObject2 = moment(endDateArray2[2] + "-" + endDateArray2[1] + "-" + endDateArray2[0]);
+
+      var numberOfDays = numberOfDays + endDateObject2.diff(startDateObject2, "days") + 1;
+
+    }
+    
     // // Returns an array of dates between the two dates (from https://gist.github.com/miguelmota/7905510)
     // var getDates = function(startDateObject, endDateObject) {
     //   var dates = [],
@@ -594,11 +608,27 @@ router.post('/payments/selected-date', function (req, res) {
 
       if (numberOfDays == 1) {
 
-        var selectedDates = moment(startDateObject).format('dddd MMMM DD YYYY');
+        if (startDate2 == "") {
+
+          var selectedDates = moment(startDateObject).format('dddd MMMM DD YYYY');
+
+        } else {
+
+          var selectedDates = moment(startDateObject).format('dddd MMMM DD YYYY') + ' and ' + moment(startDateObject2).format('dddd MMMM DD YYYY');
+
+        }
 
       } else {
 
-        var selectedDates = moment(startDateObject).format('dddd MMMM DD YYYY') + ' to ' + moment(endDateObject).format('dddd MMMM DD YYYY');
+        if (startDate2 == "") {
+
+          var selectedDates = moment(startDateObject).format('dddd MMMM DD YYYY') + ' to ' + moment(endDateObject).format('dddd MMMM DD YYYY');
+
+        } else {
+
+          var selectedDates = moment(startDateObject).format('dddd MMMM DD YYYY') + ' to ' + moment(endDateObject).format('dddd MMMM DD YYYY') + ' and ' + moment(startDateObject2).format('dddd MMMM DD YYYY') + ' to ' + moment(endDateObject2).format('dddd MMMM DD YYYY');
+
+        }
 
       }
     
