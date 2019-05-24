@@ -104,12 +104,17 @@ function add() {
 
   var fields = document.getElementById('dates-2');
   var link = document.getElementById('add');
-  if (fields.style.display === "none") {
+
+  if (link.innerHTML == "Add another date or date range") {
+
     fields.style.display = "block";
-    link.style.display = "none";
+    document.getElementById('add').innerHTML = 'Remove date range';
+
   } else {
+
     fields.style.display = "none";
-    link.style.display = "block";
+    document.getElementById('add').innerHTML = 'Add another date or date range';
+
   }
 
 }
