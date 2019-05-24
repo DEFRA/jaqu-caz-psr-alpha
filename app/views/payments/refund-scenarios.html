@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Can I claim a refund?</h1>
+   
+    <p>You cannot claim a refund:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>if you didn't drive into a CAZ on a day which you've paid for</li>
+        <li>for any day that has already started</li>
+    </ul>
+    <p>You can claim a refund:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>if you have paid for a compliant vehicle</li>
+        <li>if you have paid for an exemept vehicle</li>
+        <li>if you had to pay because DVLA records were incorrect</li>
+    </ul>
+
+    <p>If you are eligible for a refund click continue</p>
+    <form action="/payments/refund-details">
+        <button type="submit" class="govuk-button">
+            Continue
+        </button>
+    </form>
+    <p><a href="/">Return to start page</a></p>
+
+  </div>
+</div>
+
+{% endblock %}
