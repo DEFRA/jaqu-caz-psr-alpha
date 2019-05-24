@@ -17,36 +17,60 @@ text: "Back"
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">What days are you paying for?</h1>
-      <p>You can pay up to 7 days in advance.</p>
-      <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">
-              <span class="govuk-warning-text__assistive">Warning</span>
-              You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
-          </strong>
-      </div>
-      <div class="govuk-form-group">
+      <p>A daily charge runs from midnight to midnight.</p>
+      <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Why can't I select my date?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+              You can only pay 7 days in advance. <br><br>You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
+          </div>
+        </details>
+      <form method="post" class="form" action="/payments/selected-date">  
+      <div class="govuk-form-group" id="dates">
         <label class="govuk-label" for="start-date">
-            <b>Start date</b>
+            <b>Start date</b><span style="margin-left: 155px; font-weight: bold;">End date</span>
         </label>
-        <span id="vrn-hint" class="govuk-hint">
-          For example, 25/05/2019
+        <span id="start-date-hint" class="govuk-hint">
+          For example, 25/05/2019<span style="margin-left: 30px;">For example, 27/05/2019</span>
         </span>
-        <input class="govuk-input govuk-input--width-10" id="start-date" name="start-date" type="text">
-        <br>
-        <br>
-        <label class="govuk-label" for="end-date">
-          <b>End date</b>
-        </label>
-        <span id="vrn-hint" class="govuk-hint">
-          For example, 25/05/2019
-        </span>
+        <input class="govuk-input govuk-input--width-10" style="margin-right: 20px;" id="start-date" name="start-date" type="text">
         <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
       </div>
-      <p>A daily charge runs from midnight to midnight.</p>
-            <button type="submit" class="govuk-button">
-                Continue
-            </button>
+      <div class="govuk-form-group" id="dates-2" style="display: none;">
+        <label class="govuk-label" for="start-date-2">
+            <b>Start date</b><span style="margin-left: 155px; font-weight: bold;">End date</span>
+        </label>
+        <span id="start-date-2-hint" class="govuk-hint">
+          For example, 25/05/2019<span style="margin-left: 30px;">For example, 27/05/2019</span>
+        </span>
+        <input class="govuk-input govuk-input--width-10" style="margin-right: 20px;" id="start-date-2" name="start-date-2" type="text">
+        <input class="govuk-input govuk-input--width-10" id="end-date-2" name="end-date-2" type="text">
+      </div>
+      <p><a id="add" href="#" onclick="add()">Add another date or date range</a></p>
+      <button type="submit" class="govuk-button">
+          Continue
+      </button>
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <h3 class="govuk-heading-s">
+            Registration number
+        </h3>
+        <p id="vrm" name="vrm" style="text-transform: uppercase">{{ data['vrn'] }}</p>
+        <h3 class="govuk-heading-s">
+            Clean Air Zone
+        </h3>
+        {% if caz == 'leeds-weekly'%}
+        {% set caz = 'leeds' %}
+        {% endif %}
+        <p style="text-transform: capitalize">{{caz}}</p>
     </div>
 </div>
 
@@ -64,6 +88,31 @@ var picker = new Lightpick({
         document.getElementById('end-date').innerHTML = end;
     }
 });
+
+var picker2 = new Lightpick({
+    field: document.getElementById('start-date-2'),
+    secondField: document.getElementById('end-date-2'),
+    singleDate: false,
+    minDate: moment(new Date()).subtract(1, 'days'),
+    onSelect: function(start, end){
+        document.getElementById('start-date-2').innerHTML = start;
+        document.getElementById('end-date-2').innerHTML = end;
+    }
+});
+
+function add() {
+
+  var fields = document.getElementById('dates-2');
+  var link = document.getElementById('add');
+  if (fields.style.display === "none") {
+    fields.style.display = "block";
+    link.style.display = "none";
+  } else {
+    fields.style.display = "none";
+    link.style.display = "block";
+  }
+
+}
 </script>
 
 {% endblock %}

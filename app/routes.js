@@ -306,6 +306,27 @@ router.post('/payments/select-date', function (req, res) {
 
 });
 
+router.post('/payments/date-picker', function (req, res) {
+
+  var caz = req.session.data['caz'];
+  
+  if (req.session.data['caz'] == "birmingham") {
+
+    req.session.amountDue = '£8.00';
+
+  } else if (req.session.data['caz'] == "leeds") {
+
+    req.session.amountDue = '£12.50';
+
+  }
+
+  res.render('payments/date-picker', {
+    amountDue: req.session.amountDue,
+    caz: caz
+  });
+
+});
+
 // Payment period selection page (Leeds weekly charge)
 router.get('/payments/select-date-weekly', function (req, res) {
 
