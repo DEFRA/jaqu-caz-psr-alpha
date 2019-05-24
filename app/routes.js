@@ -332,6 +332,7 @@ router.post('/payments/date-picker', function (req, res) {
 router.get('/payments/select-date-weekly', function (req, res) {
 
   var caz = req.session.data['caz'];
+  var vrn = req.session.data['vrn'];
 
   req.session.amountDue = '£50.00';
 
@@ -355,7 +356,8 @@ router.get('/payments/select-date-weekly', function (req, res) {
     fourDaysAfterStringWeekly: validFromFourDaysAfter,
     fiveDaysAfterStringWeekly: validFromFiveDaysAfter,
     sixDaysAfterStringWeekly: validFromSixDaysAfter,
-    sevenDaysAfterStringWeekly: validFromSevenDaysAfter
+    sevenDaysAfterStringWeekly: validFromSevenDaysAfter,
+    vrn: vrn
   });
 
 });
@@ -363,6 +365,7 @@ router.get('/payments/select-date-weekly', function (req, res) {
 router.post('/payments/select-date-weekly', function (req, res) {
 
   var caz = req.session.data['caz'];
+  var vrn = req.session.data['vrn'];
 
   req.session.amountDue = '£50.00';
 
@@ -386,7 +389,8 @@ router.post('/payments/select-date-weekly', function (req, res) {
     fourDaysAfterStringWeekly: validFromFourDaysAfter,
     fiveDaysAfterStringWeekly: validFromFiveDaysAfter,
     sixDaysAfterStringWeekly: validFromSixDaysAfter,
-    sevenDaysAfterStringWeekly: validFromSevenDaysAfter
+    sevenDaysAfterStringWeekly: validFromSevenDaysAfter,
+    vrn: vrn
   });
 
 });
@@ -455,7 +459,7 @@ router.get('/payments/selectDate', function (req, res) {
 
 router.post('/payments/selected-date', function (req, res) {
 
-  var date = req.body['start-date'];
+  var date = req.body['date'];
   var startDate = req.body['start-date'];
   var endDate = req.body['end-date'];
   var startDate2 = req.body['start-date-2'];
