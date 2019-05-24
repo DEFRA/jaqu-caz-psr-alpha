@@ -77,7 +77,7 @@ text: "Back"
           <input class="govuk-input govuk-input--width-10" id="end-date-2" name="end-date-2" type="text">
         </div>
         <p><a id="add" href="#" onclick="add()">Add another date or date range</a></p>
-        <button type="submit" class="govuk-button" onclick="getDate()">
+        <button type="submit" class="govuk-button">
             Continue
         </button>
       </form>
@@ -106,27 +106,15 @@ text: "Back"
 
 <script>
 var picker = new Lightpick({
-    field: document.getElementById('start-date'),
-    secondField: document.getElementById('end-date'),
-    singleDate: false,
-    maxDays: 28,
-    minDate: moment(new Date()).subtract(1, 'days'),
-    onSelect: function(start, end){
-        document.getElementById('start-date').innerHTML = start;
-        document.getElementById('end-date').innerHTML = end;
-    }
-});
-
-var picker2 = new Lightpick({
-    field: document.getElementById('start-date-2'),
-    secondField: document.getElementById('end-date-2'),
-    singleDate: false,
-    maxDays: 28,
-    minDate: moment(new Date()).subtract(1, 'days'),
-    onSelect: function(start, end){
-        document.getElementById('start-date-2').innerHTML = start;
-        document.getElementById('end-date-2').innerHTML = end;
-    }
+  field: document.getElementById('start-date'),
+  secondField: document.getElementById('end-date'),
+  singleDate: false,
+  maxDays: 28,
+  minDate: moment(new Date()).subtract(1, 'days'),
+  onSelect: function(start, end){
+      document.getElementById('start-date').innerHTML = start;
+      document.getElementById('end-date').innerHTML = end;
+  }
 });
 
 function add() {
@@ -136,6 +124,40 @@ function add() {
 
   if (link.innerHTML == "Add another date or date range") {
 
+    // Retrieve dates already picked in first date picker
+    var startDate = picker.getStartDate();
+    var endDate = picker.getEndDate();
+
+    // Returns an array of dates between the two dates (from https://gist.github.com/miguelmota/7905510)
+    var getDates = function(startDateObject, endDateObject) {
+      var dates = [],
+          currentDate = startDateObject,
+          addDays = function(days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;
+          };
+      while (currentDate <= endDateObject) {
+        dates.push(currentDate);
+        currentDate = addDays.call(currentDate, 1);
+      }
+      return dates;
+    };
+
+    var dates = getDates(startDate, endDate);
+
+    var picker2 = new Lightpick({
+      field: document.getElementById('start-date-2'),
+      secondField: document.getElementById('end-date-2'),
+      singleDate: false,
+      maxDays: 28,
+      disableDates: dates, /* Disable dates already picked in first date picker */
+      minDate: moment(new Date()).subtract(1, 'days'),
+      onSelect: function(start, end){
+          document.getElementById('start-date-2').innerHTML = start;
+          document.getElementById('end-date-2').innerHTML = end;
+      }
+    });
     fields.style.display = "block";
     document.getElementById('add').innerHTML = 'Remove date range';
 
@@ -148,11 +170,6 @@ function add() {
 
   }
 
-}
-
-function getDate() {
-  var startDate = picker.getStartDate().toDate();
-  var endDate = picker.getEndDate().toDate();
 }
 </script>
 
