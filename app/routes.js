@@ -556,6 +556,25 @@ router.post('/payments/selected-date', function (req, res) {
     var numberOfDays = endDateObject.diff(startDateObject, "days");
 
     console.log(numberOfDays);
+
+    // Returns an array of dates between the two dates
+    var getDates = function(startDateObject, endDateObject) {
+      var dates = [],
+          currentDate = startDateObject,
+          addDays = function(days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;
+          };
+      while (currentDate <= endDateObject) {
+        dates.push(currentDate);
+        currentDate = addDays.call(currentDate, 1);
+      }
+      return dates;
+    };
+
+    // Usage
+    var dates = getDates(startDateObject, endDateObject);                                                                                                           
   
     if (numberOfDays > 0) {
   
@@ -570,27 +589,23 @@ router.post('/payments/selected-date', function (req, res) {
       }
 
       req.session.amountDue = '£' + sum.toFixed(2);
+
+      var formattedDates = [];
+
+      dates.forEach(function(date) {
+        formattedDates.push(moment(date).format('dddd MMMM DD YYYY'));
+      });
   
-      var selectedDates = dates.join(', ');
+      var selectedDates = formattedDates.join(', ');
     
       res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
   
     } else {
 
-      res.render('payments/select-date', {
+      res.render('payments/date-picker', {
         error: true,
         errorMessage: "Select at least one day",
-        amountDue: req.session.amountDue,
-        caz: caz,
-        today: todayString,
-        yesterday: yesterdayString,
-        oneDayAfter: oneDayAfterString,
-        twoDaysAfter: twoDaysAfterString,
-        threeDaysAfter: threeDaysAfterString,
-        fourDaysAfter: fourDaysAfterString,
-        fiveDaysAfter: fiveDaysAfterString,
-        sixDaysAfter: sixDaysAfterString,
-        sevenDaysAfter: sevenDaysAfterString
+        caz: caz
       })
 
     }
