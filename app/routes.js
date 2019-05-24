@@ -544,18 +544,14 @@ router.post('/payments/selected-date', function (req, res) {
   } else {
 
     var startDateArray = startDate.split('/');
-
-    //var startDateObject = new Date(startDateArray[2], (parseInt(startDateArray[1]) - 1), startDateArray[0]);
     var startDateObject = moment(startDateArray[2] + "-" + startDateArray[1] + "-" + startDateArray[0]);
 
     var endDateArray = endDate.split('/');
-
-    //var endDateObject = new Date(endDateArray[2], (parseInt(endDateArray[1]) - 1), endDateArray[0]);
     var endDateObject = moment(endDateArray[2] + "-" + endDateArray[1] + "-" + endDateArray[0]);
 
     var numberOfDays = endDateObject.diff(startDateObject, "days") + 1;
 
-    // Returns an array of dates between the two dates
+    // Returns an array of dates between the two dates (from https://gist.github.com/miguelmota/7905510)
     var getDates = function(startDateObject, endDateObject) {
       var dates = [],
           currentDate = startDateObject,
