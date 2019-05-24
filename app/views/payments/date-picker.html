@@ -29,31 +29,31 @@ text: "Back"
           </div>
         </details>
       <form method="post" class="form" action="/payments/selected-date">  
-      <div class="govuk-form-group" id="dates">
-        <label class="govuk-label" for="start-date">
-            <b>Start date</b><span style="margin-left: 155px; font-weight: bold;">End date</span>
-        </label>
-        <span id="start-date-hint" class="govuk-hint">
-          For example, 25/05/2019<span style="margin-left: 30px;">For example, 27/05/2019</span>
-        </span>
-        <input class="govuk-input govuk-input--width-10" style="margin-right: 20px;" id="start-date" name="start-date" type="text">
-        <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
-      </div>
-      <div class="govuk-form-group" id="dates-2" style="display: none;">
-        <h2 class="govuk-heading-m">Second date range</h2>
-        <label class="govuk-label" for="start-date-2">
-            <b>Start date</b><span style="margin-left: 155px; font-weight: bold;">End date</span>
-        </label>
-        <span id="start-date-2-hint" class="govuk-hint">
-          For example, 25/05/2019<span style="margin-left: 30px;">For example, 27/05/2019</span>
-        </span>
-        <input class="govuk-input govuk-input--width-10" style="margin-right: 20px;" id="start-date-2" name="start-date-2" type="text">
-        <input class="govuk-input govuk-input--width-10" id="end-date-2" name="end-date-2" type="text">
-      </div>
-      <p><a id="add" href="#" onclick="add()">Add another date or date range</a></p>
-      <button type="submit" class="govuk-button">
-          Continue
-      </button>
+        <div class="govuk-form-group" id="dates">
+          <label class="govuk-label" for="start-date">
+              <b>Start date</b><span style="margin-left: 155px; font-weight: bold;">End date</span>
+          </label>
+          <span id="start-date-hint" class="govuk-hint">
+            For example, 25/05/2019<span style="margin-left: 30px;">For example, 27/05/2019</span>
+          </span>
+          <input class="govuk-input govuk-input--width-10" style="margin-right: 20px;" id="start-date" name="start-date" type="text">
+          <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
+        </div>
+        <div class="govuk-form-group" id="dates-2" style="display: none;">
+          <h2 class="govuk-heading-m">Second date range</h2>
+          <label class="govuk-label" for="start-date-2">
+              <b>Start date</b><span style="margin-left: 155px; font-weight: bold;">End date</span>
+          </label>
+          <span id="start-date-2-hint" class="govuk-hint">
+            For example, 25/05/2019<span style="margin-left: 30px;">For example, 27/05/2019</span>
+          </span>
+          <input class="govuk-input govuk-input--width-10" style="margin-right: 20px;" id="start-date-2" name="start-date-2" type="text">
+          <input class="govuk-input govuk-input--width-10" id="end-date-2" name="end-date-2" type="text">
+        </div>
+        <p><a id="add" href="#" onclick="add()">Add another date or date range</a></p>
+        <button type="submit" class="govuk-button" onclick="getDate()">
+            Continue
+        </button>
       </form>
     </div>
     <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
@@ -120,6 +120,11 @@ function add() {
 
   }
 
+}
+
+function getDate() {
+  var startDate = picker.getStartDate().toDate();
+  var endDate = picker.getEndDate().toDate();
 }
 </script>
 

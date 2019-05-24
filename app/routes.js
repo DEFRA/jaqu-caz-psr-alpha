@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const moment = require('moment')
 
 var NotifyClient = require('notifications-node-client').NotifyClient,
     notify = new NotifyClient(process.env.NOTIFYAPIKEY);
@@ -454,7 +455,9 @@ router.get('/payments/selectDate', function (req, res) {
 
 router.post('/payments/selected-date', function (req, res) {
 
-  var date = req.body['date'];
+  var date = req.body['start-date'];
+  var startDate = req.body['start-date'];
+  var endDate = req.body['end-date'];
   var caz = req.session.data['caz'];
   var vrn = req.session.data['vrn'];
   // Remove spacing and make letters uppercase
@@ -540,155 +543,31 @@ router.post('/payments/selected-date', function (req, res) {
 
   } else {
 
-    if (date.includes("yesterday")) {
+    var startDateArray = startDate.split('/');
 
-      if (caz == "leeds") {
+    //var startDateObject = new Date(startDateArray[2], (parseInt(startDateArray[1]) - 1), startDateArray[0]);
+    var startDateObject = moment(startDateArray[2] + "-" + startDateArray[1] + "-" + startDateArray[0]);
+
+    var endDateArray = endDate.split('/');
+
+    //var endDateObject = new Date(endDateArray[2], (parseInt(endDateArray[1]) - 1), endDateArray[0]);
+    var endDateObject = moment(endDateArray[2] + "-" + endDateArray[1] + "-" + endDateArray[0]);
+
+    var numberOfDays = endDateObject.diff(startDateObject, "days");
+
+    console.log(numberOfDays);
   
-        charges.push(12.50);
-        dates.push(yesterdayString);
+    if (numberOfDays > 0) {
   
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(yesterdayString);
-  
+      if (caz == "birmingham") {
+
+        var sum = 8*numberOfDays;
+
+      } else if (caz == "leeds") {
+
+        var sum = 12.5*numberOfDays;
+
       }
-      
-    }
-  
-    if (date.includes("today")) {
-  
-      if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(todayString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(todayString);
-  
-      }
-      
-    }
-  
-    if (date.includes("1-day-after")) {
-  
-      if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(oneDayAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(oneDayAfterString);
-  
-      }
-      
-    }
-  
-    if (date.includes("2-days-after")) {
-  
-      if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(twoDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(twoDaysAfterString);
-  
-      }
-      
-    }
-  
-    if (date.includes("3-days-after")) {
-  
-      if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(threeDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(threeDaysAfterString);
-  
-      }
-      
-    }
-  
-    if (date.includes("4-days-after")) {
-  
-      if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(fourDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(fourDaysAfterString);
-  
-      }
-      
-    }
-  
-    if (date.includes("5-days-after")) {
-  
-      if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(fiveDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(fiveDaysAfterString);
-  
-      }
-      
-    }
-  
-    if (date.includes("6-days-after")) {
-  
-      if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(sixDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(sixDaysAfterString);
-  
-      }
-      
-    }
-  
-    if (date.includes("7-days-after")) {
-  
-      if (caz == "leeds") {
-  
-        charges.push(12.50);
-        dates.push(sevenDaysAfterString);
-  
-      } else if (caz == "birmingham") {
-  
-        charges.push(8.00);
-        dates.push(sevenDaysAfterString);
-  
-      }
-      
-    }
-  
-    var sum = 0;
-  
-    if (charges.length) {
-  
-      sum = charges.reduce(function(a, b) { return a + b});
 
       req.session.amountDue = '£' + sum.toFixed(2);
   
