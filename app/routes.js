@@ -762,135 +762,52 @@ router.get('/payments/debit-credit-card', function (req, res) {
 
   var dates = [];
 
-  if (date.includes("yesterday")) {
+  if (caz == "leeds-weekly") {
 
-    if (caz == "leeds-weekly") {
+    if (date == "yesterday") {
+        
+      var selectedDates = dateRangeYesterday;
+      
+    } else if (date == "today") {
 
-      dates.push(dateRangeYesterday)
+      var selectedDates = dateRangeToday;
+      
+    } else if (date == "1-day-after") {
 
-    } else {
+      var selectedDates = dateRangeOneDayAfter;
 
-      dates.push(yesterdayString);
+    } else if (date == "2-days-after") {
 
-    }
+      var selectedDates = dateRangeTwoDaysAfter;
 
-  }
+    } else if (date == "3-days-after") {
 
-  if (date.includes("today")) {
+      var selectedDates = dateRangeThreeDaysAfter;
 
-    if (caz == "leeds-weekly") {
+    } else if (date == "4-days-after") {
 
-      dates.push(dateRangeToday)
+      var selectedDates = dateRangeFourDaysAfter;
 
-    } else {
+    } else if (date == "5-days-after") {
 
-      dates.push(todayString);
+      var selectedDates = dateRangeFiveDaysAfter;
 
-    }
+    } else if (date == "6-days-after") {
 
-  }
+      var selectedDates = dateRangeSixDaysAfter;
 
-  if (date.includes("1-day-after")) {
+    } else if (date == "7-days-after") {
 
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeOneDayAfter)
-
-    } else {
-
-      dates.push(oneDayAfterString);
-
-    }
-
-  }
-
-  if (date.includes("2-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeTwoDaysAfter)
-
-    } else {
-
-      dates.push(twoDaysAfterString);
+      var selectedDates = dateRangeSevenDaysAfter;
 
     }
 
+    req.session.amountDue = '£50.00';
+    req.session.dates = selectedDates;
+  
   }
 
-  if (date.includes("3-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeThreeDaysAfter)
-
-    } else {
-
-      dates.push(threeDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("4-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeFourDaysAfter)
-
-    } else {
-
-      dates.push(fourDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("5-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeFiveDaysAfter)
-
-    } else {
-
-      dates.push(fiveDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("6-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeSixDaysAfter)
-
-    } else {
-
-      dates.push(sixDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("7-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeSevenDaysAfter)
-
-    } else {
-
-      dates.push(sevenDaysAfterString);
-
-    }
-
-  }
-
-  var selectedDates = dates.join(', ');
-
-  res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+  res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: req.session.dates, caz: caz});
 
 });
 
@@ -900,72 +817,52 @@ router.post('/payments/debit-credit-card', function (req, res) {
   var caz = req.session.data['caz'];
 
   var dates = [];
-
   if (caz == "leeds-weekly") {
 
-    if (date.includes("yesterday")) {
-  
-      dates.push(dateRangeYesterday)
-  
+    if (date == "yesterday") {
+        
+      var selectedDates = dateRangeYesterday;
+      
+    } else if (date == "today") {
+
+      var selectedDates = dateRangeToday;
+      
+    } else if (date == "1-day-after") {
+
+      var selectedDates = dateRangeOneDayAfter;
+
+    } else if (date == "2-days-after") {
+
+      var selectedDates = dateRangeTwoDaysAfter;
+
+    } else if (date == "3-days-after") {
+
+      var selectedDates = dateRangeThreeDaysAfter;
+
+    } else if (date == "4-days-after") {
+
+      var selectedDates = dateRangeFourDaysAfter;
+
+    } else if (date == "5-days-after") {
+
+      var selectedDates = dateRangeFiveDaysAfter;
+
+    } else if (date == "6-days-after") {
+
+      var selectedDates = dateRangeSixDaysAfter;
+
+    } else if (date == "7-days-after") {
+
+      var selectedDates = dateRangeSevenDaysAfter;
+
     }
 
-    if (date.includes("today")) {
-
-      dates.push(dateRangeToday)
+    req.session.amountDue = '£50.00';
+    req.session.dates = selectedDates;
   
-    }
-
-    if (date.includes("1-day-after")) {
-  
-      dates.push(dateRangeOneDayAfter)
-  
-    }
-
-    if (date.includes("2-days-after")) {
-  
-      dates.push(dateRangeTwoDaysAfter)
-  
-    }
-
-    if (date.includes("3-days-after")) {
-  
-      dates.push(dateRangeThreeDaysAfter)
-  
-    }
-
-    if (date.includes("4-days-after")) {
-  
-      dates.push(dateRangeFourDaysAfter)
-  
-    }
-
-    if (date.includes("5-days-after")) {
-
-      dates.push(dateRangeFiveDaysAfter)
-  
-    }
-
-    if (date.includes("6-days-after")) {
-
-      dates.push(dateRangeSixDaysAfter)
-  
-    }
-
-    if (date.includes("7-days-after")) {
-
-      dates.push(dateRangeSevenDaysAfter)
-  
-    }
-
-    var selectedDates = dates.join(', ');
-
-  } else {
-
-    var selectedDates = req.session.dates;
-
   }
 
-  res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: selectedDates, caz: caz});
+  res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: req.session.dates, caz: caz});
 
 });
 
@@ -981,133 +878,54 @@ router.post('/payments/confirm-payment', function (req, res) {
 
   var dates = [];
 
-  if (date.includes("yesterday")) {
+  var selectedDatesReceipt = req.session.dates;
 
-    if (caz == "leeds-weekly") {
+  if (caz == "leeds-weekly") {
 
-      dates.push(dateRangeYesterday)
+    if (date == "yesterday") {
+        
+      var selectedDates = dateRangeYesterday;
+      
+    } else if (date == "today") {
 
-    } else {
+      var selectedDates = dateRangeToday;
+      
+    } else if (date == "1-day-after") {
 
-      dates.push(yesterdayMessage);
+      var selectedDates = dateRangeOneDayAfter;
 
-    }
+    } else if (date == "2-days-after") {
 
-  }
+      var selectedDates = dateRangeTwoDaysAfter;
 
-  if (date.includes("today")) {
+    } else if (date == "3-days-after") {
 
-    if (caz == "leeds-weekly") {
+      var selectedDates = dateRangeThreeDaysAfter;
 
-      dates.push(dateRangeToday)
+    } else if (date == "4-days-after") {
 
-    } else {
+      var selectedDates = dateRangeFourDaysAfter;
 
-      dates.push(todayMessage);
+    } else if (date == "5-days-after") {
 
-    }
+      var selectedDates = dateRangeFiveDaysAfter;
 
-  }
+    } else if (date == "6-days-after") {
 
-  if (date.includes("1-day-after")) {
+      var selectedDates = dateRangeSixDaysAfter;
 
-    if (caz == "leeds-weekly") {
+    } else if (date == "7-days-after") {
 
-      dates.push(dateRangeOneDayAfter)
-
-    } else {
-
-      dates.push(oneDayAfterMessage);
-
-    }
-
-  }
-
-  if (date.includes("2-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeTwoDaysAfter)
-
-    } else {
-
-      dates.push(twoDaysAfterMessage);
+      var selectedDates = dateRangeSevenDaysAfter;
 
     }
 
+    req.session.amountDue = '£50.00';
+    req.session.dates = selectedDates;
+
+    selectedDatesReceipt = dates.slice(0, -1).join(', ') + ', and ' + dates.slice(-1);
+  
   }
-
-  if (date.includes("3-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeThreeDaysAfter)
-
-    } else {
-
-      dates.push(threeDaysAfterMessage);
-
-    }
-
-  }
-
-  if (date.includes("4-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeFourDaysAfter)
-
-    } else {
-
-      dates.push(fourDaysAfterMessage);
-
-    }
-
-  }
-
-  if (date.includes("5-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeFiveDaysAfter)
-
-    } else {
-
-      dates.push(fiveDaysAfterMessage);
-
-    }
-
-  }
-
-  if (date.includes("6-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeSixDaysAfter)
-
-    } else {
-
-      dates.push(sixDaysAfterMessage);
-
-    }
-
-  }
-
-  if (date.includes("7-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeSevenDaysAfter)
-
-    } else {
-
-      dates.push(sevenDaysAfterMessage);
-
-    }
-
-  }
-
-  var selectedDates = dates.slice(0, -1).join(', ') + ', and ' + dates.slice(-1);
 
   if (caz == 'leeds-weekly') {
 
@@ -1133,7 +951,7 @@ router.post('/payments/confirm-payment', function (req, res) {
           'charge': req.session.amountDue,
           'caz': localAuthority,
           'vrn': formattedVrn,
-          'dates': selectedDates,
+          'dates': selectedDatesReceipt,
           'paymentDate': todayMessage
         }
       }
@@ -1152,7 +970,7 @@ router.post('/payments/confirm-payment', function (req, res) {
           'charge': req.session.amountDue,
           'caz': localAuthority,
           'vrn': formattedVrn,
-          'dates': selectedDates,
+          'dates': selectedDatesReceipt,
           'paymentDate': todayMessage
         }
       }
@@ -1174,133 +992,67 @@ router.post('/payments/confirm-payment-details', function (req, res) {
 
   var dates = [];
 
-  if (date.includes("yesterday")) {
+  var selectedDatesReceipt = req.session.dates;
 
-    if (caz == "leeds-weekly") {
+  if (caz == "leeds-weekly") {
 
-      dates.push(dateRangeYesterday)
+    if (date == "yesterday") {
+        
+      var selectedDates = dateRangeYesterday;
+      
+    } else if (date == "today") {
 
-    } else {
+      var selectedDates = dateRangeToday;
+      
+    } else if (date == "1-day-after") {
 
-      dates.push(yesterdayString);
+      var selectedDates = dateRangeOneDayAfter;
 
-    }
+    } else if (date == "2-days-after") {
 
-  }
+      var selectedDates = dateRangeTwoDaysAfter;
 
-  if (date.includes("today")) {
+    } else if (date == "3-days-after") {
 
-    if (caz == "leeds-weekly") {
+      var selectedDates = dateRangeThreeDaysAfter;
 
-      dates.push(dateRangeToday)
+    } else if (date == "4-days-after") {
 
-    } else {
+      var selectedDates = dateRangeFourDaysAfter;
 
-      dates.push(todayString);
+    } else if (date == "5-days-after") {
 
-    }
+      var selectedDates = dateRangeFiveDaysAfter;
 
-  }
+    } else if (date == "6-days-after") {
 
-  if (date.includes("1-day-after")) {
+      var selectedDates = dateRangeSixDaysAfter;
 
-    if (caz == "leeds-weekly") {
+    } else if (date == "7-days-after") {
 
-      dates.push(dateRangeOneDayAfter)
-
-    } else {
-
-      dates.push(oneDayAfterString);
-
-    }
-
-  }
-
-  if (date.includes("2-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeTwoDaysAfter)
-
-    } else {
-
-      dates.push(twoDaysAfterString);
+      var selectedDates = dateRangeSevenDaysAfter;
 
     }
 
+    req.session.amountDue = '£50.00';
+    req.session.dates = selectedDates;
+
+    selectedDatesReceipt = dates.slice(0, -1).join(', ') + ', and ' + dates.slice(-1);
+  
   }
 
-  if (date.includes("3-days-after")) {
+  if (caz == 'leeds-weekly') {
 
-    if (caz == "leeds-weekly") {
+    var localAuthority = "Leeds"
 
-      dates.push(dateRangeThreeDaysAfter)
+  } else {
 
-    } else {
-
-      dates.push(threeDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("4-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeFourDaysAfter)
-
-    } else {
-
-      dates.push(fourDaysAfterString);
-
-    }
+    var localAuthority = caz.charAt(0).toUpperCase() + caz.slice(1);
 
   }
 
-  if (date.includes("5-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeFiveDaysAfter)
-
-    } else {
-
-      dates.push(fiveDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("6-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeSixDaysAfter)
-
-    } else {
-
-      dates.push(sixDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("7-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeSevenDaysAfter)
-
-    } else {
-
-      dates.push(sevenDaysAfterString);
-
-    }
-
-  }
-
-  var selectedDates = dates.join(', ');
+  // Remove spacing and make letters uppercase
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
   var error = false;
 
@@ -1472,7 +1224,7 @@ router.post('/payments/confirm-payment-details', function (req, res) {
     // var cardNumberString = asterisk.repeat(cardNumber.length - 4) + cardNumber.substr(cardNumber.length - 4);
     var cardNumberString = asterisk.repeat(12) + '1234';
 
-    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, cardNumber: cardNumberString});
+    res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: req.session.dates, caz: caz, cardNumber: cardNumberString});
 
   }
   
@@ -1488,135 +1240,69 @@ router.get('/payments/confirm-payment-details', function (req, res) {
 
   var dates = [];
 
-  if (date.includes("yesterday")) {
+  var selectedDatesReceipt = req.session.dates;
 
-    if (caz == "leeds-weekly") {
+  if (caz == "leeds-weekly") {
 
-      dates.push(dateRangeYesterday)
+    if (date == "yesterday") {
+        
+      var selectedDates = dateRangeYesterday;
+      
+    } else if (date == "today") {
 
-    } else {
+      var selectedDates = dateRangeToday;
+      
+    } else if (date == "1-day-after") {
 
-      dates.push(yesterdayString);
+      var selectedDates = dateRangeOneDayAfter;
 
-    }
+    } else if (date == "2-days-after") {
 
-  }
+      var selectedDates = dateRangeTwoDaysAfter;
 
-  if (date.includes("today")) {
+    } else if (date == "3-days-after") {
 
-    if (caz == "leeds-weekly") {
+      var selectedDates = dateRangeThreeDaysAfter;
 
-      dates.push(dateRangeToday)
+    } else if (date == "4-days-after") {
 
-    } else {
+      var selectedDates = dateRangeFourDaysAfter;
 
-      dates.push(todayString);
+    } else if (date == "5-days-after") {
 
-    }
+      var selectedDates = dateRangeFiveDaysAfter;
 
-  }
+    } else if (date == "6-days-after") {
 
-  if (date.includes("1-day-after")) {
+      var selectedDates = dateRangeSixDaysAfter;
 
-    if (caz == "leeds-weekly") {
+    } else if (date == "7-days-after") {
 
-      dates.push(dateRangeOneDayAfter)
-
-    } else {
-
-      dates.push(oneDayAfterString);
-
-    }
-
-  }
-
-  if (date.includes("2-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeTwoDaysAfter)
-
-    } else {
-
-      dates.push(twoDaysAfterString);
+      var selectedDates = dateRangeSevenDaysAfter;
 
     }
 
+    req.session.amountDue = '£50.00';
+    req.session.dates = selectedDates;
+
+    selectedDatesReceipt = dates.slice(0, -1).join(', ') + ', and ' + dates.slice(-1);
+  
   }
 
-  if (date.includes("3-days-after")) {
+  if (caz == 'leeds-weekly') {
 
-    if (caz == "leeds-weekly") {
+    var localAuthority = "Leeds"
 
-      dates.push(dateRangeThreeDaysAfter)
+  } else {
 
-    } else {
-
-      dates.push(threeDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("4-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeFourDaysAfter)
-
-    } else {
-
-      dates.push(fourDaysAfterString);
-
-    }
+    var localAuthority = caz.charAt(0).toUpperCase() + caz.slice(1);
 
   }
 
-  if (date.includes("5-days-after")) {
+  // Remove spacing and make letters uppercase
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeFiveDaysAfter)
-
-    } else {
-
-      dates.push(fiveDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("6-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeSixDaysAfter)
-
-    } else {
-
-      dates.push(sixDaysAfterString);
-
-    }
-
-  }
-
-  if (date.includes("7-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      dates.push(dateRangeSevenDaysAfter)
-
-    } else {
-
-      dates.push(sevenDaysAfterString);
-
-    }
-
-  }
-
-  var selectedDates = dates.join(', ');
-
-  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
+  res.render('payments/confirm-payment-details', {amountDue: req.session.amountDue, date: req.session.dates, caz: caz, vrn: formattedVrn});
 
 });
 
