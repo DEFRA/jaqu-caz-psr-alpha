@@ -33,6 +33,14 @@ text: "Back"
           For example, 25/05/2019
         </span>
         <input class="govuk-input govuk-input--width-10" id="start-date" name="start-date" type="text">
+        <br>
+        <br>
+        <label class="govuk-label" for="end-date">
+          <b>End date</b>
+        </label>
+        <span id="vrn-hint" class="govuk-hint">
+          For example, 25/05/2019
+        </span>
         <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
       </div>
       <p>A daily charge runs from midnight to midnight.</p>
@@ -50,9 +58,10 @@ var picker = new Lightpick({
     field: document.getElementById('start-date'),
     secondField: document.getElementById('end-date'),
     singleDate: false,
+    minDate: moment(new Date()).subtract(1, 'days'),
     onSelect: function(start, end){
-        document.getElementById('start-date').innerHTML = start.format('Do MMMM YYYY');
-        document.getElementById('end-date').innerHTML = end.format('Do MMMM YYYY');
+        document.getElementById('start-date').innerHTML = start;
+        document.getElementById('end-date').innerHTML = end;
     }
 });
 </script>
