@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Claim a refund</h1>
+   
+    <p>If you are eligible for a refund call the CAZ of which you entered:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>Birmingham on: 0123456789</li>
+        <li>Leeds on: 0987654321</li>
+    </ul>
+    <p><a href="/">Return to start page</a></p>
+
+
+
+  </div>
+</div>
+
+{% endblock %}
