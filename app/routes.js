@@ -465,9 +465,6 @@ router.post('/payments/selected-date', function (req, res) {
   // Remove spacing and make letters uppercase
   var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
-  var charges = [];
-  var dates = [];
-
   if (caz == "leeds-weekly") {
 
     if (date == undefined) {
@@ -538,8 +535,9 @@ router.post('/payments/selected-date', function (req, res) {
       }
     
       req.session.amountDue = '£50.00';
+      req.session.dates = selectedDates;
     
-      res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
+      res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: req.session.dates, caz: caz, vrn: formattedVrn});
 
     }
 
@@ -566,26 +564,7 @@ router.post('/payments/selected-date', function (req, res) {
 
     }
 
-    var numberOfDays = numberOfDays1 + numberOfDays2;
-    
-    // // Returns an array of dates between the two dates (from https://gist.github.com/miguelmota/7905510)
-    // var getDates = function(startDateObject, endDateObject) {
-    //   var dates = [],
-    //       currentDate = startDateObject,
-    //       addDays = function(days) {
-    //         var date = new Date(this.valueOf());
-    //         date.setDate(date.getDate() + days);
-    //         return date;
-    //       };
-    //   while (currentDate <= endDateObject) {
-    //     dates.push(currentDate);
-    //     currentDate = addDays.call(currentDate, 1);
-    //   }
-    //   return dates;
-    // };
-
-    // // Usage
-    // var dates = getDates(startDateObject, endDateObject);                                                                                                           
+    var numberOfDays = numberOfDays1 + numberOfDays2;                                                                                                          
   
     if (numberOfDays > 0) {
   
@@ -600,14 +579,6 @@ router.post('/payments/selected-date', function (req, res) {
       }
 
       req.session.amountDue = '£' + sum.toFixed(2);
-
-      // var formattedDates = [];
-
-      // dates.forEach(function(date) {
-      //   formattedDates.push(moment(date).format('dddd MMMM DD YYYY'));
-      // });
-  
-      // var selectedDates = formattedDates.join(', ');
 
       if (numberOfDays1 == 1) {
 
@@ -632,7 +603,7 @@ router.post('/payments/selected-date', function (req, res) {
       var selectedDates = selectedDates1 + ' and ' + selectedDates2;
       req.session.dates = selectedDates;
     
-      res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
+      res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: req.session.dates, caz: caz, vrn: formattedVrn});
   
     } else {
 
@@ -651,218 +622,136 @@ router.post('/payments/selected-date', function (req, res) {
 // Router to correct payment method page
 router.get('/payments/selected-date', function (req, res) {
 
-  var date = req.session.data['date'];
+  var date = req.session.data['start-date'];
+  var startDate = req.session.data['start-date'];
+  var endDate = req.session.data['end-date'];
+  var startDate2 = req.session.data['start-date-2'];
+  var endDate2 = req.session.data['end-date-2'];
   var caz = req.session.data['caz'];
   var vrn = req.session.data['vrn'];
   // Remove spacing and make letters uppercase
   var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
-  var charges = [];
-  var dates = [];
+  if (caz == "leeds-weekly") {
 
-  if (date.includes("yesterday")) {
+    if (date == "yesterday") {
+        
+      var selectedDates = dateRangeYesterday;
+      
+    } else if (date == "today") {
 
-    if (caz == "leeds-weekly") {
+      var selectedDates = dateRangeToday;
+      
+    } else if (date == "1-day-after") {
 
-      charges.push(50.00);
-      dates.push(dateRangeYesterday);
+      var selectedDates = dateRangeOneDayAfter;
 
-    } else if (caz == "leeds") {
+    } else if (date == "2-days-after") {
 
-      charges.push(12.50);
-      dates.push(yesterdayString);
+      var selectedDates = dateRangeTwoDaysAfter;
 
-    } else if (caz == "birmingham") {
+    } else if (date == "3-days-after") {
 
-      charges.push(8.00);
-      dates.push(yesterdayString);
+      var selectedDates = dateRangeThreeDaysAfter;
+
+    } else if (date == "4-days-after") {
+
+      var selectedDates = dateRangeFourDaysAfter;
+
+    } else if (date == "5-days-after") {
+
+      var selectedDates = dateRangeFiveDaysAfter;
+
+    } else if (date == "6-days-after") {
+
+      var selectedDates = dateRangeSixDaysAfter;
+
+    } else if (date == "7-days-after") {
+
+      var selectedDates = dateRangeSevenDaysAfter;
+
+    }
+
+    req.session.amountDue = '£50.00';
+    req.session.dates = selectedDates;
+
+    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: req.session.dates, caz: caz, vrn: formattedVrn});
+
+  } else {
+
+    var startDateArray = startDate.split('/');
+    var startDateObject = moment(startDateArray[2] + "-" + startDateArray[1] + "-" + startDateArray[0]);
+
+    var endDateArray = endDate.split('/');
+    var endDateObject = moment(endDateArray[2] + "-" + endDateArray[1] + "-" + endDateArray[0]);
+
+    var numberOfDays1 = endDateObject.diff(startDateObject, "days") + 1;
+    var numberOfDays2 = 0;
+
+    if (startDate2 != "") {
+
+      var startDateArray2 = startDate2.split('/');
+      var startDateObject2 = moment(startDateArray2[2] + "-" + startDateArray2[1] + "-" + startDateArray2[0]);
+
+      var endDateArray2 = endDate2.split('/');
+      var endDateObject2 = moment(endDateArray2[2] + "-" + endDateArray2[1] + "-" + endDateArray2[0]);
+
+      var numberOfDays2 = endDateObject2.diff(startDateObject2, "days") + 1;
+
+    }
+
+    var numberOfDays = numberOfDays1 + numberOfDays2;                                                                                                          
+  
+    if (numberOfDays > 0) {
+  
+      if (caz == "birmingham") {
+
+        var sum = 8*numberOfDays;
+
+      } else if (caz == "leeds") {
+
+        var sum = 12.5*numberOfDays;
+
+      }
+
+      req.session.amountDue = '£' + sum.toFixed(2);
+
+      if (numberOfDays1 == 1) {
+
+        var selectedDates1 = moment(startDateObject).format('DD/MM/YYYY');
+
+      } else {
+
+        var selectedDates1 = moment(startDateObject).format('DD/MM/YYYY') + ' - ' + moment(endDateObject).format('DD/MM/YYYY');
+
+      }
+
+      if (numberOfDays2 == 1) {
+
+        var selectedDates2 = moment(startDateObject2).format('DD/MM/YYYY');
+
+      } else {
+
+        var selectedDates2 = moment(startDateObject2).format('DD/MM/YYYY') + ' - ' + moment(endDateObject2).format('DD/MM/YYYY');
+
+      }
+
+      var selectedDates = selectedDates1 + ' and ' + selectedDates2;
+      req.session.dates = selectedDates;
+    
+      res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: req.session.dates, caz: caz, vrn: formattedVrn});
+  
+    } else {
+
+      res.render('payments/date-picker', {
+        error: true,
+        errorMessage: "Select at least one day",
+        caz: caz
+      })
 
     }
     
   }
-
-  if (date.includes("today")) {
-
-    if (caz == "leeds-weekly") {
-
-      charges.push(50.00);
-      dates.push(dateRangeToday);
-
-    } else if (caz == "leeds") {
-
-      charges.push(12.50);
-      dates.push(todayString);
-
-    } else if (caz == "birmingham") {
-
-      charges.push(8.00);
-      dates.push(todayString);
-
-    }
-    
-  }
-
-  if (date.includes("1-day-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      charges.push(50.00);
-      dates.push(dateRangeOneDayAfter);
-
-    } else if (caz == "leeds") {
-
-      charges.push(12.50);
-      dates.push(oneDayAfterString);
-
-    } else if (caz == "birmingham") {
-
-      charges.push(8.00);
-      dates.push(oneDayAfterString);
-
-    }
-    
-  }
-
-  if (date.includes("2-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      charges.push(50.00);
-      dates.push(dateRangeTwoDaysAfter);
-
-    } else if (caz == "leeds") {
-
-      charges.push(12.50);
-      dates.push(twoDaysAfterString);
-
-    } else if (caz == "birmingham") {
-
-      charges.push(8.00);
-      dates.push(twoDaysAfterString);
-
-    }
-    
-  }
-
-  if (date.includes("3-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      charges.push(50.00);
-      dates.push(dateRangeThreeDaysAfter);
-
-    } else if (caz == "leeds") {
-
-      charges.push(12.50);
-      dates.push(threeDaysAfterString);
-
-    } else if (caz == "birmingham") {
-
-      charges.push(8.00);
-      dates.push(threeDaysAfterString);
-
-    }
-    
-  }
-
-  if (date.includes("4-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      charges.push(50.00);
-      dates.push(dateRangeFourDaysAfter);
-
-    } else if (caz == "leeds") {
-
-      charges.push(12.50);
-      dates.push(fourDaysAfterString);
-
-    } else if (caz == "birmingham") {
-
-      charges.push(8.00);
-      dates.push(fourDaysAfterString);
-
-    }
-    
-  }
-
-  if (date.includes("5-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      charges.push(50.00);
-      dates.push(dateRangeFiveDaysAfter);
-
-    } else if (caz == "leeds") {
-
-      charges.push(12.50);
-      dates.push(fiveDaysAfterString);
-
-    } else if (caz == "birmingham") {
-
-      charges.push(8.00);
-      dates.push(fiveDaysAfterString);
-
-    }
-    
-  }
-
-  if (date.includes("6-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      charges.push(50.00);
-      dates.push(dateRangeSixDaysAfter);
-
-    } else if (caz == "leeds") {
-
-      charges.push(12.50);
-      dates.push(sixDaysAfterString);
-
-    } else if (caz == "birmingham") {
-
-      charges.push(8.00);
-      dates.push(sixDaysAfterString);
-
-    }
-    
-  }
-
-  if (date.includes("7-days-after")) {
-
-    if (caz == "leeds-weekly") {
-
-      charges.push(50.00);
-      dates.push(dateRangeSevenDaysAfter);
-
-    } else if (caz == "leeds") {
-
-      charges.push(12.50);
-      dates.push(sevenDaysAfterString);
-
-    } else if (caz == "birmingham") {
-
-      charges.push(8.00);
-      dates.push(sevenDaysAfterString);
-
-    }
-    
-  }
-
-  var sum = 0;
-
-  if (charges.length) {
-
-    sum = charges.reduce(function(a, b) { return a + b});
-
-  }
-
-  req.session.amountDue = '£' + sum.toFixed(2);
-
-  var selectedDates = dates.join(', ');
-  req.session.dates = selectedDates;
-
-  res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
 
 });
 
