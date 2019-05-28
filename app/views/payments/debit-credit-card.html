@@ -274,7 +274,7 @@ text: "Back"
         <h3 class="govuk-heading-s">
             Payment for
         </h3>
-        <p id="charge" name="charge">{{date}}</p>
+        <p id="charge" name="charge">{{ data['start-date'] }}{% if (data['start-date']!=data['end-date']) %} - {{ data['end-date'] }}{% endif %} {% if data['start-date-2'] %}<br>{{ data['start-date-2'] }}{% if (data['start-date-2']!=data['end-date-2']) %} - {{ data['end-date-2'] }}{% endif %}{% endif %}</p>
         <h3 class="govuk-heading-s">
             Total charge
         </h3>
