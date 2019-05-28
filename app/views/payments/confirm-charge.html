@@ -48,12 +48,12 @@ text: "Back"
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Payment for</td>
-                        <th class="govuk-table__header" scope="row">{{ date }}</th>
+                        <th class="govuk-table__header" scope="row">{{ data['start-date'] }}{% if (data['start-date']!=data['end-date']) %} - {{ data['end-date'] }}{% endif %} {% if data['start-date-2'] %}<br>{{ data['start-date-2'] }}{% if (data['start-date-2']!=data['end-date-2']) %} - {{ data['end-date-2'] }}{% endif %}{% endif %}</th>
                         <td class="govuk-table__cell">
                             {% if vrn == "ABC123" and caz == "leeds-weekly" %}
                             <a class="govuk-link" href="/payments/select-period">
                             {% else %}
-                            <a class="govuk-link" href="/payments/selectDate">
+                            <a class="govuk-link" href="/payments/date-picker">
                             {% endif %}
                                 Change<span class="govuk-visually-hidden"> payment for</span>
                             </a>

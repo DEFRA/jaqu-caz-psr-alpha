@@ -16,70 +16,161 @@ text: "Back"
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+        {% if error %}
+
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#date-error">{{errorMessage}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+  
+        {% endif %}
       <h1 class="govuk-heading-l">What days are you paying for?</h1>
-      <p>You can pay up to 7 days in advance.</p>
-      <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">
-              <span class="govuk-warning-text__assistive">Warning</span>
-              You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
-          </strong>
-      </div>
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="start-date">
-            <b>Start date</b>
-        </label>
-        <span id="vrn-hint" class="govuk-hint">
-          For example, 25/05/2019
-        </span>
-        <input class="govuk-input govuk-input--width-10" id="start-date" name="start-date" type="text" required>
-        <br>
-        <br>
-        <label class="govuk-label" for="end-date">
-            <b>End date</b>
-        </label>
-        <span id="vrn-hint" class="govuk-hint">
-          For example, 27/05/2019
-        </span>
-        <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
-      </div>
       <p>A daily charge runs from midnight to midnight.</p>
-            <button type="submit" class="govuk-button">
-                Continue
-            </button>
+      <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Why can't I select my date?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+              You can only pay 7 days in advance. <br><br>You have to pay before midnight the day after you drove through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
+          </div>
+        </details>
+      <form method="post" class="form" action="/payments/selected-date">  
+        {% if error %}
+        <div class="govuk-form-group govuk-form-group--error" id="dates">
+        {% endif %}
+        {% if not error %} 
+        <div class="govuk-form-group" id="dates">
+        {% endif %}
+        {% if error %}
+        <span id="date-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
+        </span>
+        {% endif %}
+          <label class="govuk-label" for="start-date">
+              <b>Start date</b><span style="margin-left: 155px; font-weight: bold;">End date</span>
+          </label>
+          <span id="start-date-hint" class="govuk-hint">
+            For example, 25/05/2019<span style="margin-left: 30px;">For example, 27/05/2019</span>
+          </span>
+          <input class="govuk-input govuk-input--width-10" style="margin-right: 20px;" id="start-date" name="start-date" type="text">
+          <input class="govuk-input govuk-input--width-10" id="end-date" name="end-date" type="text">
+        </div>
+        <div class="govuk-form-group" id="dates-2" style="display: none;">
+          <h2 class="govuk-heading-m">Second date range</h2>
+          <label class="govuk-label" for="start-date-2">
+              <b>Start date</b><span style="margin-left: 155px; font-weight: bold;">End date</span>
+          </label>
+          <span id="start-date-2-hint" class="govuk-hint">
+            For example, 25/05/2019<span style="margin-left: 30px;">For example, 27/05/2019</span>
+          </span>
+          <input class="govuk-input govuk-input--width-10" style="margin-right: 20px;" id="start-date-2" name="start-date-2" type="text">
+          <input class="govuk-input govuk-input--width-10" id="end-date-2" name="end-date-2" type="text">
+        </div>
+        <p><a id="add" href="#" onclick="add()">Add another date or date range</a></p>
+        <button type="submit" class="govuk-button">
+            Continue
+        </button>
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <h3 class="govuk-heading-s">
+            Registration number
+        </h3>
+        <p id="vrm" name="vrm" style="text-transform: uppercase">{{ data['vrn'] }}</p>
+        <h3 class="govuk-heading-s">
+            Clean Air Zone
+        </h3>
+        {% if caz == 'leeds-weekly'%}
+        {% set caz = 'leeds' %}
+        {% endif %}
+        <p style="text-transform: capitalize">{{caz}}</p>
     </div>
 </div>
 
+<script src="/public/javascripts/moment.min.js"></script>
+<script src="/public/javascripts/lightpick.js"></script>
+
 <script>
+var picker = new Lightpick({
+  field: document.getElementById('start-date'),
+  secondField: document.getElementById('end-date'),
+  singleDate: false,
+  maxDays: 28,
+  minDate: moment(new Date()).subtract(1, 'days'),
+  onSelect: function(start, end){
+      document.getElementById('start-date').innerHTML = start;
+      document.getElementById('end-date').innerHTML = end;
+  }
+});
 
-  var today = new Date();
-  today.setDate(today.getDate() + 7);
-  var yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
+function add() {
 
-  const start = datepicker(document.querySelector('#start-date'), {
-    id: 1,
-    formatter: (input, date, instance) => {
-      const value = date.toLocaleDateString()
-      input.value = value
-    },
-    position: 'bl',
-    startDay: 1,
-    maxDate: today,
-    minDate: yesterday
-  });
+  var fields = document.getElementById('dates-2');
+  var link = document.getElementById('add');
 
-  const end = datepicker(document.querySelector('#end-date'), {
-    id: 1,
-    formatter: (input, date, instance) => {
-      const value = date.toLocaleDateString()
-      input.value = value
-    },
-    position: 'bl',
-    startDay: 1,
-    maxDate: today,
-    minDate: yesterday
-  });
+  if (link.innerHTML == "Add another date or date range") {
+
+    // Retrieve dates already picked in first date
+    var startDate = picker.getStartDate();
+    var endDate = picker.getEndDate();
+
+    // Returns an array of dates between the two dates (from https://gist.github.com/miguelmota/7905510)
+    var getDates = function(startDateObject, endDateObject) {
+      var dates = [],
+          currentDate = startDateObject,
+          addDays = function(days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;
+          };
+      while (currentDate <= endDateObject) {
+        dates.push(currentDate);
+        currentDate = addDays.call(currentDate, 1);
+      }
+      return dates;
+    };
+
+    var dates = getDates(startDate, endDate);
+
+    var picker2 = new Lightpick({
+      field: document.getElementById('start-date-2'),
+      secondField: document.getElementById('end-date-2'),
+      singleDate: false,
+      maxDays: 28,
+      disableDates: dates, /* Disable dates already picked in first date picker */
+      minDate: moment(new Date()).subtract(1, 'days'),
+      onSelect: function(start, end){
+          document.getElementById('start-date-2').innerHTML = start;
+          document.getElementById('end-date-2').innerHTML = end;
+      }
+    });
+    fields.style.display = "block";
+    document.getElementById('add').innerHTML = 'Remove date range';
+
+  } else {
+
+    fields.style.display = "none";
+    document.getElementById('start-date-2').value = '';
+    document.getElementById('end-date-2').value = ''
+    document.getElementById('add').innerHTML = 'Add another date or date range';
+
+  }
+
+}
 </script>
 
 {% endblock %}
