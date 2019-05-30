@@ -875,7 +875,6 @@ router.post('/payments/debit-credit-card', function (req, res) {
 router.post('/payments/confirm-payment', function (req, res) {
 
   var email = req.session.data['email'];
-  var mobile = req.session.data['mobile-number'];
   var caz = req.session.data['caz'];
   var date = req.session.data['date'];
   var vrn = req.session.data['vrn'];
@@ -950,25 +949,6 @@ router.post('/payments/confirm-payment', function (req, res) {
       // GOV.UK Notify template ID
       '9b0ce7a5-8830-4d69-ae2f-7762c5ad76e7',
       email,
-      {
-        personalisation: {
-          'charge': req.session.amountDue,
-          'caz': localAuthority,
-          'vrn': formattedVrn,
-          'dates': selectedDatesReceipt,
-          'paymentDate': todayMessage
-        }
-      }
-    )
-
-  }
-
-  if (mobile != "") {
-
-    notify.sendSms(
-      // GOV.UK Notify template ID
-      '9b5b3bcd-9cbd-42c5-86c3-dde84270deb7',
-      mobile,
       {
         personalisation: {
           'charge': req.session.amountDue,
