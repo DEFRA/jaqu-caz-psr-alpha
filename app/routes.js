@@ -36,77 +36,77 @@ var today = new Date();
 
 today.setDate(today.getDate() - 1);
 var yesterdayString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var yesterdayMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+var yesterdayMessage = ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var todayString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var todayMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+var todayMessage = ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var oneDayAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var oneDayAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+var oneDayAfterMessage = ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var twoDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var twoDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+var twoDaysAfterMessage = ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var threeDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var threeDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+var threeDaysAfterMessage = ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var fourDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var fourDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+var fourDaysAfterMessage = ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var fiveDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var fiveDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+var fiveDaysAfterMessage = ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var sixDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var sixDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+var sixDaysAfterMessage = ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var sevenDaysAfterString = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var sevenDaysAfterMessage = today.getDate() + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+var sevenDaysAfterMessage = ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() - 7);
 
 today.setDate(today.getDate() + 6);
 var validFromYesterday = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var dateRangeYesterday = yesterdayString + " to " + weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeYesterday = yesterdayMessage + " - " + ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var validFromToday = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var dateRangeToday = todayString + " to " + weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeToday = todayMessage + " - " + ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var validFromOneDayAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var dateRangeOneDayAfter = oneDayAfterString + " to " + weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeOneDayAfter = oneDayAfterMessage + " - " + ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var validFromTwoDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var dateRangeTwoDaysAfter = twoDaysAfterString + " to " + weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeTwoDaysAfter = twoDaysAfterMessage + " - " + ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var validFromThreeDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var dateRangeThreeDaysAfter = threeDaysAfterString + " to " + weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeThreeDaysAfter = threeDaysAfterMessage + " - " + ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var validFromFourDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var dateRangeFourDaysAfter = fourDaysAfterString + " to " + weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeFourDaysAfter = fourDaysAfterMessage + " - " + ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var validFromFiveDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var dateRangeFiveDaysAfter = fiveDaysAfterString + " to " + weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeFiveDaysAfter = fiveDaysAfterMessage + " - " + ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var validFromSixDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var dateRangeSixDaysAfter = sixDaysAfterString + " to " + weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeSixDaysAfter = sixDaysAfterMessage + " - " + ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 today.setDate(today.getDate() + 1);
 var validFromSevenDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
-var dateRangeSevenDaysAfter = sevenDaysAfterString + " to " + weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeSevenDaysAfter = sevenDaysAfterMessage + " - " + ("0" + (today.getDate() + 1)).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 
 // Add your routes here - above the module.exports line
 
@@ -925,8 +925,6 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     req.session.amountDue = '£50.00';
     req.session.dates = selectedDates;
-
-    selectedDatesReceipt = dates.slice(0, -1).join(', ') + ', and ' + dates.slice(-1);
   
   }
 
@@ -954,7 +952,7 @@ router.post('/payments/confirm-payment', function (req, res) {
           'charge': req.session.amountDue,
           'caz': localAuthority,
           'vrn': formattedVrn,
-          'dates': selectedDatesReceipt,
+          'dates': req.session.dates,
           'paymentDate': todayMessage
         }
       }
