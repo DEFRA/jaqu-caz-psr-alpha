@@ -29,18 +29,18 @@ text: "Back"
             </div>
         </div>
         {% endif %}
-        <h1 class="govuk-heading-l">When do you want the 7-day period to start?</h1>
-        <p>You have to pay your weekly charge by midnight the day after you begin driving in the zone.</p>
+        <h1 class="govuk-heading-l">When do you want your 7-day period to start?</h1>
+        <p>You have to pay by midnight the day after you begin driving in the zone.</p>
         <details class="govuk-details">
             <summary class="govuk-details__summary">
-              <span class="govuk-details__summary-text">
-                Why can't I see my date?
-              </span>
+                <span class="govuk-details__summary-text">
+                Why can't I see my dates?
+                </span>
             </summary>
             <div class="govuk-details__text">
-                You can't pay earlier than 7 days ahead. <br><br>You have to pay by midnight the day after you begin driving in the zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
+                You can't pay any earlier than 7 days ahead. <br><br>You have to pay by midnight the day after you drive in a zone. If you are trying to make a payment later than this, you will need to wait for the penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
             </div>
-          </details>
+        </details>
         <form method="post" class="form" action="/payments/selected-date">
             <div class="govuk-form-group">
                 {% if error %}
