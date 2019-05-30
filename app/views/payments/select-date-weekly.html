@@ -31,14 +31,16 @@ text: "Back"
         {% endif %}
         <h1 class="govuk-heading-l">When do you want the 7-day period to start?</h1>
         <p>You have the pay your weekly charge by midnight the day after you begin driving in the zone.</p>
-        <div class="govuk-warning-text">
-            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
-                <span class="govuk-warning-text__assistive">Warning</span>
-                If you are trying to make a payment later than this, you will need to wait for a penalty charge notice
-                to arrive. This will be sent to the address the DVLA holds for the vehicle owner.
-            </strong>
-        </div>
+        <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Why can't I see my date?
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+                You can't pay earlier than 7 days ahead. <br><br>You have to pay by midnight the day after you begin driving in the zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
+            </div>
+          </details>
         <form method="post" class="form" action="/payments/selected-date">
             <div class="govuk-form-group">
                 {% if error %}
@@ -155,23 +157,6 @@ text: "Back"
                 <p><a href="/payments/select-period">Pay for 1 day instead</a></p>
             </div>        
         </form>
-    </div>
-    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
-        #bfc1c3; padding: 20px; width: 31%;">
-        <h2 class="govuk-heading-m">
-            Payment summary
-        </h2>
-        <h3 class="govuk-heading-s">
-            Registration number
-        </h3>
-        <p id="vrm" name="vrm" style="text-transform: uppercase">{{ formattedVrn }}</p>
-        <h3 class="govuk-heading-s">
-            Clean Air Zone
-        </h3>
-        {% if caz == 'leeds-weekly'%}
-        {% set caz = 'leeds' %}
-        {% endif %}
-        <p style="text-transform: capitalize">{{caz}}</p>
     </div>
 </div>
 
