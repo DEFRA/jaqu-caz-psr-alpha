@@ -64,18 +64,7 @@ text: "Back"
                             </a>
                         </td>
                     </tr>
-                    {% endif %}
-                    {% if data['mobile-number'] != "" %}
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">Confirmation text message:</td>
-                        <th class="govuk-table__header" scope="row">{{ data['mobile-number'] }}</th>
-                        <td class="govuk-table__cell">
-                            <a class="govuk-link" href="/payments/debit-credit-card#mobile-number">
-                                Change<span class="govuk-visually-hidden"> confirmation text message</span>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endif %}                
+                    {% endif %}             
                 </tbody>
               </table>
             <button type="submit" class="govuk-button">
