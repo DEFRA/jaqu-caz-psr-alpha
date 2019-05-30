@@ -927,12 +927,6 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     req.session.amountDue = '£50.00';
     req.session.dates = selectedDates;
-
-    console.log(req.session.dates);
-
-    selectedDatesReceipt = dates.slice(0, -1).join(', ') + ', and ' + dates.slice(-1);
-
-    console.log(selectedDatesReceipt);
   
   }
 
@@ -960,7 +954,7 @@ router.post('/payments/confirm-payment', function (req, res) {
           'charge': req.session.amountDue,
           'caz': localAuthority,
           'vrn': formattedVrn,
-          'dates': selectedDatesReceipt,
+          'dates': req.session.dates,
           'paymentDate': todayMessage
         }
       }
