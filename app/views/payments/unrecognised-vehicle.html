@@ -32,6 +32,7 @@ text: "Back"
       <ul class="govuk-list govuk-list--bullet">
         <li>Check you entered the correct details for the vehicle and <a href="/payments/enter-vehicle-details">try again</a></li>
         <li>Contact the DVLA to check what vehicle licensing details it holds for your vehicle</li>
+        <li>You are still required to pay</li>
       </ul>
 
       <h3 class="govuk-heading-s">
@@ -57,20 +58,20 @@ text: "Back"
       <p>Use the <a href="">email service</a> to contact DVLA about vehicle registration.</p>
 
       <h2 class="govuk-heading-m">
-        If your vehicle is registered overseas
+        If your vehicle is not registered you still need to pay
       </h2>
 
-      <p>Confirm this registration number is correct:</p>
+      <p>Confirm the following registration number is correct:</p>
       <p><b>{{ data['vrn'] }}</b></p>
 
-      <form method="post" class="form" action="/payments/local-authority">
+      <form method="post" class="form" action="/payments/choose-vehicle">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
             <div class="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="correct-details" required>
                 <label class="govuk-label govuk-checkboxes__label" for="waste-1">
-                  Yes, these vehicle details are correct
+                  Yes, this registration number is correct
                 </label>
               </div>
             </div>
