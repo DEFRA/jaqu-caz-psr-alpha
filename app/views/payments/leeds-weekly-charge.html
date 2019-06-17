@@ -28,6 +28,19 @@ text: "Back"
             </strong>
         </div>
         <form method="post" class="form" action="/payments/select-date-weekly">
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+              <div class="govuk-checkboxes" required>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="correct-details" required>
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+                    I have used the <a href="caz-prototype.herokuapp.com" target="_blank">vehicle checker</a> to make sure my vehicle is subject to charge in Leeds
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div> 
+        
             <button type="submit" class="govuk-button">
                 Continue
             </button>
