@@ -35,7 +35,14 @@ text: "Back"
         <li>You are still required to pay</li>
       </ul>
 
-      <h3 class="govuk-heading-s">
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            DVLA Contact Details
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+         <h3 class="govuk-heading-s">
         By phone
       </h3>
 
@@ -56,12 +63,20 @@ text: "Back"
       </h3>
 
       <p>Use the <a href="">email service</a> to contact DVLA about vehicle registration.</p>
+        </div>
+      </details>
+
+      
 
       <h2 class="govuk-heading-m">
-        If your vehicle is not registered you still need to pay
+        If your vehicle is not a UK-Registered vehicle
       </h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>You are still required to pay</li>
+      </ul>
 
-      <p>Confirm the following registration number is correct:</p>
+      <p>We are unable to display any details about the following vehicle. Confirm this is the correct vehicle to continue
+      </p>
       <p><b>{{ data['vrn'] }}</b></p>
 
       <form method="post" class="form" action="/payments/choose-vehicle">
