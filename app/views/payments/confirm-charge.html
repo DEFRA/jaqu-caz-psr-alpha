@@ -49,7 +49,7 @@ text: "Back"
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Payment for</td>
                         {% if caz != "leeds-weekly" %}
-                        <th class="govuk-table__header" scope="row">{{ data['start-date'] }}{% if (data['start-date']!=data['end-date']) %} - {{ data['end-date'] }}{% endif %} {% if data['start-date-2'] %}<br>{{ data['start-date-2'] }}{% if (data['start-date-2']!=data['end-date-2']) %} - {{ data['end-date-2'] }}{% endif %}{% endif %}</th>
+                        <th class="govuk-table__header" scope="row">{{ date }}</th>
                         {% else %}
                         <th class="govuk-table__header" scope="row">{{ date }}</th>
                         {% endif %}

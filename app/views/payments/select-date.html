@@ -55,7 +55,13 @@ text: "Back"
               </span>
               {% endif %}
                 <fieldset class="govuk-fieldset">
-                    <div class="govuk-checkboxes">
+                    <div class="govuk-checkboxes" required>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-0" name="date" type="checkbox" value="twoDaysAgo">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-0">
+                                {{twoDaysAgo}}
+                            </label>
+                        </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="date-1" name="date" type="checkbox" value="yesterday">
                             <label class="govuk-label govuk-checkboxes__label" for="date-1">

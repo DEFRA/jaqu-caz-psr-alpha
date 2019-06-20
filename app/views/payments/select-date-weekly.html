@@ -57,6 +57,16 @@ text: "Back"
                         <fieldset class="govuk-fieldset">
                             <div class="govuk-radios">
                                 <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="date-0" name="date" type="radio"
+                                        value="twoDaysAgo">
+                                    <label class="govuk-label govuk-radios__label" for="date-0">
+                                        {{twoDaysAgo}}
+                                    </label>
+                                    <span id="twoDaysAgo-hint" class="govuk-hint" style="margin-left: 15px;">
+                                        Your weekly charge is valid until midnight on {{twoDaysAgoStringWeekly}}
+                                    </span>
+                                </div>
+                                <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="date-1" name="date" type="radio"
                                         value="yesterday">
                                     <label class="govuk-label govuk-radios__label" for="date-1">
@@ -70,80 +80,10 @@ text: "Back"
                                     <input class="govuk-radios__input" id="date-2" name="date" type="radio"
                                         value="today">
                                     <label class="govuk-label govuk-radios__label" for="date-2">
-                                        {{today}}
+                                        <b>{{today}}</b> (Today)
                                     </label>
                                     <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
                                         Your weekly charge is valid until midnight on {{todayStringWeekly}}
-                                    </span>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="date-3" name="date" type="radio"
-                                        value="1-day-after">
-                                    <label class="govuk-label govuk-radios__label" for="date-3">
-                                        {{oneDayAfter}}
-                                    </label>
-                                    <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{oneDayAfterStringWeekly}}
-                                    </span>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="date-4" name="date" type="radio"
-                                        value="2-days-after">
-                                    <label class="govuk-label govuk-radios__label" for="date-4">
-                                        {{twoDaysAfter}}
-                                    </label>
-                                    <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{twoDaysAfterStringWeekly}}
-                                    </span>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="date-5" name="date" type="radio"
-                                        value="3-days-after">
-                                    <label class="govuk-label govuk-radios__label" for="date-5">
-                                        {{threeDaysAfter}}
-                                    </label>
-                                    <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{threeDaysAfterStringWeekly}}
-                                    </span>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="date-6" name="date" type="radio"
-                                        value="4-days-after">
-                                    <label class="govuk-label govuk-radios__label" for="date-6">
-                                        {{fourDaysAfter}}
-                                    </label>
-                                    <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{fourDaysAfterStringWeekly}}
-                                    </span>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="date-7" name="date" type="radio"
-                                        value="5-days-after">
-                                    <label class="govuk-label govuk-radios__label" for="date-7">
-                                        {{fiveDaysAfter}}
-                                    </label>
-                                    <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{fiveDaysAfterStringWeekly}}
-                                    </span>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="date-8" name="date" type="radio"
-                                        value="6-days-after">
-                                    <label class="govuk-label govuk-radios__label" for="date-8">
-                                        {{sixDaysAfter}}
-                                    </label>
-                                    <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{sixDaysAfterStringWeekly}}
-                                    </span>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="date-9" name="date" type="radio"
-                                        value="7-days-after">
-                                    <label class="govuk-label govuk-radios__label" for="date-9">
-                                        {{sevenDaysAfter}}
-                                    </label>
-                                    <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{sevenDaysAfterStringWeekly}}
                                     </span>
                                 </div>
                             </div>
