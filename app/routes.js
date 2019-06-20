@@ -454,6 +454,12 @@ router.post('/payments/selected-date', function (req, res) {
   
     var charges = [];
     var dates = [];
+    var typeChargeBirmingham = 8;
+    var typeChargeLeeds = 12.50;
+    if (formattedVrn = 'DEF789'){
+        typeChargeBirmingham = 50;
+        typeChargeLeeds = 50;
+    }
   
 
     if (date.includes("twoDaysAgo")) {
@@ -465,12 +471,12 @@ router.post('/payments/selected-date', function (req, res) {
     
         } else if (caz == "leeds") {
     
-          charges.push(12.50);
+          charges.push(typeChargeLeeds);
           dates.push(twoDaysAgoString);
     
         } else if (caz == "birmingham") {
     
-          charges.push(8.00);
+          charges.push(typeChargeBirmingham);
           dates.push(twoDaysAgoString);
     
         }
@@ -486,12 +492,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(yesterdayString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(yesterdayString);
   
       }
@@ -507,12 +513,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(todayString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(todayString);
   
       }
@@ -528,12 +534,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(oneDayAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(oneDayAfterString);
   
       }
@@ -549,12 +555,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(twoDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(twoDaysAfterString);
   
       }
@@ -570,12 +576,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(threeDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(threeDaysAfterString);
   
       }
@@ -591,12 +597,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(fourDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(fourDaysAfterString);
   
       }
@@ -612,12 +618,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(fiveDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(fiveDaysAfterString);
   
       }
@@ -633,12 +639,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(sixDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(sixDaysAfterString);
   
       }
@@ -654,12 +660,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(sevenDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(sevenDaysAfterString);
   
       }
@@ -703,12 +709,12 @@ router.post('/payments/selected-date', function (req, res) {
     
         } else if (caz == "leeds") {
     
-          charges.push(12.50);
+          charges.push(typeChargeLeeds);
           dates.push(twoDaysAgoString);
     
         } else if (caz == "birmingham") {
     
-          charges.push(8.00);
+          charges.push(typeChargeBirmingham);
           dates.push(twoDaysAgoString);
     
         }
@@ -724,12 +730,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(yesterdayString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(yesterdayString);
   
       }
@@ -745,12 +751,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(todayString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(todayString);
   
       }
@@ -766,12 +772,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(oneDayAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(oneDayAfterString);
   
       }
@@ -787,12 +793,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(twoDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(twoDaysAfterString);
   
       }
@@ -808,12 +814,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(threeDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(threeDaysAfterString);
   
       }
@@ -829,12 +835,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(fourDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(fourDaysAfterString);
   
       }
@@ -850,12 +856,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(fiveDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(fiveDaysAfterString);
   
       }
@@ -871,12 +877,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(sixDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(sixDaysAfterString);
   
       }
@@ -892,12 +898,12 @@ router.post('/payments/selected-date', function (req, res) {
   
       } else if (caz == "leeds") {
   
-        charges.push(12.50);
+        charges.push(typeChargeLeeds);
         dates.push(sevenDaysAfterString);
   
       } else if (caz == "birmingham") {
   
-        charges.push(8.00);
+        charges.push(typeChargeBirmingham);
         dates.push(sevenDaysAfterString);
   
       }
@@ -1050,7 +1056,13 @@ router.post('/payments/confirm-payment', function (req, res) {
 
   var charges = [];
   var dates = [];
-  
+  var typeChargeBirmingham = 8;
+  var typeChargeLeeds = 12.50;
+    if (formattedVrn = 'DEF789'){
+        typeChargeBirmingham = 50;
+        typeChargeLeeds = 50;
+    }
+
   if (date.includes("twoDaysAgo")) {
 
     if (caz == "leeds-weekly") {
@@ -1060,12 +1072,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(twoDaysAgoString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(twoDaysAgoString);
 
     }
@@ -1081,12 +1093,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(yesterdayString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(yesterdayString);
 
     }
@@ -1102,12 +1114,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(todayString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(todayString);
 
     }
@@ -1123,12 +1135,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(oneDayAfterString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(oneDayAfterString);
 
     }
@@ -1144,12 +1156,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(twoDaysAfterString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(twoDaysAfterString);
 
     }
@@ -1165,12 +1177,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(threeDaysAfterString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(threeDaysAfterString);
 
     }
@@ -1186,12 +1198,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(fourDaysAfterString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(fourDaysAfterString);
 
     }
@@ -1207,12 +1219,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(fiveDaysAfterString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(fiveDaysAfterString);
 
     }
@@ -1228,12 +1240,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(sixDaysAfterString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(sixDaysAfterString);
 
     }
@@ -1249,12 +1261,12 @@ router.post('/payments/confirm-payment', function (req, res) {
 
     } else if (caz == "leeds") {
 
-      charges.push(12.50);
+      charges.push(typeChargeLeeds);
       dates.push(sevenDaysAfterString);
 
     } else if (caz == "birmingham") {
 
-      charges.push(8.00);
+      charges.push(typeChargeBirmingham);
       dates.push(sevenDaysAfterString);
 
     }
@@ -1646,5 +1658,7 @@ router.get('/payments/confirm-payment', function (req, res) {
   res.render('payments/confirm-payment', {amountDue: req.session.amountDue});
 
 });
+
+
 
 module.exports = router

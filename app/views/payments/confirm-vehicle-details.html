@@ -35,38 +35,15 @@ text: "Back"
     <h1 class="govuk-heading-l">
       Are these details correct?
     </h1>
-    <table class="govuk-table">
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell" scope="row"></td>
-          <td class="govuk-table__cell"></td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell" scope="row">Registration</td>
-          <th class="govuk-table__cell" style="text-transform: uppercase">{{ data['vrn'] }}</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="row">Type</td>
-            <th class="govuk-table__cell">Car</td>
-          </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell" scope="row">Make</td>
-          <th class="govuk-table__cell">Peugeot</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell" scope="row">Colour</td>
-          <th class="govuk-table__cell">Grey</th>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell" scope="row">Fuel type</td>
-          <th class="govuk-table__cell">Diesel</th>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell" scope="row">Taxi/private hire vehicle?</td>
-          <th class="govuk-table__cell">{% if data['vrn']=='ABC123' %}Yes{% else %}No{% endif %}</th>
-        </tr>
-      </tbody>
-    </table>
+    {% if ((data['vrn'] | capitalize) == 'Abc123') or ((data['vrn'] | capitalize) == 'Abc 123') %}
+    {% include 'includes/taxi.html' %}
+    {% elseif ((data['vrn'] | capitalize) == 'Def789') or ((data['vrn'] | capitalize) == 'Def 789') %}
+    {% include 'includes/hgv.html' %}
+    {% elseif ((data['vrn'] | capitalize) == 'Ghi567') or ((data['vrn'] | capitalize) == 'Ghi 567') %}
+    {% include 'includes/lgv.html' %}
+    {% else%}
+    {% include 'includes/car.html' %}
+    {% endif %}
 
     <form method="post" class="form" action="/payments/confirm-vehicle">
       {% if error %}

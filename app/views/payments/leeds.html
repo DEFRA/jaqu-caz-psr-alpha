@@ -17,7 +17,13 @@ text: "Back"
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Pay a Leeds Clean Air Zone charge</h1>
         <p>The daily charge for your vehicle is:</p>
-        <h2 class="govuk-heading-m">£12.50</h2>
+
+        {% if ((data['vrn'] | capitalize) == 'Def789') or ((data['vrn'] | capitalize) == 'Def 789') %}
+        <h2 class="govuk-heading-m">£50.00</h2>
+        {% else %}
+        <h2 class="govuk-heading-m">£12.40</h2>
+        {% endif %}
+
         <p>You only need to pay once per day, no matter how many times you drive in and out of that Clean Air Zone on the same day. A daily charge runs from midnight to midnight.</p>
         <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
