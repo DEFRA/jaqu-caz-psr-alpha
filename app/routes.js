@@ -456,7 +456,7 @@ router.post('/payments/selected-date', function (req, res) {
     var dates = [];
     var typeChargeBirmingham = 8;
     var typeChargeLeeds = 12.50;
-    if (formattedVrn = 'DEF789'){
+    if (formattedVrn = 'DEF789' || 'JKL987'){
         typeChargeBirmingham = 50;
         typeChargeLeeds = 50;
     }
@@ -1058,7 +1058,7 @@ router.post('/payments/confirm-payment', function (req, res) {
   var dates = [];
   var typeChargeBirmingham = 8;
   var typeChargeLeeds = 12.50;
-    if (formattedVrn = 'DEF789'){
+    if (formattedVrn = 'DEF789' || 'JKL987'){
         typeChargeBirmingham = 50;
         typeChargeLeeds = 50;
     }

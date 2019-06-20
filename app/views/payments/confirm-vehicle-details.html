@@ -41,7 +41,9 @@ text: "Back"
     {% include 'includes/hgv.html' %}
     {% elseif ((data['vrn'] | capitalize) == 'Ghi567') or ((data['vrn'] | capitalize) == 'Ghi 567') %}
     {% include 'includes/lgv.html' %}
-    {% else%}
+    {% elseif ((data['vrn'] | capitalize) == 'Jkl987') or ((data['vrn'] | capitalize) == 'Jkl 987') %}
+    {% include 'includes/bus.html' %}
+    {% else %}
     {% include 'includes/car.html' %}
     {% endif %}
 
