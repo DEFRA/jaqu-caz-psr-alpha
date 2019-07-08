@@ -48,6 +48,19 @@ text: "Back"
               <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
             </span>
             {% endif %}
+            {% if ((data['vrn'] | capitalize) == 'Jkl987') or ((data['vrn'] | capitalize) == 'Jkl 987') or (data['vehicle-type'] == 'HGV') or (data['vehicle-type'] == 'busCoach') or ((data['vrn'] | capitalize) == 'Def789') or ((data['vrn'] | capitalize) == 'Def 789') or ((data['vrn'] | capitalize) == 'Abc123') or ((data['vrn'] | capitalize) == 'Abc 123') %}
+            {% else %}
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Why can I only select one Clean Air Zone?
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                    Birmingham is currently the only Clean Air Zone that is charging your vehicle's type. More Clean Air Zones may be introduced in the future that will charge your vehicle's type.
+                </div>
+              </details>
+              {% endif %}
           <div class="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="caz-2" name="caz" type="radio" value="birmingham">
@@ -55,12 +68,14 @@ text: "Back"
                 Birmingham
               </label>
             </div>
+            {% if ((data['vrn'] | capitalize) == 'Jkl987') or ((data['vrn'] | capitalize) == 'Jkl 987') or (data['vehicle-type'] == 'HGV') or (data['vehicle-type'] == 'busCoach') or ((data['vrn'] | capitalize) == 'Def789') or ((data['vrn'] | capitalize) == 'Def 789') or ((data['vrn'] | capitalize) == 'Abc123') or ((data['vrn'] | capitalize) == 'Abc 123') %}
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="caz-3" name="caz" type="radio" value="leeds">
               <label class="govuk-label govuk-radios__label" for="caz-3">
                 Leeds
               </label>
             </div>
+            {% endif %}
           </div>
         </fieldset>
       </div>

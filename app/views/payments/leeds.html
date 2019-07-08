@@ -20,7 +20,7 @@ text: "Back"
 
         {% if ((data['vrn'] | capitalize) == 'Def789') or ((data['vrn'] | capitalize) == 'Def 789') %}
         <h2 class="govuk-heading-m">£50.00</h2>
-        {% elseif ((data['vrn'] | capitalize) == 'Jkl987') or ((data['vrn'] | capitalize) == 'Jkl 987') %}
+        {% elseif ((data['vrn'] | capitalize) == 'Jkl987') or ((data['vrn'] | capitalize) == 'Jkl 987') or (data['vehicle-type'] == 'HGV') or (data['vehicle-type'] == 'busCoach') %}
         <h2 class="govuk-heading-m">£50.00</h2>
         {% else %}
         <h2 class="govuk-heading-m">£12.50</h2>

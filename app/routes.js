@@ -103,6 +103,31 @@ var validFromOneDayAfter = weekdays[today.getDay()] + " " + today.getDate() + ' 
 var dateRangeOneDayAfter = oneDayAfterMessage + " - " + ("0" + today.getDate()).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
 today.setDate(today.getDate() - 7);
 
+today.setDate(today.getDate() + 8);
+var validFromTwoDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeTwoDaysAfter = twoDaysAfterMessage + " - " + ("0" + today.getDate()).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+today.setDate(today.getDate() - 8);
+
+today.setDate(today.getDate() + 9);
+var validFromThreeDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeThreeDaysAfter = threeDaysAfterMessage + " - " + ("0" + today.getDate()).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+today.setDate(today.getDate() - 9);
+
+today.setDate(today.getDate() + 10);
+var validFromFourDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeFourDaysAfter = fourDaysAfterMessage + " - " + ("0" + today.getDate()).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+today.setDate(today.getDate() - 10);
+
+today.setDate(today.getDate() + 11);
+var validFromFiveDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeFiveDaysAfter = fiveDaysAfterMessage + " - " + ("0" + today.getDate()).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+today.setDate(today.getDate() - 11);
+
+today.setDate(today.getDate() + 12);
+var validFromSixDaysAfter = weekdays[today.getDay()] + " " + today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+var dateRangeSixDaysAfter = sixDaysAfterMessage + " - " + ("0" + today.getDate()).slice(-2) + '/' + ("0" + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+today.setDate(today.getDate() - 12);
+
 // Add your routes here - above the module.exports line
 
 // Enter vehicle details
@@ -350,6 +375,11 @@ router.get('/payments/select-date-weekly', function (req, res) {
     yesterdayStringWeekly: validFromYesterday,
     todayStringWeekly: validFromToday,
     oneDayAfterStringWeekly: validFromOneDayAfter,
+    twoDaysAfterStringWeekly: validFromTwoDaysAfter,
+    threeDaysAfterStringWeekly: validFromThreeDaysAfter,
+    fourDaysAfterStringWeekly: validFromFourDaysAfter,
+    fiveDaysAfterStringWeekly: validFromFiveDaysAfter,
+    sixDaysAfterStringWeekly: validFromSixDaysAfter,
     vrn: vrn
   });
 
@@ -379,6 +409,11 @@ router.post('/payments/select-date-weekly', function (req, res) {
     yesterdayStringWeekly: validFromYesterday,
     todayStringWeekly: validFromToday,
     oneDayAfterStringWeekly: validFromOneDayAfter,
+    twoDaysAfterStringWeekly: validFromTwoDaysAfter,
+    threeDaysAfterStringWeekly: validFromThreeDaysAfter,
+    fourDaysAfterStringWeekly: validFromFourDaysAfter,
+    fiveDaysAfterStringWeekly: validFromFiveDaysAfter,
+    sixDaysAfterStringWeekly: validFromSixDaysAfter,
     vrn: vrn
   });
 
@@ -410,6 +445,11 @@ router.get('/payments/selectDate', function (req, res) {
       yesterdayStringWeekly: validFromYesterday,
       todayStringWeekly: validFromToday,
       oneDayAfterStringWeekly: validFromOneDayAfter,
+      twoDaysAfterStringWeekly: validFromTwoDaysAfter,
+      threeDaysAfterStringWeekly: validFromThreeDaysAfter,
+      fourDaysAfterStringWeekly: validFromFourDaysAfter,
+      fiveDaysAfterStringWeekly: validFromFiveDaysAfter,
+      sixDaysAfterStringWeekly: validFromSixDaysAfter,
       vrn: vrn
     });
 
@@ -449,6 +489,7 @@ router.post('/payments/selected-date', function (req, res) {
     var date = req.body['date'];
     var caz = req.session.data['caz'];
     var vrn = req.session.data['vrn'];
+    var vehicleType = req.session.data['vehicle-type'];
     // Remove spacing and make letters uppercase
     var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
   
@@ -456,7 +497,7 @@ router.post('/payments/selected-date', function (req, res) {
     var dates = [];
     var typeChargeBirmingham = 8;
     var typeChargeLeeds = 12.50;
-    if (formattedVrn == 'DEF789'){
+    if (formattedVrn == 'DEF789' || req.session.data['vehicle-type'] == 'HGV' || req.session.data['vehicle-type'] == "busCoach"){
         typeChargeBirmingham = 50;
         typeChargeLeeds = 50;
     }
@@ -997,7 +1038,7 @@ router.post('/payments/debit-credit-card', function (req, res) {
   var caz = req.session.data['caz'];
 
   var dates = [];
-  if (caz == "leeds-weekly") {
+  if (req.session.data['caz'] == "leeds-weekly") {
 
     if (date == "yesterday") {
         
@@ -1063,7 +1104,7 @@ router.post('/payments/confirm-payment', function (req, res) {
   var dates = [];
   var typeChargeBirmingham = 8;
   var typeChargeLeeds = 12.50;
-    if (formattedVrn == 'DEF789'){
+    if (formattedVrn == 'DEF789'  || req.session.data['vehicle-type'] == 'HGV' || req.session.data['vehicle-type'] == "busCoach"){
         typeChargeBirmingham = 50;
         typeChargeLeeds = 50;
     }
