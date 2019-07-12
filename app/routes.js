@@ -209,10 +209,9 @@ router.get('/payments/caz', function (req, res) {
 
     res.redirect('/payments/leeds-weekly-charge');
 
+  }else{
+    res.redirect('/payments/' + caz)
   }
-
-  res.redirect('/payments/' + caz)
-
 });
 
 // Router to date selection or payment period selection page
@@ -233,6 +232,10 @@ router.post('/payments/paymentPages', function (req, res) {
   } else if (confirm == "leeds" && formattedVrn == "ABC123") {
 
     res.redirect('/payments/select-period')
+
+  } else if (formattedVrn == "CDE345"){
+
+    res.redirect('/payments/compliant-vehicle')
 
   } else {
 
