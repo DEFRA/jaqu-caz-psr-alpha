@@ -1,0 +1,68 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if error %}
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#vrn-error">{{errorMessage}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+
+      <h1 class="govuk-heading-l">Upload your fleet</h1>
+      <p>To register a fleet and your vehicles' compliance, <a href="">download and complete the CSV</a>, then upload it once it has been filled out</p>
+      <p>You will need to enter all of your fleet's registration numbers.</p>
+      <p><a href="">Fleet registration guide</a></p>
+      <form method="POST" class="form" action="fleet-account">
+        {% if error %}
+        <div class="govuk-form-group govuk-form-group--error">
+        {% endif %}
+        {% if not error %} 
+        <div class="govuk-form-group">
+        {% endif %}    
+                <label class="govuk-label" for="file-upload-1">
+                  Upload a csv file
+                </label>
+                {% if error %}
+                <span id="file-upload-1-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> The CSV must be smaller than 2MB
+                </span>
+                <input class="govuk-file-upload govuk-file-upload--error" id="file-upload-1" name="file-upload-1" type="file" aria-describedby="file-upload-1-error">
+                {% endif %}
+                <input class="govuk-file-upload govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file" aria-describedby="file-upload-1">
+              </div>
+
+        <br>
+        
+        <button type="submit" class="govuk-button">
+            Upload Fleet
+        </button>
+      </form>
+
+    </div>
+</div>
+
+{% endblock %}
