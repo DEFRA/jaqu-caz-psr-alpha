@@ -158,24 +158,27 @@ router.post('/confirm-vehicle-details', function (req, res) {
 
 // Confirm vehicle details page
 router.post('/payments/confirm-vehicle', function (req, res) {
-  
-  var confirm = req.body['confirm-vehicle'];
 
-  if (confirm == 'yes') {
+    var confirm = req.body['confirm-vehicle'];
+    var vrn = req.session.data['vrn'];
+    var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
-      res.redirect('/payments/local-authority')
+    if (confirm == 'yes') {
+        if (formattedVrn == "CDE345") {
+            res.redirect('/payments/compliant-vehicle')
+        }
+        res.redirect('/payments/local-authority')
+    } else if (confirm == 'no') {
 
-  } else if (confirm == 'no') {
-
-      res.redirect('/payments/incorrect-details')
+        res.redirect('/payments/incorrect-details')
 
     } else {
 
-      res.render('payments/confirm-vehicle-details', {
-        error: true,
-        errorMessage: "Answer yes or no"
-      })
-  
+        res.render('payments/confirm-vehicle-details', {
+            error: true,
+            errorMessage: "Answer yes or no"
+        })
+
     }
 
 });
@@ -232,10 +235,6 @@ router.post('/payments/paymentPages', function (req, res) {
   } else if (confirm == "leeds" && formattedVrn == "ABC123") {
 
     res.redirect('/payments/select-period')
-
-  } else if (formattedVrn == "CDE345"){
-
-    res.redirect('/payments/compliant-vehicle')
 
   } else {
 
