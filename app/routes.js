@@ -247,7 +247,7 @@ router.post('/payments/paymentPages', function (req, res) {
 // Birmingham Charge page
 router.post('/payments/birmingham', function (req, res) {
 
-  var confirm = req.body['waste'];
+  var confirm = req.body['confirm'];
 
   if (confirm == '_unchecked'){
     res.render('payments/birmingham', {
@@ -264,7 +264,7 @@ router.post('/payments/birmingham', function (req, res) {
 // Leeds Charge page - checked exemption
 router.post('/payments/leeds', function (req, res) {
 
-  var confirm = req.body['waste'];
+  var confirm = req.body['confirm'];
 
   if (confirm == '_unchecked'){
     res.render('payments/leeds', {
@@ -273,6 +273,24 @@ router.post('/payments/leeds', function (req, res) {
     })
   }else{
     res.redirect('/payments/select-date')
+  }
+  
+
+});
+
+// Unrecognised Vehicle - confirm details
+router.post('/payments/unrecognised-vehicle', function (req, res) {
+
+  var confirm = req.body['confirm'];
+  console.log = 'Confirm is ' + confirm;
+
+  if (confirm == '_unchecked'){
+    res.render('payments/unrecognised-vehicle', {
+      error: true,
+      errorMessage: "Confirm your registration number is correct"
+    })
+  }else{
+    res.redirect('/payments/choose-vehicle')
   }
   
 
