@@ -244,6 +244,23 @@ router.post('/payments/paymentPages', function (req, res) {
 
 });
 
+// Birmingham Charge page
+router.post('/payments/birmingham', function (req, res) {
+
+  var confirm = req.body['waste'];
+
+  if (confirm == '_unchecked'){
+    res.render('payments/birmingham', {
+      error: true,
+      errorMessage: "Confirm you have checked if you are eligible for an exemption"
+    })
+  }else{
+    res.redirect('/payments/select-date')
+  }
+  
+
+});
+
 // Payment period selection page
 router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
 
