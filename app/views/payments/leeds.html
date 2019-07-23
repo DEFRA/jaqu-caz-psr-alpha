@@ -57,7 +57,7 @@ text: "Back"
           {% if not error %} 
           <div class="govuk-form-group">
           {% endif %}
-            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <fieldset class="govuk-fieldset" aria-describedby="confirm-hint">
                 {% if error %}
                 <span id="caz-charge-error" class="govuk-error-message">
                   <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
@@ -65,8 +65,8 @@ text: "Back"
                 {% endif %}
               <div class="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="correct-details">
-                  <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+                  <input class="govuk-checkboxes__input" id="confirm-1" name="confirm" type="checkbox" value="correct-details">
+                  <label class="govuk-label govuk-checkboxes__label" for="confirm-1">
                     I have <a href="" target= "_blank">checked</a> that I am not eligible for an exemption in Leeds
                   </label>
                 </div>
