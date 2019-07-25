@@ -282,7 +282,6 @@ router.post('/payments/leeds', function (req, res) {
 router.post('/payments/unrecognised-vehicle', function (req, res) {
 
   var confirm = req.body['confirm'];
-  console.log = 'Confirm is ' + confirm;
 
   if (confirm == '_unchecked'){
     res.render('payments/unrecognised-vehicle', {
