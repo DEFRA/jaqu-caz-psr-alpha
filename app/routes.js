@@ -306,7 +306,7 @@ router.post('/payments/fleet-account-login', function (req, res) {
       error: true,
       errorMessage: "Please enter your username and password"
     })
-  }else if (username == 'fleet01' || password == 'fleet123'){
+  }else if (username == 'fleet01' && password == 'fleet123'){
     res.redirect('/payments/fleet-account')
   }else{
     res.render('payments/fleet-account-login', {
