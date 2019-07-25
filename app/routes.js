@@ -295,6 +295,29 @@ router.post('/payments/unrecognised-vehicle', function (req, res) {
 
 });
 
+// Fleet account login
+router.post('/payments/fleet-account-login', function (req, res) {
+
+  var username = req.body['username'];
+  var password = req.body['password'];
+
+  if (username == '' || password == ''){
+    res.render('payments/fleet-account-login', {
+      error: true,
+      errorMessage: "Please enter your username and password"
+    })
+  }else if (username == 'fleet01' || password == 'fleet123'){
+    res.redirect('/payments/fleet-account')
+  }else{
+    res.render('payments/fleet-account-login', {
+      error: true,
+      errorMessage: "Invalid username or password"
+    })
+  }
+  
+
+});
+
 // Payment period selection page
 router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
 
