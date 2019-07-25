@@ -318,6 +318,23 @@ router.post('/payments/fleet-account-login', function (req, res) {
 
 });
 
+// Forgotten Fleet account login
+router.post('/payments/fleet-account-forgotten-password', function (req, res) {
+
+  var email = req.body['email'];
+
+  if (email == ''){
+    res.render('payments/fleet-account-forgotten-password', {
+      error: true,
+      errorMessage: "Please enter an email address"
+    })
+  }else{
+    res.redirect('/payments/fleet-account')
+  }
+  
+
+});
+
 // Payment period selection page
 router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
 
