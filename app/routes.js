@@ -329,7 +329,7 @@ router.post('/payments/fleet-account-forgotten-password', function (req, res) {
       errorMessage: "Please enter an email address"
     })
   }else{
-    res.redirect('/payments/fleet-account')
+    res.redirect('/payments/fleet-account-forgotten-password')
   }
   
 
