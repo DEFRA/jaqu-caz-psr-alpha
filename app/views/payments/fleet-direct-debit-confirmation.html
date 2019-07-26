@@ -1,0 +1,32 @@
+{% extends "layout_account.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Direct Debit set up</h1>
+   
+    <p>We will now confirm with your bank or building society, the details of this direct debit.</p>
+
+    <p>You will be notified of any charges made to your account regarding the clean air zone.</p>
+
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}
