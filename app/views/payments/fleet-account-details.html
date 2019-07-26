@@ -1,3 +1,4 @@
+
 {% extends "layout_account.html" %}
 
 {% block beforeContent %}
@@ -31,24 +32,41 @@ text: "Back"
       </div>
       {% endif %}
 
-    <h1 class="govuk-heading-l">Set up a direct debit</h1>
+    <h1 class="govuk-heading-l">Update your account details</h1>
 
-    <p>*Placeholder page as will be using GOV.UK Pay</p>
+    <form method="POST" class="form" action="fleet-account">
+        {% if error %}
+          <div class="govuk-form-group govuk-form-group--error">
+        {% endif %}
+        {% if not error %} 
+          <div class="govuk-form-group">
+        {% endif %}
+      <label class="govuk-label govuk-date-input__label" for="company-name"><b>Company name</b></label>
+      {% if error %}
+        <span id="vrn-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
+        </span>
+      {% endif %}
+      <input class="govuk-input" id="company-name" name="company-name" type="text" style="width: 60%;" autocomplete="name" spellcheck="false" value="Leeds Taxis">
+      </div> 
 
-    <form method="POST" class="form" action="fleet-direct-debit-confirmation">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-          <h1 class="govuk-heading-s">
+          <h1 class="govuk-heading-m">
             Name (account holder)
           </h1>
         </legend>
       <fieldset class="govuk-fieldset">
       <div class="govuk-form-group">
           <label class="govuk-label govuk-date-input__label" for="first-names"><b>First name</b></label>
-          <input class="govuk-input" id="first-name" name="first-name" type="text" style="width: 60%;" autocomplete="name" spellcheck="false">
+          <input class="govuk-input" id="first-name" name="first-name" type="text" style="width: 60%;" autocomplete="name" spellcheck="false" value="Peter">
       </div>  
       <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="middle-names"><b>Middle names</b></label>
+          <input class="govuk-input" id="middle-names" name="middle-names" type="text" style="width: 60%;" autocomplete="name" spellcheck="false">
+      </div> 
+      <div class="govuk-form-group">
           <label class="govuk-label govuk-date-input__label" for="last-name"><b>Surname</b></label>
-          <input class="govuk-input" id="last-name" name="last-name" type="text" style="width: 60%;" autocomplete="name" spellcheck="false">
+          <input class="govuk-input" id="last-name" name="last-name" type="text" style="width: 60%;" autocomplete="name" spellcheck="false" value="Andrews">
       </div>
     </fieldset>  
       
@@ -70,7 +88,7 @@ text: "Back"
                         <span class="govuk-visually-hidden">Error:</span> {{countryErrorMessage}}
                     </span>
                     {% endif %}
-                    <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" value="{{data['country']}}">
+                    <input class="govuk-input" id="country" name="country" type="text" style="width: 60%;" aria-describedby="country-hint" value="United Kingdom">
                 </div>
                 {% if buildingNumberError %}Company name
                 <div class="govuk-form-group govuk-form-group--error">
@@ -84,9 +102,9 @@ text: "Back"
                         <span class="govuk-visually-hidden">Error:</span> {{buildingNumberErrorMessage}}
                     </span>
                     {% endif %}
-                    <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" value="{{data['building-number']}}">
+                    <input class="govuk-input" id="building-number" name="building-number" type="text" style="width: 60%;" aria-describedby="building-number-hint" value="19 Whitehall Road">
                 </div>
-                    <input class="govuk-input" id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint" value="{{data['street']}}">
+                    <input class="govuk-input" id="street" name="street" type="text" style="width: 60%;" aria-describedby="street-hint" value="Holbeck">
                 <br>
                 <br>
                 {% if townError %}
@@ -101,7 +119,7 @@ text: "Back"
                         <span class="govuk-visually-hidden">Error:</span> {{townErrorMessage}}
                     </span>
                     {% endif %}
-                    <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" value="{{data['town']}}">
+                    <input class="govuk-input" id="town" name="town" type="text" style="width: 60%;" aria-describedby="town-hint" value="Leeds">
                 </div>
                 {% if postcodeError %}
                 <div class="govuk-form-group govuk-form-group--error">
@@ -115,60 +133,46 @@ text: "Back"
                         <span class="govuk-visually-hidden">Error:</span> {{postcodeErrorMessage}}
                     </span>
                     {% endif %}
-                    <input class="govuk-input govuk-input--width-5" id="postcode" name="postcode" type="text" style="width: 60%;" aria-describedby="postcode-hint" value="{{data['postcode']}}">
+                    <input class="govuk-input govuk-input--width-5" id="postcode" name="postcode" type="text" style="width: 60%;" aria-describedby="postcode-hint" value="LS10 1AB">
                 </div>
                 
         
         </fieldset>
       
-        <br>
+
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-heading-m">
-              Account Details
+              Contact Details
             </h1>
           </legend>
-          <fieldset class="govuk-fieldset">
-                <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="bank"><b>Bank or Building society</b></label>
-                    <input class="govuk-input" id="bank" name="bank" type="text" style="width: 60%;" spellcheck="false">
-                </div>  
-                <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="middle-names"><b>Account number</b></label>
-                    <input class="govuk-input" id="number" name="middle-names" type="text" style="width: 60%;" autocomplete="name" spellcheck="false">
-                </div> 
-              </fieldset>
-        <label class="govuk-label govuk-date-input__label"><b>Sort code</b></label>
-          <div class="govuk-date-input" id="dob">
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="sortcode-1" name="sortcode" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-                <div class="govuk-date-input__item">
-                        <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label"><b>-</b></label>
-                        </div>
-                </div>
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="sortcode-2" name="sortcode" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-                <div class="govuk-date-input__item">
-                        <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label"><b>-</b></label>
-                        </div>
-                </div>
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="sortcode-3" name="sortcode" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-              </div>
+          <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="email"><b>Email</b></label>
+              <span id="email-hint" class="govuk-hint">
+                  We'll only use this to send your receipt
+              </span>
+              <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" aria-describedby="email-hint" value="leedstaxis@email.com">
+          </div>
+          <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="telephone-number"><b>Telephone number</b></label>
+              <span id="telephone-number-hint" class="govuk-hint">
+                For international numbers include the country code
+              </span>
+              <input class="govuk-input govuk-input--width-20" id="telephone-number" name="telephone-number" type="tel" style="width: 60%;" aria-describedby="telephone-number-hint" autocomplete="tel" value="0113 123 456">
+            </div>
 
-      
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-heading-m">
+                  Account Details
+                </h1>
+              </legend>
+              <div>
+                  <label class="govuk-label govuk-input__label" for="password"><b>Password</b></label>
+                  <p><a href="fleet-account-forgotten-password.html">Change my password</a></p>
+              </div>
+            <br>  
+
             <button type="submit" class="govuk-button">
-                Continue
+                Save
             </button>
 
           </form>
