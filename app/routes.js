@@ -335,6 +335,18 @@ router.post('/payments/fleet-account-forgotten-password', function (req, res) {
 
 });
 
+// account dashboard
+router.get('/payments/fleet-account', function(req, res) {
+
+  console.log(req.session.data['registered']);
+  var registered = true ? req.session.data['registered'] === 'true' : false;
+  console.log(registered);
+  res.render('payments/fleet-account', {
+    registered: registered
+  })
+
+})
+
 // Payment period selection page
 router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
 

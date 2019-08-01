@@ -23,24 +23,26 @@
                 <th class="govuk-table__header" scope="col">Fuel Type</th>
               </tr>
             </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell" scope="row">CU57ABC</td>
-                <td class="govuk-table__cell" scope="row">Car</td>
-                <td class="govuk-table__cell" scope="row">Peugeot</td>
-                <td class="govuk-table__cell" scope="row">Grey</td>
-                <td class="govuk-table__cell" scope="row">Diesel</td>
-              </tr>
-            </tbody>
-            <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell" scope="row">DA56XYZ</td>
-                      <td class="govuk-table__cell" scope="row">Car</td>
-                      <td class="govuk-table__cell" scope="row">Toyota</td>
-                      <td class="govuk-table__cell" scope="row">Red</td>
-                      <td class="govuk-table__cell" scope="row">Petrol</td>
-                    </tr>
-                  </tbody>
+            {% if registered %}
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell" scope="row">CU57ABC</td>
+                  <td class="govuk-table__cell" scope="row">Car</td>
+                  <td class="govuk-table__cell" scope="row">Peugeot</td>
+                  <td class="govuk-table__cell" scope="row">Grey</td>
+                  <td class="govuk-table__cell" scope="row">Diesel</td>
+                </tr>
+              </tbody>
+              <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell" scope="row">DA56XYZ</td>
+                    <td class="govuk-table__cell" scope="row">Car</td>
+                    <td class="govuk-table__cell" scope="row">Toyota</td>
+                    <td class="govuk-table__cell" scope="row">Red</td>
+                    <td class="govuk-table__cell" scope="row">Petrol</td>
+                  </tr>
+                </tbody>
+              {% endif %}
           </table>
 
           <p><a href="">Download all vehicles</a></p>
