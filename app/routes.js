@@ -337,7 +337,6 @@ router.post('/payments/fleet-account-forgotten-password', function (req, res) {
 
 });
 
-fleet-prototype-direct-debit
 // Fleet-select-payment
 router.post('/fleets/single-user/choose-payment-method', function (req, res) {
 
