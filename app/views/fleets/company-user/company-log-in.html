@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Company account log in</h1>
+       
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="email">
+              Email address
+            </label>
+            <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+          </div>
+
+        <form class="form" action="company-dashboard" method="post">
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="email">
+                   Password
+                </label>
+                <input class="govuk-input govuk-input--width-20" id="email" name="email" type="password" aria-describedby="email-hint">
+            </div>
+            <p><a href="#">Reset password</a></p>
+            <button class="govuk-button">Log in</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
