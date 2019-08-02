@@ -296,7 +296,7 @@ router.post('/payments/unrecognised-vehicle', function (req, res) {
 });
 
 // Fleet account login
-router.post('/payments/fleet-account-login', function (req, res) {
+router.post('/fleets/single-user/fleet-account-login', function (req, res) {
 
   console.log(req.session.data);
 
@@ -304,14 +304,14 @@ router.post('/payments/fleet-account-login', function (req, res) {
   var password = req.body['password'];
 
   if (username == '' || password == ''){
-    res.render('payments/fleet-account-login', {
+    res.render('fleets/single-user/fleet-account-login', {
       error: true,
       errorMessage: "Please enter your username and password"
     })
   }else if (username == 'fleet01' && password == 'fleet123'){
-    res.redirect('/payments/fleet-account')
+    res.redirect('/fleets/single-user/fleet-account')
   }else{
-    res.render('payments/fleet-account-login', {
+    res.render('fleets/single-user/fleet-account-login', {
       error: true,
       errorMessage: "Invalid username or password"
     })
@@ -321,17 +321,17 @@ router.post('/payments/fleet-account-login', function (req, res) {
 });
 
 // Forgotten Fleet account login
-router.post('/payments/fleet-account-forgotten-password', function (req, res) {
+router.post('/fleets/single-user/fleet-account-forgotten-password', function (req, res) {
 
   var email = req.body['email'];
 
   if (email == ''){
-    res.render('payments/fleet-account-forgotten-password', {
+    res.render('fleets/single-user/fleet-account-forgotten-password', {
       error: true,
       errorMessage: "Please enter an email address"
     })
   }else{
-    res.redirect('/payments/fleet-account-forgotten-password')
+    res.redirect('/fleets/single-user/fleet-account-forgotten-password')
   }
   
 
@@ -371,12 +371,18 @@ router.get('/payments/logout', function(req, res) {
 })
 
 // account dashboard
-router.get('/payments/fleet-account', function(req, res) {
+router.get('/fleets/single-user/fleet-account', function(req, res) {
 
   var registered = true ? req.session.data['registered'] === 'true' : false;
-  res.render('payments/fleet-account', {
+  var vehicles = 2;
+  if (req.session.vrns) {
+    vehicles = vehicles + req.session.vrns.length;
+  }
+  
+  res.render('fleets/single-user/fleet-account', {
     registered: registered,
-    vrns: req.session.vrns
+    vrns: req.session.vrns,
+    vehicles: vehicles
   })
 
 })

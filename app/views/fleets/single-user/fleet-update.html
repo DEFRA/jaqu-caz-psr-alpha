@@ -5,6 +5,13 @@
   Pay a Clean Air Zone charge
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
 {% block content %}   
 
 <div class="govuk-grid-row">
