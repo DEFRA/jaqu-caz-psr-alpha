@@ -10,7 +10,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Welcome back</h1>
+    <h1 class="govuk-heading-l">Update your fleet</h1>
    
     <table class="govuk-table">
             <caption class="govuk-table__caption">Your Registered Vehicles</caption>
@@ -21,6 +21,7 @@
                 <th class="govuk-table__header" scope="col">Make</th>
                 <th class="govuk-table__header" scope="col">Colour</th>
                 <th class="govuk-table__header" scope="col">Fuel Type</th>
+                <th class="govuk-table__header" scope="col"></th>
               </tr>
             </thead>
             {% if registered %}
@@ -31,6 +32,7 @@
                   <td class="govuk-table__cell" scope="row">Peugeot</td>
                   <td class="govuk-table__cell" scope="row">Grey</td>
                   <td class="govuk-table__cell" scope="row">Diesel</td>
+                  <td class="govuk-table__cell" scope="row">Remove</td>
                 </tr>
               </tbody>
               <tbody class="govuk-table__body">
@@ -40,6 +42,7 @@
                     <td class="govuk-table__cell" scope="row">Toyota</td>
                     <td class="govuk-table__cell" scope="row">Red</td>
                     <td class="govuk-table__cell" scope="row">Petrol</td>
+                    <td class="govuk-table__cell" scope="row">Remove</td>
                   </tr>
                 </tbody>
                 {% for vrn in vrns %}
@@ -50,23 +53,37 @@
                       <td class="govuk-table__cell" scope="row">Ford</td>
                       <td class="govuk-table__cell" scope="row">Green</td>
                       <td class="govuk-table__cell" scope="row">Petrol</td>
+                      <td class="govuk-table__cell" scope="row">Remove</td>
                     </tr>
                   </tbody>
                 {% endfor %}
               {% endif %}
           </table>
-
-          <p><a href="">Download all vehicles</a></p>
+    <form method="post" class="form" action="/fleets/single-user/fleet-update">
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="add-vehicle-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    Do you need to add another vehicle?
+                </legend>
+                <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-vehicle" name="add-vehicle" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="add-vehicle">
+                    Yes
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-vehicle-2" name="add-vehicle" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="add-vehicle-2">
+                    No
+                    </label>
+                </div>
+                </div>
+            </fieldset>
+        </div>
+        <button type="submit" class="govuk-button">Continue</button>
+    </form>
   </div>
-          <div class="govuk-grid-column-one-third">
-                <h2 class="govuk-heading-m">Other tasks</h2>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li><a href="fleet-payment-caz-selection.html">Pay fleet CAZ charges</a></li>
-                    <li><a href="{% if registered %}/fleets/single-user/fleet-update.html{% else %}fleet-document-upload.html{%endif%}">{% if registered %}Update my fleet {% else %}Register my fleet{%endif%}</a></li>
-                    <li><a href="fleet-direct-debit.html">Set up a direct debit</a></li>
-                    <li><a href="fleet-payment-history.html">Payment History</a></li>
-                </ul>
-            </div>
 
             
 
