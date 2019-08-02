@@ -335,6 +335,29 @@ router.post('/payments/fleet-account-forgotten-password', function (req, res) {
 
 });
 
+// Fleet-select-payment
+router.post('/fleets/single-user/choose-payment-method', function (req, res) {
+
+  var payment_type = req.body['payment-type'];
+
+  if (payment_type == 'direct-debit'){
+
+    res.redirect('fleet-direct-debit-mandate')
+    
+  } else if (payment_type == 'card-payment'){
+
+    res.redirect('fleet-debit-credit-card')
+
+  }else{
+    res.render('fleets/single-user/choose-payment-method', {
+      error: true,
+      errorMessage: "Please enter a prefered payment type"
+    })
+  }
+  
+
+});
+
 // Payment period selection page
 router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
 
@@ -1181,6 +1204,7 @@ router.post('/payments/debit-credit-card', function (req, res) {
   }
 
   res.render('payments/debit-credit-card', {amountDue: req.session.amountDue, date: req.session.dates, caz: caz});
+
 
 });
 
