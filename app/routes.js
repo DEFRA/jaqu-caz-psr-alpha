@@ -374,9 +374,15 @@ router.get('/payments/logout', function(req, res) {
 router.get('/fleets/single-user/fleet-account', function(req, res) {
 
   var registered = true ? req.session.data['registered'] === 'true' : false;
+  var vehicles = 2;
+  if (req.session.vrns) {
+    vehicles = vehicles + req.session.vrns.length;
+  }
+  
   res.render('fleets/single-user/fleet-account', {
     registered: registered,
-    vrns: req.session.vrns
+    vrns: req.session.vrns,
+    vehicles: vehicles
   })
 
 })
