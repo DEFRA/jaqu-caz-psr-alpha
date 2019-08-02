@@ -1,0 +1,57 @@
+{% extends "layout_account.html" %}
+
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+    <h1 class="govuk-heading-l">Welcome back</h1>
+
+    <article class="dashboard-total-group govuk-grid-column-one-third">
+        <header class="dashboard-total-group__heading">
+          <h2 class="dashboard-total-group__title">Number of registered vehicles</h2>
+        </header>
+        <a class="dashboard-total-group__link" href="{{routes.transactions.index}}?state={{successfulTransactionsState}}&amp;{{ transactionsPeriodString }}" title="View successful payment transactions for chosen time period">
+          <dl class="dashboard-total-group__values dashboard-total-group__values--blue">
+            <dt class="govuk-visually-hidden">Count</dt>
+            <dd class="dashboard-total-group__count">5</dd>
+          </dl>
+        </a>
+        <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="/fleets/single-user/fleet-update">Update your fleet</a></strong></p>
+        <p class="govuk-body">Add or remove vehicles from your fleet</p>
+      </article>
+      
+      <article class="dashboard-total-group govuk-grid-column-one-third">
+          <header class="dashboard-total-group__heading">
+            <h2 class="dashboard-total-group__title">Amount paid in CAZ charges</h2>
+          </header>
+          <a class="dashboard-total-group__link" href="{{routes.transactions.index}}?state={{successfulTransactionsState}}&amp;{{ transactionsPeriodString }}" title="View successful payment transactions for chosen time period">
+            <dl class="dashboard-total-group__values dashboard-total-group__values--red">
+              <dt class="govuk-visually-hidden">Amount</dt>
+              <dd class="dashboard-total-group__amount">£402</dd>
+            </dl>
+          </a>
+          <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="/fleets/single-user/fleet-update">Make a payment</a></strong></p>
+          <p class="govuk-body">Pay CAZ charges for your fleet</p>
+        </article>
+
+
+      <article class="dashboard-total-group govuk-grid-column-one-third">
+          <header class="dashboard-total-group__heading">
+            <h2 class="dashboard-total-group__title">Number of payments made</h2>
+          </header>
+          <a class="dashboard-total-group__link" href="{{routes.transactions.index}}?state={{successfulTransactionsState}}&amp;{{ transactionsPeriodString }}" title="View successful payment transactions for chosen time period">
+            <dl class="dashboard-total-group__values dashboard-total-group__values--green">
+              <dt class="govuk-visually-hidden">Number of payments made</dt>
+              <dd class="dashboard-total-group__amount">28</dd>
+            </dl>
+          </a>
+          <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="/fleets/single-user/fleet-update">Create a direct debit mandate</a></strong></p>
+          <p class="govuk-body">Create a direct debit mandate to allow BACS payments</p>
+        </article>
+</div>
+
+{% endblock %}
