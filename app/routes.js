@@ -1803,6 +1803,20 @@ router.get('/payments/confirm-payment', function (req, res) {
 
 });
 
-
-
+router.post('/fleets/single-user/select-date', function (req, res) {
+  
+    res.render('fleets/single-user/select-date', {
+      today: todayString,
+      twoDaysAgo: twoDaysAgoString,
+      yesterday: yesterdayString,
+      oneDayAfter: oneDayAfterString,
+      twoDaysAfter: twoDaysAfterString,
+      threeDaysAfter: threeDaysAfterString,
+      fourDaysAfter: fourDaysAfterString,
+      fiveDaysAfter: fiveDaysAfterString,
+      sixDaysAfter: sixDaysAfterString,
+      sevenDaysAfter: sevenDaysAfterString
+    });
+  
+  });
 module.exports = router

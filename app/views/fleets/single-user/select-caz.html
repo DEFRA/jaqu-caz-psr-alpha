@@ -1,0 +1,51 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Which Clean Air Zone do you need to pay for?</h1>
+    <form method="post" class="form" action="select-date">
+      <p>You need to pay separately for each Clean Air Zone you drive through.</p> 
+      <div class="govuk-form-group">
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="cazHint">
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="caz-2" name="caz" type="radio" value="birmingham">
+              <label class="govuk-label govuk-radios__label" for="caz-2">
+                Birmingham
+              </label>
+            </div>
+             <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="caz-3" name="caz" type="radio" value="leeds">
+              <label class="govuk-label govuk-radios__label" for="caz-3">
+                Leeds
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <br>
+      <br>
+      <button type="submit" class="govuk-button">
+          Continue
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
