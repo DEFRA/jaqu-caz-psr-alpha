@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              Account created
+            </h1>
+            <div class="govuk-panel__body">
+              An account has been created for<br><strong>ABC Fleet</strong>
+            </div>
+          </div>
+  
+          <p class="govuk-body">We have sent you a confirmation email.</p>
+  
+          <h2 class="govuk-heading-m">What happens next</h2>
+  
+          <p class="govuk-body">
+            The users you added will recieve invites to create their accounts. They will be able to use this account to upload your fleet and pay.
+          </p>
+          <p class="govuk-body">
+            If you need to add more users you can <a href="company-log-in" class="govuk-link">log in here.</a> 
+          </p>
+
+        </div>
+      </div>
+
+  {% endblock %}
