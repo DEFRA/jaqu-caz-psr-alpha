@@ -15,20 +15,21 @@ text: "Back"
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-      <div class="govuk-panel govuk-panel--confirmation">
-          <h1 class="govuk-panel__title">
-            Direct debit successful
-          </h1>
-        </div>
    
-    <p>Your direct debit is now set up, please see your details below:</p>
+    <h1 class=govuk-heading-l>Your direct debit is now set up</h1> 
+    
+    <h2 class=govuk-heading-m>Please see your details below:</h2>
 
-    <p>Bank or building society: Lloyds TSB</p>
-    <p>Account number: 12457896</p>
-    <p>Sort code: 12-20-19</p>
+    <p>Bank or building society: {{ data['bank'] }}</p>
+    <p>Account number: {{ data['account-number'] }}</p>
+    <p>Sort code: {{ data['sortcode-1'] }}-{{ data['sortcode-2'] }}-{{ data['sortcode-2'] }}</p>
 
-
+    
+    <form method="POST" class="form" action="fleet-payment-confirmation"> 
+        <button type="submit" class="govuk-button">
+                Continue
+            </button>
+    </form>
 
 
 
