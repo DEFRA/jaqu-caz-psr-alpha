@@ -298,6 +298,8 @@ router.post('/payments/unrecognised-vehicle', function (req, res) {
 // Fleet account login
 router.post('/payments/fleet-account-login', function (req, res) {
 
+  console.log(req.session.data);
+
   var username = req.body['username'];
   var password = req.body['password'];
 
@@ -334,6 +336,73 @@ router.post('/payments/fleet-account-forgotten-password', function (req, res) {
   
 
 });
+
+// Fleet account sign out
+router.get('/payments/logout', function(req, res) {
+
+  console.log("prior", req.session.data);
+  req.session.data = null;
+  console.log("null", req.session.data);
+  res.redirect('fleet-account-sign-out');
+
+})
+
+// account dashboard
+router.get('/payments/fleet-account', function(req, res) {
+
+  var registered = true ? req.session.data['registered'] === 'true' : false;
+  res.render('payments/fleet-account', {
+    registered: registered,
+    vrns: req.session.vrns
+  })
+
+})
+
+// update the fleet - get
+router.get('/fleets/single-user/fleet-update', function(req, res) {
+  console.log('get',req.session.vrns);
+  var registered = true ? req.session.data['registered'] === 'true' : false;
+  res.render('fleets/single-user/fleet-update', {
+    registered: registered,
+    vrns: req.session.vrns
+  })
+
+})
+
+// update the fleet - post
+router.post('/fleets/single-user/fleet-update', function(req, res) {
+
+  var ans = true ? req.session.data['add-vehicle'] === 'yes' : false;
+  if (ans) {
+    res.redirect('/fleets/single-user/add-vehicle');
+  }
+  else {
+    res.redirect('/fleets/single-user/fleets-confirmation');
+  }
+
+})
+
+// fleets confirmation
+router.get('/fleets/single-user/fleets-confirmation', function(req, res) {
+  console.log(req.session);
+  res.render('fleets/single-user/fleets-confirmation', {
+    vrns: req.session.vrns
+  })
+})
+
+router.post('/fleets/single-user/add-vehicle', function(req,res) {
+  var vrn = req.session.data['vrn'];
+  if (vrn) {
+    if (req.session.vrns) {
+      req.session.vrns.push(vrn);
+    }
+    else {
+      req.session.vrns = [vrn];
+    }
+  }
+  res.redirect('/fleets/single-user/fleet-update');
+
+})
 
 // Payment period selection page
 router.post('/payments/paymentPagesSelectPeriod', function (req, res) {
