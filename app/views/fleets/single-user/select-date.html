@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Which days are you paying for?</h1>
+        <p>A daily charge runs from midnight to midnight.</p>
+        <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Why can't I see my date?
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+                You can't pay earlier than 7 days ahead. <br><br>You have to pay by midnight the day after you drive through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
+            </div>
+          </details>
+        <form method="post" class="form" action="/fleets/single-user/select-vehicle">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <div class="govuk-checkboxes" required>
+                      
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-1" name="date" type="checkbox" value="yesterday">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-1">
+                                {{yesterday}}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-2" name="date" type="checkbox" value="today">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-2">
+                                <strong>{{today}}</strong> (Today)
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-3" name="date" type="checkbox" value="1-day-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-3">
+                                {{oneDayAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-4" name="date" type="checkbox" value="2-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-4">
+                                {{twoDaysAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-5" name="date" type="checkbox" value="3-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-5">
+                                {{threeDaysAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-6" name="date" type="checkbox" value="4-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-6">
+                                {{fourDaysAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-7" name="date" type="checkbox" value="5-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-7">
+                                {{fiveDaysAfter}}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-8" name="date" type="checkbox" value="6-days-after">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-8">
+                                {{sixDaysAfter}}
+                            </label>
+                        </div>
+                       
+                    </div>
+                </fieldset>
+            </div>
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
