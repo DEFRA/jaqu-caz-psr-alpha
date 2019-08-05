@@ -308,7 +308,7 @@ router.post('/fleets/single-user/fleet-account-login', function (req, res) {
       error: true,
       errorMessage: "Please enter your username and password"
     })
-  }else if (username == 'fleet01' && password == 'fleet123'){
+  }else if (username != '' && password != ''){
     res.redirect('/fleets/single-user/fleet-account')
   }else{
     res.render('fleets/single-user/fleet-account-login', {
@@ -344,7 +344,7 @@ router.post('/fleets/single-user/choose-payment-method', function (req, res) {
 
   if (payment_type == 'direct-debit'){
 
-    res.redirect('fleet-direct-debit-mandate')
+    res.redirect('confirm-charge-direct-debit')
     
   } else if (payment_type == 'card-payment'){
 
