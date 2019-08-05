@@ -8,84 +8,64 @@ text: "Back"
 {% endblock %}
 
 {% block pageTitle %}
-Pay a Clean Air Zone charge
+    Confirm your payment
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Confirm your payment</h1>
-        <form method="post" class="form" action="/fleets/single-user/fleet-payment-confirmation">
-            <div class="govuk-form-group">
-                <dl class="govuk-summary-list">
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Clean Air Zone
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            Birmingham
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">
-                                Change<span class="govuk-visually-hidden"> Clean Air Zone</span>
+        <form method="post" class="form" action="fleet-payment-confirmation">
+            <table class="govuk-table">
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Payment method:</td>
+                        <th class="govuk-table__header" scope="row">Direct Debit</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="">
+                                Change<span class="govuk-visually-hidden"> card number</span>
                             </a>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Dates
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            Wednesday 7 August 2019<br> Thursday 8 August 2019
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">
-                                Change<span class="govuk-visually-hidden"> dates</span>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Account number:</td>
+                        <th class="govuk-table__header" scope="row">13578642</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="">
+                                Change<span class="govuk-visually-hidden"> expiry date</span>
                             </a>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Total Vehicles
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            3
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">
-                                Change<span class="govuk-visually-hidden"> contact information</span>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Sort code:</td>
+                        <th class="govuk-table__header" scope="row">01-21-31</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="">
+                                Change<span class="govuk-visually-hidden"> name on card</span>
                             </a>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Payment Method
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            Direct Debit
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">
-                                Change<span class="govuk-visually-hidden"> Payment Method</span>
-                            </a>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Total charge
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            £216
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            
-                        </dd>
-                    </div>
-                </dl>
-                <button type="submit" class="govuk-button">
-                    Continue
-                </button>
+                        </td>
+                    </tr>            
+                </tbody>
+              </table>
+            <button type="submit" class="govuk-button">
+                Confirm payment
+            </button>
         </form>
+
+        <p><a href="/payments/cancel-payment">Cancel payment</a></p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <p>Pay a Clean Air Zone charge</p>
+        <h3 class="govuk-heading-s">
+            Total charge
+        </h3>
+        <h2 class="govuk-heading-m" id="charge" name="charge">£216</h2>
     </div>
 </div>
 
