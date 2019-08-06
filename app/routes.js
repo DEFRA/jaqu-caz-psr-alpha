@@ -357,7 +357,6 @@ router.post('/fleets/single-user/choose-payment-method', function (req, res) {
     })
   }
   
-
 });
 
 // Fleet account sign out
@@ -920,8 +919,27 @@ router.post('/payments/selected-date', function (req, res) {
     req.session.amountDue = '£' + sum.toFixed(2);
   
     var selectedDates = dates.join(', ');
-  
+    console.log(req.session.data['date']);
+    if (req.session.data['date'] == undefined) {
+        res.render('payments/select-date', {
+            error: true,
+            errorMessage: "Select a date that you wish to pay for",
+            today: todayString,
+            twoDaysAgo: twoDaysAgoString,
+            yesterday: yesterdayString,
+            oneDayAfter: oneDayAfterString,
+            twoDaysAfter: twoDaysAfterString,
+            threeDaysAfter: threeDaysAfterString,
+            fourDaysAfter: fourDaysAfterString,
+            fiveDaysAfter: fiveDaysAfterString,
+            sixDaysAfter: sixDaysAfterString,
+            sevenDaysAfter: sevenDaysAfterString
+        })
+
+    }
+    else {
     res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
+    }
   
   });
   
@@ -1158,8 +1176,9 @@ router.post('/payments/selected-date', function (req, res) {
     req.session.amountDue = '£' + sum.toFixed(2);
   
     var selectedDates = dates.join(', ');
-  
-    res.render('payments/confirm-charge', {amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn});
+        
+
+        res.render('payments/confirm-charge', { amountDue: req.session.amountDue, date: selectedDates, caz: caz, vrn: formattedVrn });
   
   });
 
