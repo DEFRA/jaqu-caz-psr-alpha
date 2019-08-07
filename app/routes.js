@@ -295,10 +295,61 @@ router.post('/payments/unrecognised-vehicle', function (req, res) {
 
 });
 
+// Company user - add user
+router.get('/fleets/company-user/add-users', function(req, res) {
+  if (req.query.email) {
+    var users = req.session.users.filter(function( user ) {
+      return user.email !== req.query.email;
+    });
+    req.session.users = users;
+  }
+
+  res.render('fleets/company-user/add-users', {
+    name: req.query.name,
+    email: req.query.email
+  })
+})
+
+// Company user - manage users
+router.get('/fleets/company-user/user-added/', function(req, res) {
+  if (req.query.email) {
+    var users = req.session.users.filter(function( user ) {
+      return user.email !== req.query.email;
+    });
+    req.session.users = users;
+  }
+  res.render('fleets/company-user/user-added', {
+    users: req.session.users
+  })
+})
+
+router.post('/fleets/company-user/user-added/', function(req, res) {
+  var addUser = req.body['add-user'];
+  var name = req.body['name'];
+  var email = req.body['email'];
+  
+  if (name && email) {
+    if (req.session.users) {
+      req.session.users.push({'name':name,'email':email});
+    }
+    else {
+      req.session.users = [{'name':name,'email':email}];
+    }
+  }
+  
+  if (addUser == 'yes') {
+    res.redirect('/fleets/company-user/add-users');
+  }
+  else if (addUser === 'no') {
+    res.redirect('/fleets/company-user/account-set-up');
+  }
+  else {
+    res.redirect('/fleets/company-user/user-added');
+  }
+})
+
 // Fleet account login
 router.post('/fleets/single-user/fleet-account-login', function (req, res) {
-
-  console.log(req.session.data);
 
   var username = req.body['username'];
   var password = req.body['password'];
@@ -361,10 +412,7 @@ router.post('/fleets/single-user/choose-payment-method', function (req, res) {
 
 // Fleet account sign out
 router.get('/payments/logout', function(req, res) {
-
-  console.log("prior", req.session.data);
   req.session.data = null;
-  console.log("null", req.session.data);
   res.redirect('fleet-account-sign-out');
 
 })
@@ -373,10 +421,7 @@ router.get('/payments/logout', function(req, res) {
 router.get('/fleets/single-user/fleet-account', function(req, res) {
 
   var registered = true ? req.session.data['registered'] === 'true' : false;
-  var vehicles = 2;
-  if (req.session.vrns) {
-    vehicles = vehicles + req.session.vrns.length;
-  }
+  vehicles = 'vrns' in req.session ? req.session.vrns.length : 0
   
   res.render('fleets/single-user/fleet-account', {
     registered: registered,
@@ -386,9 +431,23 @@ router.get('/fleets/single-user/fleet-account', function(req, res) {
 
 })
 
+router.post('/fleets/single-user/fleet-account', function(req, res) {
+
+  req.session.vrns = ['CU57ABC','DA56XYZ'];
+  res.redirect('/fleets/single-user/fleet-account')
+
+})
+
 // update the fleet - get
 router.get('/fleets/single-user/fleet-update', function(req, res) {
-  console.log('get',req.session.vrns);
+  
+  if (req.query.vrn) {
+    var vrns = req.session.vrns.filter(function( vrn ) {
+      return vrn !== req.query.vrn;
+    });
+    req.session.vrns = vrns;
+  }
+
   var registered = true ? req.session.data['registered'] === 'true' : false;
   res.render('fleets/single-user/fleet-update', {
     registered: registered,
@@ -399,6 +458,7 @@ router.get('/fleets/single-user/fleet-update', function(req, res) {
 
 // update the fleet - post
 router.post('/fleets/single-user/fleet-update', function(req, res) {
+  
 
   var ans = true ? req.session.data['add-vehicle'] === 'yes' : false;
   if (ans) {
@@ -412,7 +472,6 @@ router.post('/fleets/single-user/fleet-update', function(req, res) {
 
 // fleets confirmation
 router.get('/fleets/single-user/fleets-confirmation', function(req, res) {
-  console.log(req.session);
   res.render('fleets/single-user/fleets-confirmation', {
     vrns: req.session.vrns
   })
@@ -919,7 +978,6 @@ router.post('/payments/selected-date', function (req, res) {
     req.session.amountDue = '£' + sum.toFixed(2);
   
     var selectedDates = dates.join(', ');
-    console.log(req.session.data['date']);
     if (req.session.data['date'] == undefined) {
         res.render('payments/select-date', {
             error: true,

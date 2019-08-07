@@ -44,13 +44,13 @@ text: "Back"
         {% if not error %} 
           <div class="govuk-form-group">
         {% endif %}
-      <label class="govuk-label" for="user-1-name">Name</label>
+      <label class="govuk-label" for="name">Name</label>
       {% if error %}
         <span id="vrn-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
         </span>
       {% endif %}
-      <input class="govuk-input" id="user-1-name" name="user-1-name" type="text" style="width: 60%;" autocomplete="name" spellcheck="false">
+      <input class="govuk-input" id="name" name="name" type="text" style="width: 60%;" autocomplete="name" spellcheck="false" value="{{name}}">
       </div> 
 
       <div class="govuk-form-group">
@@ -60,7 +60,7 @@ text: "Back"
         <span id="email-hint" class="govuk-hint">
           This will be used to send an invite to create an account
         </span>
-        <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+        <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false" value="{{email}}">
       </div>
 
 
