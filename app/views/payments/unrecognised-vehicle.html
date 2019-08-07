@@ -36,32 +36,29 @@ text: "Back"
         Vehicle details not found
       </h1>
 
-      <p>We can't find any details for the vehicle with registration <span style="text-transform: uppercase">{{ data['vrn'] }}</span>.</p>
+      <h2 class="govuk-heading-m">We can't find the details of this vehicle</h2>
+
+      <p>We might not be able to find the details for the vehicle <span style="text-transform: uppercase">{{ data['vrn'] }}</span> because it's not registered with the DVLA.</p>
       
-      <p>This may be because your vehicle is not registered with the UK's Driver and Vehicle Licensing Agency (DVLA).</p>
+      <p>Try <a href="/payments/enter-vehicle-details">entering your details</a> again making sure that you have no mixed up letters and numbers (for example, the letters <strong>I</strong> and <strong>O</strong> with the numbers <strong>1</strong> and <strong>0</strong>).</p>
 
       <h2 class="govuk-heading-m">
         If you believe your vehicle should be registered in the UK
       </h2>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>Check you entered the correct details for the vehicle and <a href="/payments/enter-vehicle-details">try again</a></li>
-        <li><a href="https://www.gov.uk/change-vehicle-details-registration-certificate" target="_blank">Contact the DVLA</a> to change the vehicle licensing details it holds for your vehicle</li>
-        <li>If your vehicle does not <a href="" target="_blank">meet emissions standards</a> for Clean Air Zones, you still need to pay for driving in a Clean Air Zone.</li>
-      </ul>      
+      <p>If your details are still not recognised, and you believe your vehicle should be registered in the UK, contact the <a href="https://www.gov.uk/change-vehicle-details-registration-certificate" target="_blank">DVLA</a> to update the details it holds for your vehicle.</p>
+      <p>You will still have to pay the Clean Air Zone charge (payment has to be made by midnight the next working day after you drive in the zone). If your vehicle meets Clean Air standards, you will be able to claim a <a href="/payments/refund-scenarios">refund once your vehicle details are updated</a>.</p>
+      <p><a href="/payments/choose-vehicle">Pay the charge</a></p>
 
       <h2 class="govuk-heading-m">
-        If your vehicle is not a UK-Registered vehicle
+        If your vehicle is not UK-Registered
       </h2>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>You are still required to pay</li>
-      </ul>
+      <p>We do not hold details for vehicles that are not registered in the UK.</p>
+      <p>If your vehicle does not meet Clean Air standards, you will have to pay the Clean Air Zone charge (payment has to be made by the next working day after you drive in the zone).</p>
 
-      <p>We are unable to display any details about the following vehicle. Confirm this is the correct vehicle to continue
-      </p>
-      <p><b>{{ data['vrn'] }}</b></p>
+      <p>Please confirm that the registration number <strong>{{ data['vrn'] }}</strong> is correct.</p>
 
-      <form method="post" class="form" action="/payments/unrecognised-vehicle">
+      <form method="post" class="form" action="/payments/choose-vehicle">
         {% if error %}
           <div class="govuk-form-group govuk-form-group--error">
           {% endif %}
@@ -78,19 +75,14 @@ text: "Back"
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="confirm-1" name="confirm" type="checkbox" value="correct-details">
                 <label class="govuk-label govuk-checkboxes__label" for="confirm-1">
-                  Yes, this registration number is correct
+                 I confirm that the registration number is correct.
                 </label>
               </div>
             </div>
           </fieldset>
         </div> 
-
-        <button type="submit" class="govuk-button">
-          Continue
-        </button>
+        <p><a href="/payments/choose-vehicle">Pay the charge</a></p>
       </form>   
-
-      <p><a href="/payments/enter-vehicle-details">Check another vehicle</a></p>
 
     </div>
 </div>
