@@ -34,7 +34,7 @@ text: "Back"
 
     <h1 class="govuk-heading-l">Which Clean Air Zone do you need to pay for?</h1>
     <form method="post" class="form" action="/payments/paymentPages">
-      <p>You need to pay separately for each Clean Air Zone you drive through.</p> 
+      <p>You need to pay separately for each Clean Air Zone you drive in.</p> 
       <div class="govuk-form-group">
         {% if error %}
         <div class="govuk-form-group govuk-form-group--error">
@@ -57,7 +57,7 @@ text: "Back"
                   </span>
                 </summary>
                 <div class="govuk-details__text">
-                    The only zones that appear are where your chosen vehicle is not compliant. More Clean Air Zones may be introduced in the future that will charge your vehicle.
+                    You will only see zones in which your vehicle does not meet Clean Air Standards.
                 </div>
               </details>
               {% endif %}

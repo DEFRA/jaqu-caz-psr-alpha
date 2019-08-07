@@ -30,7 +30,7 @@ text: "Back"
         </div>
         {% endif %}
         <h1 class="govuk-heading-l">When do you want your 7-day period to start?</h1>
-        <p>You have to pay by midnight two days after you begin driving in the zone.</p>
+        <p>You have to pay by midnight on the next working day after you drive in the zone.</p>
         <details class="govuk-details">
             <summary class="govuk-details__summary">
                 <span class="govuk-details__summary-text">
@@ -38,7 +38,7 @@ text: "Back"
                 </span>
             </summary>
             <div class="govuk-details__text">
-                You can't pay any earlier than 7 days ahead. <br><br>You have to pay by midnight two days after you drive in a zone. If you are trying to make a payment later than this, you will need to wait for the penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
+                You can't pay more than 7 days ahead. <br><br>You have to pay the charge by midnight on the next working day after you have driven in a Clean Air Zone. If the payment window has closed you won't be able to pay here, and you will be sent a fine in the post. This will be sent to the address the DVLA holds for the vehicle's owner.
             </div>
         </details>
         <form method="post" class="form" action="/payments/selected-date">
@@ -68,12 +68,12 @@ text: "Back"
                                 </div> -->
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="date-1" name="date" type="radio"
-                                        value="yesterday">
+                                        value="yesterday" required>
                                     <label class="govuk-label govuk-radios__label" for="date-1">
                                         {{yesterday}}
                                     </label>
                                     <span id="yesterday-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{yesterdayStringWeekly}}
+                                        Your weekly ticket is valid until 11.59pm on {{yesterdayStringWeekly}}
                                     </span>
                                 </div>
                                 <div class="govuk-radios__item">
@@ -83,7 +83,7 @@ text: "Back"
                                         <b>{{today}}</b> (Today)
                                     </label>
                                     <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{todayStringWeekly}}
+                                            Your weekly ticket is valid until 11.59pm on {{todayStringWeekly}}
                                     </span>
                                 </div>
                                 <div class="govuk-radios__item">
@@ -93,7 +93,7 @@ text: "Back"
                                         {{oneDayAfter}}
                                     </label>
                                     <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{oneDayAfterStringWeekly}}
+                                            Your weekly ticket is valid until 11.59pm on {{oneDayAfterStringWeekly}}
                                     </span>
                                 </div>
                                 <div class="govuk-radios__item">
@@ -103,7 +103,7 @@ text: "Back"
                                         {{twoDaysAfter}}
                                     </label>
                                     <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{twoDaysAfterStringWeekly}}
+                                            Your weekly ticket is valid until 11.59pm on {{twoDaysAfterStringWeekly}}
                                     </span>
                                 </div>
                                 <div class="govuk-radios__item">
@@ -113,7 +113,7 @@ text: "Back"
                                         {{threeDaysAfter}}
                                     </label>
                                     <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{threeDaysAfterStringWeekly}}
+                                            Your weekly ticket is valid until 11.59pm on {{threeDaysAfterStringWeekly}}
                                     </span>
                                 </div>
                                 <div class="govuk-radios__item">
@@ -123,7 +123,7 @@ text: "Back"
                                         {{fourDaysAfter}}
                                     </label>
                                     <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{fourDaysAfterStringWeekly}}
+                                            Your weekly ticket is valid until 11.59pm on {{fourDaysAfterStringWeekly}}
                                     </span>
                                 </div>
                                 <div class="govuk-radios__item">
@@ -133,7 +133,7 @@ text: "Back"
                                         {{fiveDaysAfter}}
                                     </label>
                                     <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{fiveDaysAfterStringWeekly}}
+                                            Your weekly ticket is valid until 11.59pm on {{fiveDaysAfterStringWeekly}}
                                     </span>
                                 </div>
                                 <div class="govuk-radios__item">
@@ -143,7 +143,7 @@ text: "Back"
                                         {{sixDaysAfter}}
                                     </label>
                                     <span id="today-hint" class="govuk-hint" style="margin-left: 15px;">
-                                        Your weekly charge is valid until midnight on {{sixDaysAfterStringWeekly}}
+                                            Your weekly ticket is valid until 11.59pm on {{sixDaysAfterStringWeekly}}
                                     </span>
                                 </div>
                                
