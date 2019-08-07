@@ -42,12 +42,12 @@ text: "Back"
         <h2 class="govuk-heading-m">£12.50</h2>
         {% endif %}
 
-        <p>You only need to pay once per day, no matter how many times you drive in and out of that Clean Air Zone on the same day. A daily charge runs from midnight to midnight.</p>
+        <p>You only need to pay once per day (the daily charge period runs from midnight to midnight.</p>
         <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
                 <span class="govuk-warning-text__assistive">Warning</span>
-                If you don't pay by midnight the day after you drive in the zone, you'll get a fine. This is also known as a penalty charge notice (PCN).
+                If you don't pay by mignight on the next working day after you have driven in the zone, you will be sent a fine.
             </strong>
         </div>
         <form method="post" class="form" action="/payments/leeds">
@@ -56,30 +56,30 @@ text: "Back"
           {% endif %}
           {% if not error %} 
           <div class="govuk-form-group">
-          {% endif %}
-            <fieldset class="govuk-fieldset" aria-describedby="confirm-hint">
-                {% if error %}
-                <span id="caz-charge-error" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
-                </span>
                 {% endif %}
-              <div class="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="confirm-1" name="confirm" type="checkbox" value="correct-details">
-                  <label class="govuk-label govuk-checkboxes__label" for="confirm-1">
-                    I have <a href="" target= "_blank">checked</a> that I am not eligible for an exemption in Leeds
-                  </label>
-                </div>
-              </div>
-            </fieldset>
-          </div> 
+                  <fieldset class="govuk-fieldset" aria-describedby="confirm-hint">
+                      {% if error %}
+                      <span id="caz-charge-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
+                      </span>
+                      {% endif %}
+                      <div class="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="confirm-1" name="confirm" type="checkbox" value="correct-details">
+                        <label class="govuk-label govuk-checkboxes__label" for="confirm-1">
+                          I confirm that I am not exempt from the Leeds Clean Air Zone charge (full details about who is exempt from paying the charge in Leeds can be found <a href="" target="_blank">here</a>).
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div> 
         
             <button type="submit" class="govuk-button">
                 Continue
             </button>
         </form>
-        <p><a href="/payments/local-authority">Pay for another Clean Air Zone</a></p>
-        <p><a href="">Discover ways to avoid having to pay</a></p>
+
+        <p><a href="">Discover alternatives having to pay</a></p>
     </div>
 </div>
 
