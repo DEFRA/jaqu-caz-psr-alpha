@@ -132,7 +132,7 @@ today.setDate(today.getDate() - 12);
 
 // Enter vehicle details
 router.post('/confirm-vehicle-details', function (req, res) {
-
+  var countryRegistered = req.body['country-of-registration'];
   var vrn = req.session.data['vrn'];
   // Remove spacing and make letters uppercase
   var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
@@ -140,6 +140,10 @@ router.post('/confirm-vehicle-details', function (req, res) {
   if (formattedVrn == "XYZ456") {
 
     res.redirect('/payments/unrecognised-vehicle')
+
+  } else if (countryRegistered == "non-uk") {
+
+    res.redirect('/payments/non-uk-vehicle')
 
   } else if (formattedVrn == "") {
 
