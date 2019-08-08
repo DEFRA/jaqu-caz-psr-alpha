@@ -388,14 +388,35 @@ router.post('/fleets/single-user/fleet-account-forgotten-password', function (re
 
 });
 
+// Fleets redirect if no vehicles
+router.post('/fleets/single-user/select-vehicle', function(req, res) {
+  if (req.session.vrns && req.session.vrns.length > 0) {
+    res.render('fleets/single-user/select-vehicle');
+  }
+  else {
+    res.redirect('first-upload');
+  }
+})
+
+// Fleets set up mandate
+router.post('/fleets/single-user/fleet-direct-debit-confirmation', function(req, res) {
+  req.session.mandate = true;
+  res.redirect('fleet-direct-debit-confirmation');
+})
+
 // Fleet-select-payment
 router.post('/fleets/single-user/choose-payment-method', function (req, res) {
 
   var payment_type = req.body['payment-type'];
 
   if (payment_type == 'direct-debit'){
+    if ('mandate' in req.session) {
+      res.redirect('confirm-charge-direct-debit')
+    }
+    else {
+      res.redirect('first-mandate')
+    }
 
-    res.redirect('confirm-charge-direct-debit')
     
   } else if (payment_type == 'card-payment'){
 
@@ -419,7 +440,6 @@ router.get('/payments/logout', function(req, res) {
 
 // account dashboard
 router.get('/fleets/single-user/fleet-account', function(req, res) {
-
   var registered = true ? req.session.data['registered'] === 'true' : false;
   vehicles = 'vrns' in req.session ? req.session.vrns.length : 0
   
@@ -454,6 +474,12 @@ router.get('/fleets/single-user/fleet-update', function(req, res) {
     vrns: req.session.vrns
   })
 
+})
+
+// upload fleet
+router.post('/fleets/single-user/fleets-confirmation', function(req, res) {
+  req.session.vrns = ['CU57ABC', 'DQ59DEF']
+  res.redirect('fleets-confirmation');
 })
 
 // update the fleet - post
