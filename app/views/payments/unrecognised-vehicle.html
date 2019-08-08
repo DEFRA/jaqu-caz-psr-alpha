@@ -32,7 +32,7 @@ text: "Back"
         </div>
         {% endif %}
     
-      <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-xl">
         Vehicle details not found
       </h1>
 
@@ -48,14 +48,6 @@ text: "Back"
 
       <p>If your details are still not recognised, and you believe your vehicle should be registered in the UK, contact the <a href="https://www.gov.uk/change-vehicle-details-registration-certificate" target="_blank">DVLA</a> to update the details it holds for your vehicle.</p>
       <p>You will still have to pay the Clean Air Zone charge (payment has to be made by midnight the next working day after you drive in the zone). If your vehicle meets Clean Air standards, you will be able to claim a <a href="/payments/refund-scenarios">refund once your vehicle details are updated</a>.</p>
-      <p><a href="/payments/choose-vehicle">Pay the charge</a></p>
-
-      <h2 class="govuk-heading-m">
-        If your vehicle is not UK-Registered
-      </h2>
-      <p>We do not hold details for vehicles that are not registered in the UK.</p>
-      <p>If your vehicle does not meet Clean Air standards, you will have to pay the Clean Air Zone charge (payment has to be made by the next working day after you drive in the zone).</p>
-
       <p>Please confirm that the registration number <strong>{{ data['vrn'] }}</strong> is correct.</p>
 
       <form method="post" class="form" action="/payments/choose-vehicle">
@@ -81,9 +73,10 @@ text: "Back"
             </div>
           </fieldset>
         </div> 
-        <p><a href="/payments/choose-vehicle">Pay the charge</a></p>
+        <button type="submit" class="govuk-button">
+            Continue
+        </button>      
       </form>   
-
     </div>
 </div>
 
