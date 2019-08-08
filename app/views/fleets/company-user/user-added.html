@@ -15,28 +15,30 @@ text: "Back"
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">You have added one user</h1>
-      <form class="form" form action="account-set-up" method="post" class="form">
+      <form class="form" method="post">
         <div class="form-group">
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-              <dd class="govuk-summary-list__value">
-                {{data ['user-1-name']}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">
-                  Change<span class="govuk-visually-hidden"> name</span>
-                </a>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">
-                  Remove<span class="govuk-visually-hidden"> name</span>
-                </a>
-              </dd>
-            </div>
+            {% for user in users %}
+              <div class="govuk-summary-list__row">
+                <dd class="govuk-summary-list__value">
+                  {{ user.name }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="/fleets/company-user/add-users?name={{user.name}}&email={{user.email}}">
+                    Change<span class="govuk-visually-hidden"> name</span>
+                  </a>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="/fleets/company-user/user-added?name={{user.name}}&email={{user.email}}">
+                    Remove<span class="govuk-visually-hidden"> name</span>
+                  </a>
+                </dd>
+              </div>
+            {% endfor %}
             </dl>
 
           <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset" aria-describedby="add-partner-hint">
+              <fieldset class="govuk-fieldset" aria-describedby="add-user-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
                   <label class="govuk-heading-m">
                     Add another user? 
@@ -45,14 +47,14 @@ text: "Back"
                 </legend>
                 <div class="govuk-radios govuk-radios--inline">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="add-partner-2" name="add-partner-2" type="radio" value="yes">
-                    <label class="govuk-label govuk-radios__label" for="add-partner-2">
+                    <input class="govuk-radios__input" id="add-user" name="add-user" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="add-user">
                       Yes
                     </label>
                   </div>
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="add-partner-2" name="add-partner-2" type="radio" value="no">
-                    <label class="govuk-label govuk-radios__label" for="add-partner-2">
+                    <input class="govuk-radios__input" id="add-user" name="add-user" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="add-user">
                       No
                     </label>
                   </div>

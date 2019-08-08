@@ -31,40 +31,18 @@ text: "Back"
                 <th class="govuk-table__header" scope="col"></th>
               </tr>
             </thead>
-            {% if registered %}
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell" scope="row">CU57ABC</td>
-                  <td class="govuk-table__cell" scope="row">Car</td>
-                  <td class="govuk-table__cell" scope="row">Peugeot</td>
-                  <td class="govuk-table__cell" scope="row">Grey</td>
-                  <td class="govuk-table__cell" scope="row">Diesel</td>
-                  <td class="govuk-table__cell" scope="row">Remove</td>
-                </tr>
-              </tbody>
-              <tbody class="govuk-table__body">
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell" scope="row">DA56XYZ</td>
-                    <td class="govuk-table__cell" scope="row">Car</td>
-                    <td class="govuk-table__cell" scope="row">Toyota</td>
-                    <td class="govuk-table__cell" scope="row">Red</td>
-                    <td class="govuk-table__cell" scope="row">Petrol</td>
-                    <td class="govuk-table__cell" scope="row">Remove</td>
-                  </tr>
-                </tbody>
                 {% for vrn in vrns %}
                 <tbody class="govuk-table__body">
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell" scope="row">{{vrn}}</td>
-                      <td class="govuk-table__cell" scope="row">Car</td>
+                      <td class="govuk-table__cell" scope="row">Van</td>
                       <td class="govuk-table__cell" scope="row">Ford</td>
-                      <td class="govuk-table__cell" scope="row">Green</td>
+                      <td class="govuk-table__cell" scope="row">White</td>
                       <td class="govuk-table__cell" scope="row">Petrol</td>
-                      <td class="govuk-table__cell" scope="row">Remove</td>
+                      <td class="govuk-table__cell" scope="row"><a href="/fleets/single-user/fleet-update?vrn={{vrn}}">Remove</a></td>
                     </tr>
                   </tbody>
                 {% endfor %}
-              {% endif %}
           </table>
     <form method="post" class="form" action="/fleets/single-user/fleet-update">
         <div class="govuk-form-group">
