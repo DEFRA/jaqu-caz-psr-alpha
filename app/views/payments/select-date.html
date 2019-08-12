@@ -56,66 +56,54 @@ text: "Back"
               {% endif %}
                 <fieldset class="govuk-fieldset">
                     <div class="govuk-checkboxes" required="required">
-                        <!-- <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-0" name="date" type="checkbox" value="twoDaysAgo">
-                            <label class="govuk-label govuk-checkboxes__label" for="date-0">
-                                {{twoDaysAgo}}
-                            </label>
-                        </div> -->
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-1" name="date" type="checkbox" value="yesterday">
+                            <input class="govuk-checkboxes__input" id="date-1" name="date" type="checkbox" value="{{today | date('subtract', 1, 'days')}}">
                             <label class="govuk-label govuk-checkboxes__label" for="date-1">
-                                {{yesterday}}
+                                {{today | date("subtract", 1, "days") | date("dddd D MMMM YYYY") }}
                             </label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-2" name="date" type="checkbox" value="today">
+                            <input class="govuk-checkboxes__input" id="date-2" name="date" type="checkbox" value="{{today}}">
                             <label class="govuk-label govuk-checkboxes__label" for="date-2">
-                                <b>{{today}}</b> (Today)
+                                <b>{{today | date("dddd D MMMM YYYY")}}</b> (Today)
                             </label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-3" name="date" type="checkbox" value="1-day-after">
+                            <input class="govuk-checkboxes__input" id="date-3" name="date" type="checkbox" value="{{today | date('add', 1, 'days')}}">
                             <label class="govuk-label govuk-checkboxes__label" for="date-3">
-                                {{oneDayAfter}}
+                                {{today | date("add", 1, "days") | date("dddd D MMMM YYYY") }}
                             </label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-4" name="date" type="checkbox" value="2-days-after">
+                            <input class="govuk-checkboxes__input" id="date-4" name="date" type="checkbox" value="{{today | date('add', 2, 'days')}}">
                             <label class="govuk-label govuk-checkboxes__label" for="date-4">
-                                {{twoDaysAfter}}
+                                {{today | date("add", 2, "days") | date("dddd D MMMM YYYY") }}
                             </label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-5" name="date" type="checkbox" value="3-days-after">
+                            <input class="govuk-checkboxes__input" id="date-5" name="date" type="checkbox" value="{{today | date('add', 3, 'days')}}">
                             <label class="govuk-label govuk-checkboxes__label" for="date-5">
-                                {{threeDaysAfter}}
+                                {{today | date("add", 3, "days") | date("dddd D MMMM YYYY") }}
                             </label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-6" name="date" type="checkbox" value="4-days-after">
+                            <input class="govuk-checkboxes__input" id="date-6" name="date" type="checkbox" value="{{today | date('add', 4, 'days')}}">
                             <label class="govuk-label govuk-checkboxes__label" for="date-6">
-                                {{fourDaysAfter}}
+                                {{today | date("add", 4, "days") | date("dddd D MMMM YYYY") }}
                             </label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-7" name="date" type="checkbox" value="5-days-after">
+                            <input class="govuk-checkboxes__input" id="date-7" name="date" type="checkbox" value="{{today | date('add', 5, 'days')}}">
                             <label class="govuk-label govuk-checkboxes__label" for="date-7">
-                                {{fiveDaysAfter}}
+                                {{today | date("add", 5, "days") | date("dddd D MMMM YYYY") }}
                             </label>
                         </div>
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-8" name="date" type="checkbox" value="6-days-after">
+                            <input class="govuk-checkboxes__input" id="date-8" name="date" type="checkbox" value="{{today | date('add', 6, 'days')}}">
                             <label class="govuk-label govuk-checkboxes__label" for="date-8">
-                                {{sixDaysAfter}}
+                                {{today | date("add", 6, "days") | date("dddd D MMMM YYYY") }}
                             </label>
                         </div>
-                        <!-- <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="date-9" name="date" type="checkbox" value="7-days-after">
-                            <label class="govuk-label govuk-checkboxes__label" for="date-9">
-                                {{sevenDaysAfter}}
-                            </label>
-                        </div> -->
                     </div>
                 </fieldset>
             </div>
