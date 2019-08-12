@@ -777,16 +777,10 @@ router.post('/payments/selected-date', function (req, res) {
     var dates = [];
     var typeChargeBirmingham = 8;
     var typeChargeLeeds = 12.50;
-    if (formattedVrn == 'DEF789' || req.session.data['vehicle-type'] == 'HGV' || req.session.data['vehicle-type'] == "busCoach"){
+    if (formattedVrn == 'DEF789' || req.session.data['vehicle-type'] == 'HGV' || req.session.data['vehicle-type'] == "busCoach" || formattedVrn == 'JKL987'){
         typeChargeBirmingham = 50;
         typeChargeLeeds = 50;
     }
-
-    if (formattedVrn == 'JKL987'){
-        typeChargeBirmingham = 50;
-        typeChargeLeeds = 50;
-    }
-  
 
     if (date.includes("twoDaysAgo")) {
   
@@ -1404,12 +1398,8 @@ router.post('/payments/confirm-payment', function (req, res) {
   var dates = [];
   var typeChargeBirmingham = 8;
   var typeChargeLeeds = 12.50;
-    if (formattedVrn == 'DEF789'  || req.session.data['vehicle-type'] == 'HGV' || req.session.data['vehicle-type'] == "busCoach"){
-        typeChargeBirmingham = 50;
-        typeChargeLeeds = 50;
-    }
-
-    if (formattedVrn == 'JKL987'){
+  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
+    if (formattedVrn == 'DEF789'  || req.session.data['vehicle-type'] == 'HGV' || req.session.data['vehicle-type'] == "busCoach" || formattedVrn == 'JKL987'){
         typeChargeBirmingham = 50;
         typeChargeLeeds = 50;
     }
