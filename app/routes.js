@@ -25,18 +25,33 @@ function calculateCharge(vrn, vehicleType, caz) {
 
 // Enter vehicle details
 router.post('/confirm-vehicle-details', function (req, res) {
-  var vrn = formatVrn(req.session.data['vrn'])
+    var countryRegistered = req.body['country-of-registration'];
+    var vrn = req.session.data['vrn'];
+    // Remove spacing and make letters uppercase
+    var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
-  if (vrn == "XYZ456") {
-    res.redirect('/payments/unrecognised-vehicle')
-  } else if (vrn == "") {
-    res.render('payments/enter-vehicle-details', {
-      error: true,
-      errorMessage: "Enter a registration number (also known as license plate number)"
-    })
-  } else {
-      res.redirect('/payments/confirm-vehicle-details')
-  }
+
+    if (countryRegistered == "non-uk") {
+
+        res.redirect('/payments/non-uk-vehicle')
+
+    } else if (formattedVrn == "XYZ456") {
+
+        res.redirect('/payments/unrecognised-vehicle')
+
+    } else if (formattedVrn == "") {
+
+        res.render('payments/enter-vehicle-details', {
+            error: true,
+            errorMessage: "Enter a registration number (also known as license plate number)"
+        })
+
+    } else {
+
+        res.redirect('/payments/confirm-vehicle-details')
+
+    }
+
 });
 
 // Confirm vehicle details page
@@ -219,13 +234,12 @@ router.get('/payments/selectDate', function (req, res) {
 });
 
 router.post('/payments/selected-date', function (req, res) {
+    if (!req.session.data['vrn']) {
+      res.redirect('/')
+    }
     var caz = req.session.data['caz'];
     var vrn = req.session.data['vrn'];
     var vehicleType = req.session.data['vehicle-type'];
-
-    if (!vrn) {
-      res.redirect('/')
-    }
 
     // Remove spacing and make letters uppercase
     var formattedVrn = formatVrn(vrn);
@@ -303,13 +317,12 @@ router.post('/payments/debit-credit-card', function (req, res) {
 // Payment confirmation page
 
 router.get('/payments/confirm-payment', function (req, res) {
+  if (!req.session.data['vrn']) {
+    res.redirect('/')
+  }
   var caz = req.session.data['caz'];
   var dates = req.session.data['date'];
   var vrn = formatVrn(req.session.data['vrn']);
-
-  if (!vrn) {
-    res.redirect('/')
-  }
 
   res.render('payments/confirm-payment', {
     amountDue: req.session.amountDue, 
@@ -321,15 +334,14 @@ router.get('/payments/confirm-payment', function (req, res) {
 });
 
 router.post('/payments/confirm-payment', function (req, res) {
+  if (!req.session.data['vrn']) {
+    res.redirect('/')
+  }
   var email = req.session.data['email'];
   var caz = req.session.data['caz'];
   var dates = req.session.data['date'];
   var vrn = formatVrn(req.session.data['vrn']);
   var vehicleType = req.session.data['vehicle-type'];
-
-  if (!vrn) {
-    res.redirect('/')
-  }
    
   charge = calculateCharge(vrn, vehicleType, caz);
   charge = caz === 'leeds-weekly' ? charge : charge * dates.length;
@@ -337,7 +349,9 @@ router.post('/payments/confirm-payment', function (req, res) {
   var localAuthority = caz === "leeds-weekly" ? "Leeds" : caz.charAt(0).toUpperCase() + caz.slice(1);
 
   if (email != "") {
-    emailDate = dates.map(d => moment(d).format("dddd D MMMM YYYY"));
+    console.log(dates);
+    format = "dddd D MMMM YYYY";
+    emailDate = caz === 'leeds-weekly' ? moment(dates).format(format) : dates.map(d => moment(d).format());
     notify.sendEmail(
       // GOV.UK Notify template ID
       '9b0ce7a5-8830-4d69-ae2f-7762c5ad76e7',

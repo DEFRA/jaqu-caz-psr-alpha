@@ -1,0 +1,48 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Which Clean Air Zone do you need to set up a direct debit with?</h1>
+    <form method="post" class="form" action="fleet-direct-debit-mandate">
+      <p>You need to have a separate direct debit with each Clean Air zone that you wish to pay for.</p> 
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="cazHint">
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="DDcaz-1" name="DDcaz" type="radio" value="birmingham">
+              <label class="govuk-label govuk-radios__label" for="DDcaz-1">
+                Birmingham
+              </label>
+            </div>
+             <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="DDcaz-2" name="DDcaz" type="radio" value="leeds">
+              <label class="govuk-label govuk-radios__label" for="DDcaz-2">
+                Leeds
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button type="submit" class="govuk-button">
+          Continue
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
