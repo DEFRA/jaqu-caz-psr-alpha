@@ -31,20 +31,15 @@ Pay a Clean Air Zone charge
                 </tr>
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Clean Air Zone</td>
-                    {% if caz != "leeds-weekly" %}
-                    <th class="govuk-table__header" scope="row" style="text-transform: capitalize;">{{ caz }}</th>
-                    {% endif %}
-                    {% if caz == "leeds-weekly" %}
-                    <th class="govuk-table__header" scope="row" style="text-transform: capitalize;">Leeds</th>
-                    {% endif %}
+                    <th class="govuk-table__header" scope="row" style="text-transform: capitalize;">{{ localAuthority }}</th>
                 </tr>
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Payment for</td>
                     {% if caz != "leeds-weekly" %}
                     <th class="govuk-table__header" scope="row">
-                        {{date}}</th>
+                        {% for date in dates%}{{ date | date("dddd D MMMM YYYY")}}{%if loop.index != loop.length %},{% endif %} {% endfor %}</th>
                     {% else %}
-                    <th class="govuk-table__header" scope="row">{{ date }}</th>
+                    <th class="govuk-table__header" scope="row">{{dates | date("DD/MM/YYYY")}} - {{dates | date("add", 6, "days") | date("DD/MM/YYYY")}}</th>
                     {% endif %}
                     <td class="govuk-table__cell"></td>
                 </tr>

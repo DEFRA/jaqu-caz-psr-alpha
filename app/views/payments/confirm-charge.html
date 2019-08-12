@@ -49,9 +49,9 @@ text: "Back"
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Payment for</td>
                         {% if caz != "leeds-weekly" %}
-                        <th class="govuk-table__header" scope="row">{{ date }}</th>
+                        <th class="govuk-table__header" scope="row">{% for date in dates%}{{ date | date("dddd D MMMM YYYY")}}{%if loop.index != loop.length %},{% endif %} {% endfor %}</th>
                         {% else %}
-                        <th class="govuk-table__header" scope="row">{{ date }}</th>
+                        <th class="govuk-table__header" scope="row">{{dates | date("DD/MM/YYYY")}} - {{dates | date("add", 6, "days") | date("DD/MM/YYYY")}}</th>
                         {% endif %}
                         <td class="govuk-table__cell">
                             {% if vrn == "ABC123" and caz == "leeds-weekly" %}
