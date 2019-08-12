@@ -132,31 +132,32 @@ today.setDate(today.getDate() - 12);
 
 // Enter vehicle details
 router.post('/confirm-vehicle-details', function (req, res) {
-  var countryRegistered = req.body['country-of-registration'];
-  var vrn = req.session.data['vrn'];
-  // Remove spacing and make letters uppercase
-  var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
+    var countryRegistered = req.body['country-of-registration'];
+    var vrn = req.session.data['vrn'];
+    // Remove spacing and make letters uppercase
+    var formattedVrn = vrn.toUpperCase().replace(/\s/g, '');
 
-  if (formattedVrn == "XYZ456") {
 
-    res.redirect('/payments/unrecognised-vehicle')
+    if (countryRegistered == "non-uk") {
 
-  } else if (countryRegistered == "non-uk") {
+        res.redirect('/payments/non-uk-vehicle')
 
-    res.redirect('/payments/non-uk-vehicle')
+    } else if (formattedVrn == "XYZ456") {
 
-  } else if (formattedVrn == "") {
+        res.redirect('/payments/unrecognised-vehicle')
 
-    res.render('payments/enter-vehicle-details', {
-      error: true,
-      errorMessage: "Enter a registration number (also known as license plate number)"
-    })
+    } else if (formattedVrn == "") {
 
-  } else {
+        res.render('payments/enter-vehicle-details', {
+            error: true,
+            errorMessage: "Enter a registration number (also known as license plate number)"
+        })
 
-      res.redirect('/payments/confirm-vehicle-details')
+    } else {
 
-  }
+        res.redirect('/payments/confirm-vehicle-details')
+
+    }
 
 });
 
