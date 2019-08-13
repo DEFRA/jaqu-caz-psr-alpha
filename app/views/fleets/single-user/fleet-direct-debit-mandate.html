@@ -66,7 +66,9 @@ Pay a Clean Air Zone charge
                 </div>
             </div>
 
-
+            {% if data['rtn'] %}
+                <input type="hidden" name="rtn" value="true">
+            {% endif %}
             <button type="submit" class="govuk-button">
                 Continue
             </button>

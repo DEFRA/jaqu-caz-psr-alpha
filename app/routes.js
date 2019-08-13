@@ -497,19 +497,19 @@ router.post('/fleets/company-user/user-added/', function(req, res) {
 })
 
 // Fleet account login
-router.post('/fleets/single-user/fleet-account-login', function (req, res) {
+router.post('/fleets/single-user/login', function (req, res) {
   var username = req.body['username'];
   var password = req.body['password'];
 
   if (username == '' || password == ''){
-    res.render('fleets/single-user/fleet-account-login', {
+    res.render('fleets/single-user/login', {
       error: true,
       errorMessage: "Please enter your username and password"
     })
   } else if (username != '' && password != ''){
     res.redirect('/fleets/single-user/fleet-account')
   } else {
-    res.render('fleets/single-user/fleet-account-login', {
+    res.render('fleets/single-user/login', {
       error: true,
       errorMessage: "Invalid username or password"
     })
@@ -569,7 +569,7 @@ router.post('/fleets/single-user/choose-payment-method', function (req, res) {
 // Fleet account sign out
 router.get('/payments/logout', function(req, res) {
   req.session.data = null;
-  res.redirect('fleet-account-sign-out');
+  res.redirect('sign-out');
 })
 
 // account dashboard
