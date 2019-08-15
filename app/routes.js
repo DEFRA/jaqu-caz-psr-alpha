@@ -531,13 +531,14 @@ router.post('/fleets/single-user/fleet-account-forgotten-password', function (re
 });
 
 // Fleets redirect if no vehicles
-router.post('/fleets/single-user/select-vehicle', function(req, res) {
-  if (req.session.vrns && req.session.vrns.length > 0) {
-    res.render('fleets/single-user/select-vehicle');
-  } else {
-    res.redirect('first-upload');
-  }
-})
+
+router.get('/fleets/single-user/select-caz', function(req, res) {
+    if (req.session.vrns && req.session.vrns.length > 0) {
+      res.render('fleets/single-user/select-caz');
+    } else {
+      res.redirect('first-upload');
+    }
+  })
 
 // Fleets set up mandate
 router.post('/fleets/single-user/fleet-direct-debit-confirmation', function(req, res) {
