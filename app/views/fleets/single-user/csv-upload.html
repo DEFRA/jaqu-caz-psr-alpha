@@ -44,7 +44,7 @@ text: "Back"
         <div class="govuk-form-group">
         {% endif %}    
                 <label class="govuk-label" for="file-upload-1">
-                  Upload a csv file
+                  Upload a CSV file
                 </label>
                 {% if error %}
                 <span id="file-upload-1-error" class="govuk-error-message">
@@ -56,6 +56,10 @@ text: "Back"
               </div>
 
         <br>
+
+        {% if data['rtn'] %}
+          <input type="hidden" name="rtn" value="true">
+        {% endif %}
         
         <button type="submit" class="govuk-button" name="registered" value="true">
             Upload Fleet

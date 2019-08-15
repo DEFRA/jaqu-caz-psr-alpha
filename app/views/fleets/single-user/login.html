@@ -1,6 +1,13 @@
 
 {% extends "layout.html" %}
 
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
 {% block pageTitle %}
   Pay a Clean Air Zone charge
 {% endblock %}
@@ -25,8 +32,8 @@
       </div>
       {% endif %}
 
-      <h1 class="govuk-heading-l">Reset your password</h1>
-      <form method="POST" class="form" action="fleet-account-forgotten-password">
+      <h1 class="govuk-heading-l">Sign In</h1>
+      <form method="POST" class="form" action="login">
         {% if error %}
         <div class="govuk-form-group govuk-form-group--error">
         {% endif %}
@@ -40,18 +47,21 @@
           {% endif %}
         <fieldset class="govuk-fieldset">
         <div class="govuk-form-group">
-            <label class="govuk-label govuk-date-input__label" for="email"><b>Email address</b></label>
-            <span id="vrn-hint" class="govuk-hint">
-                    We'll send a reset link to the address you provide
-                  </span>
-            <input class="govuk-input" id="email" name="email" type="text" style="width: 60%;" spellcheck="false">
-        </div> 
+            <label class="govuk-label govuk-date-input__label" for="username"><b>Username</b></label>
+            <input class="govuk-input" id="username" name="username" type="text" style="width: 60%;" spellcheck="false">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="password"><b>Password</b></label>
+          <input class="govuk-input" id="password" name="password" type="password" style="width: 60%;" spellcheck="false">
+      </div>  
         </div>
 
         <br>
+
+        <p><a href="/fleets/single-user/forgotten-password">Forgotten your password?</a></p>
         
         <button type="submit" class="govuk-button">
-            Send email
+            Continue
         </button>
       </form>
 
