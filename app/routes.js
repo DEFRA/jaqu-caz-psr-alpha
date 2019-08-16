@@ -349,7 +349,6 @@ router.post('/payments/confirm-payment', function (req, res) {
   var localAuthority = caz === "leeds-weekly" ? "Leeds" : caz.charAt(0).toUpperCase() + caz.slice(1);
 
   if (email != "") {
-    console.log(dates);
     format = "dddd D MMMM YYYY";
     emailDate = caz === 'leeds-weekly' ? moment(dates).format(format) : dates.map(d => moment(d).format(format));
     notify.sendEmail(
@@ -540,10 +539,35 @@ router.get('/fleets/single-user/select-caz', function(req, res) {
     }
   })
 
-// Fleets set up mandate
-router.post('/fleets/single-user/fleet-direct-debit-confirmation', function(req, res) {
-  req.session.mandate = true;
-  res.redirect('fleet-direct-debit-confirmation');
+router.post('/fleets/single-user/fleet-direct-debit-mandate', function (req, res) {
+  const mandateVar = {
+    'caz': req.session.data['DDcaz'],
+    'mandateId': [...Array(23)].map(i=>(~~(Math.random()*36)).toString(36)).join(''),
+    'status': 'Active',
+  }
+
+  if (req.session.mandate) {
+    req.session.mandate.push(mandateVar);
+  } else {
+    req.session.mandate = [mandateVar];
+  }
+
+  res.render('fleets/single-user/fleet-direct-debit-mandate')
+})
+
+// Fleets view direct debit mandates
+router.get('/fleets/single-user/view-direct-debit', function(req, res) {
+  console.log(req.session.mandate);
+  res.render('fleets/single-user/view-direct-debit', {
+    'mandate': req.session.mandate
+  })
+})
+
+router.post('/fleets/single-user/view-direct-debit', function(req, res) {
+  console.log(req.session.mandate);
+  res.render('fleets/single-user/view-direct-debit', {
+    'mandate': req.session.mandate
+  })
 })
 
 // Fleet-select-payment

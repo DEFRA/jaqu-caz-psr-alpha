@@ -23,9 +23,8 @@ Pay a Clean Air Zone charge
             </legend>
             <fieldset class="govuk-fieldset">
                 <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="bank"><b>Bank or Building
-                            society</b></label>
-                    <input class="govuk-input" id="bank" name="bank" type="text" style="width: 60%;" spellcheck="false">
+                    <label class="govuk-label govuk-date-input__label" for="account-name"><b>Account name</b></label>
+                    <input class="govuk-input" id="account-name" name="account-name" type="text" style="width: 60%;" spellcheck="false">
                 </div>
                 <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="account-number"><b>Account
@@ -66,7 +65,7 @@ Pay a Clean Air Zone charge
                 </div>
             </div>
 
-            {% if data['rtn'] %}
+            {% if data['rtn'] == 'true' %}
                 <input type="hidden" name="rtn" value="true">
             {% endif %}
             <button type="submit" class="govuk-button">

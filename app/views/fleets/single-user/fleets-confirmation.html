@@ -19,7 +19,7 @@ Pay a Clean Air Zone charge
         {% endfor %}
             <p><a href="javascript:window.print()">Print this page</a></p>
         
-        <form method="get" class="form" action="{% if data['rtn']%}select-caz{%else%}fleet-account{%endif%}">
+        <form method="get" class="form" action="{% if data['rtn'] === 'true'%}select-caz{%else%}fleet-account{%endif%}">
             <button type="submit" class="govuk-button">{% if data['rtn']%}Continue{%else%}Return to dashboard{%endif%}</button>
         </form>
     </div>

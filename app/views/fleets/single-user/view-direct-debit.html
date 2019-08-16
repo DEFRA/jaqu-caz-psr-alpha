@@ -26,14 +26,15 @@ text: "Back"
                 <th scope="col" class="govuk-table__header">Status</th>
               </tr>
             </thead>
+            {% for m in mandate %}
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Birmingham</th>
-                <td class="govuk-table__cell">135798642</td>
+                <th scope="row" class="govuk-table__header" style="text-transform: capitalize">{{m.caz}}</th>
+                <td class="govuk-table__cell">{{m.mandateId}}</td>
                 <td class="govuk-table__cell">Pending</td>
               </tr>
             </tbody>
-
+            {%endfor%}
           </table>
       <button type="submit" class="govuk-button">
           Set up new direct debit
