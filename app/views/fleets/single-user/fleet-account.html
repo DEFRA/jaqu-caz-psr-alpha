@@ -55,8 +55,8 @@
               <dd class="dashboard-total-group__amount">28</dd>
             </dl>
           </a>
-          <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="/fleets/single-user/select-direct-debit">Create a direct debit mandate</a></strong></p>
-          <p class="govuk-body">Create a direct debit mandate to allow BACS payments</p>
+          <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="/fleets/single-user/{% if direct_debit %}view{%else%}select{%endif%}-direct-debit">{% if direct_debit %}View your direct debits{%else%}Create a direct debit mandate{%endif%}</a></strong></p>
+          <p class="govuk-body">{% if direct_debit %}View the direct debits you have created{%else%}Create a direct debit mandate to allow BACS payments{%endif%}</p>
         </article>
 </div>
 

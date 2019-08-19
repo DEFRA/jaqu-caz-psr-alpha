@@ -625,12 +625,14 @@ router.get('/payments/logout', function(req, res) {
 // account dashboard
 router.get('/fleets/single-user/fleet-account', function(req, res) {
   var registered = true ? req.session.data['registered'] === 'true' : false;
-  vehicles = 'vrns' in req.session ? req.session.vrns.length : 0
+  var vehicles = 'vrns' in req.session ? req.session.vrns.length : 0;
+  var direct_debit = 'mandate' in req.session;
   
   res.render('fleets/single-user/fleet-account', {
     registered: registered,
     vrns: req.session.vrns,
-    vehicles: vehicles
+    vehicles: vehicles,
+    direct_debit: direct_debit
   })
 })
 
