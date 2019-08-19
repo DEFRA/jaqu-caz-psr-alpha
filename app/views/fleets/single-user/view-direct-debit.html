@@ -17,6 +17,16 @@ text: "Back"
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">Your direct debits</h1>
+    <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Help with changing or cancelling a direct debit
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          You can only cancel direct debits with your bank. To change which bank account will be billed, cancel the direct debit on your old account and then create a new direct debit with your new account details.
+        </div>
+      </details>
     <form method="post" class="form" action="select-direct-debit">
         <table class="govuk-table">
             <thead class="govuk-table__head">
@@ -36,9 +46,13 @@ text: "Back"
             </tbody>
             {%endfor%}
           </table>
-      <button type="submit" class="govuk-button">
-          Set up new direct debit
-      </button>
+      {% if (mandate === None) or (mandate.length < 2) %}
+        <button type="submit" class="govuk-button">
+            Set up new direct debit
+        </button>
+      {% else %}
+        <p>You have created a mandate for each CAZ. No more mandates can be created.</p>
+      {% endif %}
       <p><a href="fleet-account">Return to dashboard</a></p>
     </form>
 

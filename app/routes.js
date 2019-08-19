@@ -6,6 +6,9 @@ const todayString = today.format("DDDD d MMMM YYYY")
 
 var NotifyClient = require('notifications-node-client').NotifyClient, notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
+// keep this updated with the names of further CAZs
+var cazs = ['birmingham', 'leeds']
+
 
 function formatVrn(vrn) {
   return vrn.toUpperCase().replace(/\s/g, '');
@@ -545,7 +548,6 @@ router.post('/fleets/single-user/fleet-direct-debit-mandate', function (req, res
     'mandateId': [...Array(23)].map(i=>(~~(Math.random()*36)).toString(36)).join(''),
     'status': 'Active',
   }
-
   if (req.session.mandate) {
     req.session.mandate.push(mandateVar);
   } else {
@@ -557,16 +559,39 @@ router.post('/fleets/single-user/fleet-direct-debit-mandate', function (req, res
 
 // Fleets view direct debit mandates
 router.get('/fleets/single-user/view-direct-debit', function(req, res) {
-  console.log(req.session.mandate);
   res.render('fleets/single-user/view-direct-debit', {
     'mandate': req.session.mandate
   })
 })
 
 router.post('/fleets/single-user/view-direct-debit', function(req, res) {
-  console.log(req.session.mandate);
   res.render('fleets/single-user/view-direct-debit', {
     'mandate': req.session.mandate
+  })
+})
+
+// Fleets select direct debit
+router.get('/fleets/single-user/select-direct-debit', function(req, res) {
+  if (req.session.mandate && req.session.mandate.length > 0) {
+    for (var m in req.session.mandate) {
+      var caz = req.session.mandate[m].caz.toString();
+      cazs = cazs.filter(e => e !== caz);
+    }
+  }
+  res.render('fleets/single-user/select-direct-debit', {
+    'cazs': cazs
+  })
+})
+
+router.post('/fleets/single-user/select-direct-debit', function(req, res) {
+  if (req.session.mandate && req.session.mandate.length > 0) {
+    for (var m in req.session.mandate) {
+      var caz = req.session.mandate[m].caz.toString();
+      cazs = cazs.filter(e => e !== caz);
+    }
+  }
+  res.render('fleets/single-user/select-direct-debit', {
+    'cazs': cazs
   })
 })
 
