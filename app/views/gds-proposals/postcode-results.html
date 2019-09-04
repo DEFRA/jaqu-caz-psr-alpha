@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Postcode Resilts
+{% endblock %}
+
+{% block content %}   
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" class="form" action="/gds-proposals/postcode-results">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    Postcode Results
+                  </h1>
+                </legend>
+                <ol class="app-task-list">
+                    <li>
+                        <h2 class="app-task-list__section">Clean air zones</h2>
+                        <ul class="app-task-list__items" style="padding-left: 0px">
+                        <li class="app-task-list__item">
+                            <a class="app-task-list__task-name" href="#" aria-describedby="company-information-completed">Birmingham</a>
+                            <strong class="govuk-tag--noncompliant app-task-list__task-completed" id="company-information-completed">Inside</strong>
+                        </li>
+                        <li class="app-task-list__item">
+                            <a class="app-task-list__task-name" href="#" aria-describedby="contact-details-completed">Derby</a>
+                            <strong class="govuk-tag--compliant app-task-list__task-completed" id="contact-details-completed">Not Inside</strong>
+                        </li>
+                        <li class="app-task-list__item">
+                            <a class="app-task-list__task-name" href="#">Leeds</a>
+                            <strong class="govuk-tag--compliant app-task-list__task-completed" id="medical-information-completed">Not Inside</strong>
+                        </li>
+                        <li class="app-task-list__item">
+                            <a class="app-task-list__task-name" href="#">Nottingham</a>
+                            <strong class="govuk-tag--compliant app-task-list__task-completed" id="medical-information-completed">Not Inside</strong>
+                        </li>
+                        <li class="app-task-list__item">
+                            <a class="app-task-list__task-name" href="#" aria-describedby="medical-information-completed">Southampton</a>
+                            <strong class="govuk-tag--compliant app-task-list__task-completed" id="medical-information-completed">Not Inside</strong>
+                        </li>
+                        </ul>
+                    </li>
+                    </ol>
+            </form>
+        </div>
+    </div>
+{% endblock %}
