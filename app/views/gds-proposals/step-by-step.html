@@ -11,6 +11,11 @@ Step by step navigation
     var stepByStepNavigation = new GOVUK.Modules.StepByStepNavigation()
     stepByStepNavigation.start($element)
 </script>
+<script type="text/javascript">
+    var $element = $('#step-by-step-navigation2')
+    var stepByStepNavigation2 = new GOVUK.Modules.StepByStepNavigation()
+    stepByStepNavigation2.start($element)
+</script>
 {% endblock %}
 
 {% block beforeContent %}
@@ -39,10 +44,10 @@ Step by step navigation
         </h1>
 
 
-
+        <h2 class="govuk-heading-m">Check to see if you have to pay a charge</h2>
         <div id="step-by-step-navigation" class="app-step-nav app-step-nav--large app-step-nav--active"
             data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all" data-hide-all-text="Hide all">
-            <h2>Check to see if you have to pay a charge</h2>
+            
             <ol class="app-step-nav__steps">
                 <li class="app-step-nav__step js-step" id="check-youre-allowed-to-drive">
                     <div class="app-step-nav__header js-toggle-panel" data-position="1">
@@ -140,9 +145,10 @@ Step by step navigation
                 </li>
             </ol>
         </div>
-        <div id="step-by-step-navigation" class="app-step-nav app-step-nav--large app-step-nav--active"
+        <h2 class="govuk-heading-m">If you have to pay a charge</h2>
+        <div id="step-by-step-navigation2" class="app-step-nav app-step-nav--large app-step-nav--active"
             data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all" data-hide-all-text="Hide all">
-            <h2>If you have to pay a charge</h2>
+            
             <ol class="app-step-nav__steps">
                 <li class="app-step-nav__step js-step" id="book-and-manage-your-theory-test">
                     <div class="app-step-nav__header js-toggle-panel" data-position="1">
