@@ -3,238 +3,277 @@
 {{ govukHeader() }} {% endblock %} {% block pageScripts %}
 <script src="/public/javascripts/step-by-step-navigation.js"></script>
 <script type="text/javascript">
-  var $element = $('#step-by-step-navigation')
-  var stepByStepNavigation = new GOVUK.Modules.StepByStepNavigation()
-  stepByStepNavigation.start($element)
+    var $element = $('#step-by-step-navigation')
+    var stepByStepNavigation = new GOVUK.Modules.StepByStepNavigation()
+    stepByStepNavigation.start($element)
 </script>
 <script type="text/javascript">
     var $element = $('#step-by-step-navigation2')
     var stepByStepNavigation2 = new GOVUK.Modules.StepByStepNavigation()
     stepByStepNavigation2.start($element)
-  </script>
+</script>
 {% endblock %} {% block beforeContent %}
 <div class="app-step-nav-header">
-  <span class="app-step-nav-header__part-of">Part of</span>
-  <a class="app-step-nav-header__title" href="/gds-proposals/step-by-step">
-    Clean Air Zones: step by step
-  </a>
+    <span class="app-step-nav-header__part-of">Part of</span>
+    <a class="app-step-nav-header__title" href="/gds-proposals/step-by-step">
+        Clean Air Zones: step by step
+    </a>
 </div>
 {% endblock %} {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">
-      Check the Clean Air Zone boundaries
-    </h1>
+        <h1 class="govuk-heading-xl">
+            Check the Clean Air Zone boundaries
+        </h1>
 
-    <p>Use this service to:</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>Check the Clean Air Zone boundaries</li>
-    </ul>
-
-    <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8" data-module="govuk-button">
-      Start now
-      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
-        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-      </svg>
-    </a>
-
-  </div>
-
-  <div class="govuk-grid-column-one-third">
-
-    <div class="app-step-nav-related app-step-nav-related--singular">
-      <h2 class="app-step-nav-related__heading">
-        <span class="app-step-nav-related__pretitle">Part of</span>
-        <a href="/gds-proposals/step-by-step">
-          Clean Air Zones: step by step
-        </a>
-      </h2>
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                    <h2 class="govuk-accordion__section-heading">
+                        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                            National overview
+                        </span>
+                    </h2>
+                </div>
+                <div id="accordion-default-content-1" class="govuk-accordion__section-content"
+                    aria-labelledby="accordion-default-heading-1">
+                    <p class='govuk-body'>There are currently two Charging Clean Air Zones. These are Leeds and
+                        Birmingham.</p>
+                    <img src="../../../public/images/caz_map.png" style="height: 750px;">
+                </div>
+            </div>
+            <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                    <h2 class="govuk-accordion__section-heading">
+                        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                            Leeds
+                        </span>
+                    </h2>
+                </div>
+                <div id="accordion-default-content-2" class="govuk-accordion__section-content"
+                    aria-labelledby="accordion-default-heading-2">
+                    <p class='govuk-body'>Leeds operates a CAZ B, meaning that it only charges non-compliant lorries, buses and Taxi/PHvs.</p><p>Leeds' boundary includes anything within the: A6120, A647, B6154, M621, A61, A63 and M1. 
+                        <br>This can be visualised on Leeds' <a href="https://www.arcgis.com/home/webmap/viewer.html?webmap=de0120ae980b473982a3149ab072fdfc&extent=-1.733%2c53.7378%2c-1.333%2c53.8621" target="_blank">Clean Air Zone boundary map</a>.</p>
+                        <p>For more information about the Leeds' Clean Air Zone, visit their <a href="https://www.leeds.gov.uk/business/environmental-health-for-business/air-quality" target="_blank">site</a>.</p>
+                </div>
+            </div>
+            <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                    <h2 class="govuk-accordion__section-heading">
+                        <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                            Birmingham
+                        </span>
+                    </h2>
+                </div>
+                <div id="accordion-default-content-3" class="govuk-accordion__section-content"
+                    aria-labelledby="accordion-default-heading-3">
+                    <p class='govuk-body'>This is the content for Know your audience.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <p style="margin-bottom: -10px;">Check to see if you have to pay a charge</p>
-    <div id="step-by-step-navigation" data-module="gemstepnav" class="app-step-nav js-hidden " data-id="e01e924b-9c7c-4c71-8241-66a575c2f61f" data-show-text="show" data-hide-text="hide" data-show-all-text="Show all" data-hide-all-text="Hide all">
-      <ol class="app-step-nav__steps">
-        <li class="app-step-nav__step js-step app-step-nav__step--active" aria-current="step" data-show id="check-youre-allowed-to-drive" >
-          <div class="app-step-nav__header js-toggle-panel" data-position="1">
-            <h3 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span> •
-                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
-                  </span>
-                </span>
-              </span>
 
-              <span class="js-step-title">
-                Check the Clean Air Zone boundaries
-              </span>
-            </h3>
-          </div>
+    <div class="govuk-grid-column-one-third">
 
-          <div class="app-step-nav__panel js-panel" id="step-panel-check-youre-allowed-to-drive-1">
-            <p class="app-step-nav__paragraph">There are currently two Clean Air Zones, more will be added
-                    in the future.</p>
+        <div class="app-step-nav-related app-step-nav-related--singular">
+            <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Part of</span>
+                <a href="/gds-proposals/step-by-step">
+                    Clean Air Zones: step by step
+                </a>
+            </h2>
+        </div>
+        <p style="margin-bottom: -10px;">Check to see if you have to pay a charge</p>
+        <div id="step-by-step-navigation" data-module="gemstepnav" class="app-step-nav js-hidden "
+            data-id="e01e924b-9c7c-4c71-8241-66a575c2f61f" data-show-text="show" data-hide-text="hide"
+            data-show-all-text="Show all" data-hide-all-text="Hide all">
+            <ol class="app-step-nav__steps">
+                <li class="app-step-nav__step js-step app-step-nav__step--active" aria-current="step" data-show
+                    id="check-youre-allowed-to-drive">
+                    <div class="app-step-nav__header js-toggle-panel" data-position="1">
+                        <h3 class="app-step-nav__title">
+                            <span class="app-step-nav__circle app-step-nav__circle--number">
+                                <span class="app-step-nav__circle-inner">
+                                    <span class="app-step-nav__circle-background">
+                                        <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                        •
+                                        <span class="app-step-nav__circle-step-colon govuk-visually-hidden"
+                                            aria-hidden="true">:</span>
+                                    </span>
+                                </span>
+                            </span>
 
-            <ol class="app-step-nav__list " data-length="3">
-              <li class="app-step-nav__list-item js-list-item app-step-nav__list-item--active">
-                <a data-position="1.1" class="app-step-nav__link js-link" href="#content">
-                  <span class="app-step-nav__link-active-context govuk-visually-hidden">You are currently viewing: </span>Check the Clean Air Zone boundaries </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="1.2" class="app-step-nav__link js-link" href="postcode-checker-start.html">Postcode checker</a>
-              </li>
+                            <span class="js-step-title">
+                                Check the Clean Air Zone boundaries
+                            </span>
+                        </h3>
+                    </div>
+
+                    <div class="app-step-nav__panel js-panel" id="step-panel-check-youre-allowed-to-drive-1">
+                        <p class="app-step-nav__paragraph">There are currently two Clean Air Zones, more will be added
+                            in the future.</p>
+
+                        <ol class="app-step-nav__list " data-length="3">
+                            <li class="app-step-nav__list-item js-list-item app-step-nav__list-item--active">
+                                <a data-position="1.1" class="app-step-nav__link js-link" href="#content">
+                                    <span class="app-step-nav__link-active-context govuk-visually-hidden">You are
+                                        currently viewing: </span>Check the Clean Air Zone boundaries </a>
+                            </li>
+                            <li class="app-step-nav__list-item js-list-item ">
+                                <a data-position="1.2" class="app-step-nav__link js-link"
+                                    href="postcode-checker-start.html">Postcode checker</a>
+                            </li>
+                        </ol>
+
+                    </div>
+
+                </li>
+                <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                    <div class="app-step-nav__header js-toggle-panel" data-position="2">
+                        <h3 class="app-step-nav__title">
+                            <span class="app-step-nav__circle app-step-nav__circle--number">
+                                <span class="app-step-nav__circle-inner">
+                                    <span class="app-step-nav__circle-background">
+                                        <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                        •
+                                        <span class="app-step-nav__circle-step-colon govuk-visually-hidden"
+                                            aria-hidden="true">:</span>
+                                    </span>
+                                </span>
+                            </span>
+
+                            <span class="js-step-title">
+                                Check if your vehicle needs to pay when driving with the Clean Air Zones
+                            </span>
+                        </h3>
+                    </div>
+
+                    <div class="app-step-nav__panel js-panel" id="step-panel-get-a-provisional-licence-2">
+                        <ol class="app-step-nav__list " data-length="1">
+                            <p class="app-step-nav__paragraph">Your vehicle will be charged for driving within a Clean
+                                Air Zone if it does not comply with the Clean Air standards.</p>
+                            <li class="app-step-nav__list-item js-list-item ">
+                                <a data-position="2.1" class="app-step-nav__link js-link" href="#">Check your vehicle's
+                                    compliance
+                                </a>
+                            </li>
+                        </ol>
+
+                    </div>
+
+                </li>
+                <li class="app-step-nav__step js-step" id="driving-lessons-and-practice">
+                    <div class="app-step-nav__header js-toggle-panel" data-position="3">
+                        <h3 class="app-step-nav__title">
+                            <span class="app-step-nav__circle app-step-nav__circle--number">
+                                <span class="app-step-nav__circle-inner">
+                                    <span class="app-step-nav__circle-background">
+                                        <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                        •
+                                        <span class="app-step-nav__circle-step-colon govuk-visually-hidden"
+                                            aria-hidden="true">:</span>
+                                    </span>
+                                </span>
+                            </span>
+
+                            <span class="js-step-title">
+                                Check information about local and national exemptions
+                            </span>
+                        </h3>
+                    </div>
+
+                    <div class="app-step-nav__panel js-panel" id="step-panel-driving-lessons-and-practice-3">
+                        <p class="app-step-nav__paragraph">There are a number of exemptions, both on a local and
+                            national scale.</p>
+
+                        <ol class="app-step-nav__list " data-length="4">
+                            <li class="app-step-nav__list-item js-list-item ">
+                                <a data-position="3.1" class="app-step-nav__link js-link" href="#">Local exemptions</a>
+                            </li>
+                            <li class="app-step-nav__list-item js-list-item ">
+                                <a data-position="3.2" class="app-step-nav__link js-link" href="#">National
+                                    exemptions</a>
+                            </li>
+                        </ol>
+
+                    </div>
+
+                </li>
+
             </ol>
-
-          </div>
-
-        </li>
-        <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
-                <div class="app-step-nav__header js-toggle-panel" data-position="2">
-                    <h3 class="app-step-nav__title">
-                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                            <span class="app-step-nav__circle-inner">
-                                <span class="app-step-nav__circle-background">
-                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                    •
-                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden"
-                                        aria-hidden="true">:</span>
+        </div>
+        <p style="margin-bottom: -10px;">If you have to pay a Clean Air Zone charge:</p>
+        <div id="step-by-step-navigation2" data-module="gemstepnav" class="app-step-nav js-hidden "
+            data-id="e01e924b-9c7c-4c71-8241-66a575c2f61f" data-show-text="show" data-hide-text="hide"
+            data-show-all-text="Show all" data-hide-all-text="Hide all">
+            <ol class="app-step-nav__steps">
+                <li class="app-step-nav__step js-step app-step-nav__step" id="check-youre-allowed-to-drive">
+                    <div class="app-step-nav__header js-toggle-panel" data-position="1">
+                        <h3 class="app-step-nav__title">
+                            <span class="app-step-nav__circle app-step-nav__circle--number">
+                                <span class="app-step-nav__circle-inner">
+                                    <span class="app-step-nav__circle-background">
+                                        <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                        •
+                                        <span class="app-step-nav__circle-step-colon govuk-visually-hidden"
+                                            aria-hidden="true">:</span>
+                                    </span>
                                 </span>
                             </span>
-                        </span>
 
-                        <span class="js-step-title">
-                            Check if your vehicle needs to pay when driving with the Clean Air Zones
-                        </span>
-                    </h3>
-                </div>
+                            <span class="js-step-title">
+                                Pay a Clean Air Zone charge
+                            </span>
+                        </h3>
+                    </div>
 
-                <div class="app-step-nav__panel js-panel" id="step-panel-get-a-provisional-licence-2">
-                    <ol class="app-step-nav__list " data-length="1">
-                        <p class="app-step-nav__paragraph">Your vehicle will be charged for driving within a Clean
-                            Air Zone if it does not comply with the Clean Air standards.</p>
-                        <li class="app-step-nav__list-item js-list-item ">
-                            <a data-position="2.1" class="app-step-nav__link js-link" href="#">Check your vehicle's
-                                compliance
-                            </a>
-                        </li>
-                    </ol>
+                    <div class="app-step-nav__panel js-panel" id="step-panel-check-youre-allowed-to-drive-1">
+                        <p class="app-step-nav__paragraph">If your vehicle doesn't meet clean air standards, you need to
+                            pay a daily charge for driving it into a Clean Air Zone.</p>
 
-                </div>
+                        <ol class="app-step-nav__list " data-length="3">
+                            <li class="app-step-nav__list-item js-list-item">
+                                <a data-position="1.1" class="app-step-nav__link js-link" href="/">Pay your charge</a>
+                            </li>
+                        </ol>
 
-            </li>
-            <li class="app-step-nav__step js-step" id="driving-lessons-and-practice">
-                <div class="app-step-nav__header js-toggle-panel" data-position="3">
-                    <h3 class="app-step-nav__title">
-                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                            <span class="app-step-nav__circle-inner">
-                                <span class="app-step-nav__circle-background">
-                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                    •
-                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden"
-                                        aria-hidden="true">:</span>
+                    </div>
+
+                </li>
+                <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
+                    <div class="app-step-nav__header js-toggle-panel" data-position="2">
+                        <h3 class="app-step-nav__title">
+                            <span class="app-step-nav__circle app-step-nav__circle--number">
+                                <span class="app-step-nav__circle-inner">
+                                    <span class="app-step-nav__circle-background">
+                                        <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                                        •
+                                        <span class="app-step-nav__circle-step-colon govuk-visually-hidden"
+                                            aria-hidden="true">:</span>
+                                    </span>
                                 </span>
                             </span>
-                        </span>
 
-                        <span class="js-step-title">
-                            Check information about local and national exemptions
-                        </span>
-                    </h3>
-                </div>
+                            <span class="js-step-title">
+                                Discover alternatives to having to pay the charge
+                            </span>
+                        </h3>
+                    </div>
 
-                <div class="app-step-nav__panel js-panel" id="step-panel-driving-lessons-and-practice-3">
-                    <p class="app-step-nav__paragraph">There are a number of exemptions, both on a local and
-                        national scale.</p>
-
-                    <ol class="app-step-nav__list " data-length="4">
-                        <li class="app-step-nav__list-item js-list-item ">
-                            <a data-position="3.1" class="app-step-nav__link js-link" href="#">Local exemptions</a>
-                        </li>
-                        <li class="app-step-nav__list-item js-list-item ">
-                            <a data-position="3.2" class="app-step-nav__link js-link" href="#">National
-                                exemptions</a>
-                        </li>
-                    </ol>
-
-                </div>
-
-            </li>
-
-        </ol>
+                    <div class="app-step-nav__panel js-panel" id="step-panel-get-a-provisional-licence-2">
+                        <ol class="app-step-nav__list " data-length="1">
+                            <p class="app-step-nav__paragraph">There are alternatives to having to pay the Clean Air
+                                charge</p>
+                            <li class="app-step-nav__list-item js-list-item ">
+                                <a data-position="2.1" class="app-step-nav__link js-link" href="#">Discover alternatives
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </li>
+            </ol>
+        </div>
     </div>
-    <p style="margin-bottom: -10px;">If you have to pay a Clean Air Zone charge:</p>
-    <div id="step-by-step-navigation2" data-module="gemstepnav" class="app-step-nav js-hidden "
-        data-id="e01e924b-9c7c-4c71-8241-66a575c2f61f" data-show-text="show" data-hide-text="hide"
-        data-show-all-text="Show all" data-hide-all-text="Hide all">
-        <ol class="app-step-nav__steps">
-            <li class="app-step-nav__step js-step app-step-nav__step" id="check-youre-allowed-to-drive">
-                <div class="app-step-nav__header js-toggle-panel" data-position="1">
-                    <h3 class="app-step-nav__title">
-                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                            <span class="app-step-nav__circle-inner">
-                                <span class="app-step-nav__circle-background">
-                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                    •
-                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden"
-                                        aria-hidden="true">:</span>
-                                </span>
-                            </span>
-                        </span>
-
-                        <span class="js-step-title">
-                            Pay a Clean Air Zone charge
-                        </span>
-                    </h3>
-                </div>
-
-                <div class="app-step-nav__panel js-panel" id="step-panel-check-youre-allowed-to-drive-1">
-                    <p class="app-step-nav__paragraph">If your vehicle doesn't meet clean air standards, you need to
-                        pay a daily charge for driving it into a Clean Air Zone.</p>
-
-                    <ol class="app-step-nav__list " data-length="3">
-                        <li class="app-step-nav__list-item js-list-item">
-                            <a data-position="1.1" class="app-step-nav__link js-link" href="/">Pay your charge</a>
-                        </li>
-                    </ol>
-
-                </div>
-
-            </li>
-            <li class="app-step-nav__step js-step" id="get-a-provisional-licence">
-                <div class="app-step-nav__header js-toggle-panel" data-position="2">
-                    <h3 class="app-step-nav__title">
-                        <span class="app-step-nav__circle app-step-nav__circle--number">
-                            <span class="app-step-nav__circle-inner">
-                                <span class="app-step-nav__circle-background">
-                                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
-                                    •
-                                    <span class="app-step-nav__circle-step-colon govuk-visually-hidden"
-                                        aria-hidden="true">:</span>
-                                </span>
-                            </span>
-                        </span>
-
-                        <span class="js-step-title">
-                            Discover alternatives to having to pay the charge
-                        </span>
-                    </h3>
-                </div>
-
-                <div class="app-step-nav__panel js-panel" id="step-panel-get-a-provisional-licence-2">
-                    <ol class="app-step-nav__list " data-length="1">
-                        <p class="app-step-nav__paragraph">There are alternatives to having to pay the Clean Air
-                            charge</p>
-                        <li class="app-step-nav__list-item js-list-item ">
-                            <a data-position="2.1" class="app-step-nav__link js-link" href="#">Discover alternatives
-                            </a>
-                        </li>
-                    </ol>
-                </div>
-            </li>
-        </ol>
-    </div>
-</div>
 </div>
 {% endblock %}
