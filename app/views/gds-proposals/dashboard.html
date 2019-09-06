@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Dashboard
+{% endblock %}
+
+{% block content %}   
+
+<h1 class="govuk-heading-l">Welcome back</h1>
+<div class="govuk-grid-row" id="row1">
+    <article class="dashboard-total-group govuk-grid-column-one-third">
+        <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="/dashboard/caz-boundaries-start">Check the Clean Air Zone boundaries</a></strong></p>
+        <p class="govuk-body">Check the Clean Air Zone boundaries or <a href="/gds-proposals/postcode-checker">check your postcode.</a></p>
+    </article>
+      
+    <article class="dashboard-total-group govuk-grid-column-one-third">
+        <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="">Check if your vehicle needs to pay when driving within the Clean Air Zones</a></strong></p>
+        <p class="govuk-body">Your vehicle will be charged for driving within a Clean Air Zone if it does not comply with Clean Air standards. Check if it <a href="">complies</a>.</a></p>
+    </article>
+
+    <article class="dashboard-total-group govuk-grid-column-one-third">
+        <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="">Check information about local and national exemptions</a></strong></p>
+        <p class="govuk-body">There are a number of exemptions, both on a <a href="">local</a> and <a href="">national</a> scale.</p>
+    </article>
+</div>
+
+<div class="govuk-grid-row" id="row2">
+    <article class="dashboard-total-group govuk-grid-column-one-third">
+        <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="/dashboard/caz-boundaries-start">Pay a Clean Air Zone charge</a></strong></p>
+        <p class="govuk-body">If your vehicle doesn't meet clean air standards, you need to <a href="">pay a daily charge</a> for driving it into a Clean Air Zone.</a></p>
+    </article>
+      
+    <article class="dashboard-total-group govuk-grid-column-one-third">
+        <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-top-9"><strong><a href="/fleets/single-user/select-caz">Discover alternatives to having to pay the charge</a></strong></p>
+        <p class="govuk-body">There are <a href="">alternatives</a> to having to pay the Clean Air charge.</p>
+    </article>
+</div>
+
+{% endblock %}
