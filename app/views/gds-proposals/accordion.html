@@ -1,0 +1,93 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Accordion
+{% endblock %}
+
+{% block content %}   
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" class="form" action="/gds-proposals/postcode-results">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    Clean Air Zones
+                  </h1>
+                </legend>
+                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+                        <div class="govuk-accordion__section ">
+                          <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                              <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                                Check the Clean Air Zone boundaries
+                              </span>
+                            </h2>
+                          </div>
+                          <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                            <p class='govuk-body'>There are currently two Clean Air Zones, more will be added
+                                    in the future.</p><p><a data-position="1.1" class="app-step-nav__link js-link" href="step-by-step/caz-boundaries-start">Clean Air Zone
+                                        boundaries</a></p>
+                          </div>
+                        </div>
+                        <div class="govuk-accordion__section ">
+                          <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                              <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                                    Check if your vehicle needs to pay when driving within the Clean Air Zones
+                              </span>
+                            </h2>
+                          </div>
+                          <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                            <p class='govuk-body'>Your vehicle will be charged for driving within a Clean Air
+                                    Zone if it does not comply with Clean Air standards.</p>
+                          </div>
+                        </div>
+                        <div class="govuk-accordion__section ">
+                          <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                              <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                                    Check information about local and national exemptions
+                              </span>
+                            </h2>
+                          </div>
+                          <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                            <p class='govuk-body'>This is the content for Know your audience.</p>
+                          </div>
+                        </div>
+                        <div class="govuk-accordion__section ">
+                          <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                              <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                                    Pay a Clean Air Zone charge
+                              </span>
+                            </h2>
+                          </div>
+                          <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+                            <p class='govuk-body'>If your vehicle doesn't meet clean air standards, you need to pay a daily charge for driving it into a Clean Air Zone.</p>
+                            <p><a data-position="5.1" class="app-step-nav__link js-link" href="/">Pay your charge</a></p>
+                          </div>
+                        </div>
+                      <div class="govuk-accordion__section ">
+                            <div class="govuk-accordion__section-header">
+                              <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                                      Discover alternatives to having to pay a charge
+                                </span>
+                              </h2>
+                            </div>
+                            <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+                              <p class='govuk-body'>This is the content for How people read.</p>
+                            </div>
+                          </div>
+                        </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
