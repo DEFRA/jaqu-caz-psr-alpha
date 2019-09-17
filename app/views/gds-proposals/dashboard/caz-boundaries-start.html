@@ -1,0 +1,97 @@
+{% extends "layout.html" %} {% block pageTitle %} Start page example {% endblock %} {% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }} {% endblock %} {% block pageScripts %}
+<script src="/public/javascripts/step-by-step-navigation.js"></script>
+<script type="text/javascript">
+    var $element = $('#step-by-step-navigation')
+    var stepByStepNavigation = new GOVUK.Modules.StepByStepNavigation()
+    stepByStepNavigation.start($element)
+</script>
+<script type="text/javascript">
+    var $element = $('#step-by-step-navigation2')
+    var stepByStepNavigation2 = new GOVUK.Modules.StepByStepNavigation()
+    stepByStepNavigation2.start($element)
+</script>
+{% endblock %} {% block beforeContent %}
+<div class="app-step-nav-header">
+    <span class="app-step-nav-header__part-of">Part of</span>
+    <a class="app-step-nav-header__title" href="/gds-proposals/dashboard">
+        Clean Air Zones
+    </a>
+</div>
+{% endblock %} {% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Check the Clean Air Zone boundaries
+        </h1>
+
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                    <h2 class="govuk-accordion__section-heading">
+                        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                            National overview
+                        </span>
+                    </h2>
+                </div>
+                <div id="accordion-default-content-1" class="govuk-accordion__section-content"
+                    aria-labelledby="accordion-default-heading-1">
+                    <p class='govuk-body'>There are currently two Charging Clean Air Zones. These are Leeds and
+                        Birmingham.</p>
+                    <img src="../../../public/images/caz_map.png" style="height: 750px;">
+                </div>
+            </div>
+            <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                    <h2 class="govuk-accordion__section-heading">
+                        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                            Leeds
+                        </span>
+                    </h2>
+                </div>
+                <div id="accordion-default-content-2" class="govuk-accordion__section-content"
+                    aria-labelledby="accordion-default-heading-2">
+                    <p class='govuk-body'>Leeds operates a CAZ B, meaning that it only charges non-compliant lorries,
+                        buses and Taxi/PHvs. For more information about CAZ types, <a href="#">click here</a>.</p>
+                    <p>Leeds' boundary includes anything within the: A6120, A647, B6154, M621, A61, A63 and M1.
+                        <br>This can be visualised on Leeds' <a
+                            href="https://www.arcgis.com/home/webmap/viewer.html?webmap=de0120ae980b473982a3149ab072fdfc&extent=-1.733%2c53.7378%2c-1.333%2c53.8621"
+                            target="_blank">Clean Air Zone boundary map</a>.</p>
+                    <p>For more information about the Leeds' Clean Air Zone, visit their <a
+                            href="https://www.leeds.gov.uk/business/environmental-health-for-business/air-quality"
+                            target="_blank">site</a>.</p>
+                </div>
+            </div>
+            <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                    <h2 class="govuk-accordion__section-heading">
+                        <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                            Birmingham
+                        </span>
+                    </h2>
+                </div>
+                <div id="accordion-default-content-3" class="govuk-accordion__section-content"
+                    aria-labelledby="accordion-default-heading-3">
+                    <p class='govuk-body'>Birmingham operates a CAZ D, meaning that it charges non-compliant cars, vans,
+                        lorries, buses and Taxi/PHVs. For more information about CAZ types, <a href="#">click here</a>.
+                    </p>
+                    <p>
+                        Birmingham’s Clean Air Zone will cover all the roads within the A4540 Middleway Ring Road, but not the Middleway itself.
+                        <br>
+                        This can be visualised on Birmingham's <a
+                        href="https://www.birmingham.gov.uk/info/20076/pollution/1763/a_clean_air_zone_for_birmingham/3"
+                        target="_blank">Clean Air Zone boundary map</a>.</p>
+                    </p>
+                    <p>
+                        For more information about the Birmingham Clean Air Zone, visit their <a
+                        href="https://www.birmingham.gov.uk/info/20076/pollution/1763/a_clean_air_zone_for_birmingham"
+                        target="_blank">site</a>.</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

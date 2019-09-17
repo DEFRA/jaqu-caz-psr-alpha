@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block pageTitle %} Start page example {% endblock %} {% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }} {% endblock %} {% block pageScripts %}
+<script src="/public/javascripts/step-by-step-navigation.js"></script>
+<script type="text/javascript">
+    var $element = $('#step-by-step-navigation')
+    var stepByStepNavigation = new GOVUK.Modules.StepByStepNavigation()
+    stepByStepNavigation.start($element)
+</script>
+<script type="text/javascript">
+    var $element = $('#step-by-step-navigation2')
+    var stepByStepNavigation2 = new GOVUK.Modules.StepByStepNavigation()
+    stepByStepNavigation2.start($element)
+</script>
+{% endblock %} {% block beforeContent %}
+<div class="app-step-nav-header">
+    <span class="app-step-nav-header__part-of">Part of</span>
+    <a class="app-step-nav-header__title" href="/gds-proposals/dashboard">
+        Clean Air Zones
+    </a>
+</div>
+{% endblock %} {% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Check information about local exemptions
+        </h1>
+        <p>Local exemptions may be available for individual Clean Air Zones if you satisfy the criteria. Visit the local authority websites to find out more information and apply.</p>
+        <p><a href="https://www.leeds.gov.uk/business/environmental-health-for-business/air-quality/exempt-vehicles-clean-air-charging-zone" target="_blank">Leeds</a></p>
+        <p><a href="https://www.birmingham.gov.uk/info/20076/pollution/1763/a_clean_air_zone_for_birmingham/7" target="_blank">Birmingham</a></p>
+
+    </div>
+</div>
+{% endblock %}

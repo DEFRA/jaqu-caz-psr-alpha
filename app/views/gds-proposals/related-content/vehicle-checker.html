@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Clean Air Zones
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+    
+          <h1 class="govuk-heading-l">
+            Check a vehicle's Clean Air Zone compliance
+          </h1>
+    
+          <p>Use this service to check if a specific vehicle will incur a charge when it drives through a charging Clean Air Zone.</p>
+    
+          <p>You'll need to know the registration of the vehicle you wish to check.</p>
+    
+          <a href="/vehicle-checker/enter-vehicle-details" role="button" draggable="false" class="govuk-button govuk-button--start">
+            Start now
+          </a>
+    
+          <h2 class="govuk-heading-m">
+            More information
+          </h2>
+    
+          <p>There are 2 charging Clean Air Zones in England, each with their own emissions standards, charges, discounts and exemptions.</p>
+    
+          <h2 class="govuk-heading-m">
+            Related content
+          </h2>
+    
+          <p><a href="step-by-step/payments-step.html">Pay a CAZ charge</a></p>
+    
+          <h2 class="govuk-heading-m">
+            Explore the topic
+          </h2>
+      
+          <p><a href="">Clean Air Zones</a></p>
+    
+        </div>
+        <div class="govuk-grid-column-one-third">
+
+                <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+        
+                <aside class="app-related-items" role="complementary">
+                    <h2 class="govuk-heading-m" id="subsection-title">
+                        Related content
+                    </h2>
+                    <nav role="navigation" aria-labelledby="subsection-title">
+                        <ul class="govuk-list govuk-!-font-size-16">
+                            <li>
+                                <a class="govuk-link" href="/gds-proposals/related-content/caz-boundaries-start">
+                                    Check the Clean Air Zone boundaries
+                                </a>
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/gds-proposals/related-content/postcode-checker-start">
+                                    Check your postcode
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a class="govuk-link" href="/gds-proposals/related-content/vehicle-checker">
+                                    Check your vehicle's compliance
+                                </a>
+                            </li> -->
+                            <li>
+                                <a class="govuk-link" href="/gds-proposals/related-content/local-exemptions">
+                                    Check local exemptions
+                                </a>
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/gds-proposals/related-content/national-exemptions">
+                                    Check national exemptions
+                                </a>
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/gds-proposals/related-content/payments">
+                                    Pay a Clean Air Zone charge
+                                </a>
+                            </li>
+                            <li>
+                                <a class="govuk-link" href="/gds-proposals/related-content/alternatives">
+                                    Discover alternatives to having to pay
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </aside>
+        
+            </div>
+    
+    </div>
+{% endblock %}
