@@ -3,7 +3,7 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-href: "/payments/confirm-vehicle-details",
+href: "javascript:history.back()",
 text: "Back"
 }) }}
 {% endblock %}
@@ -14,47 +14,79 @@ text: "Back"
 
 {% block content %}   
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <form method="post" class="form" action="/payments/paymentPages">
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="cazHint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Which Clean Air Zone do you need to pay for?
-              </h1>
-            </legend>
-            <div class="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="caz-1" name="caz" type="radio" value="bath" required>
-                <label class="govuk-label govuk-radios__label" for="caz-1">
-                  Bath (<a href="https://www.bathnes.gov.uk/bath-breathes-2021-overview/overview-scheme" target=_blank>find out if you qualify for an exemption</a>)
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="caz-2" name="caz" type="radio" value="birmingham" required>
-                <label class="govuk-label govuk-radios__label" for="caz-2">
-                  Birmingham (<a href="https://www.birmingham.gov.uk/info/20076/pollution/1763/a_clean_air_zone_for_birmingham/6" target=_blank>find out if you qualify for an exemption</a>)
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="caz-3" name="caz" type="radio" value="leeds" required>
-                <label class="govuk-label govuk-radios__label" for="caz-3">
-                  Leeds (<a href="https://www.leeds.gov.uk/business/environmental-health-for-business/air-quality/exempt-vehicles-clean-air-charging-zone" target=_blank>find out if you qualify for an exemption</a>)
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-        
-        <button type="submit" class="govuk-button">
-            Continue
-        </button>
-      </form>
-
+    {% if error %}
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#caz-error">{{errorMessage}}</a>
+          </li>
+        </ul>
+      </div>
     </div>
+    {% endif %}
+
+    <h1 class="govuk-heading-l">Which Clean Air Zone do you need to pay for?</h1>
+    <form method="post" class="form" action="/payments/paymentPages">
+      <p>You need to pay separately for each Clean Air Zone you drive in.</p> 
+      <div class="govuk-form-group">
+        {% if error %}
+        <div class="govuk-form-group govuk-form-group--error">
+        {% endif %}
+        {% if not error %} 
+        <div class="govuk-form-group">
+        {% endif %}
+        <fieldset class="govuk-fieldset" aria-describedby="cazHint">
+          {% if error %}
+            <span id="caz-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
+            </span>
+            {% endif %}
+            {% if ((data['vrn'] | capitalize) == 'Jkl987') or ((data['vrn'] | capitalize) == 'Jkl 987') or (data['vehicle-type'] == 'HGV') or (data['vehicle-type'] == 'busCoach') or ((data['vrn'] | capitalize) == 'Def789') or ((data['vrn'] | capitalize) == 'Def 789') or ((data['vrn'] | capitalize) == 'Abc123') or ((data['vrn'] | capitalize) == 'Abc 123') %}
+            {% else %}
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Why can I only select one Clean Air Zone?
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                    You will only see zones in which your vehicle does not meet Clean Air Standards.
+                </div>
+              </details>
+              {% endif %}
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="caz-2" name="caz" type="radio" value="birmingham">
+              <label class="govuk-label govuk-radios__label" for="caz-2">
+                Birmingham
+              </label>
+            </div>
+            {% if ((data['vrn'] | capitalize) == 'Jkl987') or ((data['vrn'] | capitalize) == 'Jkl 987') or (data['vehicle-type'] == 'HGV') or (data['vehicle-type'] == 'busCoach') or ((data['vrn'] | capitalize) == 'Def789') or ((data['vrn'] | capitalize) == 'Def 789') or ((data['vrn'] | capitalize) == 'Abc123') or ((data['vrn'] | capitalize) == 'Abc 123') %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="caz-3" name="caz" type="radio" value="leeds">
+              <label class="govuk-label govuk-radios__label" for="caz-3">
+                Leeds
+              </label>
+            </div>
+            {% endif %}
+          </div>
+        </fieldset>
+      </div>
+      <br>
+      <br>
+      <button type="submit" class="govuk-button">
+          Continue
+      </button>
+    </form>
+
+  </div>
 </div>
 
 {% endblock %}

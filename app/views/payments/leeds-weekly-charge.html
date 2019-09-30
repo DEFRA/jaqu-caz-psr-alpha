@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Pay a Leeds Clean Air Zone weekly charge</h1>
+        <p>The weekly charge for your vehicle is:</p>
+        <h2 class="govuk-heading-m">£50.00</h2>
+        <p>Paying the weekly charge lets you drive the same vehilce in the Leeds Clean Air Zone as often as you like within a 7-day period.</p>
+        <p>You must pay for the weekly charge either on the first day or by midnight on the next working day after you drive in a Clean Air Zone.</p>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                If you don't pay by midnight on the next working day after you have driven in the zone, you will be sent a fine.
+            </strong>
+        </div>
+        <form method="post" class="form" action="/payments/select-date-weekly">
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+              <div class="govuk-checkboxes" required>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="correct-details" required>
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+                        I confirm that I am not exempt from the Leeds Clean Air Zone charge (full details about who is exempt from paying the charge in Leeds can be found <a href="" target="_blank">here</a>).
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div> 
+        
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+            <input type="hidden" value="leeds-weekly" name="caz">
+        </form>
+        <p><a href="">Discover alternatives to having to pay</a></p>
+    </div>
+
+</div>
+
+{% endblock %}

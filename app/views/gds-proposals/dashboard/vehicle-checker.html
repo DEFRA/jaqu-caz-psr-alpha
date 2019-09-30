@@ -1,0 +1,54 @@
+{% extends "layout.html" %} {% block pageTitle %} Start page example {% endblock %} {% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }} {% endblock %} {% block pageScripts %}
+<script src="/public/javascripts/step-by-step-navigation.js"></script>
+<script type="text/javascript">
+  var $element = $('#step-by-step-navigation')
+  var stepByStepNavigation = new GOVUK.Modules.StepByStepNavigation()
+  stepByStepNavigation.start($element)
+</script>
+{% endblock %} {% block beforeContent %}
+<div class="app-step-nav-header">
+  <span class="app-step-nav-header__part-of">Part of</span>
+  <a class="app-step-nav-header__title" href="/gds-proposals/dashboard">
+    Clean Air Zones
+  </a>
+</div>
+{% endblock %} {% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+    
+          <h1 class="govuk-heading-l">
+            Check a vehicle's Clean Air Zone compliance
+          </h1>
+    
+          <p>Use this service to check if a specific vehicle will incur a charge when it drives through a charging Clean Air Zone.</p>
+    
+          <p>You'll need to know the registration of the vehicle you wish to check.</p>
+    
+          <a href="{% include 'includes/vccslink.html' %}vehicle_checkers/enter_details" role="button" draggable="false" class="govuk-button govuk-button--start">
+            Start now
+          </a>
+    
+          <h2 class="govuk-heading-m">
+            More information
+          </h2>
+    
+          <p>There are 2 charging Clean Air Zones in England, each with their own emissions standards, charges, discounts and exemptions.</p>
+    
+          <h2 class="govuk-heading-m">
+            Related content
+          </h2>
+    
+          <p><a href="step-by-step/payments-step.html">Pay a CAZ charge</a></p>
+    
+          <h2 class="govuk-heading-m">
+            Explore the topic
+          </h2>
+      
+          <p><a href="">Clean Air Zones</a></p>
+    
+        </div>
+    
+    </div>
+{% endblock %}

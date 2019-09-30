@@ -1,0 +1,56 @@
+
+{% extends "layout_account.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Which Clean Air Zone do you need to set up a direct debit with?</h1>
+    <form method="post" class="form" action="fleet-direct-debit-mandate">
+      <p>You need to have a separate direct debit with each Clean Air zone that you wish to pay for.</p>
+      {% if cazs.length === 1 %}
+      <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Why can I only select one Clean Air Zone?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            You can only create one direct debit mandate per Clean Air Zone. If you can only see one option then you have already created mandates for the other Clean Air Zones.
+          </div>
+        </details>
+        {% endif %}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="cazHint">
+          <div class="govuk-radios">
+            {% for caz in cazs %}
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="DDcaz-1" name="DDcaz" type="radio" value ="{{caz}}">
+                <label class="govuk-label govuk-radios__label" for="DDcaz-1">
+                    {{caz | title}}
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+      <button type="submit" class="govuk-button">
+          Continue
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

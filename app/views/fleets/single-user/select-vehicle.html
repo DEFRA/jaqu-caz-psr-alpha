@@ -1,0 +1,86 @@
+{% extends "layout_account.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Which vehicles are you paying for?</h1>
+        <form method="post" class="form" action="/fleets/single-user/confirm-charge">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                          <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Registration</th>
+                            <th scope="col" class="govuk-table__header">Type</th>
+                            <th scope="col" class="govuk-table__header">Make</th>
+                            <th scope="col" class="govuk-table__header">Colour</th>
+                            <th scope="col" class="govuk-table__header">Fuel Type</th>
+                            <th scope="col" class="govuk-table__header">Select</th>
+                          </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">ABC123</td>
+                            <td class="govuk-table__cell">Car</td>
+                            <td class="govuk-table__cell">Mazda</td>
+                            <td class="govuk-table__cell">Blue</td>
+                            <td class="govuk-table__cell">Diesel</td>
+                            <td class="govuk-table__cell">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="select" name="select" type="checkbox" value="select">
+                                    <label class="govuk-label govuk-checkboxes__label" for="select">
+                                    </label>
+                                </div>
+                            </td>
+                          </tr>
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">XYZ456</td>
+                            <td class="govuk-table__cell">Lorry</td>
+                            <td class="govuk-table__cell">Iveco</td>
+                            <td class="govuk-table__cell">Silver</td>
+                            <td class="govuk-table__cell">Diesel</td>
+                            <td class="govuk-table__cell">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="select" name="select" type="checkbox" value="select">
+                                    <label class="govuk-label govuk-checkboxes__label" for="select">
+                                    </label>
+                                </div>
+                            </td>
+                          </tr>
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">CU57ABC</td>
+                            <td class="govuk-table__cell">Bus</td>
+                            <td class="govuk-table__cell">Mercedes</td>
+                            <td class="govuk-table__cell">Yellow</td>
+                            <td class="govuk-table__cell">Diesel</td>
+                            <td class="govuk-table__cell">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="select" name="select" type="checkbox" value="select">
+                                    <label class="govuk-label govuk-checkboxes__label" for="select">
+                                    </label>
+                                </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </fieldset>
+            </div>
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

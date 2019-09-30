@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+            Pay a Clean Air Zone charge
+        </h1>
+
+        <p>If your vehicle doesn't meet clean air standards, you need to pay a daily charge for driving it into a Clean
+            Air Zone.</p>
+
+        <p>Use this service to pay a charge for driving in a Clean Air Zone.</p>
+
+        <p>You'll need the registration number of the vehicle.</p>
+
+        <p><a href="https://caz-prototype.herokuapp.com/" target="_blank">Check if your vehicle meets clean air
+                standards</a> or <a href="">discover alternatives to having to pay</a>.</p>
+
+        <p>You must pay the Clean Air Zone charge by midnight on the next working day after you drive in a Clean Air
+            Zone.</p>
+
+        <a href="/payments/enter-vehicle-details" role="button" draggable="false"
+            class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8 govuk-button--start"
+            data-module="govuk-button">
+            Start now
+            <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19"
+                viewBox="0 0 33 40" role="presentation" focusable="false">
+                <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+            </svg>
+        </a>
+
+        <h2 class="govuk-heading-m">
+            Other ways to pay
+        </h2>
+
+        <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                    Birmingham
+                </span>
+            </summary>
+            <div class="govuk-details__text">
+                Pay by phone on 0203457891 (7 days a week from 9am-7pm. Calls are free from landlines and 3p a minute
+                from a mobile but check with your operator as charges may vary).<br><br>
+                Pay by textphone on 02034567892 (7 days aweek from 9am-7pm. Calls are free from landlines and 3p a
+                minute from a mobile but check with your operator as charges may vary).<br><br>
+                Pay in person at your nearest Payzone, PayPoint or Post Office outlet.
+            </div>
+        </details>
+        <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                    Leeds
+                </span>
+            </summary>
+            <div class="govuk-details__text">
+                Pay by phone on 0203457891 (7 days a week from 9am-7pm. Calls are free from landlines and 3p a minute
+                from a mobile but check with your operator as charges may vary).<br><br>
+                Pay by textphone on 02034567892 (7 days aweek from 9am-7pm. Calls are free from landlines and 3p a
+                minute from a mobile but check with your operator as charges may vary).<br><br>
+                Pay in person at your nearest Payzone, PayPoint or Post Office outlet.
+            </div>
+        </details>
+
+        <h3 class="govuk-heading-s">
+            Explore the topic
+        </h3>
+
+        <p>Fine out more about <a href="">Clean Air Zones</a>.</p>
+
+
+
+        <!-- <p><a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
+      <p><a href="/payments/refund-scenarios">Can I claim a refund?</a></p>
+      <p><a href="/fleets/company-user/create-account">Create an account for your fleet</a></p>
+      <p><a href="/fleets/single-user/login">Access your fleet account</a></p> -->
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+        <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+        <aside class="app-related-items" role="complementary">
+            <h2 class="govuk-heading-m" id="subsection-title">
+                Related content
+            </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16">
+                    <li>
+                        <a class="govuk-link" href="#">
+                            Check your vehicle's compliance
+                        </a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="#">
+                            Read about exemptions
+                        </a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="#">
+                            Check the Clean Air Zone boundaries
+                        </a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="/gds-proposals/postcode-checker">
+                            Postcode Checker
+                        </a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="/fleets/company-user/create-account">
+                            Create Fleet Account
+                        </a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="/fleets/single-user/login">
+                            Fleet User Account
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+    </div>
+
+</div>
+
+{% endblock %}

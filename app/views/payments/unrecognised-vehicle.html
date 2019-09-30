@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {% if error %}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#caz-charge-error">{{errorMessage}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+    
+      <h1 class="govuk-heading-xl">
+        Vehicle details not found
+      </h1>
+
+      <h2 class="govuk-heading-m">We can't find the details of this vehicle</h2>
+
+      <p>We might not be able to find the details for the vehicle <span style="text-transform: uppercase">{{ data['vrn'] }}</span> because it's not registered with the DVLA.</p>
+      
+      <p>Try <a href="/payments/enter-vehicle-details">entering your details</a> again making sure that you have no mixed up letters and numbers (for example, the letters <strong>I</strong> and <strong>O</strong> with the numbers <strong>1</strong> and <strong>0</strong>).</p>
+
+      <h2 class="govuk-heading-m">
+        If you believe your vehicle should be registered in the UK
+      </h2>
+
+      <p>If your details are still not recognised, and you believe your vehicle should be registered in the UK, contact the <a href="https://www.gov.uk/change-vehicle-details-registration-certificate" target="_blank">DVLA</a> to update the details it holds for your vehicle.</p>
+      <p>You will still have to pay the Clean Air Zone charge (payment has to be made by midnight the next working day after you drive in the zone). If your vehicle meets Clean Air standards, you will be able to claim a <a href="/payments/refund-scenarios">refund once your vehicle details are updated</a>.</p>
+      <p>Please confirm that the registration number <strong>{{ data['vrn'] }}</strong> is correct.</p>
+
+      <form method="post" class="form" action="/payments/choose-vehicle">
+        {% if error %}
+          <div class="govuk-form-group govuk-form-group--error">
+          {% endif %}
+          {% if not error %} 
+          <div class="govuk-form-group">
+          {% endif %}
+          <fieldset class="govuk-fieldset" aria-describedby="confirm-hint">
+              {% if error %}
+              <span id="caz-charge-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
+              </span>
+              {% endif %}
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="confirm-1" name="confirm" type="checkbox" value="correct-details">
+                <label class="govuk-label govuk-checkboxes__label" for="confirm-1">
+                 I confirm that the registration number is correct.
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div> 
+        <button type="submit" class="govuk-button">
+            Continue
+        </button>      
+      </form>   
+    </div>
+</div>
+
+{% endblock %}

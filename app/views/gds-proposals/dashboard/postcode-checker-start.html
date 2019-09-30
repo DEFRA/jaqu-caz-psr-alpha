@@ -1,0 +1,48 @@
+{% extends "layout.html" %} {% block pageTitle %} Start page example {% endblock %} {% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }} {% endblock %} {% block pageScripts %}
+<script src="/public/javascripts/step-by-step-navigation.js"></script>
+<script type="text/javascript">
+    var $element = $('#step-by-step-navigation')
+    var stepByStepNavigation = new GOVUK.Modules.StepByStepNavigation()
+    stepByStepNavigation.start($element)
+</script>
+<script type="text/javascript">
+    var $element = $('#step-by-step-navigation2')
+    var stepByStepNavigation2 = new GOVUK.Modules.StepByStepNavigation()
+    stepByStepNavigation2.start($element)
+</script>
+{% endblock %} {% block beforeContent %}
+<div class="app-step-nav-header">
+    <span class="app-step-nav-header__part-of">Part of</span>
+    <a class="app-step-nav-header__title" href="/gds-proposals/dashboard">
+        Clean Air Zones
+    </a>
+</div>
+{% endblock %} {% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Postcode Checker
+        </h1>
+
+        <p>Use this service to:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>Check whether a given postcode is within a Clean Air Zone boundary</li>
+        </ul>
+
+        <a href="/gds-proposals/postcode-checker" role="button" draggable="false"
+            class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+            data-module="govuk-button">
+            Start now
+            <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19"
+                viewBox="0 0 33 40" role="presentation" focusable="false">
+                <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+            </svg>
+        </a>
+
+    </div>
+</div>
+{% endblock %}

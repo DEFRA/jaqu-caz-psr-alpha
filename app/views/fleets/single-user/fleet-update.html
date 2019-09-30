@@ -1,0 +1,78 @@
+{% extends "layout_account.html" %}
+
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Update your fleet</h1>
+   
+    <table class="govuk-table">
+            <caption class="govuk-table__caption">Your Registered Vehicles</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">Registration Number</th>
+                <th class="govuk-table__header" scope="col">Type</th>
+                <th class="govuk-table__header" scope="col">Make</th>
+                <th class="govuk-table__header" scope="col">Colour</th>
+                <th class="govuk-table__header" scope="col">Fuel Type</th>
+                <th class="govuk-table__header" scope="col"></th>
+              </tr>
+            </thead>
+                {% for vrn in vrns %}
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell" scope="row">{{vrn}}</td>
+                      <td class="govuk-table__cell" scope="row">Van</td>
+                      <td class="govuk-table__cell" scope="row">Ford</td>
+                      <td class="govuk-table__cell" scope="row">White</td>
+                      <td class="govuk-table__cell" scope="row">Petrol</td>
+                      <td class="govuk-table__cell" scope="row"><a href="/fleets/single-user/fleet-update?vrn={{vrn}}">Remove</a></td>
+                    </tr>
+                  </tbody>
+                {% endfor %}
+          </table>
+    <form method="post" class="form" action="/fleets/single-user/fleet-update">
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="add-vehicle-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    Do you need to add another vehicle?
+                </legend>
+                <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-vehicle" name="add-vehicle" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="add-vehicle">
+                    Yes
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="add-vehicle-2" name="add-vehicle" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="add-vehicle-2">
+                    No
+                    </label>
+                </div>
+                </div>
+            </fieldset>
+        </div>
+        <input type="hidden" name="rtn" value="false">
+        <button type="submit" class="govuk-button">Continue</button>
+    </form>
+  </div>
+
+            
+
+</div>
+
+{% endblock %}

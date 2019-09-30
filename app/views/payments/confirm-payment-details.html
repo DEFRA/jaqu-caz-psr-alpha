@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Confirm your payment
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Confirm your payment</h1>
+        <form method="post" class="form" action="/payments/confirm-payment">
+            <table class="govuk-table">
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Card number:</td>
+                        <th class="govuk-table__header" scope="row">{{cardNumber}}</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/payments/debit-credit-card#card-number">
+                                Change<span class="govuk-visually-hidden"> card number</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Expiry date:</td>
+                        <th class="govuk-table__header" scope="row">{{ data['expiry-month'] }}/{{ data['expiry-year'] }}</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/payments/debit-credit-card#expiry-date">
+                                Change<span class="govuk-visually-hidden"> expiry date</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Name on card:</td>
+                        <th class="govuk-table__header" scope="row">{{ data['card-name'] }}</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/payments/debit-credit-card#card-name">
+                                Change<span class="govuk-visually-hidden"> name on card</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Billing address:</td>
+                        <th class="govuk-table__header" scope="row">{{ data['building-number'] }}, {% if data['street'] %} {{ data['street'] }}, {% endif %}{{ data['town'] }}, {{ data['postcode'] }}, {{ data['country'] }}</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/payments/debit-credit-card#country">
+                                Change<span class="govuk-visually-hidden"> billing address</span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% if data['email'] != "" %}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Confirmation email:</td>
+                        <th class="govuk-table__header" scope="row">{{ data['email'] }}</th>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link" href="/payments/debit-credit-card#email">
+                                Change<span class="govuk-visually-hidden"> confirmation email</span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endif %}             
+                </tbody>
+              </table>
+            <button type="submit" class="govuk-button">
+                Confirm payment
+            </button>
+        </form>
+
+        <p><a href="/payments/cancel-payment">Cancel payment</a></p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third" style="background: #f8f8f8; border-style: solid; border-width: 10px; border-color: 
+    #bfc1c3; padding: 20px; width: 31%;">
+        <h2 class="govuk-heading-m">
+            Payment summary
+        </h2>
+        <p>Pay a Clean Air Zone charge</p>
+        <h3 class="govuk-heading-s">
+            Total charge
+        </h3>
+        <h2 class="govuk-heading-m" id="charge" name="charge">{{amountDue}}</h2>
+    </div>
+</div>
+
+{% endblock %}

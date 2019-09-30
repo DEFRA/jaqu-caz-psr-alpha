@@ -1,0 +1,80 @@
+{% extends "layout_account.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Set up a direct debit</h1>
+
+        <form method="POST" class="form" action="fleet-direct-debit-confirmation">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            </legend>
+            <fieldset class="govuk-fieldset">
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="account-name"><b>Account name</b></label>
+                    <input class="govuk-input" id="account-name" name="account-name" type="text" style="width: 60%;" spellcheck="false">
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="account-number"><b>Account
+                            number</b></label>
+                    <input class="govuk-input" id="account-number" name="account-number" type="number"
+                        style="width: 60%;" autocomplete="name" spellcheck="false">
+                </div>
+            </fieldset>
+            <label class="govuk-label govuk-date-input__label"><b>Sort code</b></label>
+            <div class="govuk-date-input" id="sortcode">
+                <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="sortcode-1"
+                            name="sortcode-1" type="number" pattern="[0-9]*">
+                    </div>
+                </div>
+                <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label"><b>-</b></label>
+                    </div>
+                </div>
+                <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="sortcode-2"
+                            name="sortcode-2" type="number" pattern="[0-9]*">
+                    </div>
+                </div>
+                <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label"><b>-</b></label>
+                    </div>
+                </div>
+                <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="sortcode-3"
+                            name="sortcode-3" type="number" pattern="[0-9]*">
+                    </div>
+                </div>
+            </div>
+
+            {% if data['rtn'] == 'true' %}
+                <input type="hidden" name="rtn" value="true">
+            {% endif %}
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

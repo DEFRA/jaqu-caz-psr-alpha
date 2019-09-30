@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    
+  
+    
+
+    <form method="post" class="form" action="/payments/local-authority">
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  What is your vehicle?
+                </h1>
+              </legend>
+              <p>Since we are not able to find your vehicle's details, you'll need to tell us what type of vehicle you want to pay for.</p>
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="vehicle-type-1" name="vehicle-type" type="radio" value="car">
+                  <label class="govuk-label govuk-radios__label" for="vehicle-type-1">
+                    Car
+                  </label> </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="vehicle-type-2" name="vehicle-type" type="radio" value="LGV">
+                  <label class="govuk-label govuk-radios__label" for="vehicle-type-2">
+                    Light goods vehicle
+                  </label> </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="vehicle-type-3" name="vehicle-type" type="radio" value="HGV">
+                  <label class="govuk-label govuk-radios__label" for="vehicle-type-3">
+                    Heavy goods vehicle
+                  </label> </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="vehicle-type-4" name="vehicle-type" type="radio" value="busCoach">
+                  <label class="govuk-label govuk-radios__label" for="vehicle-type-4">
+                    Bus or coach
+                  </label> </div>
+              </div>
+            </fieldset>
+          </div>
+      
+
+      <button type="submit" class="govuk-button">
+          Confirm
+      </button>
+    </form>  
+
+  </div>
+</div>
+
+{% endblock %}

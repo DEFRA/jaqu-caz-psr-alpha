@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    Pay a Clean Air Zone charge
+Pay a Clean Air Zone charge
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
     <div class="govuk-grid-column-two-thirds">
         <div class="govuk-panel govuk-panel--confirmation">
             <h1 class="govuk-panel__title">
-                You have paid {{amountDue}} for the {{localAuthority}} CAZ
+                Payment complete
             </h1>
             <p style="color: white; font-size: 30px;">
                 Payment reference
@@ -18,8 +18,45 @@
                 <b>XYZ123ABC</b>
             </p>
         </div>
-        <p>You will get a receipt by email and text message.</p>
+        {% if data['email'] != "" %}
+        <p>A receipt will be sent to {{ data['email'] }}.</p>
+        {% endif %}
         <p>You can use the payment reference above as proof of payment.</p>
+        <h2 class="govuk-heading-m">You have paid for:</h2>
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Registration number</td>
+                    <th class="govuk-table__header" scope="row">{{ vrn }}</th>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Clean Air Zone</td>
+                    <th class="govuk-table__header" scope="row" style="text-transform: capitalize;">{{ localAuthority }}</th>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Payment for</td>
+                    {% if caz != "leeds-weekly" %}
+                    <th class="govuk-table__header" scope="row">
+                        {% for date in dates%}{{ date | date("dddd D MMMM YYYY")}}{%if loop.index != loop.length %},{% endif %} {% endfor %}</th>
+                    {% else %}
+                    <th class="govuk-table__header" scope="row">{{dates | date("DD/MM/YYYY")}} - {{dates | date("add", 6, "days") | date("DD/MM/YYYY")}}</th>
+                    {% endif %}
+                    <td class="govuk-table__cell"></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Total charge</td>
+                    <th class="govuk-table__header" scope="row">{{ amountDue }}</th>
+                    <td class="govuk-table__cell"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><a href="">Avoid having to pay in the future</a> by finding out about options such as vehicle grants and
+            alternative ways to travel.</p>
+            <p><a href="javascript:window.print()">Print this page</a></p>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
         <h2 class="govuk-heading-m">Other tasks</h2>
         <ul class="govuk-list govuk-list--bullet">
             <li><a href="local-authority.html">Pay for another Clean Air Zone</a></li>

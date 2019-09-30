@@ -1,6 +1,9 @@
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
 
+// We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
+$govuk-assets-path: '/govuk/assets/';
+
 // Import GOV.UK Frontend and any extension styles if extensions have been configured
 @import "lib/extensions/extensions";
 
@@ -11,5 +14,60 @@ $govuk-global-styles: true;
 
 // Components that aren't in Frontend
 @import "components/cookie-banner";
+@import "components/dashboard";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.govuk-panel--noncompliant {
+    color: #ffffff;
+    background:#b10e1e;
+  }
+
+  .govuk-panel--noncompliantamber {
+    color: #ffffff;
+    background:#da932a;
+  }
+
+  .govuk-tag--compliant {
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.25;
+    display: inline-block;
+    padding: 4px 8px;
+    padding-bottom: 1px;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+    color: #ffffff;
+    background-color: #28a197;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .govuk-tag--noncompliant {
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.25;
+    display: inline-block;
+    padding: 4px 8px;
+    padding-bottom: 1px;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+    color: #ffffff;
+    background-color: #da932a;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .not-found-title {
+    background-color: #dee0e2;
+    padding: 1em;
+  }

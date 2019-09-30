@@ -1,0 +1,34 @@
+{% extends "layout_account.html" %}
+
+{% block pageTitle %}
+Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-panel__title">
+            You have updated your fleet
+        </h1>
+        <h2 class="govuk-heading-m">You have added the following VRNs:</h2>
+        {% for vrn in vrns %}
+            <ul class="govuk-list govuk-list--bullet">
+                <li>{{vrn}}</li>
+            </ul>
+        {% endfor %}
+            <p><a href="javascript:window.print()">Print this page</a></p>
+        
+        <form method="get" class="form" action="{% if data['rtn'] === 'true'%}select-caz{%else%}fleet-account{%endif%}">
+            <button type="submit" class="govuk-button">{% if data['rtn']%}Continue{%else%}Return to dashboard{%endif%}</button>
+        </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Other tasks</h2>
+        <ul class="govuk-list govuk-list--bullet">
+            <li><a href="/fleets/single-user/fleet-account">Return to dashboard</a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "layout_account.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+                Payment complete
+            </h1>
+            <p style="color: white; font-size: 30px;">
+                Payment reference
+                <br>
+                <b>FL123ABCD</b>
+            </p>
+        </div>
+        <p>A receipt will be sent to example@email.com.</p>
+        <p>You can use the payment reference above as proof of payment.</p>
+        <h2 class="govuk-heading-m">You have paid for:</h2>
+        <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Clean Air Zone
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    Birmingham
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Dates
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    Wednesday 7 August 2019<br> Thursday 8 August 2019
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total Vehicles
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    3
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total charge
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £216
+                </dd>
+            </div>
+        </dl>
+
+        <p><a href="">Avoid having to pay in the future</a> by finding out about options such as vehicle grants and
+            alternative ways to travel.</p>
+        <p><a href="javascript:window.print()">Print this page</a></p>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Other tasks</h2>
+        <ul class="govuk-list govuk-list--bullet">
+            <li><a href="/fleets/single-user/fleet-account">Pay for another Clean Air Zone</a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

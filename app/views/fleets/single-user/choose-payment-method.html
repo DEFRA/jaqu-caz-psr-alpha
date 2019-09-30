@@ -1,0 +1,52 @@
+
+{% extends "layout_account.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}   
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Select your preferred payment method</h1>
+    <form method="post" class="form" action="choose-payment-method">
+      <div class="govuk-form-group">
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="cazHint">
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="direct-debit" name="payment-type" type="radio" value="direct-debit">
+              <label class="govuk-label govuk-radios__label" for="direct-debit">
+                Direct Debit
+              </label>
+            </div>   
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="card-payment" name="payment-type" type="radio" value="card-payment">
+              <label class="govuk-label govuk-radios__label" for="card-payment">
+                Card Payment
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+      <br>
+      <br>
+      <button type="submit" class="govuk-button">
+          Continue
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

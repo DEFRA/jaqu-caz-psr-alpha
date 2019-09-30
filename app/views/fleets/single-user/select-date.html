@@ -1,0 +1,93 @@
+{% extends "layout_account.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    Pay a Clean Air Zone charge
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Which days are you paying for?</h1>
+        <p>A daily charge runs from midnight to midnight.</p>
+        <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Why can't I see my date?
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+                You can't pay earlier than 7 days ahead. <br><br>You have to pay by midnight the day after you drive through a zone. If you are trying to make a payment later than this, you will need to wait for a penalty charge notice to arrive by post. This will be sent to the address the DVLA holds for the vehicle owner.
+            </div>
+          </details>
+        <form method="post" class="form" action="/fleets/single-user/select-vehicle">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <div class="govuk-checkboxes" required>
+                      
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-1" name="date" type="checkbox" value="{{date | date('subtract', 1, 'days') | date('dddd D MMMM YYYY') }}">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-1">
+                                {{date | date("subtract", 1, "days") | date("dddd D MMMM YYYY") }}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-2" name="date" type="checkbox" value="{{date | date('dddd D MMMM YYYY') }}">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-2">
+                                <strong>{{date | date("dddd D MMMM YYYY") }}</strong> (Today)
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-3" name="date" type="checkbox" value="{{date | date('add', 1, 'days') | date('dddd D MMMM YYYY') }}">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-3">
+                                {{date | date('add', 1, 'days') | date('dddd D MMMM YYYY') }}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-4" name="date" type="checkbox" value="{{date | date('add', 2, 'days') | date('dddd D MMMM YYYY') }}">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-4">
+                                {{date | date('add', 2, 'days') | date('dddd D MMMM YYYY') }}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-5" name="date" type="checkbox" value="{{date | date('add', 3, 'days') | date('dddd D MMMM YYYY') }}">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-5">
+                                {{date | date('add', 3, 'days') | date('dddd D MMMM YYYY') }}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-6" name="date" type="checkbox" value="{{date | date('add', 4, 'days') | date('dddd D MMMM YYYY') }}">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-6">
+                                {{date | date('add', 4, 'days') | date('dddd D MMMM YYYY') }}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-7" name="date" type="checkbox" value="{{date | date('add', 5, 'days') | date('dddd D MMMM YYYY') }}">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-7">
+                                {{date | date('add', 5, 'days') | date('dddd D MMMM YYYY') }}
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="date-8" name="date" type="checkbox" value="{{date | date('add', 6, 'days') | date('dddd D MMMM YYYY') }}">
+                            <label class="govuk-label govuk-checkboxes__label" for="date-8">
+                                {{date | date('add', 6, 'days') | date('dddd D MMMM YYYY') }}
+                            </label>
+                        </div>
+                       
+                    </div>
+                </fieldset>
+            </div>
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

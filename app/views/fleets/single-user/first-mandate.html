@@ -1,0 +1,29 @@
+{% extends "layout_account.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+href: "javascript:history.back()",
+text: "Back"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+    First create a direct debit mandate
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">First create a direct debit mandate</h1>
+            <p>
+                You must create a direct debit mandate before you can complete any payments by direct debit. If you wish to pay by card instead please click the back button.
+            </p>
+            <form action="/fleets/single-user/fleet-direct-debit-mandate" method="post">
+                <input type="hidden" name="rtn" value="true">
+                <button type="submit" class="govuk-button">
+                    Continue
+                </button>    
+            </form>
+        </div>
+    </div>
+{% endblock %}
